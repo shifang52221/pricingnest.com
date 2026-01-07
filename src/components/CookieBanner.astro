@@ -45,6 +45,22 @@ const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
     const set = (value, shouldReload = true) => {
       safeSet(value);
       banner.setAttribute("hidden", "");
+
+      if (value === "accepted") {
+        try {
+          // @ts-ignore
+          const gtag = window.gtag;
+          if (typeof gtag === "function") {
+            gtag("consent", "update", {
+              ad_storage: "granted",
+              analytics_storage: "granted",
+              functionality_storage: "granted",
+              personalization_storage: "granted",
+              security_storage: "granted"
+            });
+          }
+        } catch {}
+      }
       if (shouldReload) window.location.reload();
     };
 

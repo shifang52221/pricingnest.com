@@ -13,7 +13,7 @@ const robots = Astro.props.robots ?? "index,follow";
 
 const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT ?? "";
 const ga4Id = import.meta.env.PUBLIC_GA4_ID ?? "";
-const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "";
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
 const ogImage = `${siteUrl}/og.svg`;
 ---
@@ -53,8 +53,52 @@ const ogImage = `${siteUrl}/og.svg`;
           }
         };
         const consent = getConsent();
-        const shouldLoad = consent === "accepted";
-        if (!shouldLoad) return;
+
+        // GA4: keep consent denied until user accepts, but still output the tag for verification.
+        if (ga4Id) {
+          // @ts-ignore
+          window.dataLayer = window.dataLayer || [];
+          // @ts-ignore
+          window.gtag =
+            // @ts-ignore
+            window.gtag || function () { window.dataLayer.push(arguments); };
+
+          // @ts-ignore
+          window.gtag("consent", "default", {
+            ad_storage: "denied",
+            analytics_storage: "denied",
+            functionality_storage: "granted",
+            personalization_storage: "denied",
+            security_storage: "granted"
+          });
+
+          if (consent === "accepted") {
+            // @ts-ignore
+            window.gtag("consent", "update", {
+              ad_storage: "granted",
+              analytics_storage: "granted",
+              functionality_storage: "granted",
+              personalization_storage: "granted",
+              security_storage: "granted"
+            });
+          }
+
+          const g = document.createElement("script");
+          g.async = true;
+          g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
+          document.head.appendChild(g);
+
+          // Only start collecting after consent is accepted.
+          if (consent === "accepted") {
+            // @ts-ignore
+            window.gtag("js", new Date());
+            // @ts-ignore
+            window.gtag("config", ga4Id);
+          }
+        }
+
+        const shouldLoadAds = consent === "accepted";
+        if (!shouldLoadAds) return;
 
         if (adsenseClient) {
           const s = document.createElement("script");
@@ -64,24 +108,6 @@ const ogImage = `${siteUrl}/og.svg`;
             encodeURIComponent(adsenseClient);
           s.crossOrigin = "anonymous";
           document.head.appendChild(s);
-        }
-
-        if (ga4Id) {
-          // @ts-ignore
-          window.dataLayer = window.dataLayer || [];
-          // @ts-ignore
-          window.gtag =
-            // @ts-ignore
-            window.gtag || function () { window.dataLayer.push(arguments); };
-          // @ts-ignore
-          window.gtag("js", new Date());
-          // @ts-ignore
-          window.gtag("config", ga4Id);
-
-          const g = document.createElement("script");
-          g.async = true;
-          g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
-          document.head.appendChild(g);
         }
       })();
     </script>
