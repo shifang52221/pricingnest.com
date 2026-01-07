@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Infra Cost Recovery - Use Case | SaaS Pricing Toolkit"
+  description="A simple flow for pricing infra-heavy features: bandwidth + storage cost estimation, then pricing at target margin."
+>
+  <section class="hero">
+    <h1>Use case: infra cost recovery</h1>
+    <p>
+      This flow helps you back into pricing for bandwidth- and storage-heavy features while keeping margins predictable.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/bandwidth-cost-calculator/">Start with bandwidth</a>
+      <a class="btn ghost" href="/saas-pricing/">Back to toolkit</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Recommended steps</h2>
+      <ol class="list">
+        <li>
+          Estimate egress cost and a recommended price:{" "}
+          <a href="/saas-pricing/bandwidth-cost-calculator/">bandwidth cost calculator</a>
+        </li>
+        <li>
+          Add storage and request costs: <a href="/saas-pricing/storage-cost-calculator/">storage cost calculator</a>
+        </li>
+        <li>
+          Convert fixed overhead to a per-unit price:{" "}
+          <a href="/saas-pricing/usage-based-pricing-calculator/">usage-based pricing calculator</a>
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">Notes</h2>
+      <ul class="list">
+        <li>Use average monthly storage (GB-month), not peak storage.</li>
+        <li>If you have tiered egress pricing, use an average blended cost per GB.</li>
+        <li>Keep a fixed overhead bucket for monitoring, support, and baseline infra.</li>
+      </ul>
+    </section>
+    <aside class="card col4">
+      <h2>Good for</h2>
+      <ul class="list">
+        <li>CDN-backed media features</li>
+        <li>Data retention add-ons</li>
+        <li>Backup/export capabilities</li>
+      </ul>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+

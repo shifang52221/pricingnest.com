@@ -1,0 +1,73 @@
+---
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<div class="cookie" data-cookie-banner hidden>
+  <div class="cookie-inner">
+    <div>
+      <div class="cookie-title">Cookies</div>
+      <div class="cookie-text">
+        {siteName} uses cookies for analytics and ads (if enabled). Choose your preference.
+      </div>
+    </div>
+    <div class="cookie-actions">
+      <a class="btn ghost" href="/cookie-policy/">Learn more</a>
+      <button class="btn" type="button" data-cookie-reject>Reject</button>
+      <button class="btn primary" type="button" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const key = "cookie_consent";
+    const banner = document.querySelector("[data-cookie-banner]");
+    if (!banner) return;
+
+    const safeGet = () => {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    };
+    const safeSet = (value) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch {}
+    };
+
+    const existing = safeGet();
+    if (existing !== "accepted" && existing !== "rejected") banner.removeAttribute("hidden");
+
+    const accept = banner.querySelector("[data-cookie-accept]");
+    const reject = banner.querySelector("[data-cookie-reject]");
+
+    const set = (value, shouldReload = true) => {
+      safeSet(value);
+      banner.setAttribute("hidden", "");
+      if (shouldReload) window.location.reload();
+    };
+
+    const open = () => banner.removeAttribute("hidden");
+    const reset = () => {
+      try {
+        localStorage.removeItem(key);
+      } catch {}
+      open();
+    };
+
+    window.__cookieConsent = { open, reset, accept: () => set("accepted"), reject: () => set("rejected") };
+
+    accept?.addEventListener("click", () => set("accepted"));
+    reject?.addEventListener("click", () => set("rejected"));
+
+    document.addEventListener("click", (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest("[data-cookie-open]");
+      if (!link) return;
+      e.preventDefault();
+      open();
+    });
+  })();
+</script>

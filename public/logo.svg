@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="PricingNest">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="36" fill="#ffffff"/>
+  <path d="M34 104c20-38 74-60 96-66" fill="none" stroke="url(#g)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M34 66c14 9 30 14 48 17" fill="none" stroke="rgba(15,23,42,0.72)" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="120" cy="36" r="12" fill="url(#g)"/>
+</svg>
+

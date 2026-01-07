@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: canonical
+};
+---
+<BaseLayout
+  title="SaaS Pricing Toolkit - High-Intent Calculators"
+  description="A lightweight set of SaaS pricing and cloud cost tools designed for SEO and tier-1 traffic."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="hero">
+    <h1>SaaS Pricing & Cloud Cost Toolkit</h1>
+    <p>
+      Build pricing models, estimate unit economics, and compare plan structures. Each tool is input-driven (no external
+      pricing feeds), so it stays lightweight to maintain and easier to trust.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/">Open the toolkit</a>
+      <a class="btn ghost" href="/saas-pricing/usage-based-pricing-calculator/">Start with unit pricing</a>
+    </div>
+    <div class="pill-row" aria-label="Highlights">
+      <span class="pill">Presets</span>
+      <span class="pill">Shareable links</span>
+      <span class="pill">CSV export</span>
+      <span class="pill">No live price feeds</span>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>What this is for</h2>
+      <p class="muted">
+        Use these tools to sanity-check a new pricing page, model cost recovery for infra-heavy features, or compare
+        seat-based plans against usage-based billing before you ship.
+      </p>
+
+      <div class="feature-grid" style="margin-top: 1rem;">
+        <div class="feature col6">
+          <h3>Pricing model decisions</h3>
+          <p>Seat vs usage comparisons, unit pricing, and implied rate breakdowns you can share with your team.</p>
+        </div>
+        <div class="feature col6">
+          <h3>Cloud cost recovery</h3>
+          <p>Bandwidth and storage cost estimators that work with your own blended costs (no maintenance-heavy feeds).</p>
+        </div>
+        <div class="feature col6">
+          <h3>Spreadsheet-friendly</h3>
+          <p>Export a simple CSV report of inputs and outputs for documentation or internal pricing reviews.</p>
+        </div>
+        <div class="feature col6">
+          <h3>SEO-friendly toolkit structure</h3>
+          <p>Each calculator has its own focused page plus related tools to encourage multi-page browsing.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card col4">
+      <h2>Quick start</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
+        <li><a href="/saas-pricing/bandwidth-cost-calculator/">Bandwidth cost calculator</a></li>
+        <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
+      </ul>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+
+  <section class="card" style="margin-top: 1rem;">
+    <h2>How teams use it</h2>
+    <div class="kpi-grid" style="margin-top: 0.75rem;">
+      <div class="kpi col3">
+        <strong>Pricing review</strong>
+        <span>Attach CSV exports to internal proposals and stakeholder discussions.</span>
+      </div>
+      <div class="kpi col3">
+        <strong>COGS sanity check</strong>
+        <span>Back into required prices from unit costs and target gross margin.</span>
+      </div>
+      <div class="kpi col3">
+        <strong>Model comparison</strong>
+        <span>Compare seat vs usage at the same workload to avoid surprises.</span>
+      </div>
+      <div class="kpi col3">
+        <strong>Shareable defaults</strong>
+        <span>Send pre-filled links to align on assumptions across teams.</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

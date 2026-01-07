@@ -1,0 +1,10 @@
+---
+import type { ToolDefinition } from "../lib/tools";
+
+const { tool } = Astro.props as { tool: ToolDefinition };
+---
+<a class="tool" href={`/saas-pricing/${tool.slug}/`}>
+  <strong>{tool.title}</strong>
+  <span>{tool.description}</span>
+</a>
+

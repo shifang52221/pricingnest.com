@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolCard from "../../components/ToolCard.astro";
+import { TOOLS } from "../../lib/tools";
+
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: TOOLS.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: t.title,
+    url: new URL(`/saas-pricing/${t.slug}/`, siteUrl).toString()
+  })),
+  url: canonical
+};
+---
+<BaseLayout
+  title="PricingNest - SaaS Pricing Toolkit (Cost, Margin, Unit Economics)"
+  description="SaaS pricing and cost calculators: usage-based pricing, API pricing, bandwidth and storage cost, and plan comparisons."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="hero">
+    <h1>SaaS Pricing Toolkit</h1>
+    <p>
+      A focused set of pricing and cost estimators. Enter your own costs, usage, and margins to get a clear breakdown you
+      can share.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/usage-based-pricing-calculator/">Start with unit pricing</a>
+      <a class="btn ghost" href="/saas-pricing/seat-vs-usage-pricing-comparison/">Compare seat vs usage</a>
+    </div>
+    <div class="pill-row" aria-label="Highlights">
+      <span class="pill">Tier-1 intent keywords</span>
+      <span class="pill">Input-driven (no feeds)</span>
+      <span class="pill">Export + share</span>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Tools</h2>
+      <div class="tools">
+        {TOOLS.map((tool) => (
+          <ToolCard tool={tool} />
+        ))}
+      </div>
+    </section>
+    <aside class="card col4">
+      <h2>How to use</h2>
+      <p class="muted">
+        Pick a tool, enter your assumptions, then copy a shareable link for your team. We don't fetch live cloud pricing,
+        so you control the model.
+      </p>
+      <h2 style="margin-top: 1.1rem;">What's included</h2>
+      <ul class="list">
+        <li>Presets to start fast</li>
+        <li>Shareable URLs for collaboration</li>
+        <li>CSV export for spreadsheets</li>
+      </ul>
+      <h2 style="margin-top: 1.1rem;">Use cases</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/use-cases/api-pricing/">API pricing for SaaS</a></li>
+        <li><a href="/saas-pricing/use-cases/infra-cost-recovery/">Infra cost recovery</a></li>
+      </ul>
+      <div class="ad">Ad slot (optional): place one responsive unit here.</div>
+    </aside>
+  </div>
+
+  <section class="card" style="margin-top: 1rem;">
+    <h2>Popular flows</h2>
+    <p class="muted">Try one of these guided flows if you're not sure where to start.</p>
+    <div class="feature-grid" style="margin-top: 0.9rem;">
+      <div class="feature col6">
+        <h3>Usage-based pricing</h3>
+        <p>
+          Start with <a href="/saas-pricing/usage-based-pricing-calculator/">unit pricing</a>, then translate it into an{" "}
+          <a href="/saas-pricing/api-pricing-calculator/">API plan</a>, and finally run{" "}
+          <a href="/saas-pricing/seat-vs-usage-pricing-comparison/">seat vs usage</a>.
+        </p>
+      </div>
+      <div class="feature col6">
+        <h3>Infra-heavy products</h3>
+        <p>
+          Estimate bandwidth and storage costs, then back into the recommended price at your target margin:{" "}
+          <a href="/saas-pricing/bandwidth-cost-calculator/">bandwidth</a> +{" "}
+          <a href="/saas-pricing/storage-cost-calculator/">storage</a> -&gt;{" "}
+          <a href="/saas-pricing/usage-based-pricing-calculator/">unit pricing</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

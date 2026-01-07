@@ -1,0 +1,154 @@
+---
+import "../styles/global.css";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const title = Astro.props.title ?? siteName;
+const description =
+  Astro.props.description ??
+  "A lightweight collection of SaaS pricing and cloud cost tools designed for SEO-friendly, high-intent queries.";
+const robots = Astro.props.robots ?? "index,follow";
+
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT ?? "";
+const ga4Id = import.meta.env.PUBLIC_GA4_ID ?? "";
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "";
+
+const ogImage = `${siteUrl}/og.svg`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content={robots} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="application-name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${siteName} preview`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${siteName} preview`} />
+    <link rel="alternate" href={canonical} hreflang="en" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <slot name="head" />
+    <script is:inline define:vars={{ adsenseClient, ga4Id }}>
+      (() => {
+        const consentKey = "cookie_consent";
+        const getConsent = () => {
+          try {
+            return localStorage.getItem(consentKey);
+          } catch {
+            return null;
+          }
+        };
+        const consent = getConsent();
+        const shouldLoad = consent === "accepted";
+        if (!shouldLoad) return;
+
+        if (adsenseClient) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src =
+            "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+            encodeURIComponent(adsenseClient);
+          s.crossOrigin = "anonymous";
+          document.head.appendChild(s);
+        }
+
+        if (ga4Id) {
+          // @ts-ignore
+          window.dataLayer = window.dataLayer || [];
+          // @ts-ignore
+          window.gtag =
+            // @ts-ignore
+            window.gtag || function () { window.dataLayer.push(arguments); };
+          // @ts-ignore
+          window.gtag("js", new Date());
+          // @ts-ignore
+          window.gtag("config", ga4Id);
+
+          const g = document.createElement("script");
+          g.async = true;
+          g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
+          document.head.appendChild(g);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <img class="logo" src="/logo.svg" width="28" height="28" alt="" aria-hidden="true" />
+          <span>{siteName}</span>
+        </a>
+        <nav class="muted">
+          <a href="/saas-pricing/">Toolkit</a>
+          <span class="muted"> | </span>
+          <a href="/contact/">Contact</a>
+          <span class="muted"> | </span>
+          <a href="/privacy-policy/">Privacy</a>
+          <span class="muted"> | </span>
+          <a href="/cookie-policy/">Cookies</a>
+          <span class="muted"> | </span>
+          <a href="/terms/">Terms</a>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-title">{siteName}</div>
+            <div class="footer-text">Input-driven calculators for SaaS pricing and cloud unit economics.</div>
+          </div>
+          <div>
+            <div class="footer-title">Toolkit</div>
+            <div class="footer-links">
+              <a href="/saas-pricing/">All tools</a>
+              <a href="/saas-pricing/use-cases/api-pricing/">API pricing use case</a>
+              <a href="/saas-pricing/use-cases/infra-cost-recovery/">Infra cost recovery</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-title">Legal</div>
+            <div class="footer-links">
+              <a href="/privacy-policy/">Privacy policy</a>
+              <a href="/cookie-policy/">Cookie policy</a>
+              <a href="/cookie-policy/" data-cookie-open>Cookie settings</a>
+              <a href="/terms/">Terms</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-title">Contact</div>
+            <div class="footer-links">
+              <a href="/contact/">Contact</a>
+              {contactEmail ? <a href={`mailto:${contactEmail}`}>{contactEmail}</a> : null}
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-text">Tools provide estimates only. Use your own costs and assumptions.</div>
+          <div class="footer-text">(c) {new Date().getFullYear()} {siteName}</div>
+        </div>
+      </div>
+    </footer>
+    <CookieBanner />
+  </body>
+</html>

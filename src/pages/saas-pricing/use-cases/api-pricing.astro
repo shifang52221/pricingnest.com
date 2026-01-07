@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="API Pricing for SaaS - Use Case | SaaS Pricing Toolkit"
+  description="A simple flow for pricing an API product: estimate costs, back into target margin, and compare seat vs usage."
+>
+  <section class="hero">
+    <h1>Use case: API pricing for SaaS</h1>
+    <p>
+      This flow helps you turn your call volume and unit costs into a recommended monthly price and an implied rate per
+      1,000 calls.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/api-pricing-calculator/">Start with API pricing</a>
+      <a class="btn ghost" href="/saas-pricing/">Back to toolkit</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Recommended steps</h2>
+      <ol class="list">
+        <li>
+          Estimate a plan price from calls and costs: <a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a>
+        </li>
+        <li>
+          Cross-check your unit pricing model:{" "}
+          <a href="/saas-pricing/usage-based-pricing-calculator/">usage-based pricing calculator</a>
+        </li>
+        <li>
+          Compare to a seat plan for the same customer:{" "}
+          <a href="/saas-pricing/seat-vs-usage-pricing-comparison/">seat vs usage pricing comparison</a>
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">Notes</h2>
+      <ul class="list">
+        <li>Enter your blended infra cost per 1,000 calls (compute + DB + vendor + observability).</li>
+        <li>Use monthly fixed cost for support, tooling, and baseline overhead.</li>
+        <li>Export CSV to document assumptions for internal review.</li>
+      </ul>
+    </section>
+    <aside class="card col4">
+      <h2>Shortcut</h2>
+      <p class="muted">If your pricing is primarily usage-based, start with unit pricing first.</p>
+      <div class="btn-row" style="margin-top: 0.75rem;">
+        <a class="btn" href="/saas-pricing/usage-based-pricing-calculator/">Unit pricing</a>
+      </div>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+

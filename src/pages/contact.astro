@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
+---
+<BaseLayout title="Contact | SaaS Pricing Toolkit" description="Contact information for this website." robots="noindex,follow">
+  <section class="hero">
+    <h1>Contact</h1>
+    {contactEmail ? (
+      <p class="muted">
+        Email: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+      </p>
+    ) : (
+      <p class="muted">Set `PUBLIC_CONTACT_EMAIL` to show a contact address here.</p>
+    )}
+  </section>
+</BaseLayout>
