@@ -26,6 +26,11 @@ Build output: `dist/`
   - `PUBLIC_SITE_URL`
   - `PUBLIC_ADSENSE_CLIENT` (e.g. `ca-pub-...`)
   - `PUBLIC_GA4_ID`
+  - `PUBLIC_CONTACT_EMAIL` (e.g. `admin@pricingnest.com`)
+
+## Before submitting to AdSense
+
+- Update `public/ads.txt` with your real publisher line after approval.
 
 ### Deploy with Wrangler (optional)
 
