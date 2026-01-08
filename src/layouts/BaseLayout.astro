@@ -2,8 +2,8 @@
 import "../styles/global.css";
 import CookieBanner from "../components/CookieBanner.astro";
 
-const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
-const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const siteName = process.env.PUBLIC_SITE_NAME ?? import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const siteUrl = (Astro.site?.toString() ?? process.env.PUBLIC_SITE_URL ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const title = Astro.props.title ?? siteName;
 const description =
@@ -11,9 +11,10 @@ const description =
   "A lightweight collection of SaaS pricing and cloud cost tools designed for SEO-friendly, high-intent queries.";
 const robots = Astro.props.robots ?? "index,follow";
 
-const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT ?? "";
-const ga4Id = import.meta.env.PUBLIC_GA4_ID ?? "";
-const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
+const adsenseClient = process.env.PUBLIC_ADSENSE_CLIENT ?? import.meta.env.PUBLIC_ADSENSE_CLIENT ?? "";
+const ga4Id = process.env.PUBLIC_GA4_ID ?? import.meta.env.PUBLIC_GA4_ID ?? "";
+const contactEmail =
+  process.env.PUBLIC_CONTACT_EMAIL ?? import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
 const ogImage = `${siteUrl}/og.svg`;
 ---
