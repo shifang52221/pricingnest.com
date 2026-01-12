@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Pricing Experiments - Use Case | PricingNest"
+  description="A practical flow for pricing experiments: model price increase impact, estimate break-even churn, and compare annual discount tradeoffs."
+>
+  <section class="hero">
+    <h1>Use case: pricing experiments</h1>
+    <p>
+      Use this flow to model a price increase, estimate break-even churn, and compare annual prepay discounts. It's designed
+      for quick sensitivity checks before you run an experiment.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/pricing-increase-impact-calculator/">Start with price increase impact</a>
+      <a class="btn ghost" href="/saas-pricing/use-cases/">All use cases</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Recommended steps</h2>
+      <ol class="list">
+        <li>
+          Model revenue impact and break-even churn:{" "}
+          <a href="/saas-pricing/pricing-increase-impact-calculator/">pricing increase impact calculator</a>
+        </li>
+        <li>
+          Convert monthly to annual prepay pricing: <a href="/saas-pricing/annual-discount-calculator/">annual discount calculator</a>
+        </li>
+        <li>
+          If the experiment affects retention, sanity-check churn impact:{" "}
+          <a href="/saas-pricing/churn-impact-calculator/">churn impact calculator</a>
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">Notes</h2>
+      <ul class="list">
+        <li>Use ranges (best/base/worst) and segment by plan or customer size.</li>
+        <li>Grandfathering or phased rollouts can reduce churn risk during a price increase.</li>
+        <li>Annual discounts trade revenue for commitment and cash flow; compare effective monthly rates.</li>
+      </ul>
+    </section>
+    <aside class="card col4">
+      <h2>Good for</h2>
+      <ul class="list">
+        <li>Packaging or price-point changes</li>
+        <li>Annual prepay strategy</li>
+        <li>Sensitivity checks before rollout</li>
+      </ul>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+

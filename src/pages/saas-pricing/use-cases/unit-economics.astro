@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="SaaS Unit Economics - Use Case | PricingNest"
+  description="A practical flow for SaaS unit economics: connect churn, LTV, CAC payback, break-even CAC, and ARR run rate."
+>
+  <section class="hero">
+    <h1>Use case: SaaS unit economics</h1>
+    <p>
+      This flow connects churn, LTV, CAC payback, and break-even CAC. Use it when evaluating acquisition spend, pricing
+      changes, or new segments.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/ltv-calculator/">Start with LTV</a>
+      <a class="btn ghost" href="/saas-pricing/use-cases/">All use cases</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Recommended steps</h2>
+      <ol class="list">
+        <li>
+          Quantify churn impact: <a href="/saas-pricing/churn-impact-calculator/">churn impact calculator</a>
+        </li>
+        <li>
+          Estimate LTV from ARPA, margin, and churn: <a href="/saas-pricing/ltv-calculator/">LTV calculator</a>
+        </li>
+        <li>
+          Convert CAC to a payback period:{" "}
+          <a href="/saas-pricing/cac-payback-period-calculator/">CAC payback period calculator</a>
+        </li>
+        <li>
+          Compute a break-even CAC for a target payback:{" "}
+          <a href="/saas-pricing/break-even-cac-calculator/">break-even CAC calculator</a>
+        </li>
+        <li>
+          Translate run-rate into ARR: <a href="/saas-pricing/arr-calculator/">ARR calculator</a>
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">Notes</h2>
+      <ul class="list">
+        <li>Use cohort-based churn where possible (by plan or segment), not blended churn across the entire base.</li>
+        <li>Start conservative: model gross churn first, then test sensitivity with net churn if expansion is strong.</li>
+        <li>Keep CAC definitions consistent across time (include commissions, tools, and headcount allocation).</li>
+      </ul>
+    </section>
+    <aside class="card col4">
+      <h2>Shortcut</h2>
+      <p class="muted">If you're tracking growth, compute net new MRR and then convert to ARR.</p>
+      <div class="btn-row" style="margin-top: 0.75rem;">
+        <a class="btn" href="/saas-pricing/mrr-calculator/">MRR calculator</a>
+        <a class="btn" href="/saas-pricing/arr-calculator/">ARR calculator</a>
+      </div>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+

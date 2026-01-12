@@ -542,6 +542,101 @@ button.primary:hover {
   line-height: 1.7;
 }
 
+.toc {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.toc a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(15, 23, 42, 0.82);
+  font-size: 0.9rem;
+}
+
+.toc a:hover {
+  text-decoration: none;
+  border-color: rgba(15, 23, 42, 0.22);
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 880px) {
+  .data-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.data-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.data-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.data-value {
+  margin-top: 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.data-table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.data-table thead th {
+  font-size: 0.9rem;
+  color: rgba(15, 23, 42, 0.78);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .footer {
   border-top: 1px solid var(--border);
   padding: 1.25rem 0;

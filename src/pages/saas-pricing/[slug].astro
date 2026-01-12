@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getToolBySlug, TOOLS, type ToolDefinition } from "../../lib/tools";
 import toolPageScriptUrl from "../../scripts/tool-page.ts?url";
+import { compute } from "../../scripts/calculators";
 
 export function getStaticPaths() {
   return TOOLS.map((tool) => ({ params: { slug: tool.slug } }));
@@ -18,7 +19,71 @@ const relatedTools: ToolDefinition[] = tool.related
 const siteUrl = (Astro.site?.toString() ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 
+function formatCurrency(currency: string, value: number): string {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: value < 1 ? 6 : 2
+  });
+  return formatter.format(value);
+}
+
+function formatNumber(value: number): string {
+  const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 6 });
+  return formatter.format(value);
+}
+
+function formatPercent(value: number): string {
+  const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
+  return `${formatter.format(value)}%`;
+}
+
+function buildDefaultInputs(tool: ToolDefinition): Record<string, string> {
+  const inputs: Record<string, string> = {};
+  for (const input of tool.inputs) inputs[input.name] = input.defaultValue;
+  return inputs;
+}
+
+const defaultInputs = buildDefaultInputs(tool);
+const defaultCurrency = defaultInputs.currency || "USD";
+const defaultResult = compute(tool.slug, defaultInputs);
+
+const exampleOutputs = tool.outputs.map((out) => {
+  const raw = defaultResult[out.name];
+  const value =
+    typeof raw === "number"
+      ? out.format === "currency"
+        ? formatCurrency(defaultCurrency, raw)
+        : out.format === "percent"
+          ? formatPercent(raw)
+          : formatNumber(raw)
+      : raw == null
+        ? "-"
+        : String(raw);
+
+  return { ...out, value };
+});
+
+const keyInputs = tool.inputs.filter((i) => i.name !== "currency").slice(0, 3);
+const websiteId = `${siteUrl}/#website`;
+const breadcrumbId = `${canonical}#breadcrumb`;
+
 const graph: any[] = [
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: siteUrl,
+    name: "PricingNest"
+  },
+  {
+    "@type": "WebPage",
+    "@id": canonical,
+    url: canonical,
+    name: tool.title,
+    description: tool.description,
+    isPartOf: { "@id": websiteId },
+    breadcrumb: { "@id": breadcrumbId }
+  },
   {
     "@type": "SoftwareApplication",
     name: tool.title,
@@ -26,10 +91,13 @@ const graph: any[] = [
     operatingSystem: "Web",
     url: canonical,
     description: tool.description,
+    mainEntityOfPage: { "@id": canonical },
+    isPartOf: { "@id": websiteId },
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }
   },
   {
     "@type": "BreadcrumbList",
+    "@id": breadcrumbId,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", siteUrl).toString() },
       { "@type": "ListItem", position: 2, name: "SaaS Pricing Toolkit", item: new URL("/saas-pricing/", siteUrl).toString() },
@@ -50,6 +118,40 @@ if (tool.faq && tool.faq.length > 0) {
 }
 
 const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+
+const useCaseLinks = (() => {
+  const unitEconomics = new Set([
+    "mrr-calculator",
+    "arr-calculator",
+    "churn-impact-calculator",
+    "ltv-calculator",
+    "cac-payback-period-calculator",
+    "break-even-cac-calculator"
+  ]);
+
+  const experiments = new Set(["pricing-increase-impact-calculator", "annual-discount-calculator"]);
+
+  const usagePricing = new Set([
+    "usage-based-pricing-calculator",
+    "seat-vs-usage-pricing-comparison",
+    "api-pricing-calculator"
+  ]);
+
+  const infra = new Set([
+    "bandwidth-cost-calculator",
+    "storage-cost-calculator",
+    "compute-cost-estimator",
+    "monthly-cloud-cost-estimator"
+  ]);
+
+  const links: { href: string; label: string }[] = [{ href: "/saas-pricing/use-cases/", label: "All use cases" }];
+  if (usagePricing.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/usage-based-pricing/", label: "Use case: usage-based pricing" });
+  if (tool.slug === "api-pricing-calculator") links.push({ href: "/saas-pricing/use-cases/api-pricing/", label: "Use case: API pricing" });
+  if (infra.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/infra-cost-recovery/", label: "Use case: infra cost recovery" });
+  if (unitEconomics.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/unit-economics/", label: "Use case: SaaS unit economics" });
+  if (experiments.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/pricing-experiments/", label: "Use case: pricing experiments" });
+  return links;
+})();
 ---
 
 <BaseLayout title={`${tool.title} | PricingNest`} description={tool.description}>
@@ -162,56 +264,128 @@ const jsonLd = { "@context": "https://schema.org", "@graph": graph };
       </aside>
     </div>
 
-    {(tool.howItWorks && tool.howItWorks.length > 0) ||
-    (tool.assumptions && tool.assumptions.length > 0) ||
-    (tool.faq && tool.faq.length > 0) ? (
-      <div class="grid">
-        <section class="card col8">
-          {tool.howItWorks && tool.howItWorks.length > 0 ? (
-            <>
-              <h2>How it works</h2>
-              <ul class="list">
-                {tool.howItWorks.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </>
-          ) : null}
+    <div class="grid" style="margin-top: 1rem;">
+      <section class="card col8" id="guide">
+        <h2>Guide</h2>
+        <p class="muted" style="margin-top: 0.5rem;">
+          This page is a calculator first, but it's also a quick reference you can share internally. Start with the
+          presets, then adjust inputs and copy the share link. Example defaults for this tool are shown below.
+        </p>
 
-          {tool.faq && tool.faq.length > 0 ? (
-            <>
-              <h2 style="margin-top: 1.25rem;">FAQ</h2>
-              <div class="faq">
-                {tool.faq.map((f) => (
-                  <details class="faq-item">
-                    <summary>{f.q}</summary>
-                    <div class="muted faq-answer">{f.a}</div>
-                  </details>
-                ))}
-              </div>
-            </>
-          ) : null}
-        </section>
+        <div class="toc" aria-label="On this page">
+          <a href="#example">Example</a>
+          <a href="#inputs">Inputs</a>
+          <a href="#outputs">Outputs</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+        </div>
 
-        <aside class="card col4">
-          {tool.assumptions && tool.assumptions.length > 0 ? (
-            <>
-              <h2>Assumptions</h2>
-              <ul class="list">
-                {tool.assumptions.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            <>
-              <h2>Notes</h2>
-              <p class="muted">Use presets to start, then adjust assumptions and share the link with your team.</p>
-            </>
-          )}
-        </aside>
-      </div>
-    ) : null}
+        <h2 id="example" style="margin-top: 1.25rem;">Example (defaults)</h2>
+        <p class="muted" style="margin-top: 0.5rem;">
+          Example inputs: {keyInputs.map((i, idx) => (
+            <span>
+              <strong>{i.label}</strong> = {i.defaultValue}{idx < keyInputs.length - 1 ? ", " : ""}
+            </span>
+          ))}
+        </p>
+        <div class="data-grid" style="margin-top: 0.8rem;">
+          {exampleOutputs.map((out) => (
+            <div class="data-card">
+              <div class="data-label">{out.label}</div>
+              <div class="data-value">{out.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <h2 id="inputs" style="margin-top: 1.25rem;">Inputs explained</h2>
+        <div class="data-table-wrap" style="margin-top: 0.65rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Input</th>
+                <th>Default</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tool.inputs.map((input) => (
+                <tr>
+                  <td>
+                    <strong>{input.label}</strong>
+                  </td>
+                  <td><code>{input.defaultValue}</code></td>
+                  <td class="muted">
+                    {input.help ? input.help : "Adjust to match your product assumptions."}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="outputs" style="margin-top: 1.25rem;">Outputs explained</h2>
+        <div class="data-table-wrap" style="margin-top: 0.65rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Output</th>
+                <th>What it means</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tool.outputs.map((out) => (
+                <tr>
+                  <td><strong>{out.label}</strong></td>
+                  <td class="muted">
+                    {out.format === "currency"
+                      ? "A money value based on your selected currency."
+                      : out.format === "percent"
+                        ? "A percentage value derived from the inputs."
+                        : out.format === "number"
+                          ? "A numeric value derived from the inputs."
+                          : "A text label derived from the inputs."}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="how" style="margin-top: 1.25rem;">How it works</h2>
+        <ul class="list">
+          {tool.howItWorks?.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+
+        <h2 id="faq" style="margin-top: 1.25rem;">FAQ</h2>
+        <div class="faq">
+          {tool.faq?.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <div class="muted faq-answer">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <aside class="card col4">
+        <h2>Assumptions</h2>
+        <ul class="list">
+          {tool.assumptions?.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+
+        <h2 style="margin-top: 1.25rem;">Next steps</h2>
+        <ul class="list">
+          {useCaseLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+          <li><a href="/saas-pricing/">Browse all tools</a></li>
+        </ul>
+      </aside>
+    </div>
   </div>
 
   <script type="module" src={toolPageScriptUrl}></script>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="SaaS Pricing Use Cases | PricingNest"
+  description="Practical flows for SaaS pricing decisions: usage-based pricing, API pricing, infra cost recovery, unit economics, and pricing experiments."
+>
+  <section class="hero">
+    <h1>SaaS pricing use cases</h1>
+    <p>
+      These short guides chain calculators into repeatable workflows. Use them to model a pricing change, sanity-check unit
+      economics, or back into prices from cost drivers.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/">Browse all tools</a>
+      <a class="btn ghost" href="/saas-pricing/usage-based-pricing-calculator/">Start with unit pricing</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Use cases</h2>
+      <ol class="list">
+        <li>
+          <a href="/saas-pricing/use-cases/usage-based-pricing/">Usage-based pricing</a> — set a per-unit price from costs,
+          overhead, and target margin.
+        </li>
+        <li>
+          <a href="/saas-pricing/use-cases/api-pricing/">API pricing</a> — turn call volume and unit costs into a monthly plan
+          price and implied rate.
+        </li>
+        <li>
+          <a href="/saas-pricing/use-cases/infra-cost-recovery/">Infra cost recovery</a> — price bandwidth and storage-heavy
+          features with predictable margins.
+        </li>
+        <li>
+          <a href="/saas-pricing/use-cases/unit-economics/">SaaS unit economics</a> — connect MRR/ARR, churn, LTV, CAC payback,
+          and break-even CAC.
+        </li>
+        <li>
+          <a href="/saas-pricing/use-cases/pricing-experiments/">Pricing experiments</a> — model price increases and annual
+          discount tradeoffs.
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">How to use these</h2>
+      <ul class="list">
+        <li>Start with defaults, then switch to a conservative/base/aggressive scenario using presets.</li>
+        <li>Copy the share link to align on assumptions across your team.</li>
+        <li>Download CSV to keep a lightweight decision record for reviews.</li>
+      </ul>
+    </section>
+
+    <aside class="card col4">
+      <h2>Quick links</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/">All tools</a></li>
+        <li><a href="/saas-pricing/mrr-calculator/">MRR calculator</a></li>
+        <li><a href="/saas-pricing/ltv-calculator/">LTV calculator</a></li>
+        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
+      </ul>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+

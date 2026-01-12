@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Usage-Based Pricing - Use Case | PricingNest"
+  description="A practical flow for usage-based pricing: estimate unit price from costs and margin, then validate against seat-based alternatives."
+>
+  <section class="hero">
+    <h1>Use case: usage-based pricing</h1>
+    <p>
+      Use this flow to set a per-unit price from unit costs, fixed overhead, and target gross margin, then sanity-check it
+      against a seat-based plan.
+    </p>
+    <div class="btn-row">
+      <a class="btn primary" href="/saas-pricing/usage-based-pricing-calculator/">Start with unit pricing</a>
+      <a class="btn ghost" href="/saas-pricing/use-cases/">All use cases</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Recommended steps</h2>
+      <ol class="list">
+        <li>
+          Back into a required unit price:{" "}
+          <a href="/saas-pricing/usage-based-pricing-calculator/">usage-based pricing calculator</a>
+        </li>
+        <li>
+          Translate unit pricing into a seat plan comparison:{" "}
+          <a href="/saas-pricing/seat-vs-usage-pricing-comparison/">seat vs usage pricing comparison</a>
+        </li>
+        <li>
+          If your product is API-first, convert to a monthly plan price:{" "}
+          <a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a>
+        </li>
+      </ol>
+
+      <h2 style="margin-top: 1.25rem;">Notes</h2>
+      <ul class="list">
+        <li>Model multiple scenarios: average customer vs heavy user (p50 vs p90 usage).</li>
+        <li>Separate truly fixed overhead from per-usage vendor costs for cleaner unit economics.</li>
+        <li>Use share links to align on assumptions before you pick tiers or minimums.</li>
+      </ul>
+    </section>
+    <aside class="card col4">
+      <h2>Good for</h2>
+      <ul class="list">
+        <li>APIs, events, messages, minutes</li>
+        <li>Infra-heavy features</li>
+        <li>Products with variable value by usage</li>
+      </ul>
+      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+    </aside>
+  </div>
+</BaseLayout>
+
