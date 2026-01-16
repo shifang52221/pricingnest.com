@@ -10,13 +10,7 @@ export default defineConfig({
       lastmod: process.env.SITEMAP_LASTMOD ? new Date(process.env.SITEMAP_LASTMOD) : new Date(),
       priority: 0.7,
       filter: (page) => {
-        const blocked = new Set([
-          "/contact/",
-          "/cookie-policy/",
-          "/privacy-policy/",
-          "/terms/",
-          "/404.html",
-        ]);
+        const blocked = new Set(["/404.html"]);
         const pathname = page.startsWith("http") ? new URL(page).pathname : page;
         return !blocked.has(pathname);
       },

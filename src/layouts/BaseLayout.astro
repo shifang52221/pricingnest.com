@@ -83,16 +83,21 @@ const ogImage = `${siteUrl}/og.svg`;
           // @ts-ignore
           window.gtag("consent", "default", {
             ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
             analytics_storage: "denied",
             functionality_storage: "granted",
             personalization_storage: "denied",
-            security_storage: "granted"
+            security_storage: "granted",
+            wait_for_update: 500
           });
 
           if (consent === "accepted") {
             // @ts-ignore
             window.gtag("consent", "update", {
               ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
               analytics_storage: "granted",
               functionality_storage: "granted",
               personalization_storage: "granted",
@@ -129,6 +134,8 @@ const ogImage = `${siteUrl}/og.svg`;
         <nav class="muted">
           <a href="/saas-pricing/">Toolkit</a>
           <span class="muted"> | </span>
+          <a href="/about/">About</a>
+          <span class="muted"> | </span>
           <a href="/contact/">Contact</a>
           <span class="muted"> | </span>
           <a href="/privacy-policy/">Privacy</a>
@@ -164,6 +171,7 @@ const ogImage = `${siteUrl}/og.svg`;
           <div>
             <div class="footer-title">Legal</div>
             <div class="footer-links">
+              <a href="/about/">About</a>
               <a href="/privacy-policy/">Privacy policy</a>
               <a href="/cookie-policy/">Cookie policy</a>
               <a href="/cookie-policy/" data-cookie-open>Cookie settings</a>

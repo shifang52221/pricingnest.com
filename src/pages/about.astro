@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`About | ${siteName}`}
+  description="What PricingNest is, how the calculators work, and what assumptions to use for SaaS pricing and cloud unit economics."
+>
+  <section class="hero">
+    <h1>About {siteName}</h1>
+    <p>
+      {siteName} is a lightweight toolkit of SaaS pricing and cloud unit-economics calculators. The goal is to help you
+      sanity-check pricing decisions with transparent, input-driven models.
+    </p>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>What this site does</h2>
+      <ul class="list">
+        <li>Provides calculators for pricing, margin, and unit economics.</li>
+        <li>Uses your inputs (no live cloud pricing feeds) so assumptions stay explicit.</li>
+        <li>Lets you export results to CSV and share pre-filled links.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">How the calculators work</h2>
+      <p class="muted">
+        Each tool explains its formulas in plain language on the page. Outputs are derived directly from the inputs you
+        provide. Where the model is simplified (for example, using blended average costs), the assumptions section calls
+        that out.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">Recommended inputs</h2>
+      <ul class="list">
+        <li>Use blended infra costs (weighted average across regions/instance types) when possible.</li>
+        <li>Separate fixed overhead from variable costs to avoid double-counting.</li>
+        <li>When uncertain, model a range (best/base/worst) instead of a single point estimate.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Limitations</h2>
+      <ul class="list">
+        <li>Tools provide estimates only; validate with your own financials and customer behavior.</li>
+        <li>We do not account for every cost category by default (payment fees, support escalation, vendor minimums).</li>
+        <li>Unit economics can vary by segment; consider segmenting inputs for accuracy.</li>
+      </ul>
+    </section>
+
+    <aside class="card col4">
+      <h2>Quick links</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/">All tools</a></li>
+        <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+        <li><a href="/privacy-policy/">Privacy policy</a></li>
+        <li><a href="/cookie-policy/">Cookie policy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

@@ -53,6 +53,8 @@ const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
           if (typeof gtag === "function") {
             gtag("consent", "update", {
               ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
               analytics_storage: "granted",
               functionality_storage: "granted",
               personalization_storage: "granted",

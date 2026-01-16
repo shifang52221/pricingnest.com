@@ -138,7 +138,8 @@ export const TOOLS: ToolDefinition[] = [
     ],
     assumptions: [
       "Gross margin is based on your inputs (variable cost + fixed cost allocation).",
-      "This is an estimate; include payment fees, support escalation, or vendor costs in your inputs if they apply."
+      "This is an estimate; include payment fees, support escalation, or vendor costs in your inputs if they apply.",
+      "Model ranges (best/base/worst) when unit cost or volume is uncertain."
     ],
     faq: [
       {
@@ -215,7 +216,8 @@ export const TOOLS: ToolDefinition[] = [
     ],
     assumptions: [
       "Enter blended costs. If you have multiple instance types or regions, use a weighted average.",
-      "If you pay per-request or have specialized acceleration costs, add them into fixed overhead or model separately."
+      "If you pay per-request or have specialized acceleration costs, add them into fixed overhead or model separately.",
+      "This estimate excludes network egress, storage, and third-party vendor costs unless you include them as fixed overhead."
     ],
     faq: [
       {
@@ -225,6 +227,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "Should I include reserved instances or savings plans?",
         a: "Yes. Use your effective blended cost per hour after commitments if that reflects your expected baseline."
+      },
+      {
+        q: "Does this include bandwidth or storage costs?",
+        a: "No. This tool focuses on compute (CPU + memory). Add bandwidth/storage separately or include them in fixed overhead if you want an all-in estimate."
       }
     ]
   },
@@ -266,7 +272,8 @@ export const TOOLS: ToolDefinition[] = [
     ],
     assumptions: [
       "This tool does not fetch pricing. Use outputs from compute/storage/bandwidth tools or your own bills.",
-      "If your costs are seasonal or spiky, use an average month or model multiple scenarios with presets."
+      "If your costs are seasonal or spiky, use an average month or model multiple scenarios with presets.",
+      "Validate this estimate against your billing exports before using it to set pricing."
     ],
     faq: [
       {
@@ -310,7 +317,11 @@ export const TOOLS: ToolDefinition[] = [
       "Net new MRR = ending - starting.",
       "Growth % = net new MRR / starting MRR."
     ],
-    assumptions: ["All inputs are for the same period (usually monthly).", "Use consistent definitions for churn and contraction across your reporting."],
+    assumptions: [
+      "All inputs are for the same period (usually monthly).",
+      "Use consistent definitions for churn and contraction across your reporting.",
+      "If you report gross vs net MRR differently, keep that definition consistent across time."
+    ],
     faq: [
       { q: "What is MRR?", a: "Monthly Recurring Revenue (MRR) is normalized monthly revenue from subscriptions." },
       { q: "What's the difference between contraction and churned MRR?", a: "Contraction is downgraded revenue from retained customers. Churned MRR is revenue lost from customers that fully cancel." },
@@ -320,7 +331,7 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "arr-calculator",
     title: "ARR Calculator",
-    description: "Convert MRR to ARR (Annual Recurring Revenue).",
+    description: "Convert MRR to ARR (Annual Recurring Revenue) and use it as a run-rate metric for SaaS growth reporting.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "mrr", label: "MRR", type: "number", defaultValue: "50000", min: "0", step: "0.01" }
@@ -333,7 +344,11 @@ export const TOOLS: ToolDefinition[] = [
       "If you start from annual contract value, convert to MRR first (ACV / 12), then multiply by 12.",
       "Use ARR for run-rate comparisons, not accounting statements."
     ],
-    assumptions: ["ARR is a run-rate metric, not recognized revenue.", "This assumes your MRR is already normalized (e.g., includes annual contracts prorated monthly)."],
+    assumptions: [
+      "ARR is a run-rate metric, not recognized revenue.",
+      "This assumes your MRR is already normalized (e.g., includes annual contracts prorated monthly).",
+      "One-time fees and usage spikes are typically excluded from ARR; track them separately."
+    ],
     faq: [
       { q: "Is ARR the same as annual revenue?", a: "Not necessarily. ARR is an annualized run rate from recurring subscriptions, not booked or recognized revenue." },
       { q: "How should I treat one-time fees?", a: "One-time fees are usually excluded from ARR. If they recur predictably, consider reporting them separately." },
@@ -355,8 +370,16 @@ export const TOOLS: ToolDefinition[] = [
     ],
     related: ["mrr-calculator", "ltv-calculator", "pricing-increase-impact-calculator"],
     presets: [{ label: "2% churn", values: { mrr: "50000", monthlyChurnPct: "2" } }, { label: "5% churn", values: { mrr: "50000", monthlyChurnPct: "5" } }],
-    howItWorks: ["Monthly churned revenue = MRR x churn %.", "Annual churned revenue = monthly churned revenue x 12 (simple)."],
-    assumptions: ["This is a simple estimate and does not model growth or compounding churn."],
+    howItWorks: [
+      "Monthly churned revenue = MRR x churn %.",
+      "Annual churned revenue = monthly churned revenue x 12 (simple).",
+      "For a compounding view, retained revenue ≈ MRR x (1 - churn%)^12."
+    ],
+    assumptions: [
+      "This is a simple estimate and does not model new sales, expansions, or seasonality.",
+      "If churn varies by cohort or plan, segment your inputs for accuracy.",
+      "Revenue churn can differ from logo churn; use revenue churn when available."
+    ],
     faq: [
       { q: "Is this logo churn or revenue churn?", a: "This calculator uses revenue churn. Logo churn can be very different depending on customer mix." },
       { q: "Is annual churn just monthly churn x 12?", a: "This tool shows a simple annualized estimate. For higher churn rates, compounding effects can make the true annual impact larger." },
@@ -382,8 +405,16 @@ export const TOOLS: ToolDefinition[] = [
       { label: "SMB SaaS", values: { arpa: "100", grossMarginPct: "80", monthlyChurnPct: "4" } },
       { label: "Mid-market", values: { arpa: "450", grossMarginPct: "82", monthlyChurnPct: "2" } }
     ],
-    howItWorks: ["Implied lifetime (months) = 1 / churn rate.", "LTV = ARPA x gross margin x lifetime."],
-    assumptions: ["This uses a simple churn-based lifetime approximation and assumes constant churn."],
+    howItWorks: [
+      "Implied lifetime (months) ≈ 1 / churn rate (for a simple constant churn model).",
+      "Gross profit per month = ARPA x gross margin.",
+      "LTV = gross profit per month x implied lifetime."
+    ],
+    assumptions: [
+      "This uses a simple churn-based lifetime approximation and assumes constant churn.",
+      "If churn is very low (near 0), LTV can be unrealistically large; use a capped lifetime or cohort data.",
+      "This does not model expansion revenue unless you explicitly use net churn and an expansion-aware ARPA."
+    ],
     faq: [
       { q: "What is ARPA?", a: "Average Revenue Per Account (ARPA) is your average subscription revenue per customer per month." },
       { q: "Why is lifetime ≈ 1 / churn?", a: "For a simple constant churn model, the expected lifetime in months is approximately the inverse of the monthly churn rate." },
@@ -409,8 +440,16 @@ export const TOOLS: ToolDefinition[] = [
       { label: "8-month payback", values: { cac: "1200", arpa: "200", grossMarginPct: "75" } },
       { label: "6-month payback", values: { cac: "1800", arpa: "300", grossMarginPct: "80" } }
     ],
-    howItWorks: ["Gross profit per month = ARPA x gross margin.", "Payback months = CAC / gross profit per month."],
-    assumptions: ["This ignores retention dynamics; combine with LTV to sanity-check if payback is viable."],
+    howItWorks: [
+      "Gross profit per month = ARPA x gross margin.",
+      "Payback months = CAC / gross profit per month.",
+      "Use contribution margin instead of gross margin if fulfillment costs are significant."
+    ],
+    assumptions: [
+      "This ignores retention dynamics; combine with LTV to sanity-check if payback is viable.",
+      "This assumes revenue and margin are stable over the payback window.",
+      "If gross profit per month is near zero, payback is effectively unbounded."
+    ],
     faq: [
       { q: "What is a good payback period?", a: "It depends on your market and cash constraints. Many SaaS businesses target 6-12 months, but there is no universal rule." },
       { q: "What should be included in CAC?", a: "Include sales and marketing spend allocated per new customer (ads, SDR/AE costs, commissions, tools). Keep your definition consistent across periods." },
@@ -440,7 +479,11 @@ export const TOOLS: ToolDefinition[] = [
       "Break-even CAC (payback) = gross profit per month x target payback months.",
       "We also compute a simple churn-based LTV for context."
     ],
-    assumptions: ["This uses a simple churn-based lifetime approximation for LTV."],
+    assumptions: [
+      "This uses a simple churn-based lifetime approximation for LTV.",
+      "Break-even CAC here is based on payback, not on full LTV.",
+      "If you have ramp time (onboarding, usage ramp), effective payback will be longer."
+    ],
     faq: [
       { q: "Why show LTV:CAC?", a: "It is a common SaaS sanity-check metric. This tool estimates it using break-even CAC and simple LTV." },
       { q: "What does break-even CAC mean here?", a: "It's the CAC you can afford to recover within your target payback window based on gross profit per month." },
@@ -475,7 +518,11 @@ export const TOOLS: ToolDefinition[] = [
       "Revenue after = (customers x (1 - churn)) x (current price x (1 + increase)).",
       "Break-even churn is the churn rate where revenue after equals revenue before."
     ],
-    assumptions: ["Churn from a price increase is highly product- and segment-dependent. Treat this as a sensitivity check."],
+    assumptions: [
+      "Churn from a price increase is highly product- and segment-dependent. Treat this as a sensitivity check.",
+      "This is a single price-point model; packaging changes require segment-level migration modeling.",
+      "If you grandfather existing customers, model churn separately for new vs existing cohorts."
+    ],
     faq: [
       { q: "What is break-even churn?", a: "It is the churn rate at which the higher price produces the same revenue as before. If actual churn is lower, the increase raises revenue." },
       { q: "How can I estimate churn from a price increase?", a: "Use a range (best/base/worst). Segment by customer size, contract term, and price sensitivity. You can also run limited experiments or grandfather existing customers." },
@@ -507,7 +554,11 @@ export const TOOLS: ToolDefinition[] = [
       "Effective monthly rate = annual price / 12.",
       "Savings = (monthly price x 12) - annual price."
     ],
-    assumptions: ["This does not model churn reduction or cash-flow benefits of prepay. Use it as a simple pricing conversion."],
+    assumptions: [
+      "This does not model churn reduction or cash-flow benefits of prepay. Use it as a simple pricing conversion.",
+      "This excludes taxes and payment processing fees; add them if they materially affect net revenue.",
+      "If annual buyers churn less, incorporate that separately when forecasting."
+    ],
     faq: [
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
@@ -541,7 +592,11 @@ export const TOOLS: ToolDefinition[] = [
       "Usage model cost = monthly units x price per unit.",
       "We compute the difference and highlight which model is cheaper."
     ],
-    assumptions: ["This compares monthly costs only; it does not model minimums, tiered overages, or annual discounts."],
+    assumptions: [
+      "This compares monthly costs only; it does not model minimums, tiered overages, or annual discounts.",
+      "Seat utilization and usage can vary widely; use realistic per-seat usage assumptions.",
+      "If usage is bursty, consider minimums or overage tiers to avoid margin surprises."
+    ],
     faq: [
       { q: "When is seat-based pricing better?", a: "Seat-based pricing is usually simpler when usage per user is predictable and value maps closely to active users." },
       { q: "When is usage-based pricing better?", a: "Usage-based pricing often fits APIs and infra-heavy products where costs and value scale with consumption." },
@@ -577,7 +632,8 @@ export const TOOLS: ToolDefinition[] = [
     ],
     assumptions: [
       "If you have additional cost drivers (egress, storage), model them separately and add them into fixed overhead or combine outputs externally.",
-      "APIs often have bursty usage; model a few scenarios (p50 vs p90) using presets."
+      "APIs often have bursty usage; model a few scenarios (p50 vs p90) using presets.",
+      "If you have free tiers or included usage, model the expected paid calls per customer after free usage."
     ],
     faq: [
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
@@ -613,7 +669,11 @@ export const TOOLS: ToolDefinition[] = [
       "Monthly cost = bandwidth variable cost + fixed overhead.",
       "Recommended price = monthly cost / (1 - target margin)."
     ],
-    assumptions: ["Enter your blended egress cost per GB. If your provider uses tiers, use an average cost for your expected mix."],
+    assumptions: [
+      "Enter your blended egress cost per GB. If your provider uses tiers, use an average cost for your expected mix.",
+      "Egress costs can differ by region and destination; use a weighted average if you have a global footprint.",
+      "This estimate excludes CDN request fees unless you include them in fixed overhead."
+    ],
     faq: [
       { q: "Is this a CDN pricing calculator?", a: "It's a cost and price estimator. Enter your own per-GB costs and assumptions." },
       { q: "What cost per GB should I use?", a: "Use a blended egress cost per GB after discounts, tiers, and CDN mix. If you have multiple regions, use a weighted average." },
@@ -652,11 +712,13 @@ export const TOOLS: ToolDefinition[] = [
     ],
     assumptions: [
       "Average GB stored should reflect a typical monthly average, not peak.",
-      "Request costs depend on your provider; enter your blended cost per 10k requests."
+      "Request costs depend on your provider; enter your blended cost per 10k requests.",
+      "Include replication, backups, or multi-region overhead in your unit costs if they apply."
     ],
     faq: [
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
-      { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." }
+      { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },
+      { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." }
     ]
   }
 ];
