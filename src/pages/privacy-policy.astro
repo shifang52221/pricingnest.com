@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 ---
 <BaseLayout
   title="Privacy Policy | SaaS Pricing Toolkit"
@@ -16,24 +18,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <div class="grid">
     <section class="card col8">
+      <h2>Data we collect</h2>
+      <p class="muted">
+        We do not run user accounts. Calculator inputs and results are processed in your browser and are not intentionally
+        transmitted to our servers.
+      </p>
       <h2>Advertising</h2>
       <p class="muted">
-        If enabled by the site owner, we use Google AdSense to serve ads. Google and its partners may use cookies or
-        similar technologies to personalize ads and measure performance.
+        We use Google AdSense to serve ads. Google and its partners may use cookies or similar technologies to serve and
+        measure ads. We use Google Consent Mode and keep ad/analytics storage denied by default until you accept cookies.
       </p>
       <h2>Analytics</h2>
       <p class="muted">
-        If enabled by the site owner, we use Google Analytics (GA4) to understand aggregated traffic and improve the site.
+        We use Google Analytics (GA4) to understand aggregated traffic and improve the site. Analytics storage is denied
+        by default until you accept cookies via our banner.
       </p>
       <h2>Contact</h2>
       <p class="muted">
-        Provide a contact email address here before launch.
+        If you have questions about this policy, contact us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
       </p>
     </section>
     <aside class="card col4">
       <h2>Notes</h2>
       <p class="muted">
-        Replace this page with your final policy and regional consent flow if you target jurisdictions that require it.
+        This site provides informational calculators only. If you operate in jurisdictions that require a certified CMP,
+        additional disclosures, or consent logging, integrate that before scaling traffic.
       </p>
     </aside>
   </div>

@@ -5,8 +5,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="hero">
     <h1>Cookie Policy</h1>
     <p>
-      This site may use cookies for analytics and advertising. Calculator inputs are processed in your browser and are not
-      intentionally collected by this site.
+      This site uses cookies (and similar storage) for analytics and advertising. Calculator inputs are processed in your
+      browser and are not intentionally collected by this site.
     </p>
   </section>
 
@@ -14,8 +14,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="card col8">
       <h2>What we use cookies for</h2>
       <ul class="list">
-        <li>Analytics (if enabled): understand aggregated usage and improve the toolkit.</li>
-        <li>Advertising (if enabled): serve ads and measure performance.</li>
+        <li>Analytics: understand aggregated usage and improve the toolkit.</li>
+        <li>Advertising: serve ads and measure performance.</li>
       </ul>
 
       <h2 style="margin-top: 1.25rem;">Your choices</h2>
@@ -23,12 +23,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         You can accept or reject cookies via the banner. To change your choice later, use the "Cookie settings" link in
         the footer.
       </p>
+      <p class="muted">
+        Your preference is stored locally in your browser (key: <code>cookie_consent</code>). If you reject cookies, we do
+        not grant analytics/ad storage (Google Consent Mode stays denied).
+      </p>
     </section>
     <aside class="card col4">
       <h2>Note</h2>
       <p class="muted">
-        Before launch, replace this template with your final policy and integrate a CMP if required for your target
-        regions.
+        If you target jurisdictions that require a certified consent management platform (CMP), integrate one before
+        scaling traffic.
       </p>
     </aside>
   </div>

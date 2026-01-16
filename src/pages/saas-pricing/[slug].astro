@@ -17,6 +17,10 @@ const relatedTools: ToolDefinition[] = tool.related
   .map((s) => getToolBySlug(s))
   .filter((t): t is ToolDefinition => Boolean(t));
 
+const hasHowItWorks = Array.isArray(tool.howItWorks) && tool.howItWorks.length > 0;
+const hasFaq = Array.isArray(tool.faq) && tool.faq.length > 0;
+const hasAssumptions = Array.isArray(tool.assumptions) && tool.assumptions.length > 0;
+
 const siteUrl = (Astro.site?.toString() ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 
@@ -277,8 +281,8 @@ const useCaseLinks = (() => {
           <a href="#example">Example</a>
           <a href="#inputs">Inputs</a>
           <a href="#outputs">Outputs</a>
-          <a href="#how">How it works</a>
-          <a href="#faq">FAQ</a>
+          {hasHowItWorks ? <a href="#how">How it works</a> : null}
+          {hasFaq ? <a href="#faq">FAQ</a> : null}
         </div>
 
         <h2 id="example" style="margin-top: 1.25rem;">Example (defaults)</h2>
@@ -352,31 +356,43 @@ const useCaseLinks = (() => {
           </table>
         </div>
 
-        <h2 id="how" style="margin-top: 1.25rem;">How it works</h2>
-        <ul class="list">
-          {tool.howItWorks?.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+        {hasHowItWorks ? (
+          <>
+            <h2 id="how" style="margin-top: 1.25rem;">How it works</h2>
+            <ul class="list">
+              {tool.howItWorks?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
-        <h2 id="faq" style="margin-top: 1.25rem;">FAQ</h2>
-        <div class="faq">
-          {tool.faq?.map((f) => (
-            <details class="faq-item">
-              <summary>{f.q}</summary>
-              <div class="muted faq-answer">{f.a}</div>
-            </details>
-          ))}
-        </div>
+        {hasFaq ? (
+          <>
+            <h2 id="faq" style="margin-top: 1.25rem;">FAQ</h2>
+            <div class="faq">
+              {tool.faq?.map((f) => (
+                <details class="faq-item">
+                  <summary>{f.q}</summary>
+                  <div class="muted faq-answer">{f.a}</div>
+                </details>
+              ))}
+            </div>
+          </>
+        ) : null}
       </section>
 
       <aside class="card col4">
-        <h2>Assumptions</h2>
-        <ul class="list">
-          {tool.assumptions?.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+        {hasAssumptions ? (
+          <>
+            <h2>Assumptions</h2>
+            <ul class="list">
+              {tool.assumptions?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
         <h2 style="margin-top: 1.25rem;">Next steps</h2>
         <ul class="list">
