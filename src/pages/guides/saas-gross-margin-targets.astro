@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`SaaS Gross Margin Targets (How to Choose a Range) | ${siteName}`}
+  description="A practical way to pick a gross margin target, model uncertainty, and avoid common pricing mistakes."
+>
+  <section class="hero">
+    <h1>SaaS gross margin targets</h1>
+    <p>
+      Gross margin targets are not universal. The safest approach is to pick a defensible range, model uncertainty, and
+      revisit as costs and customer segments change.
+    </p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>What “gross margin” should include</h2>
+      <p class="muted">
+        For most SaaS teams, gross margin starts with revenue minus the direct costs required to deliver the service:
+        cloud infrastructure, third‑party vendors tied to usage, customer support that scales with volume, and payment
+        processing where applicable. If you only include infra, you may overstate margin.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">How to choose a target range</h2>
+      <ul class="list">
+        <li>Start with a baseline range (for many SaaS categories, 70–90% is common).</li>
+        <li>Adjust down if your product has heavy variable costs (LLM/API pass‑through, bandwidth, storage).</li>
+        <li>Adjust up only if you can reliably keep variable costs low at scale.</li>
+        <li>Model per‑segment margins; enterprise and self‑serve can have different cost structures.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">The common failure mode</h2>
+      <p class="muted">
+        The most common pricing mistake is treating variable costs as “someone else’s problem.” If your unit costs rise
+        with customer usage, you need either (a) usage‑based pricing, (b) minimums and overages, or (c) strict limits.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">How to model uncertainty (recommended)</h2>
+      <ul class="list">
+        <li>Use scenarios (best/base/worst) for cost per unit and monthly volume (p50 vs p90 usage).</li>
+        <li>Use blended unit costs (weighted averages) if you have multiple regions/instance types.</li>
+        <li>Recalculate after discounts (commitments, reserved instances, volume tiers).</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage‑based pricing calculator</a></li>
+        <li><a href="/saas-pricing/compute-cost-estimator/">Compute cost estimator</a></li>
+        <li><a href="/saas-pricing/bandwidth-cost-calculator/">Bandwidth cost calculator</a></li>
+        <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Checklist</h2>
+      <ul class="list">
+        <li>Do you know your blended unit costs?</li>
+        <li>Are support/vendor costs included?</li>
+        <li>Did you model p90 usage?</li>
+        <li>Do you have minimums or limits?</li>
+      </ul>
+      <h2 style="margin-top: 1.25rem;">Next</h2>
+      <ul class="list">
+        <li><a href="/guides/seat-vs-usage-pricing/">Seat vs usage framework</a></li>
+        <li><a href="/saas-pricing/use-cases/infra-cost-recovery/">Use case: infra cost recovery</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

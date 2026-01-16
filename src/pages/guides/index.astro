@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const guides = [
+  {
+    href: "/guides/saas-gross-margin-targets/",
+    title: "SaaS Gross Margin Targets (How to Choose a Range)",
+    description: "A practical way to pick a gross margin target and avoid common modeling mistakes."
+  },
+  {
+    href: "/guides/seat-vs-usage-pricing/",
+    title: "Seat vs Usage Pricing (Decision Framework)",
+    description: "A framework for choosing pricing axes that match value and cost drivers."
+  },
+  {
+    href: "/guides/pricing-experiments-playbook/",
+    title: "Pricing Experiments Playbook",
+    description: "How to run price increases and annual prepay tests with clear metrics and guardrails."
+  }
+];
+---
+<BaseLayout
+  title={`Guides | ${siteName}`}
+  description="Practical guides for SaaS pricing decisions, unit economics, and cloud cost recovery."
+>
+  <section class="hero">
+    <h1>Guides</h1>
+    <p>
+      Short, practical guides that explain how to use the calculators and how to make pricing decisions with transparent
+      assumptions.
+    </p>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Featured</h2>
+      <div class="tools" style="margin-top: 0.9rem;">
+        {guides.map((g) => (
+          <a class="tool" href={g.href}>
+            <strong>{g.title}</strong>
+            <span>{g.description}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <aside class="card col4">
+      <h2>Start here</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/">All calculators</a></li>
+        <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+        <li><a href="/about/">About the toolkit</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

@@ -157,6 +157,36 @@ const useCaseLinks = (() => {
   if (experiments.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/pricing-experiments/", label: "Use case: pricing experiments" });
   return links;
 })();
+
+const guideLinks = (() => {
+  const grossMarginRelated = new Set([
+    "usage-based-pricing-calculator",
+    "compute-cost-estimator",
+    "bandwidth-cost-calculator",
+    "storage-cost-calculator",
+    "monthly-cloud-cost-estimator",
+    "api-pricing-calculator"
+  ]);
+
+  const seatVsUsageRelated = new Set([
+    "seat-vs-usage-pricing-comparison",
+    "usage-based-pricing-calculator",
+    "api-pricing-calculator"
+  ]);
+
+  const experimentsRelated = new Set([
+    "pricing-increase-impact-calculator",
+    "annual-discount-calculator",
+    "churn-impact-calculator",
+    "mrr-calculator"
+  ]);
+
+  const links: { href: string; label: string }[] = [];
+  if (grossMarginRelated.has(tool.slug)) links.push({ href: "/guides/saas-gross-margin-targets/", label: "Guide: gross margin targets" });
+  if (seatVsUsageRelated.has(tool.slug)) links.push({ href: "/guides/seat-vs-usage-pricing/", label: "Guide: seat vs usage" });
+  if (experimentsRelated.has(tool.slug)) links.push({ href: "/guides/pricing-experiments-playbook/", label: "Guide: pricing experiments" });
+  return links;
+})();
 ---
 
 <BaseLayout title={`${tool.title} | PricingNest`} description={tool.description}>
@@ -397,6 +427,9 @@ const useCaseLinks = (() => {
         <h2 style="margin-top: 1.25rem;">Next steps</h2>
         <ul class="list">
           {useCaseLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+          {guideLinks.map((l) => (
             <li><a href={l.href}>{l.label}</a></li>
           ))}
           <li><a href="/saas-pricing/">Browse all tools</a></li>

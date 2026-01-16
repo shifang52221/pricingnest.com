@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Seat vs Usage Pricing (Decision Framework) | ${siteName}`}
+  description="A decision framework for choosing seat-based or usage-based pricing, including minimums, tiers, and guardrails."
+>
+  <section class="hero">
+    <h1>Seat vs usage pricing</h1>
+    <p>
+      The best pricing axis matches value delivery and cost drivers. This guide helps you choose between seat‑based and
+      usage‑based pricing (or a hybrid) without guessing.
+    </p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Choose the axis that matches value</h2>
+      <ul class="list">
+        <li><strong>Seat‑based</strong>: value scales with users; usage per user is predictable; budgets are per headcount.</li>
+        <li><strong>Usage‑based</strong>: value and cost scale with consumption (calls, events, GB, minutes).</li>
+        <li><strong>Hybrid</strong>: base platform fee + usage overages; common when there is both “access value” and “consumption value.”</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">When seat pricing breaks</h2>
+      <ul class="list">
+        <li>Power users create outsized costs (support, infra, vendor APIs).</li>
+        <li>Automation drives high usage with few seats.</li>
+        <li>Customers can extract large value without adding users.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Guardrails for usage pricing</h2>
+      <ul class="list">
+        <li>Use minimums (platform fee) to cover baseline overhead.</li>
+        <li>Use tiers to simplify buyer communication and protect margins.</li>
+        <li>Publish clear unit definitions; avoid “mystery units.”</li>
+        <li>Model p50 vs p90 usage to avoid underpricing heavy customers.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage‑based pricing calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Quick test</h2>
+      <p class="muted">
+        If your marginal cost is meaningfully correlated with usage, add a usage component (tiers or overages) even if you
+        keep seats as the primary axis.
+      </p>
+      <h2 style="margin-top: 1.25rem;">Next</h2>
+      <ul class="list">
+        <li><a href="/guides/saas-gross-margin-targets/">Gross margin targets</a></li>
+        <li><a href="/guides/pricing-experiments-playbook/">Pricing experiments</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+
