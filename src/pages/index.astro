@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import AdSlot from "../components/AdSlot.astro";
 
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -71,7 +72,7 @@ const jsonLd = {
         <li><a href="/saas-pricing/bandwidth-cost-calculator/">Bandwidth cost calculator</a></li>
         <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
       </ul>
-      <div class="ad" style="margin-top: 1rem;">Ad slot (optional)</div>
+      <AdSlot slot="5031589887" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 

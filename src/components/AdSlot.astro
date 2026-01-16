@@ -1,0 +1,49 @@
+---
+const consentKey = "cookie_consent";
+
+const adsenseClient =
+  import.meta.env.PUBLIC_ADSENSE_CLIENT ||
+  // Default to the live AdSense client so ads render even if env vars are missing.
+  "ca-pub-8677561632094995";
+
+const {
+  slot,
+  format = "auto",
+  responsive = true,
+  containerClass = "",
+  containerStyle = "",
+  adStyle = "display:block",
+} = Astro.props;
+
+if (!slot) {
+  throw new Error("AdSlot requires a `slot` prop.");
+}
+---
+
+<div class={`ad ${containerClass}`.trim()} style={containerStyle}>
+  <ins
+    class="adsbygoogle"
+    style={adStyle}
+    data-ad-client={adsenseClient}
+    data-ad-slot={slot}
+    data-ad-format={format}
+    data-full-width-responsive={responsive ? "true" : "false"}
+  ></ins>
+  <script is:inline define:vars={{ consentKey }}>
+    (() => {
+      const hasConsent = () => {
+        try {
+          return localStorage.getItem(consentKey) === "accepted";
+        } catch {
+          return false;
+        }
+      };
+      if (!hasConsent()) return;
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {}
+    })();
+  </script>
+</div>
+

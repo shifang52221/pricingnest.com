@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ToolCard from "../../components/ToolCard.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { TOOLS } from "../../lib/tools";
 
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
@@ -69,7 +70,7 @@ const jsonLd = {
         <li><a href="/saas-pricing/use-cases/unit-economics/">SaaS unit economics</a></li>
         <li><a href="/saas-pricing/use-cases/pricing-experiments/">Pricing experiments</a></li>
       </ul>
-      <div class="ad">Ad slot (optional): place one responsive unit here.</div>
+      <AdSlot slot="5031589887" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 

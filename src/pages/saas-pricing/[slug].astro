@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { getToolBySlug, TOOLS, type ToolDefinition } from "../../lib/tools";
 import toolPageScriptUrl from "../../scripts/tool-page.ts?url";
 import { compute } from "../../scripts/calculators";
@@ -224,7 +225,7 @@ const useCaseLinks = (() => {
             ))}
           </form>
 
-          <div class="ad">Ad slot (optional): responsive unit under the form.</div>
+          <AdSlot slot="5031589887" containerStyle="margin-top: 1rem;" />
         </div>
 
         <div class="sticky">
