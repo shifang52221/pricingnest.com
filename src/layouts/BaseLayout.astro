@@ -11,7 +11,11 @@ const description =
   "A lightweight collection of SaaS pricing and cloud cost tools designed for SEO-friendly, high-intent queries.";
 const robots = Astro.props.robots ?? "index,follow";
 
-const adsenseClient = process.env.PUBLIC_ADSENSE_CLIENT ?? import.meta.env.PUBLIC_ADSENSE_CLIENT ?? "";
+const adsenseClient =
+  process.env.PUBLIC_ADSENSE_CLIENT ??
+  import.meta.env.PUBLIC_ADSENSE_CLIENT ??
+  // Default to the live AdSense client so verification/review can succeed even if env vars are missing.
+  "ca-pub-8677561632094995";
 const ga4Id =
   process.env.PUBLIC_GA4_ID ??
   import.meta.env.PUBLIC_GA4_ID ??
@@ -32,6 +36,7 @@ const ogImage = `${siteUrl}/og.svg`;
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <meta name="googlebot" content={robots} />
+    {adsenseClient ? <meta name="google-adsense-account" content={adsenseClient} /> : null}
     <meta name="theme-color" content="#ffffff" />
     <meta name="application-name" content={siteName} />
     <meta property="og:title" content={title} />
@@ -47,6 +52,13 @@ const ogImage = `${siteUrl}/og.svg`;
     <link rel="alternate" href={canonical} hreflang="en" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <slot name="head" />
+    {adsenseClient ? (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adsenseClient)}`}
+        crossorigin="anonymous"
+      ></script>
+    ) : null}
     <script is:inline define:vars={{ adsenseClient, ga4Id }}>
       (() => {
         const consentKey = "cookie_consent";
@@ -102,18 +114,8 @@ const ogImage = `${siteUrl}/og.svg`;
           }
         }
 
-        const shouldLoadAds = consent === "accepted";
-        if (!shouldLoadAds) return;
-
-        if (adsenseClient) {
-          const s = document.createElement("script");
-          s.async = true;
-          s.src =
-            "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
-            encodeURIComponent(adsenseClient);
-          s.crossOrigin = "anonymous";
-          document.head.appendChild(s);
-        }
+        // Ads script is loaded unconditionally (for AdSense review/verification).
+        // Ad requests/slots should only be enabled after consent is accepted.
       })();
     </script>
   </head>
