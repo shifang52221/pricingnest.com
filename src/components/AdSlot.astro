@@ -4,6 +4,9 @@ const consentKey = "cookie_consent";
 const readEnv = (key: string): string =>
   String((import.meta as any)?.env?.[key] ?? (process as any)?.env?.[key] ?? "").trim();
 
+const consentProvider = readEnv("PUBLIC_CONSENT_PROVIDER").toLowerCase();
+const useFundingChoices = Boolean(readEnv("PUBLIC_FUNDING_CHOICES_SCRIPT_SRC")) || consentProvider === "fundingchoices";
+
 const fallbackSlots = {
   default: "8602706218",
   home: "3154938417",
@@ -48,16 +51,18 @@ const resolvedSlot = slot ?? (placement ? slotByPlacement[placement] : defaultSl
     data-ad-format={format}
     data-full-width-responsive={responsive ? "true" : "false"}
   ></ins>
-  <script is:inline define:vars={{ consentKey }}>
+  <script is:inline define:vars={{ consentKey, useFundingChoices }}>
     (() => {
-      const hasConsent = () => {
+      const shouldRequestAds = () => {
+        if (useFundingChoices) return true;
         try {
           return localStorage.getItem(consentKey) === "accepted";
         } catch {
           return false;
         }
       };
-      if (!hasConsent()) return;
+
+      if (!shouldRequestAds()) return;
       try {
         // @ts-ignore
         (window.adsbygoogle = window.adsbygoogle || []).push({});

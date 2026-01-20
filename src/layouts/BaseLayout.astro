@@ -24,6 +24,10 @@ const ga4Id =
 const contactEmail =
   process.env.PUBLIC_CONTACT_EMAIL ?? import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
+const consentProvider = (process.env.PUBLIC_CONSENT_PROVIDER ?? import.meta.env.PUBLIC_CONSENT_PROVIDER ?? "").toLowerCase();
+const fundingChoicesScriptSrc = process.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? import.meta.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? "";
+const useFundingChoices = Boolean(fundingChoicesScriptSrc) || consentProvider === "fundingchoices";
+
 const ogImage = `${siteUrl}/og.svg`;
 ---
 <!doctype html>
@@ -52,6 +56,9 @@ const ogImage = `${siteUrl}/og.svg`;
     <link rel="alternate" href={canonical} hreflang="en" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <slot name="head" />
+    {useFundingChoices && fundingChoicesScriptSrc ? (
+      <script async src={fundingChoicesScriptSrc}></script>
+    ) : null}
     {adsenseClient ? (
       <script
         async
@@ -59,7 +66,7 @@ const ogImage = `${siteUrl}/og.svg`;
         crossorigin="anonymous"
       ></script>
     ) : null}
-    <script is:inline define:vars={{ adsenseClient, ga4Id }}>
+    <script is:inline define:vars={{ ga4Id, useFundingChoices }}>
       (() => {
         const consentKey = "cookie_consent";
         const getConsent = () => {
@@ -71,7 +78,9 @@ const ogImage = `${siteUrl}/og.svg`;
         };
         const consent = getConsent();
 
-        // GA4: keep consent denied until user accepts, but still output the tag for verification.
+        // GA4/Consent Mode:
+        // - If using Funding Choices, the CMP will update consent state.
+        // - Otherwise, we use the local cookie banner state for a simple consent flow.
         if (ga4Id) {
           // @ts-ignore
           window.dataLayer = window.dataLayer || [];
@@ -92,7 +101,7 @@ const ogImage = `${siteUrl}/og.svg`;
             wait_for_update: 500
           });
 
-          if (consent === "accepted") {
+          if (!useFundingChoices && consent === "accepted") {
             // @ts-ignore
             window.gtag("consent", "update", {
               ad_storage: "granted",
@@ -110,8 +119,9 @@ const ogImage = `${siteUrl}/og.svg`;
           g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
           document.head.appendChild(g);
 
-          // Only start collecting after consent is accepted.
-          if (consent === "accepted") {
+          // If Funding Choices is enabled, allow Consent Mode to control collection after consent updates.
+          // Otherwise, only start collecting after consent is accepted.
+          if (useFundingChoices || consent === "accepted") {
             // @ts-ignore
             window.gtag("js", new Date());
             // @ts-ignore
@@ -120,7 +130,7 @@ const ogImage = `${siteUrl}/og.svg`;
         }
 
         // Ads script is loaded unconditionally (for AdSense review/verification).
-        // Ad requests/slots should only be enabled after consent is accepted.
+        // Ad requests/slots are gated in the ad component when not using Funding Choices.
       })();
     </script>
   </head>
@@ -195,6 +205,6 @@ const ogImage = `${siteUrl}/og.svg`;
         </div>
       </div>
     </footer>
-    <CookieBanner />
+    {useFundingChoices ? null : <CookieBanner />}
   </body>
 </html>
