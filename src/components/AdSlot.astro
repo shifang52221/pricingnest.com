@@ -4,7 +4,16 @@ const consentKey = "cookie_consent";
 const readEnv = (key: string): string =>
   String((import.meta as any)?.env?.[key] ?? (process as any)?.env?.[key] ?? "").trim();
 
-const useFundingChoices = !import.meta.env.DEV;
+const adsenseClient =
+  readEnv("PUBLIC_ADSENSE_CLIENT") ||
+  // Default to the live AdSense client so ads render even if env vars are missing.
+  "ca-pub-8677561632094995";
+
+const pubSlug = adsenseClient?.replace(/^ca-/, "") ?? "";
+const defaultFundingChoicesScriptSrc =
+  pubSlug ? `https://fundingchoicesmessages.google.com/i/${encodeURIComponent(pubSlug)}?ers=1` : "";
+const fundingChoicesScriptSrc = readEnv("PUBLIC_FUNDING_CHOICES_SCRIPT_SRC") || defaultFundingChoicesScriptSrc;
+const useFundingChoices = Boolean(fundingChoicesScriptSrc) && !import.meta.env.DEV;
 
 const fallbackSlots = {
   default: "8602706218",
@@ -13,11 +22,6 @@ const fallbackSlots = {
   tool: "4855032895",
   use_case: "4441752310",
 } as const;
-
-const adsenseClient =
-  readEnv("PUBLIC_ADSENSE_CLIENT") ||
-  // Default to the live AdSense client so ads render even if env vars are missing.
-  "ca-pub-8677561632094995";
 
 const defaultSlot = readEnv("PUBLIC_ADSENSE_SLOT_DEFAULT") || fallbackSlots.default;
 
