@@ -642,6 +642,174 @@ export const TOOLS: ToolDefinition[] = [
     ]
   },
   {
+    slug: "api-cost-estimator",
+    title: "API Cost Estimator",
+    description:
+      "Estimate monthly API costs and cost per call from request volume, infra cost per 1k calls, vendor cost per 1k, and fixed overhead.",
+    inputs: [
+      { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
+      { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
+      { name: "infraCostPer1kCalls", label: "Infra cost per 1,000 calls", type: "number", defaultValue: "0.02", min: "0", step: "0.0001" },
+      {
+        name: "vendorCostPer1kCalls",
+        label: "Vendor/API cost per 1,000 calls",
+        type: "number",
+        defaultValue: "0.01",
+        min: "0",
+        step: "0.0001",
+        help: "Optional: LLMs, third-party APIs, enrichment, email/SMS, etc."
+      },
+      {
+        name: "monthlyFixedCost",
+        label: "Monthly fixed overhead",
+        type: "number",
+        defaultValue: "500",
+        min: "0",
+        step: "1",
+        help: "Support, tooling, baseline infra, on-call - anything not per-call."
+      }
+    ],
+    outputs: [
+      { name: "monthlyTotalCost", label: "Estimated monthly total cost", format: "currency" },
+      { name: "costPerCall", label: "Cost per call", format: "currency" },
+      { name: "costPer1kCalls", label: "Cost per 1,000 calls", format: "currency" },
+      { name: "monthlyVariableCost", label: "Estimated monthly variable cost", format: "currency" }
+    ],
+    related: ["api-pricing-calculator", "usage-based-pricing-calculator", "compute-cost-estimator"],
+    presets: [
+      { label: "1M calls/mo", values: { callsPerMonth: "1000000", infraCostPer1kCalls: "0.02", vendorCostPer1kCalls: "0.00", monthlyFixedCost: "300" } },
+      { label: "10M calls/mo", values: { callsPerMonth: "10000000", infraCostPer1kCalls: "0.015", vendorCostPer1kCalls: "0.01", monthlyFixedCost: "800" } }
+    ],
+    howItWorks: [
+      "Variable cost = (calls / 1,000) x (infra cost per 1,000 + vendor cost per 1,000).",
+      "Total monthly cost = variable cost + fixed overhead.",
+      "Cost per call = total monthly cost / calls."
+    ],
+    assumptions: [
+      "Costs are estimates. Use blended unit costs (weighted averages) across regions and instance types.",
+      "If your costs are tiered or discounted at volume, enter an average cost per 1,000 calls for your expected mix.",
+      "If you have significant bandwidth/storage costs, add them to fixed overhead or model them in separate calculators."
+    ],
+    faq: [
+      { q: "Should support costs be included?", a: "If support scales with customer count, treat it as semi-variable and include a portion in fixed overhead for pricing decisions." },
+      { q: "Why do I need vendor cost per 1,000 calls?", a: "Many APIs have pass-through costs (LLMs, enrichment, third-party APIs). Including them prevents margin surprises." },
+      { q: "How should I model spiky traffic?", a: "Use a few presets (p50 vs p90 monthly calls) and compare the cost per call under each scenario." }
+    ]
+  },
+  {
+    slug: "price-per-gb-month-calculator",
+    title: "Price per GB-Month Calculator",
+    description:
+      "Estimate a margin-safe price per GB-month using storage cost per GB-month, fixed overhead, average stored GB, and a target gross margin.",
+    inputs: [
+      { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
+      { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "500", min: "0", step: "0.01" },
+      {
+        name: "costPerGbMonth",
+        label: "Cost per GB-month",
+        type: "number",
+        defaultValue: "0.02",
+        min: "0",
+        step: "0.0001",
+        help: "Enter your blended storage cost per GB per month."
+      },
+      { name: "monthlyFixedCost", label: "Monthly fixed cost", type: "number", defaultValue: "200", min: "0", step: "1" },
+      { name: "targetGrossMarginPct", label: "Target gross margin (%)", type: "number", defaultValue: "80", min: "0", step: "0.1" }
+    ],
+    outputs: [
+      { name: "recommendedPricePerGbMonth", label: "Recommended price per GB-month", format: "currency" },
+      { name: "recommendedMonthlyPrice", label: "Recommended monthly price", format: "currency" },
+      { name: "monthlyCost", label: "Estimated monthly cost", format: "currency" },
+      { name: "grossMarginPct", label: "Gross margin", format: "percent" }
+    ],
+    related: ["storage-cost-calculator", "bandwidth-cost-calculator", "usage-based-pricing-calculator"],
+    presets: [
+      { label: "100 GB stored", values: { avgGbStored: "100", costPerGbMonth: "0.02", monthlyFixedCost: "50", targetGrossMarginPct: "80" } },
+      { label: "1 TB stored", values: { avgGbStored: "1000", costPerGbMonth: "0.018", monthlyFixedCost: "200", targetGrossMarginPct: "80" } }
+    ],
+    howItWorks: [
+      "Monthly cost = (avg GB stored x cost per GB-month) + fixed overhead.",
+      "Recommended monthly price = monthly cost / (1 - target margin).",
+      "Recommended price per GB-month = recommended monthly price / avg GB stored."
+    ],
+    assumptions: [
+      "This calculator focuses on GB-month costs. If request pricing is material, use the storage cost calculator and include requests.",
+      "Use a blended cost per GB-month if you have multiple storage tiers or regions.",
+      "If your product includes backups, replication, or encryption overhead, include it in the GB-month cost."
+    ],
+    faq: [
+      { q: "Is this the same as cloud storage price?", a: "No. This estimates your selling price based on your costs and target margin." },
+      { q: "Should I include request costs?", a: "If your workload has heavy requests, include them via the storage cost calculator or add them to fixed overhead." },
+      { q: "What unit should I show on my pricing page?", a: "GB-month is common because it reflects storage over time. Add an example workload so buyers can estimate their bill." }
+    ]
+  },
+  {
+    slug: "tiered-usage-pricing-calculator",
+    title: "Tiered Usage Pricing Calculator",
+    description: "Estimate a monthly bill for a platform fee + included usage + tiered overages (up to 3 tiers), plus effective rates.",
+    inputs: [
+      { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
+      { name: "monthlyUnits", label: "Monthly units", type: "number", defaultValue: "1500000", min: "0", step: "1", help: "Calls, events, minutes, messages, GB - any unit." },
+      { name: "baseFee", label: "Platform fee (monthly)", type: "number", defaultValue: "99", min: "0", step: "0.01" },
+      { name: "includedUnits", label: "Included units", type: "number", defaultValue: "100000", min: "0", step: "1" },
+      { name: "tier1Units", label: "Tier 1 overage units", type: "number", defaultValue: "900000", min: "0", step: "1" },
+      { name: "tier1PricePerUnit", label: "Tier 1 price per unit", type: "number", defaultValue: "0.0002", min: "0", step: "0.0001" },
+      { name: "tier2Units", label: "Tier 2 overage units", type: "number", defaultValue: "4000000", min: "0", step: "1" },
+      { name: "tier2PricePerUnit", label: "Tier 2 price per unit", type: "number", defaultValue: "0.00015", min: "0", step: "0.0001" },
+      { name: "tier3PricePerUnit", label: "Tier 3 price per unit (beyond tiers)", type: "number", defaultValue: "0.0001", min: "0", step: "0.0001" }
+    ],
+    outputs: [
+      { name: "monthlyBill", label: "Estimated monthly bill", format: "currency" },
+      { name: "overageUnits", label: "Overage units", format: "number" },
+      { name: "blendedOverageRate", label: "Blended overage rate (per unit)", format: "currency" },
+      { name: "effectivePricePerUnit", label: "Effective price per unit", format: "currency" }
+    ],
+    related: ["usage-based-pricing-calculator", "seat-vs-usage-pricing-comparison", "api-pricing-calculator"],
+    presets: [
+      {
+        label: "Starter tier",
+        values: {
+          monthlyUnits: "250000",
+          baseFee: "49",
+          includedUnits: "50000",
+          tier1Units: "200000",
+          tier1PricePerUnit: "0.0003",
+          tier2Units: "0",
+          tier2PricePerUnit: "0.0002",
+          tier3PricePerUnit: "0.0002"
+        }
+      },
+      {
+        label: "Growth tier",
+        values: {
+          monthlyUnits: "1500000",
+          baseFee: "99",
+          includedUnits: "100000",
+          tier1Units: "900000",
+          tier1PricePerUnit: "0.0002",
+          tier2Units: "4000000",
+          tier2PricePerUnit: "0.00015",
+          tier3PricePerUnit: "0.0001"
+        }
+      }
+    ],
+    howItWorks: [
+      "Overage units = max(0, monthly units - included units).",
+      "Tier 1 charges apply to the first Tier 1 overage units; Tier 2 applies next; Tier 3 applies to the remainder.",
+      "Monthly bill = platform fee + overage cost. Effective rates are computed from the bill and usage."
+    ],
+    assumptions: [
+      "This models a simple 3-tier overage schedule. If you have more tiers, approximate using the closest 3 breakpoints.",
+      "If your billing includes rounding, minimum charges, or caps, treat this as an estimate.",
+      "Use a few scenarios (p50 vs p90 monthly units) to make sure heavy customers still pay enough."
+    ],
+    faq: [
+      { q: "How should I pick included units?", a: "Included usage should cover a typical small customer and reduce bill shock. Use a platform fee to cover baseline overhead." },
+      { q: "Should tiers be based on total usage or overage usage?", a: "Most pricing pages describe total usage tiers. This calculator uses overage units for clarity: included units are free within the platform fee, then tiers apply." },
+      { q: "How do I avoid bill shock?", a: "Use a predictable platform fee, publish example bills, and consider usage alerts or caps for unusual spikes." }
+    ]
+  },
+  {
     slug: "bandwidth-cost-calculator",
     title: "Bandwidth Cost Calculator",
     description:

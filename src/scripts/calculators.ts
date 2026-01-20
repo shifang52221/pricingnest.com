@@ -64,6 +64,59 @@ export function compute(slug: string, inputs: Inputs): CalcResult {
 
       return { monthlyCost, recommendedMonthlyPrice, pricePer1kCalls, grossMarginPct };
     }
+    case "api-cost-estimator": {
+      const callsPerMonth = Math.max(0, toNumber(inputs.callsPerMonth));
+      const infraCostPer1kCalls = Math.max(0, toNumber(inputs.infraCostPer1kCalls));
+      const vendorCostPer1kCalls = Math.max(0, toNumber(inputs.vendorCostPer1kCalls));
+      const monthlyFixedCost = Math.max(0, toNumber(inputs.monthlyFixedCost));
+
+      const monthlyInfraCost = (callsPerMonth / 1000) * infraCostPer1kCalls;
+      const monthlyVendorCost = (callsPerMonth / 1000) * vendorCostPer1kCalls;
+      const monthlyVariableCost = monthlyInfraCost + monthlyVendorCost;
+      const monthlyTotalCost = monthlyVariableCost + monthlyFixedCost;
+
+      const costPerCall = callsPerMonth > 0 ? monthlyTotalCost / callsPerMonth : 0;
+      const costPer1kCalls = callsPerMonth > 0 ? costPerCall * 1000 : 0;
+
+      return { monthlyTotalCost, costPerCall, costPer1kCalls, monthlyVariableCost };
+    }
+    case "price-per-gb-month-calculator": {
+      const avgGbStored = Math.max(0, toNumber(inputs.avgGbStored));
+      const costPerGbMonth = Math.max(0, toNumber(inputs.costPerGbMonth));
+      const monthlyFixedCost = Math.max(0, toNumber(inputs.monthlyFixedCost));
+      const targetGrossMarginPct = clampPercent(toNumber(inputs.targetGrossMarginPct));
+      const margin = targetGrossMarginPct / 100;
+
+      const monthlyCost = avgGbStored * costPerGbMonth + monthlyFixedCost;
+      const recommendedMonthlyPrice = margin >= 1 ? 0 : monthlyCost / (1 - margin);
+      const recommendedPricePerGbMonth = avgGbStored > 0 ? recommendedMonthlyPrice / avgGbStored : 0;
+      const grossMarginPct =
+        recommendedMonthlyPrice > 0 ? ((recommendedMonthlyPrice - monthlyCost) / recommendedMonthlyPrice) * 100 : 0;
+
+      return { recommendedPricePerGbMonth, recommendedMonthlyPrice, monthlyCost, grossMarginPct };
+    }
+    case "tiered-usage-pricing-calculator": {
+      const monthlyUnits = Math.max(0, toNumber(inputs.monthlyUnits));
+      const baseFee = Math.max(0, toNumber(inputs.baseFee));
+      const includedUnits = Math.max(0, toNumber(inputs.includedUnits));
+      const tier1Units = Math.max(0, toNumber(inputs.tier1Units));
+      const tier1PricePerUnit = Math.max(0, toNumber(inputs.tier1PricePerUnit));
+      const tier2Units = Math.max(0, toNumber(inputs.tier2Units));
+      const tier2PricePerUnit = Math.max(0, toNumber(inputs.tier2PricePerUnit));
+      const tier3PricePerUnit = Math.max(0, toNumber(inputs.tier3PricePerUnit));
+
+      const overageUnits = Math.max(0, monthlyUnits - includedUnits);
+      const tier1Billed = Math.min(overageUnits, tier1Units);
+      const tier2Billed = Math.min(Math.max(0, overageUnits - tier1Units), tier2Units);
+      const tier3Billed = Math.max(0, overageUnits - tier1Units - tier2Units);
+      const overageCost = tier1Billed * tier1PricePerUnit + tier2Billed * tier2PricePerUnit + tier3Billed * tier3PricePerUnit;
+
+      const monthlyBill = baseFee + overageCost;
+      const blendedOverageRate = overageUnits > 0 ? overageCost / overageUnits : 0;
+      const effectivePricePerUnit = monthlyUnits > 0 ? monthlyBill / monthlyUnits : 0;
+
+      return { monthlyBill, overageUnits, blendedOverageRate, effectivePricePerUnit };
+    }
     case "bandwidth-cost-calculator": {
       const gbPerMonth = Math.max(0, toNumber(inputs.gbPerMonth));
       const costPerGb = Math.max(0, toNumber(inputs.costPerGb));
