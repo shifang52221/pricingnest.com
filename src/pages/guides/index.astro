@@ -1,59 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
-const guides = [
-  {
-    href: "/guides/saas-gross-margin-targets/",
-    title: "SaaS Gross Margin Targets (How to Choose a Range)",
-    description: "A practical way to pick a gross margin target and avoid common modeling mistakes."
-  },
-  {
-    href: "/guides/usage-based-pricing-examples/",
-    title: "Usage-Based Pricing Examples (Units, Tiers, Minimums)",
-    description: "Concrete examples you can adapt to calls, events, GB, minutes, and messages."
-  },
-  {
-    href: "/guides/seat-vs-usage-pricing/",
-    title: "Seat vs Usage Pricing (Decision Framework)",
-    description: "A framework for choosing pricing axes that match value and cost drivers."
-  },
-  {
-    href: "/guides/api-pricing-model/",
-    title: "API Pricing Model (How to Price per 1k Calls)",
-    description: "A step-by-step model for costs, margins, and tier design for API products."
-  },
-  {
-    href: "/guides/api-cost-estimation/",
-    title: "API Cost Estimation (Cost per Call)",
-    description: "How to estimate cost per request, include vendor costs, and avoid margin surprises."
-  },
-  {
-    href: "/guides/pricing-experiments-playbook/",
-    title: "Pricing Experiments Playbook",
-    description: "How to run price increases and annual prepay tests with clear metrics and guardrails."
-  },
-  {
-    href: "/guides/annual-prepay-discount/",
-    title: "Annual Prepay Discount (Break-Even Guide)",
-    description: "How to choose an annual discount with churn and cash-flow in mind."
-  },
-  {
-    href: "/guides/storage-costs-and-pricing/",
-    title: "Storage Costs & Pricing (Cost per GB-Month)",
-    description: "How to model storage costs, request costs, and a margin-safe price."
-  },
-  {
-    href: "/guides/tiered-usage-pricing/",
-    title: "Tiered Usage Pricing (Tiers, Overages, Minimums)",
-    description: "How to design tiers that reduce bill shock while protecting margins at p90 usage."
-  },
-  {
-    href: "/guides/saas-metrics-cheat-sheet/",
-    title: "SaaS Metrics Cheat Sheet (MRR, ARR, LTV, CAC)",
-    description: "Definitions, formulas, and what to watch when you model pricing changes."
-  }
-];
+const entries = await getCollection("guides");
+const guides = entries
+  .map((g) => ({ href: `/guides/${g.slug}/`, title: g.data.title, description: g.data.description }))
+  .sort((a, b) => a.title.localeCompare(b.title));
 ---
 <BaseLayout
   title={`Guides | ${siteName}`}

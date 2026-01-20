@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { getToolBySlug } from "../../lib/tools";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("glossary");
+  return entries.map((entry) => ({ params: { slug: entry.slug } }));
+}
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const { slug } = Astro.params as { slug: string };
+const entries = await getCollection("glossary");
+const entry = entries.find((e) => e.slug === slug);
+if (!entry) throw new Error(`Unknown glossary slug: ${slug}`);
+
+const { Content } = await entry.render();
+const title = `${entry.data.title} | ${siteName}`;
+
+const relatedToolSlugs = entry.data.tools ?? [];
+const relatedGuideSlugs = entry.data.guides ?? [];
+const relatedGlossarySlugs = entry.data.glossary ?? [];
+
+const relatedTools = relatedToolSlugs
+  .map((toolSlug) => getToolBySlug(toolSlug))
+  .filter(Boolean)
+  // @ts-expect-error
+  .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: tool.title }));
+
+const relatedGuides = relatedGuideSlugs.map((guideSlug) => ({
+  href: `/guides/${guideSlug}/`,
+  label: guideSlug
+    .split("-")
+    .map((s) => (s ? s[0].toUpperCase() + s.slice(1) : s))
+    .join(" "),
+}));
+
+const relatedGlossary = relatedGlossarySlugs.map((termSlug) => ({
+  href: `/glossary/${termSlug}/`,
+  label: termSlug
+    .split("-")
+    .map((s) => (s ? s[0].toUpperCase() + s.slice(1) : s))
+    .join(" "),
+}));
+---
+<BaseLayout title={title} description={entry.data.description}>
+  <section class="hero">
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.description}</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <Content />
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/">All glossary terms</a></li>
+        <li><a href="/saas-pricing/">All calculators</a></li>
+        <li><a href="/guides/">Guides</a></li>
+      </ul>
+
+      {relatedTools.length > 0 ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">Tools</h2>
+          <ul class="list">
+            {relatedTools.map((t) => (
+              <li><a href={t.href}>{t.label}</a></li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+
+      {relatedGuides.length > 0 ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">Guides</h2>
+          <ul class="list">
+            {relatedGuides.map((g) => (
+              <li><a href={g.href}>{g.label}</a></li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+
+      {relatedGlossary.length > 0 ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">More terms</h2>
+          <ul class="list">
+            {relatedGlossary.map((g) => (
+              <li><a href={g.href}>{g.label}</a></li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+
+      {entry.data.updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {entry.data.updated}</p> : null}
+    </aside>
+  </div>
+</BaseLayout>
+

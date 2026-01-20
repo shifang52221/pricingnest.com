@@ -1,23 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
-
-const terms = [
-  { href: "/glossary/mrr/", title: "MRR (Monthly Recurring Revenue)", description: "What MRR is, how to compute it, and common pitfalls." },
-  { href: "/glossary/arr/", title: "ARR (Annual Recurring Revenue)", description: "When ARR is useful and how it differs from annualized revenue." },
-  { href: "/glossary/gross-margin/", title: "Gross Margin", description: "How to think about gross margin targets for SaaS and usage products." },
-  { href: "/glossary/cogs/", title: "COGS (Cost of Goods Sold)", description: "What belongs in SaaS COGS and what doesn’t." },
-  { href: "/glossary/churn/", title: "Churn (Customer & Revenue)", description: "Logo churn vs revenue churn and why both matter." },
-  { href: "/glossary/arpa/", title: "ARPA / ARPU", description: "Average revenue per account (or user) and how to use it in LTV." },
-  { href: "/glossary/ltv/", title: "LTV (Customer Lifetime Value)", description: "LTV formulas, assumptions, and common modeling mistakes." },
-  { href: "/glossary/cac/", title: "CAC (Customer Acquisition Cost)", description: "How to estimate CAC and what to include." },
-  { href: "/glossary/cac-payback/", title: "CAC Payback Period", description: "How long it takes to recover CAC from gross profit." },
-  { href: "/glossary/unit-economics/", title: "Unit Economics", description: "Contribution margin, payback, and the core SaaS unit model." },
-  { href: "/glossary/usage-based-pricing/", title: "Usage-Based Pricing", description: "Units, tiers, minimums, and designing for predictable bills." },
-  { href: "/glossary/seat-based-pricing/", title: "Seat-Based Pricing", description: "When seats work, when they break, and hybrid approaches." },
-  { href: "/glossary/annual-prepay-discount/", title: "Annual Prepay Discount", description: "Choosing a discount that balances cash flow and churn risk." },
-] as const;
+const entries = await getCollection("glossary");
+const terms = entries
+  .map((t) => ({ href: `/glossary/${t.slug}/`, title: t.data.title, description: t.data.description }))
+  .sort((a, b) => a.title.localeCompare(b.title));
 ---
 <BaseLayout title={`Glossary | ${siteName}`} description="Short definitions for the key SaaS pricing and unit economics terms used in the toolkit.">
   <section class="hero">
@@ -48,4 +37,3 @@ const terms = [
     </aside>
   </div>
 </BaseLayout>
-
