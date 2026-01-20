@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { getToolBySlug, TOOLS, type ToolDefinition } from "../../lib/tools";
-import toolPageScriptUrl from "../../scripts/tool-page.ts?url";
+import toolPageScriptUrl from "../../scripts/tool-page.js?url";
 import { compute } from "../../scripts/calculators";
 
 export function getStaticPaths() {
