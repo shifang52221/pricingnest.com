@@ -1,18 +1,21 @@
 ---
 const consentKey = "cookie_consent";
 
+const readEnv = (key: string): string =>
+  String((import.meta as any)?.env?.[key] ?? (process as any)?.env?.[key] ?? "").trim();
+
 const adsenseClient =
-  import.meta.env.PUBLIC_ADSENSE_CLIENT ||
+  readEnv("PUBLIC_ADSENSE_CLIENT") ||
   // Default to the live AdSense client so ads render even if env vars are missing.
   "ca-pub-8677561632094995";
 
-const defaultSlot = import.meta.env.PUBLIC_ADSENSE_SLOT_DEFAULT || "5031589887";
+const defaultSlot = readEnv("PUBLIC_ADSENSE_SLOT_DEFAULT") || "5031589887";
 
 const slotByPlacement = {
-  home: import.meta.env.PUBLIC_ADSENSE_SLOT_HOME || defaultSlot,
-  toolkit: import.meta.env.PUBLIC_ADSENSE_SLOT_TOOLKIT || defaultSlot,
-  tool: import.meta.env.PUBLIC_ADSENSE_SLOT_TOOL || defaultSlot,
-  use_case: import.meta.env.PUBLIC_ADSENSE_SLOT_USE_CASE || defaultSlot,
+  home: readEnv("PUBLIC_ADSENSE_SLOT_HOME") || defaultSlot,
+  toolkit: readEnv("PUBLIC_ADSENSE_SLOT_TOOLKIT") || defaultSlot,
+  tool: readEnv("PUBLIC_ADSENSE_SLOT_TOOL") || defaultSlot,
+  use_case: readEnv("PUBLIC_ADSENSE_SLOT_USE_CASE") || defaultSlot,
 } as const;
 
 const {
