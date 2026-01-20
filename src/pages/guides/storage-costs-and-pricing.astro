@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Storage Costs & Pricing (Cost per GB-Month) | ${siteName}`}
+  description="How to model storage costs, request costs, and a margin-safe price per GB-month (with practical guardrails)."
+>
+  <section class="hero">
+    <h1>Storage costs &amp; pricing</h1>
+    <p>Storage pricing is usually a blend of GB-month cost, request costs, and fixed overhead. Model all three before you pick a price.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>What to include in the model</h2>
+      <ul class="list">
+        <li><strong>GB-month</strong>: average GB stored × cost per GB-month.</li>
+        <li><strong>Requests</strong>: requests per month × cost per 10k requests (when material).</li>
+        <li><strong>Fixed overhead</strong>: baseline support, monitoring, backups, and ops.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Guardrails to reduce bill shock</h2>
+      <ul class="list">
+        <li>Publish a typical example: “100GB stored + 1M requests”.</li>
+        <li>Offer tiers (e.g., first 1TB included) so buyers have a predictable minimum bill.</li>
+        <li>Alert customers before large overages.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
+        <li><a href="/saas-pricing/bandwidth-cost-calculator/">Bandwidth cost calculator</a></li>
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/cogs/">Glossary: COGS</a></li>
+        <li><a href="/glossary/gross-margin/">Glossary: gross margin</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

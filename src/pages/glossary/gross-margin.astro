@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Gross Margin | ${siteName}`}
+  description="Gross margin definition, what belongs in COGS, and how to pick a target for SaaS and usage pricing."
+>
+  <section class="hero">
+    <h1>Gross margin</h1>
+    <p>Gross margin is the percentage of revenue left after direct costs (COGS). It’s the main constraint in pricing models.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Definition</h2>
+      <p class="muted">
+        Gross margin (%) = (Revenue − COGS) / Revenue. For usage products, your margin depends on the unit cost and the customer’s consumption.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">What belongs in SaaS COGS</h2>
+      <ul class="list">
+        <li>Infrastructure costs (compute, storage, bandwidth).</li>
+        <li>Third-party API/LLM costs that scale with usage.</li>
+        <li>Customer support and operations that scale with active customers (sometimes modeled as semi-variable).</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">How to choose a target</h2>
+      <ul class="list">
+        <li>Start with a baseline range (many SaaS categories target 70–90%).</li>
+        <li>Adjust down if you have heavy pass-through costs (APIs, LLMs, bandwidth).</li>
+        <li>Model p50 vs p90 usage so heavy customers don’t blow up the margin.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/guides/saas-gross-margin-targets/">Guide: gross margin targets</a></li>
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/cogs/">COGS</a></li>
+        <li><a href="/glossary/unit-economics/">Unit economics</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

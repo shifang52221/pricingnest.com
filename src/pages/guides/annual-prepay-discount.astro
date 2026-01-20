@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Annual Prepay Discount (Break-Even Guide) | ${siteName}`}
+  description="How to choose an annual prepay discount using break-even thinking, churn, and cash-flow trade-offs."
+>
+  <section class="hero">
+    <h1>Annual prepay discount: break-even guide</h1>
+    <p>Pick a discount that earns commitment without over-discounting revenue you would have kept anyway.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Start with the question: why discount?</h2>
+      <ul class="list">
+        <li><strong>Commitment</strong>: reduce churn and increase retention.</li>
+        <li><strong>Cash flow</strong>: pull forward revenue to fund growth.</li>
+        <li><strong>Operational efficiency</strong>: fewer billing events and fewer payment failures.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Break-even mindset</h2>
+      <ul class="list">
+        <li>If the discount reduces churn or increases conversion, it may pay for itself.</li>
+        <li>If annual buyers would have stayed anyway, the discount is pure give-away.</li>
+        <li>Model best/base/worst scenarios instead of one number.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Practical ranges</h2>
+      <ul class="list">
+        <li>Many SaaS products start around <strong>10% off</strong> annual.</li>
+        <li>Higher discounts may be justified when retention improves materially (or when annual reduces collection risk).</li>
+        <li>For usage products, consider annual minimum commitments instead of simple percent-off discounts.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/annual-discount-calculator/">Annual discount calculator</a></li>
+        <li><a href="/saas-pricing/churn-impact-calculator/">Churn impact calculator</a></li>
+        <li><a href="/saas-pricing/pricing-increase-impact-calculator/">Pricing increase impact calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/annual-prepay-discount/">Glossary: annual discount</a></li>
+        <li><a href="/guides/pricing-experiments-playbook/">Pricing experiments playbook</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

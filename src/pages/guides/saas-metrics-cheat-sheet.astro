@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`SaaS Metrics Cheat Sheet (MRR, ARR, LTV, CAC) | ${siteName}`}
+  description="Short definitions and practical formulas for MRR, ARR, churn, LTV, and CAC—plus where to use each calculator."
+>
+  <section class="hero">
+    <h1>SaaS metrics cheat sheet</h1>
+    <p>Use this as a quick reference when you model pricing changes and unit economics.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Core metrics</h2>
+      <ul class="list">
+        <li><strong>MRR</strong>: recurring revenue run-rate per month (annual plans ÷ 12).</li>
+        <li><strong>ARR</strong>: MRR × 12 (useful shorthand for annualized run-rate).</li>
+        <li><strong>Churn</strong>: customer or revenue loss over time (logo vs revenue churn).</li>
+        <li><strong>LTV</strong>: expected gross profit over a customer’s lifetime.</li>
+        <li><strong>CAC</strong>: cost to acquire a customer; use with payback and LTV.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Quick formulas (practical approximations)</h2>
+      <ul class="list">
+        <li><strong>ARR</strong> ≈ MRR × 12</li>
+        <li><strong>LTV</strong> ≈ ARPA × Gross Margin × (1 / Monthly Churn Rate)</li>
+        <li><strong>CAC payback (months)</strong> ≈ CAC / Gross Profit per Month</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Use the calculators</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/mrr-calculator/">MRR calculator</a></li>
+        <li><a href="/saas-pricing/arr-calculator/">ARR calculator</a></li>
+        <li><a href="/saas-pricing/churn-impact-calculator/">Churn impact calculator</a></li>
+        <li><a href="/saas-pricing/ltv-calculator/">LTV calculator</a></li>
+        <li><a href="/saas-pricing/cac-payback-period-calculator/">CAC payback calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Glossary</h2>
+      <ul class="list">
+        <li><a href="/glossary/">Browse all terms</a></li>
+        <li><a href="/glossary/mrr/">MRR</a></li>
+        <li><a href="/glossary/ltv/">LTV</a></li>
+        <li><a href="/glossary/cac/">CAC</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

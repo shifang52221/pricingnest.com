@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Usage-Based Pricing | ${siteName}`}
+  description="Usage-based pricing definition, unit design, tiers and minimums, and how to keep bills predictable."
+>
+  <section class="hero">
+    <h1>Usage-based pricing</h1>
+    <p>Usage-based pricing charges customers based on consumption (calls, events, GB, minutes) instead of seats alone.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Choose a unit that matches value</h2>
+      <ul class="list">
+        <li>Define one primary unit (API call, event, GB, minute) that buyers can estimate.</li>
+        <li>Avoid “mystery units”; publish a definition and examples.</li>
+        <li>Keep unit costs visible internally (so pricing stays margin-safe).</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Make bills predictable</h2>
+      <ul class="list">
+        <li>Use a <strong>minimum</strong> (platform fee) to cover baseline overhead.</li>
+        <li>Use <strong>tiers</strong> to reduce bill shock and simplify communication.</li>
+        <li>Consider caps or alerts for unusually high usage.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+        <li><a href="/guides/usage-based-pricing-examples/">Guide: usage pricing examples</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/seat-based-pricing/">Seat-based pricing</a></li>
+        <li><a href="/glossary/gross-margin/">Gross margin</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

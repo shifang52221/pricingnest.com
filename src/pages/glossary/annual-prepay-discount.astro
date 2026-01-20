@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Annual Prepay Discount | ${siteName}`}
+  description="Annual prepay discount definition, how to choose a discount, and how to sanity-check it with break-even thinking."
+>
+  <section class="hero">
+    <h1>Annual prepay discount</h1>
+    <p>An annual prepay discount trades a lower effective monthly price for commitment and upfront cash.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>What the discount is buying</h2>
+      <ul class="list">
+        <li><strong>Lower churn</strong>: annual commitment can reduce cancellations.</li>
+        <li><strong>Lower collection overhead</strong>: fewer billing events.</li>
+        <li><strong>Cash now</strong>: improves runway even if total value is unchanged.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">How to choose a discount</h2>
+      <ul class="list">
+        <li>Start small (5–15%) unless you have a strong retention reason.</li>
+        <li>Prefer discounting commitment, not just time (e.g., annual + higher minimums).</li>
+        <li>Compare discount cost to churn reduction and sales efficiency.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/annual-discount-calculator/">Annual discount calculator</a></li>
+        <li><a href="/guides/annual-prepay-discount/">Guide: break-even discount</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/churn/">Churn</a></li>
+        <li><a href="/glossary/mrr/">MRR</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

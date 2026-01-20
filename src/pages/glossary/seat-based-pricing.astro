@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Seat-Based Pricing | ${siteName}`}
+  description="Seat-based pricing definition, when it works, and when to add usage tiers or minimums."
+>
+  <section class="hero">
+    <h1>Seat-based pricing</h1>
+    <p>Seat-based pricing charges based on the number of users. It’s simple to buy, but it can break when costs scale with usage.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>When seats work well</h2>
+      <ul class="list">
+        <li>Value scales with number of users (collaboration, workflow tools).</li>
+        <li>Usage per user is fairly predictable.</li>
+        <li>Budgets are naturally per headcount.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">When to add a usage component</h2>
+      <ul class="list">
+        <li>Automation drives high consumption with few seats.</li>
+        <li>Infra or vendor costs spike for power users.</li>
+        <li>Customers can extract large value without adding users.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
+        <li><a href="/guides/seat-vs-usage-pricing/">Guide: seat vs usage framework</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/glossary/usage-based-pricing/">Usage-based pricing</a></li>
+        <li><a href="/glossary/unit-economics/">Unit economics</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+

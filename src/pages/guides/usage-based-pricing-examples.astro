@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+---
+<BaseLayout
+  title={`Usage-Based Pricing Examples (Units, Tiers, Minimums) | ${siteName}`}
+  description="Practical usage-based pricing examples you can adapt to events, API calls, GB, and minutes, including tiers and minimums."
+>
+  <section class="hero">
+    <h1>Usage-based pricing examples</h1>
+    <p>Examples you can copy into your own pricing page: clear units, simple tiers, and predictable bills.</p>
+  </section>
+
+  <div class="grid">
+    <article class="card col8">
+      <h2>Example 1: events (high volume, low unit cost)</h2>
+      <ul class="list">
+        <li><strong>Unit</strong>: tracked event</li>
+        <li><strong>Minimum</strong>: $99/mo platform fee</li>
+        <li><strong>Tier</strong>: $0.20 per 1,000 events (volume discounts at 10M+)</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Example 2: API calls (cost scales with compute + vendor)</h2>
+      <ul class="list">
+        <li><strong>Unit</strong>: API call (or 1,000 calls)</li>
+        <li><strong>Minimum</strong>: included calls per plan to cover baseline support/ops</li>
+        <li><strong>Overages</strong>: priced to maintain target gross margin at p90 usage</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Example 3: storage (GB-month + requests)</h2>
+      <ul class="list">
+        <li><strong>Unit</strong>: GB-month stored</li>
+        <li><strong>Add-on</strong>: request pricing (per 10k) if it’s material for your workload</li>
+        <li><strong>Guardrail</strong>: publish a “typical” workload example to reduce bill shock</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Design checklist</h2>
+      <ul class="list">
+        <li>Can a buyer estimate usage before they buy?</li>
+        <li>Is the unit definition obvious (no hidden multipliers)?</li>
+        <li>Do you have a minimum to cover baseline costs?</li>
+        <li>Did you model heavy customers (p90) so margin holds?</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Tools to use</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+        <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
+      </ul>
+    </article>
+
+    <aside class="card col4">
+      <h2>Related</h2>
+      <ul class="list">
+        <li><a href="/guides/seat-vs-usage-pricing/">Seat vs usage framework</a></li>
+        <li><a href="/glossary/usage-based-pricing/">Glossary: usage-based pricing</a></li>
+        <li><a href="/glossary/gross-margin/">Glossary: gross margin</a></li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+
