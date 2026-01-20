@@ -184,7 +184,9 @@ const guideLinks = (() => {
   const usageExamplesRelated = new Set(["usage-based-pricing-calculator", "api-pricing-calculator", "storage-cost-calculator"]);
   const annualDiscountRelated = new Set(["annual-discount-calculator", "pricing-increase-impact-calculator", "churn-impact-calculator"]);
   const apiPricingRelated = new Set(["api-pricing-calculator", "usage-based-pricing-calculator"]);
-  const storageRelated = new Set(["storage-cost-calculator", "bandwidth-cost-calculator"]);
+  const apiCostRelated = new Set(["api-cost-estimator", "api-pricing-calculator", "usage-based-pricing-calculator"]);
+  const tieredUsageRelated = new Set(["tiered-usage-pricing-calculator", "usage-based-pricing-calculator", "seat-vs-usage-pricing-comparison"]);
+  const storageRelated = new Set(["storage-cost-calculator", "bandwidth-cost-calculator", "price-per-gb-month-calculator"]);
   const metricsRelated = new Set([
     "mrr-calculator",
     "arr-calculator",
@@ -198,6 +200,8 @@ const guideLinks = (() => {
   if (grossMarginRelated.has(tool.slug)) links.push({ href: "/guides/saas-gross-margin-targets/", label: "Guide: gross margin targets" });
   if (usageExamplesRelated.has(tool.slug)) links.push({ href: "/guides/usage-based-pricing-examples/", label: "Guide: usage pricing examples" });
   if (apiPricingRelated.has(tool.slug)) links.push({ href: "/guides/api-pricing-model/", label: "Guide: API pricing model" });
+  if (apiCostRelated.has(tool.slug)) links.push({ href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" });
+  if (tieredUsageRelated.has(tool.slug)) links.push({ href: "/guides/tiered-usage-pricing/", label: "Guide: tiered usage pricing" });
   if (storageRelated.has(tool.slug)) links.push({ href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs & pricing" });
   if (seatVsUsageRelated.has(tool.slug)) links.push({ href: "/guides/seat-vs-usage-pricing/", label: "Guide: seat vs usage" });
   if (experimentsRelated.has(tool.slug)) links.push({ href: "/guides/pricing-experiments-playbook/", label: "Guide: pricing experiments" });
