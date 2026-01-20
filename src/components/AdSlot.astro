@@ -4,7 +4,8 @@ const consentKey = "cookie_consent";
 const readEnv = (key: string): string =>
   String((import.meta as any)?.env?.[key] ?? (process as any)?.env?.[key] ?? "").trim();
 
-const useFundingChoices = Boolean(readEnv("PUBLIC_FUNDING_CHOICES_SCRIPT_SRC"));
+const consentProvider = readEnv("PUBLIC_CONSENT_PROVIDER").toLowerCase();
+const useFundingChoices = consentProvider === "fundingchoices";
 
 const fallbackSlots = {
   default: "8602706218",

@@ -24,8 +24,16 @@ const ga4Id =
 const contactEmail =
   process.env.PUBLIC_CONTACT_EMAIL ?? import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
-const fundingChoicesScriptSrc = process.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? import.meta.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? "";
-const useFundingChoices = Boolean(fundingChoicesScriptSrc);
+const consentProvider =
+  (process.env.PUBLIC_CONSENT_PROVIDER ?? import.meta.env.PUBLIC_CONSENT_PROVIDER ?? "").trim().toLowerCase();
+const useFundingChoices = consentProvider === "fundingchoices";
+
+const envFundingChoicesScriptSrc =
+  (process.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? import.meta.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? "").trim();
+const pubSlug = adsenseClient?.replace(/^ca-/, "") ?? "";
+const defaultFundingChoicesScriptSrc =
+  pubSlug ? `https://fundingchoicesmessages.google.com/i/${encodeURIComponent(pubSlug)}?ers=1` : "";
+const fundingChoicesScriptSrc = envFundingChoicesScriptSrc || defaultFundingChoicesScriptSrc;
 
 const ogImage = `${siteUrl}/og.svg`;
 ---
