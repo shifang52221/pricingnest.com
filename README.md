@@ -25,6 +25,12 @@ Build output: `dist/`
   - `PUBLIC_SITE_NAME`
   - `PUBLIC_SITE_URL`
   - `PUBLIC_ADSENSE_CLIENT` (e.g. `ca-pub-...`)
+  - Ad slots (set to split units by placement; requires a new build/deploy to take effect):
+    - `PUBLIC_ADSENSE_SLOT_HOME`
+    - `PUBLIC_ADSENSE_SLOT_TOOLKIT`
+    - `PUBLIC_ADSENSE_SLOT_TOOL`
+    - `PUBLIC_ADSENSE_SLOT_USE_CASE`
+    - `PUBLIC_ADSENSE_SLOT_DEFAULT` (fallback)
   - `PUBLIC_GA4_ID`
   - `PUBLIC_CONTACT_EMAIL` (e.g. `admin@pricingnest.com`)
 
