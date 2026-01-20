@@ -6,8 +6,18 @@ const adsenseClient =
   // Default to the live AdSense client so ads render even if env vars are missing.
   "ca-pub-8677561632094995";
 
+const defaultSlot = import.meta.env.PUBLIC_ADSENSE_SLOT_DEFAULT || "5031589887";
+
+const slotByPlacement = {
+  home: import.meta.env.PUBLIC_ADSENSE_SLOT_HOME || defaultSlot,
+  toolkit: import.meta.env.PUBLIC_ADSENSE_SLOT_TOOLKIT || defaultSlot,
+  tool: import.meta.env.PUBLIC_ADSENSE_SLOT_TOOL || defaultSlot,
+  use_case: import.meta.env.PUBLIC_ADSENSE_SLOT_USE_CASE || defaultSlot,
+} as const;
+
 const {
   slot,
+  placement,
   format = "auto",
   responsive = true,
   containerClass = "",
@@ -15,9 +25,7 @@ const {
   adStyle = "display:block",
 } = Astro.props;
 
-if (!slot) {
-  throw new Error("AdSlot requires a `slot` prop.");
-}
+const resolvedSlot = slot ?? (placement ? slotByPlacement[placement] : defaultSlot);
 ---
 
 <div class={`ad ${containerClass}`.trim()} style={containerStyle}>
@@ -25,7 +33,7 @@ if (!slot) {
     class="adsbygoogle"
     style={adStyle}
     data-ad-client={adsenseClient}
-    data-ad-slot={slot}
+    data-ad-slot={resolvedSlot}
     data-ad-format={format}
     data-full-width-responsive={responsive ? "true" : "false"}
   ></ins>
@@ -46,4 +54,3 @@ if (!slot) {
     })();
   </script>
 </div>
-
