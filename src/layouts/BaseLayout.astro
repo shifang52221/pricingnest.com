@@ -24,9 +24,8 @@ const ga4Id =
 const contactEmail =
   process.env.PUBLIC_CONTACT_EMAIL ?? import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
-const consentProvider = (process.env.PUBLIC_CONSENT_PROVIDER ?? import.meta.env.PUBLIC_CONSENT_PROVIDER ?? "").toLowerCase();
 const fundingChoicesScriptSrc = process.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? import.meta.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? "";
-const useFundingChoices = Boolean(fundingChoicesScriptSrc) || consentProvider === "fundingchoices";
+const useFundingChoices = Boolean(fundingChoicesScriptSrc);
 
 const ogImage = `${siteUrl}/og.svg`;
 ---
