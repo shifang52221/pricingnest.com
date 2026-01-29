@@ -1,15 +1,31 @@
 ---
 title: "Feature Gating"
-description: "Restricting features by plan; shifts value capture beyond just usage."
-updated: "2026-01-20"
+description: "Restricting features by plan; shifts value capture beyond pure usage."
+updated: "2026-01-29"
 category: "pricing-models"
 ---
 
 ## Definition
-Restricting features by plan; shifts value capture beyond just usage.
+Feature gating means limiting specific features to higher tiers or add-ons.
+
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Gating helps differentiate plans without forcing usage-based pricing. It can raise willingness to pay when features map
+to clear business outcomes.
+
+## Pricing implications
+The strongest gates protect high-value workflows, not minor convenience features. If the gate is too weak, customers
+upgrade for a month and then downgrade.
+
+## Design considerations
+Pair gates with usage limits so customers have a path to upgrade. Overly hard gates can slow activation and reduce trial
+conversion.
+
+## Checklist
+- Tie each gated feature to a measurable business outcome.
+- Avoid gating features required for basic success.
+- Limit the number of gates per tier to keep plans legible.
+- Add preview access so users can see the feature before paying.
+- Offer a usage-based alternative if gating blocks core workflows.
+- Track upgrade rate and downgrade rate after adding a gate.
+- Document the rationale for each gate for internal alignment.
+- Review gates after major feature launches.
