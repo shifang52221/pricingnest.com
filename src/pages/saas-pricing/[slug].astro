@@ -22,6 +22,8 @@ const hasFaq = Array.isArray(tool.faq) && tool.faq.length > 0;
 const hasAssumptions = Array.isArray(tool.assumptions) && tool.assumptions.length > 0;
 const hasInputGuidance = Array.isArray(tool.inputGuidance) && tool.inputGuidance.length > 0;
 const hasValidationChecks = Array.isArray(tool.validationChecks) && tool.validationChecks.length > 0;
+const hasScenarios = Array.isArray(tool.scenarios) && tool.scenarios.length > 0;
+const hasEdgeCases = Array.isArray(tool.edgeCases) && tool.edgeCases.length > 0;
 
 const siteUrl = (Astro.site?.toString() ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -342,6 +344,8 @@ const guideLinks = (() => {
           {hasHowItWorks ? <a href="#how">How it works</a> : null}
           {hasInputGuidance ? <a href="#guidance">Modeling tips</a> : null}
           {hasValidationChecks ? <a href="#checks">Validation checks</a> : null}
+          {hasScenarios ? <a href="#scenarios">Scenarios</a> : null}
+          {hasEdgeCases ? <a href="#edges">Edge cases</a> : null}
           {hasFaq ? <a href="#faq">FAQ</a> : null}
         </div>
 
@@ -443,6 +447,33 @@ const guideLinks = (() => {
             <h2 id="checks" style="margin-top: 1.25rem;">Validation checks</h2>
             <ul class="list">
               {tool.validationChecks?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {hasScenarios ? (
+          <>
+            <h2 id="scenarios" style="margin-top: 1.25rem;">Scenarios</h2>
+            <div class="data-grid" style="margin-top: 0.8rem;">
+              {tool.scenarios?.map((s) => (
+                <div class="data-card">
+                  <div class="data-label">{s.title}</div>
+                  <div class="data-value" style="font-size: 0.95rem; font-weight: 500; line-height: 1.5;">
+                    {s.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : null}
+
+        {hasEdgeCases ? (
+          <>
+            <h2 id="edges" style="margin-top: 1.25rem;">Edge cases</h2>
+            <ul class="list">
+              {tool.edgeCases?.map((item) => (
                 <li>{item}</li>
               ))}
             </ul>

@@ -25,6 +25,11 @@ export type ToolFaq = {
   a: string;
 };
 
+export type ToolScenario = {
+  title: string;
+  detail: string;
+};
+
 export type ToolDefinition = {
   slug: string;
   title: string;
@@ -37,6 +42,8 @@ export type ToolDefinition = {
   assumptions?: string[];
   inputGuidance?: string[];
   validationChecks?: string[];
+  scenarios?: ToolScenario[];
+  edgeCases?: string[];
   faq?: ToolFaq[];
 };
 
@@ -156,6 +163,25 @@ export const TOOLS: ToolDefinition[] = [
       "Estimated gross margin should be close to your target; large gaps suggest a math or input issue.",
       "Compare implied price per unit against competitor ranges to confirm market realism."
     ],
+    scenarios: [
+      {
+        title: "Event-driven SaaS",
+        detail: "Model 100k events per month at $0.0002 cost and $500 fixed overhead to price an analytics API."
+      },
+      {
+        title: "High-volume platform",
+        detail: "Use 5M units per month with lower unit cost to see if price can stay competitive while hitting margin."
+      },
+      {
+        title: "Low-volume premium",
+        detail: "Use 20k units and higher cost to validate whether a minimum fee or tier is needed."
+      }
+    ],
+    edgeCases: [
+      "If monthly units are 0, pricing will be undefined; use a minimum platform fee instead.",
+      "If target margin is 100%, the required price will be infinite. Use a realistic margin ceiling.",
+      "If unit cost is 0, price is driven only by fixed cost allocation."
+    ],
     faq: [
       {
         q: "What is usage-based pricing?",
@@ -246,6 +272,25 @@ export const TOOLS: ToolDefinition[] = [
       "Effective price per vCPU-hour should exceed your cost per vCPU-hour at the target margin.",
       "Gross margin should be near the target; otherwise review fixed cost or unit rates."
     ],
+    scenarios: [
+      {
+        title: "Small workload",
+        detail: "5k vCPU-hours and 10k GB-hours with low fixed overhead to price a small team plan."
+      },
+      {
+        title: "Production API",
+        detail: "50k vCPU-hours and 120k GB-hours to model a steady enterprise workload."
+      },
+      {
+        title: "Memory-heavy service",
+        detail: "Increase GB-hours relative to vCPU-hours to test memory-dominant workloads."
+      }
+    ],
+    edgeCases: [
+      "If vCPU-hours and GB-hours are both 0, the estimate should reflect fixed overhead only.",
+      "Very low unit costs with high fixed overhead can produce unintuitive prices; recheck cost allocation.",
+      "If target margin is near 0, recommended price will be close to cost and may be unviable."
+    ],
     faq: [
       {
         q: "What are vCPU-hours and GB-hours?",
@@ -313,6 +358,25 @@ export const TOOLS: ToolDefinition[] = [
       "Variable cost should equal compute + storage + bandwidth + other costs.",
       "Total cloud cost should be greater than or equal to variable cost alone.",
       "Fixed overhead should not fluctuate wildly month to month; if it does, reclassify costs."
+    ],
+    scenarios: [
+      {
+        title: "Lean SaaS baseline",
+        detail: "Lower compute and storage with modest overhead to benchmark a small product."
+      },
+      {
+        title: "Growth SaaS baseline",
+        detail: "Higher compute, bandwidth, and overhead to model a scaling product."
+      },
+      {
+        title: "Vendor-heavy stack",
+        detail: "Increase other costs to reflect third-party APIs, email, or model usage."
+      }
+    ],
+    edgeCases: [
+      "If any cost bucket is negative, reset to 0 to avoid understating total cost.",
+      "If fixed overhead is 0, double-check that support and monitoring are not missing.",
+      "Large month-to-month swings can indicate seasonality; model multiple months."
     ],
     faq: [
       {
@@ -745,6 +809,25 @@ export const TOOLS: ToolDefinition[] = [
       "The cheaper model should flip when you increase seats or decrease usage.",
       "If both models are identical, check that your inputs are not zeroed."
     ],
+    scenarios: [
+      {
+        title: "Small team with heavy usage",
+        detail: "Few seats but high unit usage to see if usage pricing becomes more expensive."
+      },
+      {
+        title: "Large team with light usage",
+        detail: "Many seats and low usage to test if seat pricing is more predictable."
+      },
+      {
+        title: "Balanced workload",
+        detail: "Medium seats and medium usage to see where models converge."
+      }
+    ],
+    edgeCases: [
+      "If seats are 0, seat model total will be 0; ensure you are modeling active users.",
+      "If unit price is 0, usage model total will be 0; check for missing pricing.",
+      "Very high usage can make usage pricing exceed seat pricing even with fewer seats."
+    ],
     faq: [
       { q: "When is seat-based pricing better?", a: "Seat-based pricing is usually simpler when usage per user is predictable and value maps closely to active users." },
       { q: "When is usage-based pricing better?", a: "Usage-based pricing often fits APIs and infra-heavy products where costs and value scale with consumption." },
@@ -794,6 +877,25 @@ export const TOOLS: ToolDefinition[] = [
       "Implied price per 1,000 calls should be above infra cost per 1,000 calls.",
       "Recommended monthly price should always exceed monthly cost.",
       "Gross margin should match your target within rounding."
+    ],
+    scenarios: [
+      {
+        title: "Starter API plan",
+        detail: "1M calls per month with small fixed overhead to set a starter monthly price."
+      },
+      {
+        title: "High-volume plan",
+        detail: "10M calls per month with lower infra cost to price a volume tier."
+      },
+      {
+        title: "Free tier impact",
+        detail: "Reduce billable calls to reflect free usage and compare price sensitivity."
+      }
+    ],
+    edgeCases: [
+      "If calls per month are 0, price per 1,000 calls is undefined; use a minimum fee.",
+      "If infra cost is 0, margin can look inflated; confirm true unit costs.",
+      "If target margin is too high, price may become uncompetitive."
     ],
     faq: [
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
@@ -862,6 +964,25 @@ export const TOOLS: ToolDefinition[] = [
       "Cost per 1,000 calls should be cost per call x 1,000.",
       "As calls increase, cost per call should trend toward variable unit cost."
     ],
+    scenarios: [
+      {
+        title: "Infra-only API",
+        detail: "Set vendor cost to 0 to estimate pure infra cost per call."
+      },
+      {
+        title: "Vendor-heavy API",
+        detail: "Increase vendor cost per 1,000 calls to model third-party pass-through costs."
+      },
+      {
+        title: "High-volume API",
+        detail: "Scale calls to 10M+ to check if cost per call stabilizes."
+      }
+    ],
+    edgeCases: [
+      "If calls per month are 0, cost per call will be undefined; use a minimum volume.",
+      "If vendor cost is higher than infra cost, verify pass-through assumptions.",
+      "If fixed overhead is large, cost per call can be misleading at low volume."
+    ],
     faq: [
       { q: "Should support costs be included?", a: "If support scales with customer count, treat it as semi-variable and include a portion in fixed overhead for pricing decisions." },
       { q: "Why do I need vendor cost per 1,000 calls?", a: "Many APIs have pass-through costs (LLMs, enrichment, third-party APIs). Including them prevents margin surprises." },
@@ -920,6 +1041,25 @@ export const TOOLS: ToolDefinition[] = [
       "Recommended price per GB-month should exceed cost per GB-month at your target margin.",
       "Monthly cost should scale linearly with average GB stored.",
       "If average GB stored doubles, recommended monthly price should roughly double."
+    ],
+    scenarios: [
+      {
+        title: "Small storage plan",
+        detail: "100 GB average stored to test a starter storage add-on."
+      },
+      {
+        title: "Large storage plan",
+        detail: "1 TB average stored to validate enterprise storage pricing."
+      },
+      {
+        title: "Replication overhead",
+        detail: "Increase cost per GB-month to reflect multi-region replication."
+      }
+    ],
+    edgeCases: [
+      "If average GB stored is 0, the model will not produce a meaningful price.",
+      "If cost per GB-month is 0, verify whether storage costs are included elsewhere.",
+      "If fixed overhead dominates, consider a base fee plus per-GB pricing."
     ],
     faq: [
       { q: "Is this the same as cloud storage price?", a: "No. This estimates your selling price based on your costs and target margin." },
@@ -1000,6 +1140,25 @@ export const TOOLS: ToolDefinition[] = [
       "Blended overage rate should be at or below the tier 1 rate when tiers are used.",
       "Effective price per unit should decline as usage grows if tier prices decline."
     ],
+    scenarios: [
+      {
+        title: "Starter tier usage",
+        detail: "Monthly units just above included usage to test initial overage behavior."
+      },
+      {
+        title: "Growth tier usage",
+        detail: "Monthly units that span tier 1 and tier 2 to test blended rates."
+      },
+      {
+        title: "Enterprise overage",
+        detail: "High usage beyond tier 2 to check tier 3 pricing impact."
+      }
+    ],
+    edgeCases: [
+      "If included units exceed monthly units, overage should be 0.",
+      "If tier 1 units are 0, all overage should roll into tier 2 or tier 3.",
+      "If tier prices increase with volume, effective price will rise; confirm this is intentional."
+    ],
     faq: [
       { q: "How should I pick included units?", a: "Included usage should cover a typical small customer and reduce bill shock. Use a platform fee to cover baseline overhead." },
       { q: "Should tiers be based on total usage or overage usage?", a: "Most pricing pages describe total usage tiers. This calculator uses overage units for clarity: included units are free within the platform fee, then tiers apply." },
@@ -1050,6 +1209,25 @@ export const TOOLS: ToolDefinition[] = [
       "Effective price per GB should exceed cost per GB at your target margin.",
       "Recommended price should be greater than or equal to monthly cost.",
       "If fixed cost is zero, confirm you are not missing support overhead."
+    ],
+    scenarios: [
+      {
+        title: "Low egress plan",
+        detail: "500 GB per month to model a starter plan with low traffic."
+      },
+      {
+        title: "High egress plan",
+        detail: "2 TB per month to test pricing for bandwidth-heavy customers."
+      },
+      {
+        title: "Multi-region traffic",
+        detail: "Increase cost per GB to reflect higher-cost regions or CDN mix."
+      }
+    ],
+    edgeCases: [
+      "If GB per month is 0, the model only reflects fixed overhead.",
+      "If cost per GB is 0, confirm CDN or egress pricing is not missing.",
+      "If target margin is too high, price may exceed market benchmarks."
     ],
     faq: [
       { q: "Is this a CDN pricing calculator?", a: "It's a cost and price estimator. Enter your own per-GB costs and assumptions." },
@@ -1103,6 +1281,25 @@ export const TOOLS: ToolDefinition[] = [
       "Request cost should equal (requests / 10,000) x cost per 10,000 requests.",
       "Monthly cost should increase when either GB stored or request volume increases.",
       "Effective price per GB-month should exceed unit cost at your target margin."
+    ],
+    scenarios: [
+      {
+        title: "Read-heavy storage",
+        detail: "High request volume with moderate GB stored to test request-driven costs."
+      },
+      {
+        title: "Archive storage",
+        detail: "High GB stored with low requests to test storage-driven costs."
+      },
+      {
+        title: "Balanced storage",
+        detail: "Moderate GB and requests to reflect typical SaaS file usage."
+      }
+    ],
+    edgeCases: [
+      "If requests per month are 0, request cost should be 0.",
+      "If avg GB stored is 0, the model reflects request costs only.",
+      "If request costs dominate, consider a per-request add-on."
     ],
     faq: [
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
