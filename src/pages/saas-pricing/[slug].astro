@@ -20,6 +20,8 @@ const relatedTools: ToolDefinition[] = tool.related
 const hasHowItWorks = Array.isArray(tool.howItWorks) && tool.howItWorks.length > 0;
 const hasFaq = Array.isArray(tool.faq) && tool.faq.length > 0;
 const hasAssumptions = Array.isArray(tool.assumptions) && tool.assumptions.length > 0;
+const hasInputGuidance = Array.isArray(tool.inputGuidance) && tool.inputGuidance.length > 0;
+const hasValidationChecks = Array.isArray(tool.validationChecks) && tool.validationChecks.length > 0;
 
 const siteUrl = (Astro.site?.toString() ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -338,6 +340,8 @@ const guideLinks = (() => {
           <a href="#inputs">Inputs</a>
           <a href="#outputs">Outputs</a>
           {hasHowItWorks ? <a href="#how">How it works</a> : null}
+          {hasInputGuidance ? <a href="#guidance">Modeling tips</a> : null}
+          {hasValidationChecks ? <a href="#checks">Validation checks</a> : null}
           {hasFaq ? <a href="#faq">FAQ</a> : null}
         </div>
 
@@ -417,6 +421,28 @@ const guideLinks = (() => {
             <h2 id="how" style="margin-top: 1.25rem;">How it works</h2>
             <ul class="list">
               {tool.howItWorks?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {hasInputGuidance ? (
+          <>
+            <h2 id="guidance" style="margin-top: 1.25rem;">Modeling tips</h2>
+            <ul class="list">
+              {tool.inputGuidance?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {hasValidationChecks ? (
+          <>
+            <h2 id="checks" style="margin-top: 1.25rem;">Validation checks</h2>
+            <ul class="list">
+              {tool.validationChecks?.map((item) => (
                 <li>{item}</li>
               ))}
             </ul>
