@@ -361,6 +361,18 @@ export const TOOLS: ToolDefinition[] = [
       "Use consistent definitions for churn and contraction across your reporting.",
       "If you report gross vs net MRR differently, keep that definition consistent across time."
     ],
+    inputGuidance: [
+      "Keep all inputs in the same period and currency (usually monthly).",
+      "Use net new definitions that match your finance reporting.",
+      "Exclude one-time fees so MRR reflects recurring revenue.",
+      "Segment by plan or cohort if churn and expansion differ materially.",
+      "Use the most recent closed month to avoid partial period noise."
+    ],
+    validationChecks: [
+      "Ending MRR should equal starting + new + expansion - contraction - churned.",
+      "Net new MRR should equal ending minus starting.",
+      "If churned + contraction exceeds new + expansion, growth should be negative."
+    ],
     faq: [
       { q: "What is MRR?", a: "Monthly Recurring Revenue (MRR) is normalized monthly revenue from subscriptions." },
       { q: "What's the difference between contraction and churned MRR?", a: "Contraction is downgraded revenue from retained customers. Churned MRR is revenue lost from customers that fully cancel." },
@@ -388,6 +400,18 @@ export const TOOLS: ToolDefinition[] = [
       "This assumes your MRR is already normalized (e.g., includes annual contracts prorated monthly).",
       "One-time fees and usage spikes are typically excluded from ARR; track them separately."
     ],
+    inputGuidance: [
+      "Use normalized MRR (annual contracts divided by 12).",
+      "Exclude one-time fees and non-recurring services.",
+      "Use a recent stable month for run-rate reporting.",
+      "Keep ARR in the same currency and definitions across time.",
+      "If you have large seasonal swings, average across multiple months."
+    ],
+    validationChecks: [
+      "ARR should equal MRR x 12.",
+      "If MRR is 0, ARR should be 0.",
+      "If ARR differs from booked revenue, confirm you are using run-rate."
+    ],
     faq: [
       { q: "Is ARR the same as annual revenue?", a: "Not necessarily. ARR is an annualized run rate from recurring subscriptions, not booked or recognized revenue." },
       { q: "How should I treat one-time fees?", a: "One-time fees are usually excluded from ARR. If they recur predictably, consider reporting them separately." },
@@ -412,12 +436,24 @@ export const TOOLS: ToolDefinition[] = [
     howItWorks: [
       "Monthly churned revenue = MRR x churn %.",
       "Annual churned revenue = monthly churned revenue x 12 (simple).",
-      "For a compounding view, retained revenue 鈮?MRR x (1 - churn%)^12."
+      "For a compounding view, retained revenue is approximately MRR x (1 - churn%)^12."
     ],
     assumptions: [
       "This is a simple estimate and does not model new sales, expansions, or seasonality.",
       "If churn varies by cohort or plan, segment your inputs for accuracy.",
       "Revenue churn can differ from logo churn; use revenue churn when available."
+    ],
+    inputGuidance: [
+      "Use revenue churn, not logo churn, for financial impact.",
+      "Enter a monthly churn rate, not an annualized percentage.",
+      "Use a recent cohort or trailing average to avoid seasonality bias.",
+      "If you track net churn, use it to reflect expansion offsets.",
+      "Run a low and high churn scenario to understand sensitivity."
+    ],
+    validationChecks: [
+      "Monthly churned revenue should equal MRR x churn rate.",
+      "Annual churned revenue should equal monthly churned revenue x 12.",
+      "If churn exceeds 20%, confirm you are using the correct period."
     ],
     faq: [
       { q: "Is this logo churn or revenue churn?", a: "This calculator uses revenue churn. Logo churn can be very different depending on customer mix." },
@@ -445,7 +481,7 @@ export const TOOLS: ToolDefinition[] = [
       { label: "Mid-market", values: { arpa: "450", grossMarginPct: "82", monthlyChurnPct: "2" } }
     ],
     howItWorks: [
-      "Implied lifetime (months) 鈮?1 / churn rate (for a simple constant churn model).",
+      "Implied lifetime (months) is approximately 1 / churn rate (for a simple constant churn model).",
       "Gross profit per month = ARPA x gross margin.",
       "LTV = gross profit per month x implied lifetime."
     ],
@@ -454,9 +490,21 @@ export const TOOLS: ToolDefinition[] = [
       "If churn is very low (near 0), LTV can be unrealistically large; use a capped lifetime or cohort data.",
       "This does not model expansion revenue unless you explicitly use net churn and an expansion-aware ARPA."
     ],
+    inputGuidance: [
+      "Use ARPA as monthly recurring revenue per account, not total revenue.",
+      "Use gross margin after direct COGS to avoid overstating LTV.",
+      "Enter monthly churn as a percentage, not annual churn.",
+      "If churn is very low, cap lifetime to keep LTV realistic.",
+      "Use net churn if expansion materially offsets churn."
+    ],
+    validationChecks: [
+      "Implied lifetime should equal 1 / churn rate (as a decimal).",
+      "LTV should equal ARPA x gross margin x lifetime.",
+      "If churn is 0, LTV is not meaningful; enter a small churn floor."
+    ],
     faq: [
       { q: "What is ARPA?", a: "Average Revenue Per Account (ARPA) is your average subscription revenue per customer per month." },
-      { q: "Why is lifetime 鈮?1 / churn?", a: "For a simple constant churn model, the expected lifetime in months is approximately the inverse of the monthly churn rate." },
+      { q: "Why is lifetime about 1 / churn?", a: "For a simple constant churn model, the expected lifetime in months is approximately the inverse of the monthly churn rate." },
       { q: "Should I use gross or net churn?", a: "For LTV, many teams start with gross revenue churn to avoid over-crediting expansion. Use net churn if your model explicitly includes expansion dynamics." }
     ]
   },
@@ -488,6 +536,18 @@ export const TOOLS: ToolDefinition[] = [
       "This ignores retention dynamics; combine with LTV to sanity-check if payback is viable.",
       "This assumes revenue and margin are stable over the payback window.",
       "If gross profit per month is near zero, payback is effectively unbounded."
+    ],
+    inputGuidance: [
+      "Use CAC for a specific segment, not blended across all channels.",
+      "ARPA should be monthly recurring revenue per account.",
+      "Use contribution margin if onboarding or support costs are significant.",
+      "Exclude one-time fees so payback reflects recurring profitability.",
+      "Compare payback to your cash runway or target recovery window."
+    ],
+    validationChecks: [
+      "Gross profit per month should equal ARPA x gross margin.",
+      "Payback months should equal CAC / gross profit per month.",
+      "If gross profit is near zero, payback should be very large."
     ],
     faq: [
       { q: "What is a good payback period?", a: "It depends on your market and cash constraints. Many SaaS businesses target 6-12 months, but there is no universal rule." },
@@ -522,6 +582,18 @@ export const TOOLS: ToolDefinition[] = [
       "This uses a simple churn-based lifetime approximation for LTV.",
       "Break-even CAC here is based on payback, not on full LTV.",
       "If you have ramp time (onboarding, usage ramp), effective payback will be longer."
+    ],
+    inputGuidance: [
+      "Use a target payback window that matches your cash flow constraints.",
+      "ARPA should be monthly recurring revenue after discounts.",
+      "Use contribution margin if fulfillment costs are significant.",
+      "Use a realistic monthly churn rate for the segment you are acquiring.",
+      "Compare break-even CAC to actual CAC to see if acquisition is sustainable."
+    ],
+    validationChecks: [
+      "Break-even CAC should equal gross profit per month x target payback months.",
+      "LTV should equal gross profit per month x implied lifetime.",
+      "LTV:CAC should be greater than 1 for a healthy model."
     ],
     faq: [
       { q: "Why show LTV:CAC?", a: "It is a common SaaS sanity-check metric. This tool estimates it using break-even CAC and simple LTV." },
@@ -562,6 +634,18 @@ export const TOOLS: ToolDefinition[] = [
       "This is a single price-point model; packaging changes require segment-level migration modeling.",
       "If you grandfather existing customers, model churn separately for new vs existing cohorts."
     ],
+    inputGuidance: [
+      "Use the current price and customer count for the segment you will reprice.",
+      "Expected churn should be incremental churn caused by the increase.",
+      "If you grandfather existing customers, lower the affected customer count.",
+      "Run multiple scenarios (best/base/worst) to bound risk.",
+      "Consider contract terms and annual vs monthly mix for accuracy."
+    ],
+    validationChecks: [
+      "Revenue before should equal customers x current price.",
+      "Revenue after should equal customers x (1 - churn) x new price.",
+      "If expected churn exceeds break-even churn, revenue should drop."
+    ],
     faq: [
       { q: "What is break-even churn?", a: "It is the churn rate at which the higher price produces the same revenue as before. If actual churn is lower, the increase raises revenue." },
       { q: "How can I estimate churn from a price increase?", a: "Use a range (best/base/worst). Segment by customer size, contract term, and price sensitivity. You can also run limited experiments or grandfather existing customers." },
@@ -597,6 +681,18 @@ export const TOOLS: ToolDefinition[] = [
       "This does not model churn reduction or cash-flow benefits of prepay. Use it as a simple pricing conversion.",
       "This excludes taxes and payment processing fees; add them if they materially affect net revenue.",
       "If annual buyers churn less, incorporate that separately when forecasting."
+    ],
+    inputGuidance: [
+      "Use your current monthly list price as the baseline.",
+      "Apply the discount to the annual prepay total, not the monthly price.",
+      "Check fees and taxes if they impact net revenue.",
+      "Use segment-specific discounts if enterprise and SMB pricing differ.",
+      "Compare effective monthly rate to competitor annual plans."
+    ],
+    validationChecks: [
+      "Annual price should equal monthly price x 12 x (1 - discount).",
+      "Effective monthly rate should equal annual price / 12.",
+      "Savings should equal (monthly price x 12) minus annual price."
     ],
     faq: [
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
