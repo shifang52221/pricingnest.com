@@ -483,7 +483,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What is MRR?", a: "Monthly Recurring Revenue (MRR) is normalized monthly revenue from subscriptions." },
       { q: "What's the difference between contraction and churned MRR?", a: "Contraction is downgraded revenue from retained customers. Churned MRR is revenue lost from customers that fully cancel." },
-      { q: "Does MRR include annual contracts?", a: "Typically you normalize annual contracts to a monthly equivalent (annual contract value / 12) so MRR is comparable across billing terms." }
+      { q: "Does MRR include annual contracts?", a: "Typically you normalize annual contracts to a monthly equivalent (annual contract value / 12) so MRR is comparable across billing terms." },
+      { q: "Should I report gross or net MRR?", a: "Use net MRR for growth reporting and track gross MRR to isolate churn impact. Keep definitions consistent across periods." },
+      { q: "How do usage-based charges fit into MRR?", a: "If usage is predictable, include a normalized monthly average. Otherwise track usage revenue separately to avoid volatile MRR." }
     ]
   },
   {
@@ -541,7 +543,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Is ARR the same as annual revenue?", a: "Not necessarily. ARR is an annualized run rate from recurring subscriptions, not booked or recognized revenue." },
       { q: "How should I treat one-time fees?", a: "One-time fees are usually excluded from ARR. If they recur predictably, consider reporting them separately." },
-      { q: "Why does ARR matter?", a: "ARR is a standard SaaS growth metric for tracking run-rate and comparing performance across periods and cohorts." }
+      { q: "Why does ARR matter?", a: "ARR is a standard SaaS growth metric for tracking run-rate and comparing performance across periods and cohorts." },
+      { q: "Should I use contracted ARR or reported ARR?", a: "Use contracted ARR for bookings and reported ARR for financial performance. Keep them separated to avoid confusion." },
+      { q: "How do I handle multi-year contracts?", a: "Normalize the recurring portion to a monthly run rate, then annualize. Non-recurring services should stay out of ARR." }
     ]
   },
   {
@@ -603,7 +607,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Is this logo churn or revenue churn?", a: "This calculator uses revenue churn. Logo churn can be very different depending on customer mix." },
       { q: "Is annual churn just monthly churn x 12?", a: "This tool shows a simple annualized estimate. For higher churn rates, compounding effects can make the true annual impact larger." },
-      { q: "What churn rate should I enter?", a: "Use a recent cohort-based revenue churn rate (gross or net). If you only have logo churn, treat this as a directional estimate." }
+      { q: "What churn rate should I enter?", a: "Use a recent cohort-based revenue churn rate (gross or net). If you only have logo churn, treat this as a directional estimate." },
+      { q: "What is the difference between gross and net churn?", a: "Gross churn looks only at lost revenue. Net churn includes expansion and contraction, which can offset churn." },
+      { q: "How do I reflect cohort improvements?", a: "Run separate scenarios for older cohorts vs new cohorts to see how churn improvements affect the annual loss." }
     ]
   },
   {
@@ -669,7 +675,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What is ARPA?", a: "Average Revenue Per Account (ARPA) is your average subscription revenue per customer per month." },
       { q: "Why is lifetime about 1 / churn?", a: "For a simple constant churn model, the expected lifetime in months is approximately the inverse of the monthly churn rate." },
-      { q: "Should I use gross or net churn?", a: "For LTV, many teams start with gross revenue churn to avoid over-crediting expansion. Use net churn if your model explicitly includes expansion dynamics." }
+      { q: "Should I use gross or net churn?", a: "For LTV, many teams start with gross revenue churn to avoid over-crediting expansion. Use net churn if your model explicitly includes expansion dynamics." },
+      { q: "Do I include implementation fees in ARPA?", a: "No. One-time fees should be tracked separately so LTV reflects recurring value." },
+      { q: "How do I cap LTV for long-tenure customers?", a: "Use a maximum lifetime based on historical cohorts (for example, 60 months) to avoid overstating value." }
     ]
   },
   {
@@ -735,7 +743,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What is a good payback period?", a: "It depends on your market and cash constraints. Many SaaS businesses target 6-12 months, but there is no universal rule." },
       { q: "What should be included in CAC?", a: "Include sales and marketing spend allocated per new customer (ads, SDR/AE costs, commissions, tools). Keep your definition consistent across periods." },
-      { q: "Should I use gross margin or contribution margin?", a: "Gross margin is a common starting point. If fulfillment costs are significant (support, onboarding, infra), contribution margin can be a better payback signal." }
+      { q: "Should I use gross margin or contribution margin?", a: "Gross margin is a common starting point. If fulfillment costs are significant (support, onboarding, infra), contribution margin can be a better payback signal." },
+      { q: "How do I handle ramped revenue?", a: "If customers ramp usage over time, use a lower ARPA for early months to avoid overstating payback speed." },
+      { q: "Does sales cycle length affect payback?", a: "Payback starts after revenue begins, but long sales cycles increase cash needs. Track CAC payback alongside sales cycle length." }
     ]
   },
   {
@@ -800,7 +810,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Why show LTV:CAC?", a: "It is a common SaaS sanity-check metric. This tool estimates it using break-even CAC and simple LTV." },
       { q: "What does break-even CAC mean here?", a: "It's the CAC you can afford to recover within your target payback window based on gross profit per month." },
-      { q: "How should I pick target payback months?", a: "Shorter payback is safer for cash flow. Many teams choose 6-12 months depending on sales cycle length, expansion, and capital constraints." }
+      { q: "How should I pick target payback months?", a: "Shorter payback is safer for cash flow. Many teams choose 6-12 months depending on sales cycle length, expansion, and capital constraints." },
+      { q: "Should I use segment-specific CAC?", a: "Yes. CAC varies widely by channel and segment, so break-even CAC should be calculated per segment." },
+      { q: "How do I use this with LTV targets?", a: "Compare break-even CAC to your actual CAC and ensure LTV:CAC exceeds your internal target (often 3x)." }
     ]
   },
   {
@@ -870,7 +882,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What is break-even churn?", a: "It is the churn rate at which the higher price produces the same revenue as before. If actual churn is lower, the increase raises revenue." },
       { q: "How can I estimate churn from a price increase?", a: "Use a range (best/base/worst). Segment by customer size, contract term, and price sensitivity. You can also run limited experiments or grandfather existing customers." },
-      { q: "Does this model packaging changes?", a: "No. It's a simple sensitivity calculator for a single price point. For packaging changes, model migration by segment and expected conversion." }
+      { q: "Does this model packaging changes?", a: "No. It's a simple sensitivity calculator for a single price point. For packaging changes, model migration by segment and expected conversion." },
+      { q: "Should I grandfather existing customers?", a: "If churn risk is high, grandfathering can reduce churn but delays revenue uplift. Model both paths." },
+      { q: "How do I estimate break-even churn?", a: "Use this output as a threshold. If your expected churn is below it, the increase should lift revenue." }
     ]
   },
   {
@@ -937,7 +951,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
-      { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." }
+      { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
+      { q: "Should discounts vary by segment?", a: "Yes. Enterprise buyers may expect smaller discounts than SMB, especially if contracts are multi-year." },
+      { q: "Does prepay reduce churn?", a: "Often yes, but you should validate with cohort data. Treat churn reduction as a separate assumption." }
     ]
   },
   {
