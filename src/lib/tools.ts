@@ -437,6 +437,25 @@ export const TOOLS: ToolDefinition[] = [
       "Net new MRR should equal ending minus starting.",
       "If churned + contraction exceeds new + expansion, growth should be negative."
     ],
+    scenarios: [
+      {
+        title: "Early stage SaaS",
+        detail: "Low starting MRR with small new and expansion to validate baseline growth."
+      },
+      {
+        title: "Growth SaaS",
+        detail: "Higher expansion MRR to see how upsell drives net new MRR."
+      },
+      {
+        title: "Churn pressure",
+        detail: "Increase churned MRR to quantify how much new MRR is needed to offset losses."
+      }
+    ],
+    edgeCases: [
+      "If starting MRR is 0, growth percent is not meaningful; focus on net new MRR.",
+      "If all components are 0, ending MRR will be 0; confirm you have real inputs.",
+      "Negative net new MRR indicates contraction + churn exceeds new + expansion."
+    ],
     faq: [
       { q: "What is MRR?", a: "Monthly Recurring Revenue (MRR) is normalized monthly revenue from subscriptions." },
       { q: "What's the difference between contraction and churned MRR?", a: "Contraction is downgraded revenue from retained customers. Churned MRR is revenue lost from customers that fully cancel." },
@@ -475,6 +494,25 @@ export const TOOLS: ToolDefinition[] = [
       "ARR should equal MRR x 12.",
       "If MRR is 0, ARR should be 0.",
       "If ARR differs from booked revenue, confirm you are using run-rate."
+    ],
+    scenarios: [
+      {
+        title: "SMB SaaS baseline",
+        detail: "Use 50k MRR to compute a 600k ARR run-rate."
+      },
+      {
+        title: "Scale-up run-rate",
+        detail: "Use 200k MRR to estimate a 2.4M ARR run-rate for board reporting."
+      },
+      {
+        title: "Seasonal business",
+        detail: "Average three months of MRR to avoid overstating ARR during peaks."
+      }
+    ],
+    edgeCases: [
+      "If MRR includes one-time fees, ARR will be overstated.",
+      "If MRR is volatile, a single month can mislead; average multiple months.",
+      "If currency changes, normalize before comparing ARR across periods."
     ],
     faq: [
       { q: "Is ARR the same as annual revenue?", a: "Not necessarily. ARR is an annualized run rate from recurring subscriptions, not booked or recognized revenue." },
@@ -518,6 +556,25 @@ export const TOOLS: ToolDefinition[] = [
       "Monthly churned revenue should equal MRR x churn rate.",
       "Annual churned revenue should equal monthly churned revenue x 12.",
       "If churn exceeds 20%, confirm you are using the correct period."
+    ],
+    scenarios: [
+      {
+        title: "Low churn SaaS",
+        detail: "2% monthly churn on 50k MRR to quantify manageable losses."
+      },
+      {
+        title: "High churn SaaS",
+        detail: "5% monthly churn to highlight annual revenue leakage risk."
+      },
+      {
+        title: "Churn sensitivity",
+        detail: "Compare 2% vs 4% churn to show how small changes drive large impact."
+      }
+    ],
+    edgeCases: [
+      "If churn rate is 0, churned revenue will be 0; verify this is realistic.",
+      "If churn exceeds 100%, input is invalid and should be corrected.",
+      "If MRR is 0, churned revenue will be 0; confirm you have active revenue."
     ],
     faq: [
       { q: "Is this logo churn or revenue churn?", a: "This calculator uses revenue churn. Logo churn can be very different depending on customer mix." },
@@ -566,6 +623,25 @@ export const TOOLS: ToolDefinition[] = [
       "LTV should equal ARPA x gross margin x lifetime.",
       "If churn is 0, LTV is not meaningful; enter a small churn floor."
     ],
+    scenarios: [
+      {
+        title: "SMB LTV",
+        detail: "ARPA 100 with 4% churn to estimate conservative lifetime value."
+      },
+      {
+        title: "Mid-market LTV",
+        detail: "ARPA 450 with 2% churn to model longer retention and higher LTV."
+      },
+      {
+        title: "Churn reduction impact",
+        detail: "Compare 3% vs 2% churn to see LTV sensitivity."
+      }
+    ],
+    edgeCases: [
+      "If churn is 0, lifetime is infinite; set a practical churn floor.",
+      "If gross margin is near 0, LTV will be near 0 regardless of ARPA.",
+      "If ARPA is 0, LTV will be 0; confirm pricing inputs."
+    ],
     faq: [
       { q: "What is ARPA?", a: "Average Revenue Per Account (ARPA) is your average subscription revenue per customer per month." },
       { q: "Why is lifetime about 1 / churn?", a: "For a simple constant churn model, the expected lifetime in months is approximately the inverse of the monthly churn rate." },
@@ -613,6 +689,25 @@ export const TOOLS: ToolDefinition[] = [
       "Payback months should equal CAC / gross profit per month.",
       "If gross profit is near zero, payback should be very large."
     ],
+    scenarios: [
+      {
+        title: "SMB payback",
+        detail: "CAC 1,200 with ARPA 200 to target an 8-month payback."
+      },
+      {
+        title: "Enterprise payback",
+        detail: "Higher CAC with higher ARPA to validate a 6-12 month payback window."
+      },
+      {
+        title: "Margin stress test",
+        detail: "Lower gross margin to see how payback lengthens."
+      }
+    ],
+    edgeCases: [
+      "If gross profit per month is 0, payback is undefined; check margin input.",
+      "If CAC is 0, payback is 0; confirm CAC includes all acquisition costs.",
+      "Very low ARPA can produce unrealistic payback; recheck segment inputs."
+    ],
     faq: [
       { q: "What is a good payback period?", a: "It depends on your market and cash constraints. Many SaaS businesses target 6-12 months, but there is no universal rule." },
       { q: "What should be included in CAC?", a: "Include sales and marketing spend allocated per new customer (ads, SDR/AE costs, commissions, tools). Keep your definition consistent across periods." },
@@ -658,6 +753,25 @@ export const TOOLS: ToolDefinition[] = [
       "Break-even CAC should equal gross profit per month x target payback months.",
       "LTV should equal gross profit per month x implied lifetime.",
       "LTV:CAC should be greater than 1 for a healthy model."
+    ],
+    scenarios: [
+      {
+        title: "SMB acquisition",
+        detail: "ARPA 120 with 4% churn and 8-month payback to find a safe CAC ceiling."
+      },
+      {
+        title: "Mid-market acquisition",
+        detail: "Higher ARPA with lower churn to see how CAC capacity expands."
+      },
+      {
+        title: "Ramp-up impact",
+        detail: "Increase payback months to reflect longer onboarding or adoption."
+      }
+    ],
+    edgeCases: [
+      "If target payback is 0, break-even CAC will be 0; set a realistic window.",
+      "If churn is 0, LTV becomes unbounded; use a churn floor.",
+      "If gross margin is low, break-even CAC will be low."
     ],
     faq: [
       { q: "Why show LTV:CAC?", a: "It is a common SaaS sanity-check metric. This tool estimates it using break-even CAC and simple LTV." },
@@ -710,6 +824,25 @@ export const TOOLS: ToolDefinition[] = [
       "Revenue after should equal customers x (1 - churn) x new price.",
       "If expected churn exceeds break-even churn, revenue should drop."
     ],
+    scenarios: [
+      {
+        title: "Small price increase",
+        detail: "5% increase with 1% churn to estimate low-risk uplift."
+      },
+      {
+        title: "Moderate increase",
+        detail: "10% increase with 2% churn to compare revenue before and after."
+      },
+      {
+        title: "High-risk increase",
+        detail: "20% increase with higher churn to test downside scenarios."
+      }
+    ],
+    edgeCases: [
+      "If customer count is 0, revenue before and after will be 0.",
+      "If expected churn exceeds 100%, input is invalid.",
+      "If price increase is 0, revenue change should be driven only by churn."
+    ],
     faq: [
       { q: "What is break-even churn?", a: "It is the churn rate at which the higher price produces the same revenue as before. If actual churn is lower, the increase raises revenue." },
       { q: "How can I estimate churn from a price increase?", a: "Use a range (best/base/worst). Segment by customer size, contract term, and price sensitivity. You can also run limited experiments or grandfather existing customers." },
@@ -757,6 +890,25 @@ export const TOOLS: ToolDefinition[] = [
       "Annual price should equal monthly price x 12 x (1 - discount).",
       "Effective monthly rate should equal annual price / 12.",
       "Savings should equal (monthly price x 12) minus annual price."
+    ],
+    scenarios: [
+      {
+        title: "10% annual discount",
+        detail: "Apply a 10% discount to a $49 monthly plan to compare effective monthly price."
+      },
+      {
+        title: "15% annual discount",
+        detail: "Use a higher discount to model competitive prepay incentives."
+      },
+      {
+        title: "Enterprise pricing",
+        detail: "Apply discount to a higher monthly price to evaluate cash impact."
+      }
+    ],
+    edgeCases: [
+      "If discount is 0, annual price should equal monthly price x 12.",
+      "If discount is 100%, annual price will be 0; confirm this is intentional.",
+      "If monthly price is 0, effective monthly rate will be 0."
     ],
     faq: [
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
