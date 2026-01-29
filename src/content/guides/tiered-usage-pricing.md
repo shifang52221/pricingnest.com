@@ -1,23 +1,35 @@
 ---
 title: "Tiered Usage Pricing (Tiers, Overages, Minimums)"
 description: "How to design tiers that reduce bill shock while protecting margins at p90 usage."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["tiers"]
 tools: ["tiered-usage-pricing-calculator","usage-based-pricing-calculator"]
 glossary: ["usage-based-pricing"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Define the usage unit and the included amount for the base tier.
+- Model at least two scenarios (p50 vs p90 usage).
+- Use a platform fee to recover fixed overhead.
+- Make tier thresholds visible on the pricing page.
+- Publish example bills for typical and heavy users.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
+1. Estimate blended unit costs (infra + vendor pass-through).
 2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+3. Set a target gross margin range.
+4. Choose tier breakpoints based on usage distribution (p50, p75, p90).
+5. Validate outputs with CSV exports and shareable links.
+
+## Example scenarios
+- **Starter tier**: base fee + included usage to keep entry prices predictable.
+- **Growth tier**: lower per-unit prices beyond tier 1 to reward volume.
+- **Enterprise tier**: larger commitments with custom pricing above tier 3.
+
+## Common mistakes
+- Making tiers so small that customers hit overages immediately.
+- Flattening prices across tiers so heavy users are subsidized.
+- Forgetting to include a platform fee for fixed costs.
 
 
 ## Tools to use

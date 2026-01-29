@@ -1,23 +1,35 @@
 ---
 title: "Pricing Experiments Playbook"
 description: "How to run price increases and annual prepay tests with clear metrics and guardrails."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["pricing-experiments"]
 tools: ["pricing-increase-impact-calculator","annual-discount-calculator","churn-impact-calculator","mrr-calculator"]
 glossary: ["churn","mrr","annual-prepay-discount"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Define the experiment goal (revenue uplift, churn reduction, or cash flow).
+- Segment customers by size and contract term.
+- Set success metrics and guardrails before launch.
+- Run a pilot cohort before full rollout.
+- Document learnings for the next test.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
-2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+1. Define the hypothesis and primary metric (MRR uplift, churn, or cash flow).
+2. Choose the cohort and the pricing change (increase, discount, or packaging).
+3. Estimate expected churn or conversion impact and set guardrails.
+4. Run the test for a fixed window and collect feedback.
+5. Roll out or revert based on results and support impact.
+
+## Example experiments
+- **Annual prepay test**: 10-15% discount for annual plans to improve cash flow.
+- **Price increase test**: 5% increase at renewal for a single segment.
+- **Packaging test**: move a feature to a higher tier to lift ARPA.
+
+## Common mistakes
+- Testing multiple variables at once without clear attribution.
+- Using short test windows that miss renewal cycles.
+- Ignoring support tickets and qualitative feedback.
 
 
 ## Tools to use
