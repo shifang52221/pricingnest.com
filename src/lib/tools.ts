@@ -194,6 +194,14 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "Why does the required unit price change so much?",
         a: "Fixed costs get spread across monthly units. Lower volume means higher fixed cost per unit and a higher required price to hit the same margin."
+      },
+      {
+        q: "Should I include payment fees or taxes in unit cost?",
+        a: "Include any fees that scale with revenue or usage if they materially affect margin. Taxes are usually excluded from pricing models."
+      },
+      {
+        q: "How do I model a minimum fee with usage pricing?",
+        a: "Set a base platform fee outside this calculator and then price the usage units based on the required per-unit price."
       }
     ]
   },
@@ -303,6 +311,14 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "Does this include bandwidth or storage costs?",
         a: "No. This tool focuses on compute (CPU + memory). Add bandwidth/storage separately or include them in fixed overhead if you want an all-in estimate."
+      },
+      {
+        q: "How do I model bursty workloads?",
+        a: "Use multiple scenarios with higher vCPU-hours or GB-hours to represent peak usage, then compare the price range."
+      },
+      {
+        q: "Should I treat autoscaling as lower cost?",
+        a: "Autoscaling reduces idle hours, so your blended cost per hour may drop. Use a blended rate from actual billing."
       }
     ]
   },
@@ -390,6 +406,14 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "What's the difference between variable and fixed cost here?",
         a: "Variable cost scales with usage (compute, bandwidth, per-request). Fixed cost is baseline overhead (support, tooling, reserved capacity, minimums)."
+      },
+      {
+        q: "Should I include credits or discounts?",
+        a: "Use net costs after committed-use discounts, but exclude temporary credits to avoid understating steady-state costs."
+      },
+      {
+        q: "How often should I refresh this model?",
+        a: "Update monthly if your usage is growing fast, otherwise quarterly is usually sufficient."
       }
     ]
   },
@@ -983,7 +1007,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "When is seat-based pricing better?", a: "Seat-based pricing is usually simpler when usage per user is predictable and value maps closely to active users." },
       { q: "When is usage-based pricing better?", a: "Usage-based pricing often fits APIs and infra-heavy products where costs and value scale with consumption." },
-      { q: "How do minimums or tiers change the result?", a: "If you have minimums, tiered pricing, or volume discounts, use this tool as a baseline and then adjust using scenario presets for your tier thresholds." }
+      { q: "How do minimums or tiers change the result?", a: "If you have minimums, tiered pricing, or volume discounts, use this tool as a baseline and then adjust using scenario presets for your tier thresholds." },
+      { q: "Should I compare based on list price or discounts?", a: "Use realized pricing for the segment you are modeling, including typical discounts or volume commitments." },
+      { q: "How do I handle hybrid pricing?", a: "Model the seat component in the seat price and add the usage component to the unit price for a blended comparison." }
     ]
   },
   {
@@ -1052,7 +1078,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
       { q: "How do I handle free tiers or included calls?", a: "Model included calls as part of your plan design. You can estimate cost at expected usage (including free tier) and then set pricing tiers around meaningful breakpoints." },
-      { q: "What gross margin should an API target?", a: "It depends on your category and scale. Start with a range (70-90%) and sanity-check competitiveness and cost recovery under different workloads." }
+      { q: "What gross margin should an API target?", a: "It depends on your category and scale. Start with a range (70-90%) and sanity-check competitiveness and cost recovery under different workloads." },
+      { q: "Should I price per call or per 1,000 calls?", a: "Per 1,000 calls is easier to read on pricing pages while still mapping to unit costs. The calculator supports both interpretations." },
+      { q: "How do I model a minimum monthly fee?", a: "Set a base platform fee outside this calculator, then use the implied price per 1,000 calls for overages." }
     ]
   },
   {
@@ -1138,7 +1166,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Should support costs be included?", a: "If support scales with customer count, treat it as semi-variable and include a portion in fixed overhead for pricing decisions." },
       { q: "Why do I need vendor cost per 1,000 calls?", a: "Many APIs have pass-through costs (LLMs, enrichment, third-party APIs). Including them prevents margin surprises." },
-      { q: "How should I model spiky traffic?", a: "Use a few presets (p50 vs p90 monthly calls) and compare the cost per call under each scenario." }
+      { q: "How should I model spiky traffic?", a: "Use a few presets (p50 vs p90 monthly calls) and compare the cost per call under each scenario." },
+      { q: "Do I include bandwidth or storage here?", a: "Only if they scale with calls and you want a single blended unit cost; otherwise model them separately." },
+      { q: "Can I use this for non-API usage?", a: "Yes. Replace calls with any repeatable unit (jobs, events, messages) as long as costs scale with that unit." }
     ]
   },
   {
@@ -1216,7 +1246,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Is this the same as cloud storage price?", a: "No. This estimates your selling price based on your costs and target margin." },
       { q: "Should I include request costs?", a: "If your workload has heavy requests, include them via the storage cost calculator or add them to fixed overhead." },
-      { q: "What unit should I show on my pricing page?", a: "GB-month is common because it reflects storage over time. Add an example workload so buyers can estimate their bill." }
+      { q: "What unit should I show on my pricing page?", a: "GB-month is common because it reflects storage over time. Add an example workload so buyers can estimate their bill." },
+      { q: "How do I handle minimum fees?", a: "Add a base fee and keep GB-month as the variable component. This protects margin at low usage." },
+      { q: "Should I charge for replication separately?", a: "If replication is optional, consider a premium tier or add-on; otherwise include it in your cost per GB-month." }
     ]
   },
   {
@@ -1314,7 +1346,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "How should I pick included units?", a: "Included usage should cover a typical small customer and reduce bill shock. Use a platform fee to cover baseline overhead." },
       { q: "Should tiers be based on total usage or overage usage?", a: "Most pricing pages describe total usage tiers. This calculator uses overage units for clarity: included units are free within the platform fee, then tiers apply." },
-      { q: "How do I avoid bill shock?", a: "Use a predictable platform fee, publish example bills, and consider usage alerts or caps for unusual spikes." }
+      { q: "How do I avoid bill shock?", a: "Use a predictable platform fee, publish example bills, and consider usage alerts or caps for unusual spikes." },
+      { q: "Should tier prices always decline?", a: "Most models offer volume discounts, but if costs rise at scale you can keep tiers flat or even increase them." },
+      { q: "How do I model minimum commitments?", a: "Set the platform fee to represent the minimum and apply tiers to usage above that commitment." }
     ]
   },
   {
@@ -1384,7 +1418,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Is this a CDN pricing calculator?", a: "It's a cost and price estimator. Enter your own per-GB costs and assumptions." },
       { q: "What cost per GB should I use?", a: "Use a blended egress cost per GB after discounts, tiers, and CDN mix. If you have multiple regions, use a weighted average." },
-      { q: "Should I include origin fetch and request costs?", a: "If request pricing is meaningful for your workload, include it in fixed overhead or model it separately and add it to the monthly cost." }
+      { q: "Should I include origin fetch and request costs?", a: "If request pricing is meaningful for your workload, include it in fixed overhead or model it separately and add it to the monthly cost." },
+      { q: "How do I handle free CDN tiers?", a: "Treat free tiers as a lower blended cost per GB or subtract a fixed free allowance before pricing." },
+      { q: "What if bandwidth is a pass-through cost?", a: "Use a lower target margin or price bandwidth as a separate line item to keep usage transparent." }
     ]
   },
   {
@@ -1456,7 +1492,9 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },
-      { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." }
+      { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." },
+      { q: "How do I handle lifecycle tiers?", a: "Use a blended cost per GB-month based on the storage mix across tiers." },
+      { q: "Should I charge separately for requests?", a: "If requests drive meaningful cost, keep a request component or add-on to avoid margin leakage." }
     ]
   }
 ];
