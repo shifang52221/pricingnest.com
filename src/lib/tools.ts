@@ -42,6 +42,7 @@ export type ToolDefinition = {
   assumptions?: string[];
   inputGuidance?: string[];
   validationChecks?: string[];
+  commonMistakes?: string[];
   scenarios?: ToolScenario[];
   edgeCases?: string[];
   faq?: ToolFaq[];
@@ -484,6 +485,12 @@ export const TOOLS: ToolDefinition[] = [
       "If churned + contraction exceeds new + expansion, growth should be negative.",
       "Ending MRR should not be negative; if it is, review churn or contraction inputs."
     ],
+    commonMistakes: [
+      "Mixing bookings or billings with MRR; only recurring revenue belongs here.",
+      "Double counting contractions and churned MRR in the same period.",
+      "Using partial-month data that overstates or understates real MRR trends.",
+      "Treating reactivations inconsistently across months."
+    ],
     scenarios: [
       {
         title: "Early stage SaaS",
@@ -547,6 +554,12 @@ export const TOOLS: ToolDefinition[] = [
       "If MRR is 0, ARR should be 0.",
       "If ARR differs from booked revenue, confirm you are using run-rate.",
       "ARR should move in the same direction as normalized MRR."
+    ],
+    commonMistakes: [
+      "Including one-time services or setup fees in MRR before annualizing.",
+      "Annualizing a peak month instead of a representative month.",
+      "Mixing booked revenue with run-rate ARR in the same report.",
+      "Ignoring currency normalization when comparing ARR over time."
     ],
     scenarios: [
       {
@@ -616,6 +629,12 @@ export const TOOLS: ToolDefinition[] = [
       "Annual churned revenue should equal monthly churned revenue x 12.",
       "If churn exceeds 20%, confirm you are using the correct period.",
       "If churn rate is above 100%, inputs are invalid."
+    ],
+    commonMistakes: [
+      "Using logo churn instead of revenue churn for financial impact.",
+      "Entering annual churn as a monthly percentage.",
+      "Ignoring cohort differences when churn varies by segment.",
+      "Assuming this model accounts for expansion or new sales."
     ],
     scenarios: [
       {
@@ -692,6 +711,12 @@ export const TOOLS: ToolDefinition[] = [
       "LTV should equal ARPA x gross margin x lifetime.",
       "If churn is 0, LTV is not meaningful; enter a small churn floor.",
       "Gross margin should be between 0 and 100; validate inputs if it is not."
+    ],
+    commonMistakes: [
+      "Using revenue instead of gross profit as the LTV base.",
+      "Plugging in annual churn as a monthly churn rate.",
+      "Ignoring expansion and downgrades in ARPA assumptions.",
+      "Assuming churn stays constant across all cohorts."
     ],
     scenarios: [
       {
@@ -770,6 +795,12 @@ export const TOOLS: ToolDefinition[] = [
       "If gross profit is near zero, payback should be very large.",
       "If payback is under one month, confirm CAC and ARPA inputs."
     ],
+    commonMistakes: [
+      "Using blended CAC across channels with very different conversion rates.",
+      "Using revenue instead of gross profit to compute payback.",
+      "Ignoring usage ramp which extends the payback period.",
+      "Mixing annual and monthly ARPA in the same model."
+    ],
     scenarios: [
       {
         title: "SMB payback",
@@ -845,6 +876,12 @@ export const TOOLS: ToolDefinition[] = [
       "LTV should equal gross profit per month x implied lifetime.",
       "LTV:CAC should be greater than 1 for a healthy model.",
       "Break-even CAC should not exceed LTV for long-term viability."
+    ],
+    commonMistakes: [
+      "Confusing break-even CAC with maximum CAC based on full LTV.",
+      "Using gross churn when net churn is more appropriate for the segment.",
+      "Setting a payback window that does not match cash flow reality.",
+      "Assuming ARPA is steady despite usage ramp or seasonality."
     ],
     scenarios: [
       {
@@ -926,6 +963,12 @@ export const TOOLS: ToolDefinition[] = [
       "If expected churn exceeds break-even churn, revenue should drop.",
       "Break-even churn should be between 0 and 100 when price increase is positive."
     ],
+    commonMistakes: [
+      "Using total customers when only a subset is affected by the increase.",
+      "Mixing annual contracts without normalizing to monthly.",
+      "Assuming churn is zero for price-sensitive segments.",
+      "Forgetting to model grandfathered cohorts separately."
+    ],
     scenarios: [
       {
         title: "Small price increase",
@@ -1002,6 +1045,12 @@ export const TOOLS: ToolDefinition[] = [
       "Effective monthly rate should equal annual price / 12.",
       "Savings should equal (monthly price x 12) minus annual price.",
       "If discount is 0, annual price should equal monthly price x 12."
+    ],
+    commonMistakes: [
+      "Discounting too deeply without validating margin impact.",
+      "Applying the discount to the monthly price instead of the annual total.",
+      "Ignoring payment processing fees on large prepay invoices.",
+      "Assuming annual discounts always reduce churn."
     ],
     scenarios: [
       {
