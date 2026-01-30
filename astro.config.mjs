@@ -1,5 +1,25 @@
+import { execSync } from "node:child_process";
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+
+const resolveLastmod = () => {
+  if (process.env.SITEMAP_LASTMOD) {
+    const parsed = new Date(process.env.SITEMAP_LASTMOD);
+    if (!Number.isNaN(parsed.getTime())) return parsed;
+  }
+  if (process.env.SOURCE_DATE_EPOCH) {
+    const epoch = Number(process.env.SOURCE_DATE_EPOCH) * 1000;
+    if (Number.isFinite(epoch)) return new Date(epoch);
+  }
+  try {
+    const raw = execSync("git log -1 --format=%ct", { stdio: ["ignore", "pipe", "ignore"] })
+      .toString()
+      .trim();
+    const epoch = Number(raw) * 1000;
+    if (Number.isFinite(epoch)) return new Date(epoch);
+  } catch {}
+  return new Date();
+};
 
 export default defineConfig({
   output: "static",
@@ -7,7 +27,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       changefreq: "weekly",
-      lastmod: process.env.SITEMAP_LASTMOD ? new Date(process.env.SITEMAP_LASTMOD) : new Date(),
+      lastmod: resolveLastmod(),
       priority: 0.7,
       filter: (page) => {
         const blocked = new Set(["/404.html"]);

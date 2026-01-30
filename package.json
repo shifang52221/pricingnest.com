@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/build.mjs",
+    "build:astro": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -16,4 +17,3 @@
     "typescript": "^5.7.3"
   }
 }
-
