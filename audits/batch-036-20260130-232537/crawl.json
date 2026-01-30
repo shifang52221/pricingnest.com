@@ -1,0 +1,932 @@
+[
+  {
+    "url": "https://pricingnest.com/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/about/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/about/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/contact/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/contact/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/cookie-policy/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/cookie-policy/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/a-b-test/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/a-b-test/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/activation/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/activation/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/acv/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/acv/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/add-on/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/add-on/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/annual-plan/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/annual-plan/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/annual-prepay-discount/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/annual-prepay-discount/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/api-call/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/api-call/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpa-per-seat/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/arpa-per-seat/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpa/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/arpa/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpu/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/arpu/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/arr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arrr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/arrr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/backup/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/backup/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bandwidth/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/bandwidth/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bill-shock/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/bill-shock/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/billing-cycle/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/billing-cycle/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/blended-cost/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/blended-cost/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bookings/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/bookings/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/break-even-churn/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/break-even-churn/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/burst-traffic/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/burst-traffic/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cac-payback/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cac-payback/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cac/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cac/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cdn/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cdn/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn-cohort/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/churn-cohort/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn-mitigation/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/churn-mitigation/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/churn/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cogs/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cogs/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cohort-retention/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cohort-retention/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cohort/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cohort/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/contract-value/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/contract-value/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/contribution-margin/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/contribution-margin/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cross-sell/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/cross-sell/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/discount/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/discount/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/downgrade/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/downgrade/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/effective-monthly-rate/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/effective-monthly-rate/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/egress/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/egress/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/expansion-revenue/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/expansion-revenue/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/fair-use/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/fair-use/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/feature-gating/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/feature-gating/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/fixed-cost/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/fixed-cost/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/gb-month/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/gb-month/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grace-period/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/grace-period/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grandfathering/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/grandfathering/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/gross-margin/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/gross-margin/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/grr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/included-usage/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/included-usage/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/logo-churn/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/logo-churn/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ltv-cac/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/ltv-cac/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ltv/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/ltv/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/marginal-cost/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/marginal-cost/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/minimum-commitment/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/minimum-commitment/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/mrr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/mrr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/net-new-mrr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/net-new-mrr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/nrr/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/nrr/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/on-call/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/on-call/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/origin-fetch/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/origin-fetch/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/overage/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/overage/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/p50/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/p50/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/p90/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/p90/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/packaging/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/packaging/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/payback-period/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/payback-period/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/per-active-user/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/per-active-user/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/per-seat/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/per-seat/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/platform-fee/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/platform-fee/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/price-increase/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/price-increase/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/pricing-metric/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/pricing-metric/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/pricing-page/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/pricing-page/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ramp/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/ramp/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/rate-card/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/rate-card/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/rate-limit/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/rate-limit/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/replication/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/replication/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/request-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/request-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/request/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/request/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/retention-curve/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/retention-curve/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/retrieval-fees/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/retrieval-fees/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/revenue-churn/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/revenue-churn/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/revenue-recognition/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/revenue-recognition/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/run-rate/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/run-rate/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/seat-based-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/seat-based-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/storage-costs/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/storage-costs/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/support-costs/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/support-costs/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/tcv/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/tcv/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/throttling/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/throttling/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/tiers/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/tiers/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/time-to-value/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/time-to-value/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/token-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/token-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-cost/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/unit-cost/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-economics/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/unit-economics/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-test-scenario/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/unit-test-scenario/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/upsell/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/upsell/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-based-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/usage-based-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-cap/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/usage-cap/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-forecast/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/usage-forecast/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/value-metric/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/value-metric/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/glossary/variable-cost/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/glossary/variable-cost/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/annual-discount-mistakes/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/annual-discount-mistakes/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/annual-prepay-discount/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/annual-prepay-discount/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-cost-estimation/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/api-cost-estimation/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-pricing-model/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/api-pricing-model/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-tier-design/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/api-tier-design/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/bandwidth-pricing-guide/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/bandwidth-pricing-guide/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/cac-payback-targets/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/cac-payback-targets/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/free-tier-modeling/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/free-tier-modeling/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/gross-margin-vs-contribution-margin/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/gross-margin-vs-contribution-margin/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/ltv-cac-benchmarks/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/ltv-cac-benchmarks/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/mrr-to-arr-and-back/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/mrr-to-arr-and-back/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/price-per-gb-month-explained/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/price-per-gb-month-explained/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-experiments-playbook/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/pricing-experiments-playbook/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-increase-playbook/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/pricing-increase-playbook/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-unit-definition/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/pricing-page-unit-definition/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/saas-gross-margin-targets/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/saas-gross-margin-targets/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/saas-metrics-cheat-sheet/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/saas-metrics-cheat-sheet/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/storage-costs-and-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/storage-costs-and-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/storage-request-costs/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/storage-request-costs/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/tiered-usage-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/tiered-usage-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/unit-economics-model-template/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/unit-economics-model-template/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-based-pricing-bill-shock/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/usage-based-pricing-bill-shock/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-based-pricing-examples/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/guides/usage-based-pricing-examples/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/privacy-policy/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/privacy-policy/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/annual-discount-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/annual-discount-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/api-cost-estimator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/api-cost-estimator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/arr-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/arr-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/bandwidth-cost-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/bandwidth-cost-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/break-even-cac-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/break-even-cac-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/cac-payback-period-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/cac-payback-period-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/compute-cost-estimator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/compute-cost-estimator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/ltv-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/ltv-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/monthly-cloud-cost-estimator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/monthly-cloud-cost-estimator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/mrr-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/mrr-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/storage-cost-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/storage-cost-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/infra-cost-recovery/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/infra-cost-recovery/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/pricing-experiments/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/pricing-experiments/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/unit-economics/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/unit-economics/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/terms/",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/terms/",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/favicon.svg",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/favicon.svg",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/_astro/about.Bg8D3vKC.css",
+    "status": 200,
+    "finalUrl": "https://pricingnest.com/_astro/about.Bg8D3vKC.css",
+    "redirects": 0
+  },
+  {
+    "url": "https://pricingnest.com/cdn-cgi/l/email-protection",
+    "status": 404,
+    "finalUrl": "https://pricingnest.com/cdn-cgi/l/email-protection",
+    "redirects": 0
+  }
+]

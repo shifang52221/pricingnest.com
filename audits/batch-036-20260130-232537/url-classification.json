@@ -1,0 +1,932 @@
+[
+  {
+    "url": "https://pricingnest.com/",
+    "category": "category",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/about/",
+    "category": "static",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/contact/",
+    "category": "static",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/cookie-policy/",
+    "category": "static",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/",
+    "category": "category",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/a-b-test/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/activation/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/acv/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/add-on/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/annual-plan/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/annual-prepay-discount/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/api-call/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpa-per-seat/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpa/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arpu/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/arrr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/backup/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bandwidth/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bill-shock/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/billing-cycle/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/blended-cost/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/bookings/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/break-even-churn/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/burst-traffic/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cac-payback/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cac/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cdn/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn-cohort/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn-mitigation/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/churn/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cogs/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cohort-retention/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cohort/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/contract-value/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/contribution-margin/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/cross-sell/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/discount/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/downgrade/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/effective-monthly-rate/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/egress/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/expansion-revenue/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/fair-use/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/feature-gating/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/fixed-cost/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/gb-month/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grace-period/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grandfathering/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/gross-margin/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/grr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/included-usage/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/logo-churn/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ltv-cac/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ltv/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/marginal-cost/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/minimum-commitment/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/mrr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/net-new-mrr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/nrr/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/on-call/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/origin-fetch/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/overage/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/p50/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/p90/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/packaging/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/payback-period/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/per-active-user/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/per-seat/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/platform-fee/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/price-increase/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/pricing-metric/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/pricing-page/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/ramp/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/rate-card/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/rate-limit/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/replication/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/request-pricing/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/request/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/retention-curve/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/retrieval-fees/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/revenue-churn/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/revenue-recognition/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/run-rate/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/seat-based-pricing/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/storage-costs/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/support-costs/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/tcv/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/throttling/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/tiers/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/time-to-value/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/token-pricing/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-cost/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-economics/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/unit-test-scenario/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/upsell/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-based-pricing/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-cap/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/usage-forecast/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/value-metric/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/glossary/variable-cost/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/",
+    "category": "category",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/annual-discount-mistakes/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/annual-prepay-discount/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-cost-estimation/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-pricing-model/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-tier-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/bandwidth-pricing-guide/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/cac-payback-targets/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/free-tier-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/gross-margin-vs-contribution-margin/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/ltv-cac-benchmarks/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/mrr-to-arr-and-back/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/price-per-gb-month-explained/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-experiments-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-increase-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-unit-definition/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/saas-gross-margin-targets/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/saas-metrics-cheat-sheet/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/storage-costs-and-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/storage-request-costs/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/tiered-usage-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/unit-economics-model-template/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-based-pricing-bill-shock/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-based-pricing-examples/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/privacy-policy/",
+    "category": "static",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/",
+    "category": "category",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/annual-discount-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/api-cost-estimator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/arr-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/bandwidth-cost-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/break-even-cac-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/cac-payback-period-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/compute-cost-estimator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/ltv-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/monthly-cloud-cost-estimator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/mrr-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/storage-cost-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/infra-cost-recovery/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/pricing-experiments/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/unit-economics/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/terms/",
+    "category": "static",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/favicon.svg",
+    "category": "static",
+    "in_sitemap": false,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/_astro/about.Bg8D3vKC.css",
+    "category": "static",
+    "in_sitemap": false,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/cdn-cgi/l/email-protection",
+    "category": "static",
+    "in_sitemap": false,
+    "status": 404
+  }
+]
