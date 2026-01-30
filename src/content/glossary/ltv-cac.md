@@ -1,19 +1,34 @@
 ---
 title: "LTV:CAC"
 description: "Ratio of lifetime gross profit to CAC; a common unit economics health check."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "unit-economics"
 glossary: ["ltv","cac"]
 ---
 
 ## Definition
-Ratio of lifetime gross profit to CAC; a common unit economics health check.
+LTV:CAC is the ratio of lifetime gross profit to customer acquisition cost, a core unit economics health check.
+
 ## Why it matters
-Unit economics terms connect pricing decisions to profitability. Clear definitions reduce spreadsheet errors.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+The ratio shows whether customer value exceeds acquisition cost. It helps guide pricing, marketing spend, and growth
+strategy.
+
+## Pricing implications
+If LTV:CAC is low, you may need higher pricing, better retention, or lower CAC. If it is very high, you may be
+under-investing in growth.
+
+## Measurement tips
+Use cohort-based churn and contribution margin for a realistic LTV.
+
+## Checklist
+- Use gross profit or contribution margin for LTV.
+- Calculate CAC by channel and segment.
+- Compare LTV:CAC to payback period targets.
+- Track ratio trends over time.
+- Avoid mixing net and gross churn assumptions.
+- Recalculate after pricing changes.
+- Segment by plan for accuracy.
+- Use a consistent time window.
 
 
 ## Related glossary terms
