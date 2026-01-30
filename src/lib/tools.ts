@@ -166,6 +166,13 @@ export const TOOLS: ToolDefinition[] = [
       "Compare implied price per unit against competitor ranges to confirm market realism.",
       "If fixed cost per unit dominates total cost, consider a base platform fee."
     ],
+    commonMistakes: [
+      "Choosing a usage unit that customers cannot estimate.",
+      "Ignoring free-tier usage when modeling paid units.",
+      "Using only p50 usage and skipping p90 stress tests.",
+      "Setting margin targets without including all COGS inputs.",
+      "Skipping a base fee when fixed costs are material."
+    ],
     scenarios: [
       {
         title: "Event-driven SaaS",
@@ -290,6 +297,13 @@ export const TOOLS: ToolDefinition[] = [
       "Gross margin should be near the target; otherwise review fixed cost or unit rates.",
       "If fixed overhead dominates, consider a base platform fee."
     ],
+    commonMistakes: [
+      "Using peak hours instead of average steady-state usage.",
+      "Mixing on-demand and reserved pricing without a blended rate.",
+      "Double counting storage or bandwidth in compute costs.",
+      "Omitting support or on-call overhead from fixed costs.",
+      "Assuming autoscaling removes the need for baseline capacity."
+    ],
     scenarios: [
       {
         title: "Small workload",
@@ -390,6 +404,13 @@ export const TOOLS: ToolDefinition[] = [
       "Total cloud cost should be greater than or equal to variable cost alone.",
       "Fixed overhead should not fluctuate wildly month to month; if it does, reclassify costs.",
       "Monthly cloud cost should equal variable cost plus fixed overhead."
+    ],
+    commonMistakes: [
+      "Mixing fixed and variable costs in the same bucket.",
+      "Using a single spike month instead of an average.",
+      "Double counting discounts or credits across buckets.",
+      "Leaving out vendor APIs or managed services in other costs.",
+      "Ignoring support, security, or on-call overhead."
     ],
     scenarios: [
       {
@@ -1131,6 +1152,13 @@ export const TOOLS: ToolDefinition[] = [
       "If both models are identical, check that your inputs are not zeroed.",
       "If usage model is always cheaper, recheck unit price or usage assumptions."
     ],
+    commonMistakes: [
+      "Using licensed seats instead of active seats.",
+      "Comparing list price seats to discounted usage pricing.",
+      "Ignoring minimum commitments or platform fees.",
+      "Using mismatched usage units across models.",
+      "Assuming usage is uniform across all seats."
+    ],
     scenarios: [
       {
         title: "Small team with heavy usage",
@@ -1208,6 +1236,13 @@ export const TOOLS: ToolDefinition[] = [
       "Recommended monthly price should always exceed monthly cost.",
       "Gross margin should match your target within rounding.",
       "If calls are very low, the implied price per 1,000 calls may look high; consider a minimum fee."
+    ],
+    commonMistakes: [
+      "Using total company call volume instead of plan-level volume.",
+      "Mixing per-call and per-1,000 call units in the same model.",
+      "Ignoring free-tier or included usage assumptions.",
+      "Forgetting to add fixed overhead or vendor costs.",
+      "Treating the output as a final price without market sanity checks."
     ],
     scenarios: [
       {
@@ -1304,6 +1339,13 @@ export const TOOLS: ToolDefinition[] = [
       "As calls increase, cost per call should trend toward variable unit cost.",
       "If calls are 0, cost per call should be 0; check inputs."
     ],
+    commonMistakes: [
+      "Leaving vendor or pass-through costs out of the model.",
+      "Using peak call volume instead of average volume.",
+      "Double counting bandwidth or storage costs elsewhere.",
+      "Ignoring support and on-call costs that scale with usage.",
+      "Assuming discounted tiers apply to all calls."
+    ],
     scenarios: [
       {
         title: "Infra-only API",
@@ -1390,6 +1432,13 @@ export const TOOLS: ToolDefinition[] = [
       "Monthly cost should scale linearly with average GB stored.",
       "If average GB stored doubles, recommended monthly price should roughly double.",
       "Effective price per GB-month should exceed cost per GB-month."
+    ],
+    commonMistakes: [
+      "Using peak storage instead of average GB-month.",
+      "Ignoring replication, backup, or encryption overhead.",
+      "Forgetting fixed overhead at low usage volumes.",
+      "Mixing request costs into GB-month without modeling them.",
+      "Using list price storage costs instead of blended rates."
     ],
     scenarios: [
       {
@@ -1498,6 +1547,13 @@ export const TOOLS: ToolDefinition[] = [
       "Effective price per unit should decline as usage grows if tier prices decline.",
       "Tier 2 and tier 3 usage should only apply after tier 1 is fully used."
     ],
+    commonMistakes: [
+      "Mixing total-usage tiers with overage tiers without converting.",
+      "Setting included units that are far above typical usage.",
+      "Making tier prices increase without a cost justification.",
+      "Forgetting a base fee to cover fixed costs.",
+      "Ignoring bill shock for high-usage customers."
+    ],
     scenarios: [
       {
         title: "Starter tier usage",
@@ -1576,6 +1632,13 @@ export const TOOLS: ToolDefinition[] = [
       "Recommended price should be greater than or equal to monthly cost.",
       "If fixed cost is zero, confirm you are not missing support overhead.",
       "Monthly cost should equal GB per month x cost per GB plus fixed overhead."
+    ],
+    commonMistakes: [
+      "Using list egress pricing instead of blended rates.",
+      "Mixing internal transfer with billable egress.",
+      "Ignoring regional cost differences.",
+      "Forgetting free transfer allowances or CDN credits.",
+      "Leaving out request fees that are material."
     ],
     scenarios: [
       {
@@ -1657,6 +1720,13 @@ export const TOOLS: ToolDefinition[] = [
       "Monthly cost should increase when either GB stored or request volume increases.",
       "Effective price per GB-month should exceed unit cost at your target margin.",
       "Monthly cost should be at least storage cost plus request cost."
+    ],
+    commonMistakes: [
+      "Ignoring request or retrieval fees in the cost model.",
+      "Using peak storage instead of average GB-month.",
+      "Double counting egress costs in storage and bandwidth.",
+      "Skipping replication or backup overhead.",
+      "Assuming request rates are flat across all customers."
     ],
     scenarios: [
       {
