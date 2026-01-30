@@ -1,20 +1,34 @@
 ---
 title: "Egress"
 description: "Outbound data transfer; often a significant variable cost for infra products."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "storage"
 tools: ["bandwidth-cost-calculator"]
+glossary: ["bandwidth","cdn","origin-fetch","overage"]
 ---
-
 ## Definition
-Outbound data transfer; often a significant variable cost for infra products.
+Egress is outbound data transfer from your infrastructure to the public internet or customer networks.
 ## Why it matters
-Storage and infra pricing gets messy fast. A clear definition helps you model cost recovery and explain pricing to buyers.
-## Common pitfalls
-- Ignoring request costs and focusing only on GB-month.
-- Using raw provider list prices instead of blended costs.
-- Not modeling p90 customers who drive most cost.
-
-
+Egress costs can spike with heavy users, streaming, or cache misses and are easy to underprice.
+## Pricing implications
+Set included bandwidth with clear overages, and use tiers that reflect lower unit costs at scale.
+## Common drivers
+Large downloads, API responses, video streaming, and cache misses from origin fetch.
+## Measurement tips
+Track egress by product area and region to identify high-cost segments.
+## Checklist
+- Define what counts as billable egress.
+- Include egress in cost of goods sold.
+- Set tiered rates for high-volume customers.
+- Monitor cache hit rates to control egress.
+- Review vendor egress pricing quarterly.
+- Surface usage in customer dashboards.
+- Add alerts for sudden spikes.
+- Align overage pricing with margins.
 ## Related calculators
 - [Bandwidth Cost Calculator](/saas-pricing/bandwidth-cost-calculator/)
+## Related glossary terms
+- [Bandwidth](/glossary/bandwidth/)
+- [CDN](/glossary/cdn/)
+- [Origin Fetch](/glossary/origin-fetch/)
+- [Overage](/glossary/overage/)

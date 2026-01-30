@@ -1,26 +1,33 @@
 ---
 title: "CAC Payback Period"
 description: "How many months of gross profit it takes to recover CAC."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "unit-economics"
 tools: ["cac-payback-period-calculator"]
-glossary: ["cac","gross-margin"]
+glossary: ["cac","gross-margin","arpa"]
 ---
-
 ## Definition
-How many months of gross profit it takes to recover CAC.
+CAC payback period is the number of months of gross profit needed to recover customer acquisition cost.
 ## Why it matters
-Unit economics terms connect pricing decisions to profitability. Clear definitions reduce spreadsheet errors.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
-
-
+It links pricing, margin, and sales efficiency, helping you decide how much to invest in growth.
+## Pricing implications
+Higher margins and higher ARPA shorten payback and allow more aggressive acquisition spending.
+## Measurement tips
+Use gross profit, not revenue, and exclude one-time fees unless they are recurring and predictable.
+## Checklist
+- Use fully loaded CAC (sales + marketing).
+- Use gross profit, not top-line revenue.
+- Separate payback by segment and channel.
+- Account for ramp time to full usage.
+- Monitor payback after pricing changes.
+- Set target payback ranges by market.
+- Validate against cohort retention.
+- Document all assumptions.
+## Examples
+- ,800 CAC /  monthly gross profit = 12 months payback.
 ## Related calculators
 - [Cac Payback Period Calculator](/saas-pricing/cac-payback-period-calculator/)
-
-
 ## Related glossary terms
 - [Cac](/glossary/cac/)
 - [Gross Margin](/glossary/gross-margin/)
+- [Arpa](/glossary/arpa/)
