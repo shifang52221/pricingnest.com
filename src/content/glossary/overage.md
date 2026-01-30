@@ -1,20 +1,33 @@
 ---
 title: "Overage"
 description: "Charges applied when a customer exceeds included usage or plan limits."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "pricing-models"
 tools: ["tiered-usage-pricing-calculator"]
 glossary: ["included-usage"]
 ---
 
 ## Definition
-Charges applied when a customer exceeds included usage or plan limits.
+Overage is the charge applied when a customer exceeds included usage or plan limits.
+
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Overage pricing affects customer trust and retention. Poorly designed overages cause bill shock and churn.
+
+## Pricing implications
+Use tiered overages, alerts, and caps to keep bills predictable. Set overage rates to protect margin on heavy usage.
+
+## Measurement tips
+Track overage revenue and churn following overage events.
+
+## Checklist
+- Define overage units and rates clearly.
+- Publish example bills with overages.
+- Use alerts before overages apply.
+- Offer caps or commitments for heavy users.
+- Monitor churn after overage spikes.
+- Align overage pricing with cost drivers.
+- Keep overage terms consistent across plans.
+- Re-evaluate overage rates quarterly.
 
 
 ## Related calculators

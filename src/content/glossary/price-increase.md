@@ -1,20 +1,33 @@
 ---
 title: "Price Increase"
 description: "Raising prices; evaluate break-even churn and rollout strategy."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "pricing-experiments"
 tools: ["pricing-increase-impact-calculator"]
 glossary: ["churn"]
 ---
 
 ## Definition
-Raising prices; evaluate break-even churn and rollout strategy.
+A price increase is raising prices for a plan or usage unit.
+
 ## Why it matters
-Pricing changes are risky without clear definitions and guardrails. This term shows up in rollout decisions.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Price increases can lift revenue quickly but also increase churn risk if not rolled out carefully.
+
+## Pricing implications
+Use break-even churn to evaluate risk, then decide whether to grandfather existing customers or phase changes.
+
+## Measurement tips
+Track churn, downgrade rates, and support tickets after the increase.
+
+## Checklist
+- Define the target segment and price change amount.
+- Calculate break-even churn before rollout.
+- Decide on grandfathering or phased rollout.
+- Communicate value and timing clearly.
+- Monitor churn and support volume after launch.
+- Offer downgrade paths if needed.
+- Review results and adjust quickly.
+- Document learnings for future increases.
 
 
 ## Related calculators

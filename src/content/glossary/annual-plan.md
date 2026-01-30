@@ -1,19 +1,32 @@
 ---
 title: "Annual Plan"
 description: "A plan billed yearly; often includes discounts and changes cash timing."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "pricing-experiments"
 glossary: ["annual-prepay-discount"]
 ---
 
 ## Definition
-A plan billed yearly; often includes discounts and changes cash timing.
+An annual plan is a subscription billed yearly, often with a discount or prepay incentive.
+
 ## Why it matters
-Pricing changes are risky without clear definitions and guardrails. This term shows up in rollout decisions.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Annual plans improve cash flow and reduce churn risk, but they change revenue recognition timing.
+
+## Pricing implications
+Annual discounts should be balanced against margin and churn benefits. Over-discounting can reduce LTV.
+
+## Measurement tips
+Track annual vs monthly renewal rates and effective monthly price.
+
+## Checklist
+- Set a clear annual discount policy.
+- Show effective monthly rate on the pricing page.
+- Model cash flow benefits vs discount cost.
+- Separate annual plans in retention analysis.
+- Avoid mixing annual revenue with MRR.
+- Document renewal terms and notice periods.
+- Use cohorts to track annual plan retention.
+- Update annual pricing when list prices change.
 
 
 ## Related glossary terms
