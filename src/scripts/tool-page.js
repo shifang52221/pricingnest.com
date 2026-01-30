@@ -438,6 +438,101 @@ function renderOutputs(root, currency, result) {
   }
 }
 
+function formatSignedNumber(value) {
+  if (!Number.isFinite(value)) return "0";
+  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
+  return `${sign}${formatNumber(Math.abs(value))}`;
+}
+
+function renderInsights(root, slug, inputs, result) {
+  const container = qs(root, "[data-insights]");
+  if (!container) return;
+
+  const insights = [];
+  const targetMargin = toNumber(inputs.targetGrossMarginPct);
+  const grossMargin = typeof result.grossMarginPct === "number" ? result.grossMarginPct : null;
+  const monthlyCost = typeof result.monthlyCost === "number" ? result.monthlyCost : null;
+  const recommendedPrice =
+    typeof result.recommendedMonthlyPrice === "number" ? result.recommendedMonthlyPrice : null;
+  const paybackMonths = typeof result.paybackMonths === "number" ? result.paybackMonths : null;
+  const targetPayback = toNumber(inputs.targetPaybackMonths);
+  const ltvToCac = typeof result.ltvToCac === "number" ? result.ltvToCac : null;
+
+  if (grossMargin != null && targetMargin > 0) {
+    const delta = grossMargin - targetMargin;
+    if (delta < -0.5) {
+      insights.push({
+        level: "warn",
+        text: `Gross margin is ${formatNumber(grossMargin)}% which is below target by ${formatSignedNumber(delta)}%.`
+      });
+    } else {
+      insights.push({
+        level: "good",
+        text: `Gross margin is ${formatNumber(grossMargin)}% and meets the target of ${formatNumber(targetMargin)}%.`
+      });
+    }
+  }
+
+  if (monthlyCost != null && recommendedPrice != null && recommendedPrice > 0) {
+    const margin = ((recommendedPrice - monthlyCost) / recommendedPrice) * 100;
+    if (margin < 50) {
+      insights.push({
+        level: "warn",
+        text: `Implied margin is ${formatNumber(margin)}%. Consider a base fee or higher unit price.`
+      });
+    }
+  }
+
+  if (paybackMonths != null && targetPayback > 0) {
+    if (paybackMonths > targetPayback) {
+      insights.push({
+        level: "warn",
+        text: `Payback is ${formatNumber(paybackMonths)} months vs target ${formatNumber(targetPayback)}.`
+      });
+    } else {
+      insights.push({
+        level: "good",
+        text: `Payback is ${formatNumber(paybackMonths)} months and meets the target.`
+      });
+    }
+  }
+
+  if (ltvToCac != null && ltvToCac > 0) {
+    if (ltvToCac < 2) {
+      insights.push({
+        level: "warn",
+        text: `LTV:CAC is ${formatNumber(ltvToCac)}. Improve retention or margin.`
+      });
+    } else if (ltvToCac >= 3) {
+      insights.push({
+        level: "good",
+        text: `LTV:CAC is ${formatNumber(ltvToCac)} which is healthy for most SaaS models.`
+      });
+    } else {
+      insights.push({
+        level: "note",
+        text: `LTV:CAC is ${formatNumber(ltvToCac)}. Consider improving payback efficiency.`
+      });
+    }
+  }
+
+  if (insights.length === 0) {
+    insights.push({
+      level: "note",
+      text: "Adjust inputs to generate margin, payback, or efficiency insights."
+    });
+  }
+
+  container.innerHTML = "";
+  for (const insight of insights) {
+    const item = document.createElement("div");
+    item.className = "insight";
+    item.dataset.level = insight.level;
+    item.textContent = insight.text;
+    container.appendChild(item);
+  }
+}
+
 function formatValue(format, currency, value) {
   if (typeof value !== "number") return value == null ? "" : String(value);
   if (format === "currency") return formatCurrency(currency, value);
@@ -590,6 +685,7 @@ function setupToolPage(root) {
     const currency = inputs.currency || "USD";
     const result = compute(slug, inputs);
     renderOutputs(root, currency, result);
+    renderInsights(root, slug, inputs, result);
     renderCompare(root, slug, inputs);
     renderSensitivity(root, slug, inputs);
     if (shareLinkEl) shareLinkEl.textContent = buildShareUrl(form);
