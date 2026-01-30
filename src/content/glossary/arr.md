@@ -1,26 +1,37 @@
 ---
-title: "ARR (Annual Recurring Revenue)"
-description: "Annualized recurring revenue (often MRR × 12) and when it’s useful."
-updated: "2026-01-20"
+title: "ARR"
+description: "Annual recurring revenue; MRR x 12 run-rate for subscriptions."
+updated: "2026-01-30"
 category: "metrics"
 tools: ["arr-calculator","mrr-calculator"]
 glossary: ["mrr"]
 ---
 
 ## Definition
-Annualized recurring revenue (often MRR × 12) and when it’s useful.
-## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Mixing cash collected with run-rate metrics.
-- Using inconsistent time windows.
-- Not separating churn from expansion.
+ARR (Annual Recurring Revenue) is the annualized run rate of recurring revenue, typically MRR x 12.
 
+## Why it matters
+ARR is a standard SaaS metric for comparing growth over time, but it is not recognized revenue.
+
+## Pricing implications
+Price changes can shift ARR quickly, but you must validate against churn and retention to confirm sustainable impact.
+
+## Measurement tips
+Use normalized MRR and exclude one-time fees.
+
+## Checklist
+- Use consistent MRR definitions.
+- Exclude non-recurring services from ARR.
+- Normalize annual contracts to monthly equivalents.
+- Compare ARR trends by segment.
+- Avoid mixing ARR with recognized revenue.
+- Recompute ARR after pricing changes.
+- Track ARR alongside churn metrics.
+- Document ARR calculation methods.
 
 ## Related calculators
-- [Arr Calculator](/saas-pricing/arr-calculator/)
-- [Mrr Calculator](/saas-pricing/mrr-calculator/)
-
+- [ARR Calculator](/saas-pricing/arr-calculator/)
+- [MRR Calculator](/saas-pricing/mrr-calculator/)
 
 ## Related glossary terms
-- [Mrr](/glossary/mrr/)
+- [MRR](/glossary/mrr/)

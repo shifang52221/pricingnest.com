@@ -1,20 +1,32 @@
 ---
 title: "Effective Monthly Rate"
-description: "Annual prepay price spread over 12 months; used to compare monthly vs annual."
-updated: "2026-01-20"
+description: "Annual price normalized to a monthly equivalent for comparison."
+updated: "2026-01-30"
 category: "pricing-experiments"
 tools: ["annual-discount-calculator"]
 ---
 
 ## Definition
-Annual prepay price spread over 12 months; used to compare monthly vs annual.
-## Why it matters
-Pricing changes are risky without clear definitions and guardrails. This term shows up in rollout decisions.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Effective monthly rate is the annual price normalized to a monthly equivalent.
 
+## Why it matters
+It helps customers compare monthly and annual plans and reduces confusion about discounts.
+
+## Pricing implications
+If the effective monthly rate is too low, you may be over-discounting annual plans.
+
+## Measurement tips
+Show the effective monthly rate on pricing pages and renewal notices.
+
+## Checklist
+- Calculate effective monthly rate for all annual plans.
+- Show effective rate alongside annual price.
+- Compare effective rates across segments.
+- Use effective rates in discount analysis.
+- Update effective rates when list prices change.
+- Avoid hiding effective rates from buyers.
+- Track churn differences by effective rate.
+- Validate calculations with finance.
 
 ## Related calculators
 - [Annual Discount Calculator](/saas-pricing/annual-discount-calculator/)
