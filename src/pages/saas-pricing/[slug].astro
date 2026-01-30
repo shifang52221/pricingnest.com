@@ -23,6 +23,7 @@ const hasAssumptions = Array.isArray(tool.assumptions) && tool.assumptions.lengt
 const hasInputGuidance = Array.isArray(tool.inputGuidance) && tool.inputGuidance.length > 0;
 const hasValidationChecks = Array.isArray(tool.validationChecks) && tool.validationChecks.length > 0;
 const hasCommonMistakes = Array.isArray(tool.commonMistakes) && tool.commonMistakes.length > 0;
+const hasInterpretation = Array.isArray(tool.interpretation) && tool.interpretation.length > 0;
 const hasScenarios = Array.isArray(tool.scenarios) && tool.scenarios.length > 0;
 const hasEdgeCases = Array.isArray(tool.edgeCases) && tool.edgeCases.length > 0;
 
@@ -346,6 +347,7 @@ const guideLinks = (() => {
           {hasInputGuidance ? <a href="#guidance">Modeling tips</a> : null}
           {hasValidationChecks ? <a href="#checks">Validation checks</a> : null}
           {hasCommonMistakes ? <a href="#mistakes">Common mistakes</a> : null}
+          {hasInterpretation ? <a href="#interpretation">Interpretation</a> : null}
           {hasScenarios ? <a href="#scenarios">Scenarios</a> : null}
           {hasEdgeCases ? <a href="#edges">Edge cases</a> : null}
           {hasFaq ? <a href="#faq">FAQ</a> : null}
@@ -460,6 +462,17 @@ const guideLinks = (() => {
             <h2 id="mistakes" style="margin-top: 1.25rem;">Common mistakes</h2>
             <ul class="list">
               {tool.commonMistakes?.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {hasInterpretation ? (
+          <>
+            <h2 id="interpretation" style="margin-top: 1.25rem;">Interpretation</h2>
+            <ul class="list">
+              {tool.interpretation?.map((item) => (
                 <li>{item}</li>
               ))}
             </ul>

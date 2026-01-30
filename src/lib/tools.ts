@@ -43,6 +43,7 @@ export type ToolDefinition = {
   inputGuidance?: string[];
   validationChecks?: string[];
   commonMistakes?: string[];
+  interpretation?: string[];
   scenarios?: ToolScenario[];
   edgeCases?: string[];
   faq?: ToolFaq[];
@@ -172,6 +173,12 @@ export const TOOLS: ToolDefinition[] = [
       "Using only p50 usage and skipping p90 stress tests.",
       "Setting margin targets without including all COGS inputs.",
       "Skipping a base fee when fixed costs are material."
+    ],
+    interpretation: [
+      "Treat the required unit price as your floor, not necessarily your list price.",
+      "If the unit price looks high, shift more revenue to a base platform fee.",
+      "Use p50 and p90 scenarios to decide tier boundaries and overage rates.",
+      "Compare the implied price to competitors to confirm market fit."
     ],
     scenarios: [
       {
@@ -304,6 +311,12 @@ export const TOOLS: ToolDefinition[] = [
       "Omitting support or on-call overhead from fixed costs.",
       "Assuming autoscaling removes the need for baseline capacity."
     ],
+    interpretation: [
+      "Use the recommended monthly price as a baseline plan price for the modeled workload.",
+      "If price per vCPU-hour is uncompetitive, reduce fixed overhead or target margin.",
+      "Compare multiple workloads to justify tiers or minimums.",
+      "Large fixed overhead suggests a base fee plus usage pricing."
+    ],
     scenarios: [
       {
         title: "Small workload",
@@ -412,6 +425,12 @@ export const TOOLS: ToolDefinition[] = [
       "Leaving out vendor APIs or managed services in other costs.",
       "Ignoring support, security, or on-call overhead."
     ],
+    interpretation: [
+      "Use monthly cloud cost as the baseline for margin and runway planning.",
+      "If variable costs dominate, focus optimization on unit costs or usage efficiency.",
+      "If fixed costs dominate, move them into a platform fee or minimum.",
+      "Track this monthly to spot margin drift early."
+    ],
     scenarios: [
       {
         title: "Lean SaaS baseline",
@@ -512,6 +531,12 @@ export const TOOLS: ToolDefinition[] = [
       "Using partial-month data that overstates or understates real MRR trends.",
       "Treating reactivations inconsistently across months."
     ],
+    interpretation: [
+      "Use net new MRR as the primary growth signal for the month.",
+      "If net new MRR is negative, focus on churn and contraction drivers first.",
+      "Compare expansion to churn to understand how upgrades offset losses.",
+      "Track this monthly to spot trend changes early."
+    ],
     scenarios: [
       {
         title: "Early stage SaaS",
@@ -581,6 +606,12 @@ export const TOOLS: ToolDefinition[] = [
       "Annualizing a peak month instead of a representative month.",
       "Mixing booked revenue with run-rate ARR in the same report.",
       "Ignoring currency normalization when comparing ARR over time."
+    ],
+    interpretation: [
+      "Use ARR for consistent run-rate reporting, not cash planning.",
+      "If ARR jumps unexpectedly, validate the underlying MRR inputs.",
+      "Average multiple months when seasonality or usage spikes are common.",
+      "Pair ARR with bookings to see pipeline vs run-rate."
     ],
     scenarios: [
       {
@@ -656,6 +687,12 @@ export const TOOLS: ToolDefinition[] = [
       "Entering annual churn as a monthly percentage.",
       "Ignoring cohort differences when churn varies by segment.",
       "Assuming this model accounts for expansion or new sales."
+    ],
+    interpretation: [
+      "Use monthly churned revenue to size the immediate leakage problem.",
+      "Treat the annual churned revenue as a directional estimate, not a forecast.",
+      "If churn is high, prioritize retention work before pricing changes.",
+      "Segment churn results by plan to find the biggest leaks."
     ],
     scenarios: [
       {
@@ -738,6 +775,12 @@ export const TOOLS: ToolDefinition[] = [
       "Plugging in annual churn as a monthly churn rate.",
       "Ignoring expansion and downgrades in ARPA assumptions.",
       "Assuming churn stays constant across all cohorts."
+    ],
+    interpretation: [
+      "Use LTV as a planning range, not a single point estimate.",
+      "If LTV is extremely high, check churn inputs and cap lifetime.",
+      "Compare LTV to CAC to validate acquisition efficiency.",
+      "Segment LTV by plan to guide packaging decisions."
     ],
     scenarios: [
       {
@@ -822,6 +865,12 @@ export const TOOLS: ToolDefinition[] = [
       "Ignoring usage ramp which extends the payback period.",
       "Mixing annual and monthly ARPA in the same model."
     ],
+    interpretation: [
+      "Use payback months to set acquisition guardrails by segment.",
+      "If payback is too long, improve pricing, margin, or conversion.",
+      "Compare payback to cash runway to avoid overextending.",
+      "Use this alongside LTV to confirm long-term viability."
+    ],
     scenarios: [
       {
         title: "SMB payback",
@@ -903,6 +952,12 @@ export const TOOLS: ToolDefinition[] = [
       "Using gross churn when net churn is more appropriate for the segment.",
       "Setting a payback window that does not match cash flow reality.",
       "Assuming ARPA is steady despite usage ramp or seasonality."
+    ],
+    interpretation: [
+      "Use break-even CAC as a hard ceiling for paid acquisition.",
+      "If break-even CAC is below actual CAC, fix retention or pricing first.",
+      "Use the LTV:CAC ratio to compare segments consistently.",
+      "Shorten payback targets when cash is tight."
     ],
     scenarios: [
       {
@@ -990,6 +1045,12 @@ export const TOOLS: ToolDefinition[] = [
       "Assuming churn is zero for price-sensitive segments.",
       "Forgetting to model grandfathered cohorts separately."
     ],
+    interpretation: [
+      "If expected churn is below break-even, the increase should lift revenue.",
+      "Use multiple scenarios to define safe and aggressive pricing paths.",
+      "Segment by plan size to avoid a one-size-fits-all increase.",
+      "Use this as a first pass before running a controlled experiment."
+    ],
     scenarios: [
       {
         title: "Small price increase",
@@ -1072,6 +1133,12 @@ export const TOOLS: ToolDefinition[] = [
       "Applying the discount to the monthly price instead of the annual total.",
       "Ignoring payment processing fees on large prepay invoices.",
       "Assuming annual discounts always reduce churn."
+    ],
+    interpretation: [
+      "Use effective monthly rate to compare annual vs monthly price clarity.",
+      "If savings are small, consider lowering the discount or bundling features.",
+      "Large discounts should be justified by cash flow or retention gains.",
+      "Align discounts with payback and gross margin targets."
     ],
     scenarios: [
       {
@@ -1159,6 +1226,12 @@ export const TOOLS: ToolDefinition[] = [
       "Using mismatched usage units across models.",
       "Assuming usage is uniform across all seats."
     ],
+    interpretation: [
+      "Use the difference output to decide when hybrid pricing is needed.",
+      "If usage pricing is always cheaper, add minimums or base fees.",
+      "If seat pricing is always cheaper, add overages for heavy usage.",
+      "Test several team sizes to align tiers with real segments."
+    ],
     scenarios: [
       {
         title: "Small team with heavy usage",
@@ -1243,6 +1316,12 @@ export const TOOLS: ToolDefinition[] = [
       "Ignoring free-tier or included usage assumptions.",
       "Forgetting to add fixed overhead or vendor costs.",
       "Treating the output as a final price without market sanity checks."
+    ],
+    interpretation: [
+      "Use the recommended monthly price as a starting point for plan pricing.",
+      "If the per-1,000 call price is high, add a base fee and lower usage rates.",
+      "Compare the implied price to competitor benchmarks before publishing.",
+      "Run p90 call volume to ensure margins survive heavy usage."
     ],
     scenarios: [
       {
@@ -1346,6 +1425,12 @@ export const TOOLS: ToolDefinition[] = [
       "Ignoring support and on-call costs that scale with usage.",
       "Assuming discounted tiers apply to all calls."
     ],
+    interpretation: [
+      "Use cost per call as the floor for usage pricing decisions.",
+      "If vendor costs dominate, consider pass-through pricing or minimums.",
+      "Large fixed overhead suggests a base fee plus usage overages.",
+      "Re-run after cost changes to keep pricing accurate."
+    ],
     scenarios: [
       {
         title: "Infra-only API",
@@ -1439,6 +1524,12 @@ export const TOOLS: ToolDefinition[] = [
       "Forgetting fixed overhead at low usage volumes.",
       "Mixing request costs into GB-month without modeling them.",
       "Using list price storage costs instead of blended rates."
+    ],
+    interpretation: [
+      "Use the recommended price as the variable storage rate.",
+      "Add a base fee when fixed overhead is a big share of cost.",
+      "If costs differ by tier, separate hot and cold storage pricing.",
+      "Use scenarios to pick simple, defensible tier breakpoints."
     ],
     scenarios: [
       {
@@ -1554,6 +1645,12 @@ export const TOOLS: ToolDefinition[] = [
       "Forgetting a base fee to cover fixed costs.",
       "Ignoring bill shock for high-usage customers."
     ],
+    interpretation: [
+      "Use blended overage rate to check if tiers feel reasonable.",
+      "If blended rate drops too fast, reduce discounts or add a base fee.",
+      "Included usage should cover typical customers, not heavy users.",
+      "Use scenarios to decide tier breakpoints and messaging."
+    ],
     scenarios: [
       {
         title: "Starter tier usage",
@@ -1639,6 +1736,12 @@ export const TOOLS: ToolDefinition[] = [
       "Ignoring regional cost differences.",
       "Forgetting free transfer allowances or CDN credits.",
       "Leaving out request fees that are material."
+    ],
+    interpretation: [
+      "Use effective price per GB to set overage rates or a separate line item.",
+      "If prices look high, improve cache hit rates or reduce egress costs.",
+      "Consider regional pricing if costs vary materially.",
+      "Pair bandwidth with storage pricing to avoid double counting."
     ],
     scenarios: [
       {
@@ -1727,6 +1830,12 @@ export const TOOLS: ToolDefinition[] = [
       "Double counting egress costs in storage and bandwidth.",
       "Skipping replication or backup overhead.",
       "Assuming request rates are flat across all customers."
+    ],
+    interpretation: [
+      "Use the recommended price as the all-in storage plan price for the modeled workload.",
+      "If request costs dominate, add a request fee or add-on.",
+      "If storage costs dominate, keep pricing simple with a GB-month rate.",
+      "Compare read-heavy and archive scenarios to decide tier names."
     ],
     scenarios: [
       {
