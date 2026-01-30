@@ -25,6 +25,7 @@ const hasValidationChecks = Array.isArray(tool.validationChecks) && tool.validat
 const hasCommonMistakes = Array.isArray(tool.commonMistakes) && tool.commonMistakes.length > 0;
 const hasInterpretation = Array.isArray(tool.interpretation) && tool.interpretation.length > 0;
 const hasUseCases = Array.isArray(tool.useCases) && tool.useCases.length > 0;
+const hasWalkthroughs = Array.isArray(tool.walkthroughs) && tool.walkthroughs.length > 0;
 const hasScenarios = Array.isArray(tool.scenarios) && tool.scenarios.length > 0;
 const hasEdgeCases = Array.isArray(tool.edgeCases) && tool.edgeCases.length > 0;
 
@@ -350,6 +351,7 @@ const guideLinks = (() => {
           {hasCommonMistakes ? <a href="#mistakes">Common mistakes</a> : null}
           {hasInterpretation ? <a href="#interpretation">Interpretation</a> : null}
           {hasUseCases ? <a href="#use-cases">Use cases</a> : null}
+          {hasWalkthroughs ? <a href="#walkthroughs">Mini walkthroughs</a> : null}
           {hasScenarios ? <a href="#scenarios">Scenarios</a> : null}
           {hasEdgeCases ? <a href="#edges">Edge cases</a> : null}
           {hasFaq ? <a href="#faq">FAQ</a> : null}
@@ -491,6 +493,24 @@ const guideLinks = (() => {
                   <div class="data-value" style="font-size: 0.95rem; font-weight: 500; line-height: 1.5;">
                     {s.detail}
                   </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : null}
+
+        {hasWalkthroughs ? (
+          <>
+            <h2 id="walkthroughs" style="margin-top: 1.25rem;">Mini walkthroughs</h2>
+            <div class="data-grid" style="margin-top: 0.8rem;">
+              {tool.walkthroughs?.map((w) => (
+                <div class="data-card">
+                  <div class="data-label">{w.title}</div>
+                  <ol class="list" style="margin-top: 0.45rem;">
+                    {w.steps.map((step) => (
+                      <li>{step}</li>
+                    ))}
+                  </ol>
                 </div>
               ))}
             </div>

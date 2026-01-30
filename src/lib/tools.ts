@@ -30,6 +30,11 @@ export type ToolScenario = {
   detail: string;
 };
 
+export type ToolWalkthrough = {
+  title: string;
+  steps: string[];
+};
+
 export type ToolDefinition = {
   slug: string;
   title: string;
@@ -45,6 +50,7 @@ export type ToolDefinition = {
   commonMistakes?: string[];
   interpretation?: string[];
   useCases?: ToolScenario[];
+  walkthroughs?: ToolWalkthrough[];
   scenarios?: ToolScenario[];
   edgeCases?: string[];
   faq?: ToolFaq[];
@@ -189,6 +195,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Event analytics",
         detail: "Charge per event or per million events while recovering fixed overhead with a base fee."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Set a margin-safe unit price",
+        steps: [
+          "Enter p50 monthly units and your blended unit cost.",
+          "Add fixed overhead and target gross margin.",
+          "Use required unit price as the pricing floor."
+        ]
+      },
+      {
+        title: "Validate with heavy usage",
+        steps: [
+          "Increase monthly units to a p90 scenario.",
+          "Check if margin holds at scale.",
+          "Adjust base fee or tiering if needed."
+        ]
       }
     ],
     scenarios: [
@@ -338,6 +362,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Estimate pricing for a large customer with steady vCPU and memory demand."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Baseline compute pricing",
+        steps: [
+          "Enter vCPU-hours, memory GB-hours, and unit costs.",
+          "Add fixed overhead and target margin.",
+          "Use recommended price as a plan baseline."
+        ]
+      },
+      {
+        title: "Tier comparison",
+        steps: [
+          "Run a small workload and note effective price per vCPU-hour.",
+          "Run a larger workload with lower unit costs.",
+          "Use the spread to set tier pricing."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Small workload",
@@ -462,6 +504,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Identify which cost bucket is growing fastest and prioritize optimization."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Monthly baseline",
+        steps: [
+          "Enter average monthly compute, storage, and bandwidth costs.",
+          "Add other variable costs and fixed overhead.",
+          "Use monthly cloud cost as your baseline."
+        ]
+      },
+      {
+        title: "Optimization check",
+        steps: [
+          "Reduce one cost bucket by 10-20%.",
+          "Compare variable vs fixed cost changes.",
+          "Prioritize the biggest savings lever."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Lean SaaS baseline",
@@ -578,6 +638,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Track expansion and contraction after packaging or pricing updates."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Monthly rollup",
+        steps: [
+          "Enter starting MRR and all movement inputs.",
+          "Review ending MRR and net new MRR.",
+          "Use growth percent as a trend indicator."
+        ]
+      },
+      {
+        title: "Churn vs expansion",
+        steps: [
+          "Increase churned MRR to stress the model.",
+          "Adjust expansion MRR to see offsets.",
+          "Set targets for net new MRR recovery."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Early stage SaaS",
@@ -662,6 +740,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Forecast sanity check",
         detail: "Compare ARR trends to pipeline bookings to detect gaps."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Convert MRR to ARR",
+        steps: [
+          "Enter a normalized monthly MRR figure.",
+          "Confirm ARR output equals MRR x 12.",
+          "Use ARR for run-rate reporting."
+        ]
+      },
+      {
+        title: "Seasonal smoothing",
+        steps: [
+          "Average MRR across 3 recent months.",
+          "Use the average as the input.",
+          "Compare to last quarter ARR to spot drift."
+        ]
       }
     ],
     scenarios: [
@@ -753,6 +849,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Pricing risk check",
         detail: "Estimate revenue impact if churn rises after a price increase."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Churn leakage estimate",
+        steps: [
+          "Enter current MRR and monthly churn rate.",
+          "Review monthly churned revenue.",
+          "Use annual estimate as directional risk."
+        ]
+      },
+      {
+        title: "Stress test churn",
+        steps: [
+          "Increase churn by 1-2 percentage points.",
+          "Compare annual churned revenue outputs.",
+          "Decide if retention work is urgent."
+        ]
       }
     ],
     scenarios: [
@@ -851,6 +965,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Pricing strategy",
         detail: "Model how ARPA changes from new pricing impact long-term value."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Baseline LTV",
+        steps: [
+          "Enter ARPA, gross margin, and churn rate.",
+          "Review implied lifetime and LTV.",
+          "Use LTV as a planning range."
+        ]
+      },
+      {
+        title: "Sensitivity check",
+        steps: [
+          "Lower churn by 1 point or raise margin.",
+          "Compare LTV changes across scenarios.",
+          "Prioritize levers with the biggest lift."
+        ]
       }
     ],
     scenarios: [
@@ -952,6 +1084,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "See how ARPA changes from pricing experiments affect payback."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Payback baseline",
+        steps: [
+          "Enter CAC, ARPA, and gross margin.",
+          "Review payback months output.",
+          "Compare to your target payback window."
+        ]
+      },
+      {
+        title: "Segment compare",
+        steps: [
+          "Adjust CAC and ARPA for a specific segment.",
+          "Compare payback months across segments.",
+          "Shift spend to shorter payback segments."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "SMB payback",
@@ -1048,6 +1198,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Pricing justification",
         detail: "Validate whether a price increase raises your CAC ceiling."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Break-even CAC",
+        steps: [
+          "Enter ARPA, gross margin, churn, and payback target.",
+          "Review break-even CAC and LTV outputs.",
+          "Use the result as a CAC ceiling."
+        ]
+      },
+      {
+        title: "Tighten payback",
+        steps: [
+          "Shorten the payback target by a few months.",
+          "Compare the reduced CAC ceiling.",
+          "Adjust acquisition spend accordingly."
+        ]
       }
     ],
     scenarios: [
@@ -1152,6 +1320,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Model a smaller affected customer base to evaluate grandfathering."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Small increase test",
+        steps: [
+          "Enter current price and customer count.",
+          "Set a modest price increase and churn assumption.",
+          "Review revenue before vs after."
+        ]
+      },
+      {
+        title: "Grandfathered cohort",
+        steps: [
+          "Reduce customer count to only affected accounts.",
+          "Re-run the increase scenario.",
+          "Compare with the full-base result."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Small price increase",
@@ -1249,6 +1435,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Sales negotiation",
         detail: "Compare discount levels to balance cash flow and margin."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Annual offer setup",
+        steps: [
+          "Enter the monthly list price.",
+          "Set the annual discount percentage.",
+          "Review annual price and savings."
+        ]
+      },
+      {
+        title: "Discount testing",
+        steps: [
+          "Adjust discount by 5-10 points.",
+          "Compare effective monthly rate.",
+          "Choose the lowest discount that converts."
+        ]
       }
     ],
     scenarios: [
@@ -1353,6 +1557,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "See when to add usage overages to seat-based plans."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Compare models",
+        steps: [
+          "Enter seats, seat price, usage, and unit price.",
+          "Review the total cost difference.",
+          "Use the cheaper model as a baseline."
+        ]
+      },
+      {
+        title: "Hybrid trigger",
+        steps: [
+          "Increase usage while keeping seats constant.",
+          "See where usage pricing exceeds seat pricing.",
+          "Add overages or minimums accordingly."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Small team with heavy usage",
@@ -1452,6 +1674,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Volume tiering",
         detail: "Use high-volume inputs to design discounted enterprise tiers."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Plan pricing baseline",
+        steps: [
+          "Enter monthly calls, infra cost, fixed overhead, and margin.",
+          "Review the recommended monthly price.",
+          "Use implied price per 1,000 calls for overages."
+        ]
+      },
+      {
+        title: "Free tier adjustment",
+        steps: [
+          "Reduce calls to billable usage after free tier.",
+          "Recalculate the recommended price.",
+          "Validate margin with p90 volume."
+        ]
       }
     ],
     scenarios: [
@@ -1572,6 +1812,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Benchmark unit cost before setting API pricing tiers."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Cost baseline",
+        steps: [
+          "Enter monthly calls, infra cost, vendor cost, and fixed overhead.",
+          "Review cost per call and per 1,000 calls.",
+          "Use the output as a pricing floor."
+        ]
+      },
+      {
+        title: "Vendor sensitivity",
+        steps: [
+          "Increase vendor cost per 1,000 calls.",
+          "Observe cost per call change.",
+          "Decide if pass-through pricing is needed."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Infra-only API",
@@ -1680,6 +1938,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Archive tier",
         detail: "Price a low-cost archive tier with minimal access costs."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "GB-month pricing",
+        steps: [
+          "Enter average GB stored and cost per GB-month.",
+          "Add fixed overhead and margin target.",
+          "Use the recommended price per GB-month."
+        ]
+      },
+      {
+        title: "Low usage check",
+        steps: [
+          "Set a low average GB value.",
+          "Review the recommended monthly price.",
+          "Decide if a base fee is required."
+        ]
       }
     ],
     scenarios: [
@@ -1812,6 +2088,24 @@ export const TOOLS: ToolDefinition[] = [
         detail: "Check effective unit rates against published tiers."
       }
     ],
+    walkthroughs: [
+      {
+        title: "Tiered bill estimate",
+        steps: [
+          "Enter base fee, included units, and tier prices.",
+          "Input a monthly usage level.",
+          "Review monthly bill and blended rate."
+        ]
+      },
+      {
+        title: "Tier tuning",
+        steps: [
+          "Increase tier 1 units or reduce tier prices.",
+          "Check blended overage rate.",
+          "Adjust until rates match market expectations."
+        ]
+      }
+    ],
     scenarios: [
       {
         title: "Starter tier usage",
@@ -1912,6 +2206,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "High-traffic tiers",
         detail: "Model pricing for customers with large monthly egress."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Egress pricing baseline",
+        steps: [
+          "Enter monthly GB and blended cost per GB.",
+          "Add fixed overhead and margin target.",
+          "Review effective price per GB."
+        ]
+      },
+      {
+        title: "Cost sensitivity",
+        steps: [
+          "Increase cost per GB for a high-cost region.",
+          "Check the recommended price impact.",
+          "Decide if regional pricing is needed."
+        ]
       }
     ],
     scenarios: [
@@ -2016,6 +2328,24 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Backup pricing",
         detail: "Model backup storage with higher retention and lower access."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "All-in storage pricing",
+        steps: [
+          "Enter average GB, request volume, and unit costs.",
+          "Add fixed overhead and target margin.",
+          "Review the recommended monthly price."
+        ]
+      },
+      {
+        title: "Request-heavy workload",
+        steps: [
+          "Increase requests per month to a high-activity scenario.",
+          "Check how recommended price changes.",
+          "Decide if a request fee is needed."
+        ]
       }
     ],
     scenarios: [
