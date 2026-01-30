@@ -504,6 +504,63 @@ button.primary:hover {
   margin-top: 0.9rem;
 }
 
+.compare {
+  margin-top: 1rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+}
+
+.compare-note {
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.compare-grid {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.compare-row {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.compare-values {
+  margin-top: 0.45rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.compare-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+.compare-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-compare-delta][data-delta="up"] {
+  color: #0f766e;
+}
+
+[data-compare-delta][data-delta="down"] {
+  color: #b45309;
+}
+
+[data-compare-delta][data-delta="flat"] {
+  color: var(--muted);
+}
+
 .share-actions {
   margin-top: 0.6rem;
   display: flex;

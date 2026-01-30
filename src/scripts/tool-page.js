@@ -438,6 +438,93 @@ function renderOutputs(root, currency, result) {
   }
 }
 
+function formatValue(format, currency, value) {
+  if (typeof value !== "number") return value == null ? "" : String(value);
+  if (format === "currency") return formatCurrency(currency, value);
+  if (format === "percent") return formatPercent(value);
+  if (format === "number") return formatNumber(value);
+  return String(value);
+}
+
+function getCompareKey(slug) {
+  return `pn_compare_${slug}`;
+}
+
+function loadBaseline(slug) {
+  try {
+    const raw = localStorage.getItem(getCompareKey(slug));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || !parsed.inputs) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function saveBaseline(slug, inputs) {
+  const payload = { savedAt: Date.now(), inputs };
+  try {
+    localStorage.setItem(getCompareKey(slug), JSON.stringify(payload));
+  } catch {
+    return;
+  }
+}
+
+function clearBaseline(slug) {
+  try {
+    localStorage.removeItem(getCompareKey(slug));
+  } catch {
+    return;
+  }
+}
+
+function renderCompare(root, slug, inputs) {
+  const baseline = loadBaseline(slug);
+  const note = qs(root, "[data-compare-note]");
+  if (!baseline || !baseline.inputs) {
+    if (note) note.textContent = "Save a baseline to see deltas for every output.";
+    for (const row of qsa(root, "[data-compare-output]")) {
+      const baseEl = qs(row, "[data-compare-baseline]");
+      const deltaEl = qs(row, "[data-compare-delta]");
+      if (baseEl) baseEl.textContent = "-";
+      if (deltaEl) deltaEl.textContent = "-";
+    }
+    return;
+  }
+
+  if (note) {
+    const stamp = new Date(baseline.savedAt);
+    note.textContent = `Baseline saved ${stamp.toLocaleString()}.`;
+  }
+
+  const baselineResult = compute(slug, baseline.inputs);
+  const currentResult = compute(slug, inputs);
+  const currency = inputs.currency || "USD";
+
+  for (const row of qsa(root, "[data-compare-output]")) {
+    const outputName = row.getAttribute("data-compare-output");
+    const format = row.getAttribute("data-format") ?? "text";
+    const baseEl = qs(row, "[data-compare-baseline]");
+    const deltaEl = qs(row, "[data-compare-delta]");
+    if (!outputName || !baseEl || !deltaEl) continue;
+
+    const baseVal = baselineResult[outputName];
+    const currentVal = currentResult[outputName];
+    baseEl.textContent = formatValue(format, currency, baseVal);
+
+    if (typeof baseVal === "number" && typeof currentVal === "number") {
+      const delta = currentVal - baseVal;
+      const sign = delta > 0 ? "+" : delta < 0 ? "-" : "";
+      deltaEl.textContent = `${sign}${formatValue(format, currency, Math.abs(delta))}`;
+      deltaEl.dataset.delta = delta > 0 ? "up" : delta < 0 ? "down" : "flat";
+    } else {
+      deltaEl.textContent = "-";
+      deltaEl.dataset.delta = "flat";
+    }
+  }
+}
+
 function setupToolPage(root) {
   const slug = root.getAttribute("data-tool");
   if (!slug) return;
@@ -452,12 +539,15 @@ function setupToolPage(root) {
   const resetBtn = qs(root, "button[data-reset]");
   const presetSelect = root.querySelector("select[data-presets-select]");
   const downloadBtn = qs(root, "button[data-download-csv]");
+  const compareSaveBtn = qs(root, "button[data-compare-save]");
+  const compareClearBtn = qs(root, "button[data-compare-clear]");
 
   const recompute = () => {
     const inputs = readInputs(form);
     const currency = inputs.currency || "USD";
     const result = compute(slug, inputs);
     renderOutputs(root, currency, result);
+    renderCompare(root, slug, inputs);
     if (shareLinkEl) shareLinkEl.textContent = buildShareUrl(form);
   };
 
@@ -507,6 +597,27 @@ function setupToolPage(root) {
           copyBtn.textContent = "Copy share link";
         }, 1200);
       }
+    });
+  }
+
+  if (compareSaveBtn instanceof HTMLButtonElement) {
+    compareSaveBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const inputs = readInputs(form);
+      saveBaseline(slug, inputs);
+      renderCompare(root, slug, inputs);
+      compareSaveBtn.textContent = "Baseline saved";
+      window.setTimeout(() => {
+        compareSaveBtn.textContent = "Save baseline";
+      }, 1200);
+    });
+  }
+
+  if (compareClearBtn instanceof HTMLButtonElement) {
+    compareClearBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      clearBaseline(slug);
+      renderCompare(root, slug, readInputs(form));
     });
   }
 }
