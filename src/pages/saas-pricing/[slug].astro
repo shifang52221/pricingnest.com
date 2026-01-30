@@ -261,6 +261,29 @@ const guideLinks = (() => {
             </div>
           ) : null}
 
+          <div class="scenario-controls">
+            <div class="section-head">
+              <h2>Scenarios</h2>
+              <div class="actions">
+                <select data-scenario-input>
+                  {tool.inputs
+                    .filter((input) => input.name !== "currency" && input.type === "number")
+                    .map((input) => (
+                      <option value={input.name}>{input.label}</option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <div class="scenario-buttons">
+              <button type="button" data-scenario="p50">P50 (Base)</button>
+              <button type="button" data-scenario="p90">P90 (+25%)</button>
+              <button type="button" data-scenario="worst">Worst (-25%)</button>
+            </div>
+            <div class="muted scenario-note">
+              Applies to the selected input only; adjust other inputs manually if needed.
+            </div>
+          </div>
+
           <form data-tool-form>
             {tool.inputs.map((input) => (
               <div class="field">

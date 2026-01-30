@@ -327,6 +327,11 @@ function readInputs(form) {
   return inputs;
 }
 
+function formatInputValue(value) {
+  const rounded = Math.round(value * 1000000) / 1000000;
+  return String(rounded);
+}
+
 function setInputsFromQuery(form) {
   const params = new URLSearchParams(window.location.search);
   for (const [key, value] of params.entries()) {
@@ -702,6 +707,8 @@ function setupToolPage(root) {
   const compareClearBtn = qs(root, "button[data-compare-clear]");
   const sensitivityInput = qs(root, "select[data-sensitivity-input]");
   const sensitivityRange = qs(root, "select[data-sensitivity-range]");
+  const scenarioInput = qs(root, "select[data-scenario-input]");
+  const scenarioButtons = qsa(root, "button[data-scenario]");
 
   const recompute = () => {
     const inputs = readInputs(form);
@@ -790,6 +797,25 @@ function setupToolPage(root) {
 
   if (sensitivityRange instanceof HTMLSelectElement) {
     sensitivityRange.addEventListener("change", recompute);
+  }
+
+  if (scenarioInput instanceof HTMLSelectElement && scenarioButtons.length > 0) {
+    for (const btn of scenarioButtons) {
+      if (!(btn instanceof HTMLButtonElement)) continue;
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetName = scenarioInput.value;
+        const el = form.elements.namedItem(targetName);
+        if (!(el instanceof HTMLInputElement)) return;
+        const current = Math.max(0, toNumber(el.value));
+        const scenario = btn.getAttribute("data-scenario");
+        let nextValue = current;
+        if (scenario === "p90") nextValue = current * 1.25;
+        if (scenario === "worst") nextValue = current * 0.75;
+        el.value = formatInputValue(nextValue);
+        recompute();
+      });
+    }
   }
 }
 
