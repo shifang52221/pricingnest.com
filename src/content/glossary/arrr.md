@@ -1,30 +1,29 @@
 ---
 title: "ARRR Funnel"
 description: "Acquisition, Activation, Retention, Revenue, Referral; a lifecycle view for growth and pricing."
-updated: "2026-01-29"
+updated: "2026-01-30"
 category: "metrics"
+glossary: ["activation","retention-curve","arpa","nrr"]
 ---
-
 ## Definition
-ARRR is a funnel-style framework that tracks users from acquisition to activation, retention, revenue, and referral.
-
+ARRR is a lifecycle framework that tracks users through acquisition, activation, retention, revenue, and referral.
 ## Why it matters
-Pricing decisions show up as movement between the stages. A discount might improve acquisition but hurt retention, while
-feature gating can lift revenue yet slow activation. The framework keeps tradeoffs visible.
-
+It makes pricing tradeoffs visible by showing how changes shift conversion between stages.
 ## Pricing implications
-Use ARRR to decide which levers to test first. If activation is weak, packaging and trial length matter more than price
-points. If retention is weak, usage-based billing and value-based tiers often outperform flat discounts.
-
-## Data to track
-Track a single definition for each stage, then measure the conversion rate between each step by cohort.
-
+If activation is weak, packaging and trial length matter more than price. If retention is weak, value-based tiers help.
+## Measurement tips
+Use consistent time windows and define one primary metric for each stage to avoid metric sprawl.
 ## Checklist
-- Define the activation event in one sentence (what action signals first value).
-- Separate trial users from paying users to avoid mixing stage definitions.
-- Track retention by cohort month, not just account age.
-- Split revenue into new, expansion, contraction, and churn.
-- Monitor referral sources separately from paid acquisition.
-- Use consistent time windows (weekly or monthly) across all stages.
-- Flag one metric per stage as the owner KPI to avoid metric sprawl.
-- Tie experiment goals to a specific stage movement (e.g., activation rate).
+- Define each stage in one sentence.
+- Track conversion rates between stages by cohort.
+- Separate new, expansion, and churned revenue.
+- Monitor referral sources separately.
+- Tie experiments to one stage movement.
+- Review stage definitions quarterly.
+- Keep activation and retention metrics aligned.
+- Align ownership for each stage.
+## Related glossary terms
+- [Activation](/glossary/activation/)
+- [Retention Curve](/glossary/retention-curve/)
+- [Arpa](/glossary/arpa/)
+- [Nrr](/glossary/nrr/)

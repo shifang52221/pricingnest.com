@@ -1,30 +1,30 @@
 ---
 title: "Activation"
 description: "The moment a user experiences core value; the hinge point between signup and habit."
-updated: "2026-01-29"
+updated: "2026-01-30"
 category: "metrics"
+glossary: ["time-to-value","arrr","retention-curve"]
 ---
-
 ## Definition
-Activation is the point where a user reaches the first meaningful outcome from your product.
-
+Activation is the moment a user reaches a first meaningful outcome that signals product value.
 ## Why it matters
-Activation is the strongest predictor of retention and upgrade intent. It also influences how you design trials,
-onboarding, and free tiers.
-
+Activation is a leading indicator of retention and upgrade intent, and it shapes trial and onboarding design.
 ## Pricing implications
-If activation takes time or heavy setup, longer trials or guided onboarding can be more effective than discounts. If it
-happens quickly, usage gates and paid upgrades can move earlier in the journey.
-
-## How to measure
-Define one primary activation event and time-to-activation, then measure the share of new users who hit it.
-
+If activation is slow, longer trials or guided setup may outperform discounts. If it is fast, earlier upgrades can work.
+## Measurement tips
+Define one primary activation event, then measure activation rate and time-to-activation by cohort.
 ## Checklist
-- Write the activation event in one line (action + outcome).
+- Write the activation event in one sentence.
 - Measure time-to-activation by cohort and segment.
-- Separate product activation from sales-assisted activation.
-- Identify the top three steps blocking activation.
+- Separate product-led and sales-led activation.
+- Identify the top steps blocking activation.
 - Align trial length with average activation time.
-- Add in-product prompts that drive the activation event.
-- Track activation rate by acquisition channel.
-- Review activation definition quarterly as features evolve.
+- Add prompts that drive the activation event.
+- Track activation by acquisition channel.
+- Review the definition quarterly.
+## Examples
+- First project created and shared with a teammate.
+## Related glossary terms
+- [Time To Value](/glossary/time-to-value/)
+- [ARRR Funnel](/glossary/arrr/)
+- [Retention Curve](/glossary/retention-curve/)

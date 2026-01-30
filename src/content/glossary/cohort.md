@@ -1,29 +1,30 @@
 ---
 title: "Cohort"
 description: "Group of customers sharing a start date or trait; used to measure retention and churn."
-updated: "2026-01-29"
+updated: "2026-01-30"
 category: "metrics"
+glossary: ["cohort-retention","churn-cohort","retention-curve"]
 ---
-
 ## Definition
-A cohort is a group of customers or users that share a common start date or attribute.
-
+A cohort is a group of users or customers that share a common start date or attribute for analysis.
 ## Why it matters
-Cohorts reveal trends hidden in averages, such as improving retention after a packaging change or declining usage after a
-price increase.
-
+Cohort analysis reveals retention and expansion trends that averages can hide.
 ## Pricing implications
-Compare cohorts before and after pricing changes to see if the change improved expansion or worsened churn.
-
+Compare cohorts before and after pricing changes to see if churn or expansion improved.
 ## Common cohort types
-Monthly signup cohorts, plan cohorts, and acquisition-channel cohorts are the most actionable for pricing work.
-
+Signup month, first payment month, plan type, and acquisition channel.
+## Measurement tips
+Keep definitions consistent and separate trial and paid cohorts to avoid mixing behaviors.
 ## Checklist
-- Choose one cohort definition and keep it consistent.
+- Choose one cohort definition and stick to it.
 - Track retention and expansion by cohort month.
-- Separate trial cohorts from paid cohorts.
-- Use cohort curves to evaluate pricing experiments.
-- Highlight cohorts with unusually high churn.
-- Compare cohorts across plans to spot mispricing.
-- Review cohort health before large price increases.
-- Automate cohort reporting to avoid manual errors.
+- Compare cohorts around pricing changes.
+- Highlight cohorts with unusual churn.
+- Use cohort curves for experiments.
+- Separate free and paid cohorts.
+- Automate cohort reporting.
+- Review cohort health before price increases.
+## Related glossary terms
+- [Cohort Retention](/glossary/cohort-retention/)
+- [Churn Cohort](/glossary/churn-cohort/)
+- [Retention Curve](/glossary/retention-curve/)
