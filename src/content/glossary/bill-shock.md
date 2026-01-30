@@ -1,19 +1,32 @@
 ---
 title: "Bill Shock"
 description: "Unexpectedly high invoices in usage pricing; reduces retention and trust."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "pricing-models"
 glossary: ["usage-based-pricing","churn"]
 ---
 
 ## Definition
-Unexpectedly high invoices in usage pricing; reduces retention and trust.
+Bill shock is an unexpectedly high invoice caused by usage-based pricing.
+
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Bill shock reduces trust, increases churn, and drives support costs. Preventing it improves retention and upsell rates.
+
+## Pricing implications
+Use included usage, tiered overages, alerts, and caps to keep bills predictable. If usage is spiky, add guardrails.
+
+## Measurement tips
+Track support tickets and churn following large invoices.
+
+## Checklist
+- Publish example bills on the pricing page.
+- Send alerts before customers exceed thresholds.
+- Offer predictable commitments or caps.
+- Use tiered pricing for heavy usage.
+- Define units clearly and consistently.
+- Review invoices for outliers each billing cycle.
+- Investigate bill shock as a churn driver.
+- Adjust pricing if outliers are frequent.
 
 
 ## Related glossary terms
