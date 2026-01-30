@@ -1,31 +1,32 @@
 ---
 title: "Feature Gating"
 description: "Restricting features by plan; shifts value capture beyond pure usage."
-updated: "2026-01-29"
+updated: "2026-01-30"
 category: "pricing-models"
+glossary: ["tiers","add-on","usage-based-pricing","value-metric","pricing-metric"]
 ---
-
 ## Definition
-Feature gating means limiting specific features to higher tiers or add-ons.
-
+Feature gating limits specific features to higher tiers or add-ons instead of charging purely on usage.
 ## Why it matters
-Gating helps differentiate plans without forcing usage-based pricing. It can raise willingness to pay when features map
-to clear business outcomes.
-
+Gating differentiates plans and captures willingness to pay when features map to clear business outcomes.
 ## Pricing implications
-The strongest gates protect high-value workflows, not minor convenience features. If the gate is too weak, customers
-upgrade for a month and then downgrade.
-
-## Design considerations
-Pair gates with usage limits so customers have a path to upgrade. Overly hard gates can slow activation and reduce trial
-conversion.
-
+Strong gates protect high-value workflows. Weak gates create churn or short-term upgrades with quick downgrades.
+## Design guidelines
+Gate outcomes, not minor conveniences, and pair with usage limits or upgrade paths.
+## Measurement tips
+Track upgrade rate, downgrade rate, and activation impact after introducing a gate.
 ## Checklist
-- Tie each gated feature to a measurable business outcome.
+- Tie each gated feature to a measurable outcome.
 - Avoid gating features required for basic success.
-- Limit the number of gates per tier to keep plans legible.
-- Add preview access so users can see the feature before paying.
-- Offer a usage-based alternative if gating blocks core workflows.
-- Track upgrade rate and downgrade rate after adding a gate.
-- Document the rationale for each gate for internal alignment.
-- Review gates after major feature launches.
+- Limit the number of gates per tier for clarity.
+- Offer previews so users can see gated value.
+- Provide usage-based alternatives when possible.
+- Monitor activation and conversion impact.
+- Document the rationale for each gate.
+- Review gates after major launches.
+## Related glossary terms
+- [Tiers](/glossary/tiers/)
+- [Add-on](/glossary/add-on/)
+- [Usage Based Pricing](/glossary/usage-based-pricing/)
+- [Value Metric](/glossary/value-metric/)
+- [Pricing Metric](/glossary/pricing-metric/)

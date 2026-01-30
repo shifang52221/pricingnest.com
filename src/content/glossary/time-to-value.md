@@ -1,29 +1,31 @@
 ---
 title: "Time to Value"
 description: "How quickly a customer reaches value; affects churn risk and pricing tolerance."
-updated: "2026-01-29"
+updated: "2026-01-30"
 category: "metrics"
+glossary: ["activation","arrr","retention-curve","churn"]
 ---
-
 ## Definition
-Time to value (TTV) is the elapsed time from signup to the first meaningful outcome.
-
+Time to value (TTV) is the elapsed time from signup to the first meaningful outcome that confirms product value.
 ## Why it matters
-Long TTV increases churn risk and reduces willingness to pay. Short TTV allows faster expansion and smoother upgrades.
-
+Shorter TTV increases retention, upsell readiness, and willingness to pay. Longer TTV increases churn risk and sales friction.
 ## Pricing implications
-When TTV is long, customers need more onboarding and may prefer slower pricing ramps. When TTV is short, you can push
-value-based pricing earlier in the lifecycle.
-
+If TTV is long, use longer trials, guided onboarding, or phased ramp pricing. If TTV is short, upgrades can happen earlier.
 ## Measurement tips
-Measure TTV by segment, because enterprise customers may have long onboarding while self-serve users should be fast.
-
+Track median and p90 TTV by segment, and separate self-serve from sales-led cohorts.
 ## Checklist
-- Define the value event you want to measure.
-- Track median TTV by cohort and segment.
-- Identify steps that contribute most to delay.
-- Offer templates or guided setup to shrink TTV.
-- Align trial length with TTV plus a small buffer.
-- Keep early pricing simple to avoid friction.
-- Compare TTV for customers who churn vs. retain.
-- Review TTV after major product changes.
+- Define the activation event in one line.
+- Measure TTV by plan, segment, and channel.
+- Identify the biggest step delays in the activation path.
+- Align trial length with median TTV plus a buffer.
+- Add templates or walkthroughs to shrink TTV.
+- Compare TTV for churned vs retained cohorts.
+- Recompute TTV after major product changes.
+- Document the TTV definition and owners.
+## Examples
+- TTV = time from signup to first dashboard shared with a teammate.
+## Related glossary terms
+- [Activation](/glossary/activation/)
+- [ARRR Funnel](/glossary/arrr/)
+- [Retention Curve](/glossary/retention-curve/)
+- [Churn](/glossary/churn/)
