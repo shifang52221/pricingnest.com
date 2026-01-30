@@ -460,6 +460,32 @@ select:focus {
   letter-spacing: -0.01em;
 }
 
+.sparkline {
+  margin-top: 0.55rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sparkline-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.sparkline-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.9), rgba(59, 130, 246, 0.9));
+  transition: width 220ms ease;
+}
+
+.sparkline-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 button {
   appearance: none;
   border: 1px solid var(--border);

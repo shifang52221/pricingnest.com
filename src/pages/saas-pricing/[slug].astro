@@ -298,6 +298,12 @@ const guideLinks = (() => {
               <div class="output" data-output={out.name} data-format={out.format}>
                 <div class="label">{out.label}</div>
                 <div class="value" data-output-value>-</div>
+                <div class="sparkline" data-sparkline={out.name}>
+                  <div class="sparkline-track">
+                    <div class="sparkline-bar" data-sparkline-bar></div>
+                  </div>
+                  <div class="sparkline-label" data-sparkline-label>-</div>
+                </div>
               </div>
             ))}
           </div>

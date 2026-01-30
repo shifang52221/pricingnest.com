@@ -421,13 +421,20 @@ function buildCsvReport(root, form) {
 }
 
 function renderOutputs(root, currency, result) {
-  for (const row of qsa(root, "[data-output]")) {
+  const outputRows = qsa(root, "[data-output]");
+  const numericOutputs = [];
+
+  for (const row of outputRows) {
     const outputName = row.getAttribute("data-output");
     const format = row.getAttribute("data-format") ?? "text";
     const valueEl = qs(row, "[data-output-value]");
     if (!outputName || !valueEl) continue;
 
     const value = result[outputName];
+    if (typeof value === "number" && Number.isFinite(value)) {
+      numericOutputs.push({ name: outputName, value, format });
+    }
+
     if (typeof value === "number") {
       if (format === "currency") valueEl.textContent = formatCurrency(currency, value);
       else if (format === "percent") valueEl.textContent = formatPercent(value);
@@ -436,12 +443,22 @@ function renderOutputs(root, currency, result) {
       valueEl.textContent = value == null ? "" : String(value);
     }
   }
-}
 
-function formatSignedNumber(value) {
-  if (!Number.isFinite(value)) return "0";
-  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
-  return `${sign}${formatNumber(Math.abs(value))}`;
+  if (numericOutputs.length > 0) {
+    const minValue = Math.min(...numericOutputs.map((o) => o.value));
+    const maxValue = Math.max(...numericOutputs.map((o) => o.value));
+    const span = maxValue - minValue || 1;
+
+    for (const output of numericOutputs) {
+      const row = qs(root, `[data-sparkline=\"${CSS.escape(output.name)}\"]`);
+      if (!row) continue;
+      const bar = qs(row, "[data-sparkline-bar]");
+      const label = qs(row, "[data-sparkline-label]");
+      const pct = ((output.value - minValue) / span) * 100;
+      if (bar) bar.style.width = `${Math.max(6, Math.min(100, pct))}%`;
+      if (label) label.textContent = formatValue(output.format, currency, output.value);
+    }
+  }
 }
 
 function renderInsights(root, slug, inputs, result) {
@@ -539,6 +556,12 @@ function formatValue(format, currency, value) {
   if (format === "percent") return formatPercent(value);
   if (format === "number") return formatNumber(value);
   return String(value);
+}
+
+function formatSignedNumber(value) {
+  if (!Number.isFinite(value)) return "0";
+  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
+  return `${sign}${formatNumber(Math.abs(value))}`;
 }
 
 function getCompareKey(slug) {
