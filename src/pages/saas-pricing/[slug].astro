@@ -341,79 +341,6 @@ const guideLinks = (() => {
             </div>
           </div>
 
-          <div class="compare">
-            <div class="section-head">
-              <h2>Compare</h2>
-              <div class="actions">
-                <button type="button" data-compare-save>Save baseline</button>
-                <button type="button" data-compare-clear>Clear</button>
-              </div>
-            </div>
-            <div class="muted compare-note" data-compare-note>
-              Save a baseline to see deltas for every output.
-            </div>
-            <div class="compare-grid">
-              {tool.outputs.map((out) => (
-                <div class="compare-row" data-compare-output={out.name} data-format={out.format}>
-                  <div class="label">{out.label}</div>
-                  <div class="compare-values">
-                    <div class="compare-value">
-                      <span class="compare-tag">Baseline</span>
-                      <span data-compare-baseline>-</span>
-                    </div>
-                    <div class="compare-value">
-                      <span class="compare-tag">Delta</span>
-                      <span data-compare-delta>-</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div class="sensitivity">
-            <div class="section-head">
-              <h2>Sensitivity</h2>
-              <div class="actions">
-                <select data-sensitivity-input>
-                  {tool.inputs
-                    .filter((input) => input.name !== "currency" && input.type === "number")
-                    .map((input) => (
-                      <option value={input.name}>{input.label}</option>
-                    ))}
-                </select>
-                <select data-sensitivity-range>
-                  <option value="10">+/- 10%</option>
-                  <option value="25">+/- 25%</option>
-                </select>
-              </div>
-            </div>
-            <div class="muted sensitivity-note" data-sensitivity-note>
-              Adjust the input to see how outputs respond to small changes.
-            </div>
-            <div class="sensitivity-grid">
-              {tool.outputs.map((out) => (
-                <div class="sensitivity-row" data-sensitivity-output={out.name} data-format={out.format}>
-                  <div class="label">{out.label}</div>
-                  <div class="sensitivity-values">
-                    <div class="sensitivity-value">
-                      <span class="sensitivity-tag">Low</span>
-                      <span data-sensitivity-low>-</span>
-                    </div>
-                    <div class="sensitivity-value">
-                      <span class="sensitivity-tag">Base</span>
-                      <span data-sensitivity-base>-</span>
-                    </div>
-                    <div class="sensitivity-value">
-                      <span class="sensitivity-tag">High</span>
-                      <span data-sensitivity-high>-</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div class="share">
             <div class="muted" style="font-size: 0.9rem; margin-bottom: 0.35rem;">Share link</div>
             <div class="output" style="padding: 0.75rem;">
@@ -443,6 +370,80 @@ const guideLinks = (() => {
           <AdSlot placement="tool" containerStyle="margin-top: 0.5rem;" />
         </div>
       </aside>
+    </div>
+
+    <div class="grid analysis">
+      <section class="card col6 compare">
+        <div class="section-head">
+          <h2>Compare</h2>
+          <div class="actions">
+            <button type="button" data-compare-save>Save baseline</button>
+            <button type="button" data-compare-clear>Clear</button>
+          </div>
+        </div>
+        <div class="muted compare-note" data-compare-note>
+          Save a baseline to see deltas for every output.
+        </div>
+        <div class="compare-grid">
+          {tool.outputs.map((out) => (
+            <div class="compare-row" data-compare-output={out.name} data-format={out.format}>
+              <div class="label">{out.label}</div>
+              <div class="compare-values">
+                <div class="compare-value">
+                  <span class="compare-tag">Baseline</span>
+                  <span data-compare-baseline>-</span>
+                </div>
+                <div class="compare-value">
+                  <span class="compare-tag">Delta</span>
+                  <span data-compare-delta>-</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section class="card col6 sensitivity">
+        <div class="section-head">
+          <h2>Sensitivity</h2>
+          <div class="actions">
+            <select data-sensitivity-input>
+              {tool.inputs
+                .filter((input) => input.name !== "currency" && input.type === "number")
+                .map((input) => (
+                  <option value={input.name}>{input.label}</option>
+                ))}
+            </select>
+            <select data-sensitivity-range>
+              <option value="10">+/- 10%</option>
+              <option value="25">+/- 25%</option>
+            </select>
+          </div>
+        </div>
+        <div class="muted sensitivity-note" data-sensitivity-note>
+          Adjust the input to see how outputs respond to small changes.
+        </div>
+        <div class="sensitivity-grid">
+          {tool.outputs.map((out) => (
+            <div class="sensitivity-row" data-sensitivity-output={out.name} data-format={out.format}>
+              <div class="label">{out.label}</div>
+              <div class="sensitivity-values">
+                <div class="sensitivity-value">
+                  <span class="sensitivity-tag">Low</span>
+                  <span data-sensitivity-low>-</span>
+                </div>
+                <div class="sensitivity-value">
+                  <span class="sensitivity-tag">Base</span>
+                  <span data-sensitivity-base>-</span>
+                </div>
+                <div class="sensitivity-value">
+                  <span class="sensitivity-tag">High</span>
+                  <span data-sensitivity-high>-</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
 
     <div class="grid" style="margin-top: 1rem;">

@@ -550,9 +550,9 @@ button.primary:hover {
 }
 
 .compare {
-  margin-top: 1rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--border);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .insights {
@@ -644,9 +644,9 @@ button.primary:hover {
 }
 
 .sensitivity {
-  margin-top: 1rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--border);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .sensitivity-note {
