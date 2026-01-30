@@ -24,6 +24,7 @@ const hasInputGuidance = Array.isArray(tool.inputGuidance) && tool.inputGuidance
 const hasValidationChecks = Array.isArray(tool.validationChecks) && tool.validationChecks.length > 0;
 const hasCommonMistakes = Array.isArray(tool.commonMistakes) && tool.commonMistakes.length > 0;
 const hasInterpretation = Array.isArray(tool.interpretation) && tool.interpretation.length > 0;
+const hasUseCases = Array.isArray(tool.useCases) && tool.useCases.length > 0;
 const hasScenarios = Array.isArray(tool.scenarios) && tool.scenarios.length > 0;
 const hasEdgeCases = Array.isArray(tool.edgeCases) && tool.edgeCases.length > 0;
 
@@ -348,6 +349,7 @@ const guideLinks = (() => {
           {hasValidationChecks ? <a href="#checks">Validation checks</a> : null}
           {hasCommonMistakes ? <a href="#mistakes">Common mistakes</a> : null}
           {hasInterpretation ? <a href="#interpretation">Interpretation</a> : null}
+          {hasUseCases ? <a href="#use-cases">Use cases</a> : null}
           {hasScenarios ? <a href="#scenarios">Scenarios</a> : null}
           {hasEdgeCases ? <a href="#edges">Edge cases</a> : null}
           {hasFaq ? <a href="#faq">FAQ</a> : null}
@@ -476,6 +478,22 @@ const guideLinks = (() => {
                 <li>{item}</li>
               ))}
             </ul>
+          </>
+        ) : null}
+
+        {hasUseCases ? (
+          <>
+            <h2 id="use-cases" style="margin-top: 1.25rem;">Use cases</h2>
+            <div class="data-grid" style="margin-top: 0.8rem;">
+              {tool.useCases?.map((s) => (
+                <div class="data-card">
+                  <div class="data-label">{s.title}</div>
+                  <div class="data-value" style="font-size: 0.95rem; font-weight: 500; line-height: 1.5;">
+                    {s.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
           </>
         ) : null}
 

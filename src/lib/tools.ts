@@ -44,6 +44,7 @@ export type ToolDefinition = {
   validationChecks?: string[];
   commonMistakes?: string[];
   interpretation?: string[];
+  useCases?: ToolScenario[];
   scenarios?: ToolScenario[];
   edgeCases?: string[];
   faq?: ToolFaq[];
@@ -179,6 +180,16 @@ export const TOOLS: ToolDefinition[] = [
       "If the unit price looks high, shift more revenue to a base platform fee.",
       "Use p50 and p90 scenarios to decide tier boundaries and overage rates.",
       "Compare the implied price to competitors to confirm market fit."
+    ],
+    useCases: [
+      {
+        title: "API metering",
+        detail: "Price per call or per 1,000 calls and validate the margin with blended unit costs."
+      },
+      {
+        title: "Event analytics",
+        detail: "Charge per event or per million events while recovering fixed overhead with a base fee."
+      }
     ],
     scenarios: [
       {
@@ -317,6 +328,16 @@ export const TOOLS: ToolDefinition[] = [
       "Compare multiple workloads to justify tiers or minimums.",
       "Large fixed overhead suggests a base fee plus usage pricing."
     ],
+    useCases: [
+      {
+        title: "Compute-heavy SaaS",
+        detail: "Model a core plan where compute dominates COGS and set a margin-safe price."
+      },
+      {
+        title: "Enterprise workload",
+        detail: "Estimate pricing for a large customer with steady vCPU and memory demand."
+      }
+    ],
     scenarios: [
       {
         title: "Small workload",
@@ -431,6 +452,16 @@ export const TOOLS: ToolDefinition[] = [
       "If fixed costs dominate, move them into a platform fee or minimum.",
       "Track this monthly to spot margin drift early."
     ],
+    useCases: [
+      {
+        title: "All-in cost baseline",
+        detail: "Sum compute, storage, and bandwidth to set a realistic gross margin target."
+      },
+      {
+        title: "Cost spike diagnosis",
+        detail: "Identify which cost bucket is growing fastest and prioritize optimization."
+      }
+    ],
     scenarios: [
       {
         title: "Lean SaaS baseline",
@@ -537,6 +568,16 @@ export const TOOLS: ToolDefinition[] = [
       "Compare expansion to churn to understand how upgrades offset losses.",
       "Track this monthly to spot trend changes early."
     ],
+    useCases: [
+      {
+        title: "Board reporting",
+        detail: "Summarize growth using ending MRR and net new MRR each month."
+      },
+      {
+        title: "Pricing change monitoring",
+        detail: "Track expansion and contraction after packaging or pricing updates."
+      }
+    ],
     scenarios: [
       {
         title: "Early stage SaaS",
@@ -612,6 +653,16 @@ export const TOOLS: ToolDefinition[] = [
       "If ARR jumps unexpectedly, validate the underlying MRR inputs.",
       "Average multiple months when seasonality or usage spikes are common.",
       "Pair ARR with bookings to see pipeline vs run-rate."
+    ],
+    useCases: [
+      {
+        title: "Run-rate reporting",
+        detail: "Convert stable MRR to ARR for consistent investor updates."
+      },
+      {
+        title: "Forecast sanity check",
+        detail: "Compare ARR trends to pipeline bookings to detect gaps."
+      }
     ],
     scenarios: [
       {
@@ -693,6 +744,16 @@ export const TOOLS: ToolDefinition[] = [
       "Treat the annual churned revenue as a directional estimate, not a forecast.",
       "If churn is high, prioritize retention work before pricing changes.",
       "Segment churn results by plan to find the biggest leaks."
+    ],
+    useCases: [
+      {
+        title: "Retention prioritization",
+        detail: "Quantify the revenue at risk to justify retention initiatives."
+      },
+      {
+        title: "Pricing risk check",
+        detail: "Estimate revenue impact if churn rises after a price increase."
+      }
     ],
     scenarios: [
       {
@@ -781,6 +842,16 @@ export const TOOLS: ToolDefinition[] = [
       "If LTV is extremely high, check churn inputs and cap lifetime.",
       "Compare LTV to CAC to validate acquisition efficiency.",
       "Segment LTV by plan to guide packaging decisions."
+    ],
+    useCases: [
+      {
+        title: "Marketing ROI",
+        detail: "Compare LTV to CAC to decide how much you can spend to acquire users."
+      },
+      {
+        title: "Pricing strategy",
+        detail: "Model how ARPA changes from new pricing impact long-term value."
+      }
     ],
     scenarios: [
       {
@@ -871,6 +942,16 @@ export const TOOLS: ToolDefinition[] = [
       "Compare payback to cash runway to avoid overextending.",
       "Use this alongside LTV to confirm long-term viability."
     ],
+    useCases: [
+      {
+        title: "Channel evaluation",
+        detail: "Compare payback across acquisition channels to prioritize spend."
+      },
+      {
+        title: "Pricing impact",
+        detail: "See how ARPA changes from pricing experiments affect payback."
+      }
+    ],
     scenarios: [
       {
         title: "SMB payback",
@@ -958,6 +1039,16 @@ export const TOOLS: ToolDefinition[] = [
       "If break-even CAC is below actual CAC, fix retention or pricing first.",
       "Use the LTV:CAC ratio to compare segments consistently.",
       "Shorten payback targets when cash is tight."
+    ],
+    useCases: [
+      {
+        title: "Spend limits",
+        detail: "Set maximum CAC targets for each segment before scaling spend."
+      },
+      {
+        title: "Pricing justification",
+        detail: "Validate whether a price increase raises your CAC ceiling."
+      }
     ],
     scenarios: [
       {
@@ -1051,6 +1142,16 @@ export const TOOLS: ToolDefinition[] = [
       "Segment by plan size to avoid a one-size-fits-all increase.",
       "Use this as a first pass before running a controlled experiment."
     ],
+    useCases: [
+      {
+        title: "Price hike planning",
+        detail: "Estimate revenue lift and churn risk before announcing increases."
+      },
+      {
+        title: "Grandfathering decision",
+        detail: "Model a smaller affected customer base to evaluate grandfathering."
+      }
+    ],
     scenarios: [
       {
         title: "Small price increase",
@@ -1139,6 +1240,16 @@ export const TOOLS: ToolDefinition[] = [
       "If savings are small, consider lowering the discount or bundling features.",
       "Large discounts should be justified by cash flow or retention gains.",
       "Align discounts with payback and gross margin targets."
+    ],
+    useCases: [
+      {
+        title: "Annual plan design",
+        detail: "Convert monthly list price into an annual prepay offer."
+      },
+      {
+        title: "Sales negotiation",
+        detail: "Compare discount levels to balance cash flow and margin."
+      }
     ],
     scenarios: [
       {
@@ -1232,6 +1343,16 @@ export const TOOLS: ToolDefinition[] = [
       "If seat pricing is always cheaper, add overages for heavy usage.",
       "Test several team sizes to align tiers with real segments."
     ],
+    useCases: [
+      {
+        title: "Seat vs usage decision",
+        detail: "Compare models before launching a new pricing page."
+      },
+      {
+        title: "Hybrid pricing design",
+        detail: "See when to add usage overages to seat-based plans."
+      }
+    ],
     scenarios: [
       {
         title: "Small team with heavy usage",
@@ -1322,6 +1443,16 @@ export const TOOLS: ToolDefinition[] = [
       "If the per-1,000 call price is high, add a base fee and lower usage rates.",
       "Compare the implied price to competitor benchmarks before publishing.",
       "Run p90 call volume to ensure margins survive heavy usage."
+    ],
+    useCases: [
+      {
+        title: "API plan launch",
+        detail: "Set an initial API tier price from usage and cost assumptions."
+      },
+      {
+        title: "Volume tiering",
+        detail: "Use high-volume inputs to design discounted enterprise tiers."
+      }
     ],
     scenarios: [
       {
@@ -1431,6 +1562,16 @@ export const TOOLS: ToolDefinition[] = [
       "Large fixed overhead suggests a base fee plus usage overages.",
       "Re-run after cost changes to keep pricing accurate."
     ],
+    useCases: [
+      {
+        title: "Vendor pass-through",
+        detail: "Quantify vendor API costs to decide if they need a separate line item."
+      },
+      {
+        title: "Cost audit",
+        detail: "Benchmark unit cost before setting API pricing tiers."
+      }
+    ],
     scenarios: [
       {
         title: "Infra-only API",
@@ -1530,6 +1671,16 @@ export const TOOLS: ToolDefinition[] = [
       "Add a base fee when fixed overhead is a big share of cost.",
       "If costs differ by tier, separate hot and cold storage pricing.",
       "Use scenarios to pick simple, defensible tier breakpoints."
+    ],
+    useCases: [
+      {
+        title: "Storage add-on",
+        detail: "Set a per GB-month rate for storage capacity add-ons."
+      },
+      {
+        title: "Archive tier",
+        detail: "Price a low-cost archive tier with minimal access costs."
+      }
     ],
     scenarios: [
       {
@@ -1651,6 +1802,16 @@ export const TOOLS: ToolDefinition[] = [
       "Included usage should cover typical customers, not heavy users.",
       "Use scenarios to decide tier breakpoints and messaging."
     ],
+    useCases: [
+      {
+        title: "Tiered overages",
+        detail: "Estimate bills for customers who exceed included usage."
+      },
+      {
+        title: "Pricing page validation",
+        detail: "Check effective unit rates against published tiers."
+      }
+    ],
     scenarios: [
       {
         title: "Starter tier usage",
@@ -1742,6 +1903,16 @@ export const TOOLS: ToolDefinition[] = [
       "If prices look high, improve cache hit rates or reduce egress costs.",
       "Consider regional pricing if costs vary materially.",
       "Pair bandwidth with storage pricing to avoid double counting."
+    ],
+    useCases: [
+      {
+        title: "CDN pricing",
+        detail: "Estimate margin-safe bandwidth pricing for content delivery."
+      },
+      {
+        title: "High-traffic tiers",
+        detail: "Model pricing for customers with large monthly egress."
+      }
     ],
     scenarios: [
       {
@@ -1836,6 +2007,16 @@ export const TOOLS: ToolDefinition[] = [
       "If request costs dominate, add a request fee or add-on.",
       "If storage costs dominate, keep pricing simple with a GB-month rate.",
       "Compare read-heavy and archive scenarios to decide tier names."
+    ],
+    useCases: [
+      {
+        title: "File storage product",
+        detail: "Combine GB-month and request costs to price a storage plan."
+      },
+      {
+        title: "Backup pricing",
+        detail: "Model backup storage with higher retention and lower access."
+      }
     ],
     scenarios: [
       {
