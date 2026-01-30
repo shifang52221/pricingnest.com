@@ -1,23 +1,35 @@
 ---
 title: "Price per GB-Month (What It Means + Examples)"
 description: "How GB-month pricing works, how to explain it on a pricing page, and example workloads."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["storage"]
 tools: ["price-per-gb-month-calculator","storage-cost-calculator"]
 glossary: ["gb-month","storage-costs","cogs"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Explain GB-month in one sentence with a numeric example.
+- Show how averages work across the month.
+- Include storage and request costs separately when needed.
+- Publish sample bills for 100 GB, 1 TB, and 10 TB.
+- Use a base fee if fixed overhead is meaningful.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
-2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+1. Define GB-month and explain how daily storage averages roll up to monthly usage.
+2. Estimate blended cost per GB-month using your actual storage mix.
+3. Add fixed overhead and choose a target gross margin.
+4. Set a base fee or included storage to protect margin at low usage.
+5. Validate pricing with CSV exports and example bills.
+
+## Example workloads
+- **100 GB average**: starter tier with a small base fee.
+- **1 TB average**: mid-tier storage with volume discount.
+- **10 TB average**: enterprise tier with negotiated pricing.
+
+## Common mistakes
+- Using peak storage instead of monthly average.
+- Hiding request pricing when it is material.
+- Leaving out replication or backup overhead.
 
 
 ## Tools to use

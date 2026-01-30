@@ -1,23 +1,35 @@
 ---
 title: "LTV:CAC Benchmarks (How to Interpret the Ratio)"
 description: "How to interpret LTV:CAC, why it breaks, and what to adjust in your assumptions."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["saas-metrics"]
 tools: ["ltv-calculator","break-even-cac-calculator","cac-payback-period-calculator"]
 glossary: ["ltv","cac","cac-payback","churn"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Use cohort-based churn, not a blended average.
+- Separate gross vs net churn in your model.
+- Align ARPA and margin to the same period.
+- Compare LTV:CAC with payback months, not alone.
+- Segment by plan or channel if ratios vary widely.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
-2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+1. Calculate LTV from ARPA, gross margin, and churn.
+2. Compare LTV to CAC for the same segment and channel.
+3. Validate payback period and cash flow constraints.
+4. Adjust assumptions if churn or ARPA is unstable.
+5. Review the ratio quarterly as cohorts mature.
+
+## Example benchmarks
+- **<1x**: unsustainable unless churn improves fast.
+- **2-3x**: common target range for SaaS.
+- **>4x**: often indicates under-investment in growth or overly conservative churn assumptions.
+
+## Common mistakes
+- Mixing net churn with gross margin assumptions.
+- Using sales-led CAC with self-serve ARPA.
+- Ignoring ramp time or implementation delays.
 
 
 ## Tools to use
