@@ -1,25 +1,27 @@
 ---
-title: "Pricing Tiers"
-description: "Multiple pricing levels or volume bands used to simplify and reduce bill shock."
-updated: "2026-01-20"
+title: "Tiers"
+description: "Pricing levels with different limits or features; used to segment customers."
+updated: "2026-01-30"
 category: "pricing-models"
-tools: ["tiered-usage-pricing-calculator"]
-glossary: ["overage"]
+glossary: ["feature-gating","included-usage"]
 ---
-
 ## Definition
-Multiple pricing levels or volume bands used to simplify and reduce bill shock.
+Tiers are pricing levels that bundle features or usage limits to segment customers.
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
-
-
-## Related calculators
-- [Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/)
-
-
+Tiers guide upgrades and align pricing with value. Poor tiering causes bill shock or underpricing.
+## Pricing implications
+Use tier breakpoints based on usage distribution (p50, p75, p90) and value differentiation.
+## Measurement tips
+Track upgrade, downgrade, and churn rates by tier.
+## Checklist
+- Define clear tier differentiation.
+- Use usage data to set tier breakpoints.
+- Publish example bills per tier.
+- Avoid too many tiers without clear value.
+- Track migration between tiers.
+- Review tiers after pricing changes.
+- Align tiers with sales packaging.
+- Update tiers quarterly.
 ## Related glossary terms
-- [Overage](/glossary/overage/)
+- [Feature Gating](/glossary/feature-gating/)
+- [Included Usage](/glossary/included-usage/)

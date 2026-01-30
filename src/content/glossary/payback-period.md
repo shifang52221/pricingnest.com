@@ -1,26 +1,30 @@
 ---
 title: "Payback Period"
-description: "Time required to recover an investment, often CAC payback in SaaS."
-updated: "2026-01-20"
+description: "Time required to recover CAC from gross profit; key unit economics metric."
+updated: "2026-01-30"
 category: "unit-economics"
 tools: ["cac-payback-period-calculator"]
-glossary: ["cac-payback","cac"]
+glossary: ["cac","ltv"]
 ---
-
 ## Definition
-Time required to recover an investment, often CAC payback in SaaS.
+Payback period is the time required to recover CAC from gross profit.
 ## Why it matters
-Unit economics terms connect pricing decisions to profitability. Clear definitions reduce spreadsheet errors.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
-
-
+Payback shows how quickly you recover acquisition spend and how much cash growth requires.
+## Pricing implications
+If payback is too long, pricing may need to increase or CAC must decrease.
+## Measurement tips
+Use contribution margin when variable support costs are significant.
+## Checklist
+- Calculate payback by segment and channel.
+- Use consistent ARPA and margin assumptions.
+- Compare payback to cash runway.
+- Track payback after pricing changes.
+- Separate payback from LTV for clarity.
+- Avoid mixing one-time fees into ARPA.
+- Review payback targets quarterly.
+- Validate payback with finance data.
 ## Related calculators
-- [Cac Payback Period Calculator](/saas-pricing/cac-payback-period-calculator/)
-
-
+- [CAC Payback Period Calculator](/saas-pricing/cac-payback-period-calculator/)
 ## Related glossary terms
-- [Cac Payback](/glossary/cac-payback/)
-- [Cac](/glossary/cac/)
+- [CAC](/glossary/cac/)
+- [LTV](/glossary/ltv/)

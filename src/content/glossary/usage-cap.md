@@ -1,21 +1,27 @@
 ---
 title: "Usage Cap"
-description: "A maximum usage limit (hard or soft) used to prevent runaway costs and bill shock."
-updated: "2026-01-20"
+description: "A maximum usage limit; prevents extreme bills and protects margins."
+updated: "2026-01-30"
 category: "pricing-models"
-glossary: ["bill-shock","usage-based-pricing"]
+glossary: ["usage-based-pricing","bill-shock"]
 ---
-
 ## Definition
-A maximum usage limit (hard or soft) used to prevent runaway costs and bill shock.
+A usage cap is a maximum usage limit that prevents bills from exceeding a set threshold.
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
-
-
+Usage caps reduce bill shock and protect margins from extreme usage spikes.
+## Pricing implications
+Caps can improve trust but reduce upside revenue. Use them carefully and pair with commitments.
+## Measurement tips
+Track how often caps are hit and the revenue impact.
+## Checklist
+- Define cap thresholds per plan.
+- Communicate caps clearly on pricing pages.
+- Use alerts before caps are reached.
+- Offer upgrade paths for higher usage.
+- Monitor churn and support tickets after cap events.
+- Avoid hidden caps.
+- Review cap thresholds quarterly.
+- Align caps with cost drivers.
 ## Related glossary terms
-- [Bill Shock](/glossary/bill-shock/)
 - [Usage Based Pricing](/glossary/usage-based-pricing/)
+- [Bill Shock](/glossary/bill-shock/)

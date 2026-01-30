@@ -1,25 +1,27 @@
 ---
 title: "Platform Fee"
-description: "Base recurring fee that covers baseline value and overhead before usage charges."
-updated: "2026-01-20"
+description: "A base fee charged regardless of usage; recovers fixed costs."
+updated: "2026-01-30"
 category: "pricing-models"
-tools: ["tiered-usage-pricing-calculator"]
-glossary: ["included-usage"]
+glossary: ["fixed-cost","included-usage"]
 ---
-
 ## Definition
-Base recurring fee that covers baseline value and overhead before usage charges.
+A platform fee is a base fee charged regardless of usage, often covering fixed overhead.
 ## Why it matters
-Clear terminology helps you communicate pricing and assumptions across your team.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
-
-
-## Related calculators
-- [Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/)
-
-
+Platform fees stabilize revenue and reduce margin risk at low usage levels.
+## Pricing implications
+Use platform fees when fixed costs are significant. Combine with usage pricing for scale.
+## Measurement tips
+Track attachment rate and churn for plans with platform fees.
+## Checklist
+- Set platform fees based on fixed cost recovery.
+- Communicate the fee clearly on pricing pages.
+- Pair platform fees with included usage.
+- Review fees after cost changes.
+- Avoid hidden platform fees.
+- Use platform fees to reduce bill shock.
+- Track churn impact by segment.
+- Align fees with contract terms.
 ## Related glossary terms
+- [Fixed Cost](/glossary/fixed-cost/)
 - [Included Usage](/glossary/included-usage/)
