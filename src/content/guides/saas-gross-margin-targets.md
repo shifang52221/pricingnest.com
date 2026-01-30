@@ -1,23 +1,35 @@
 ---
 title: "SaaS Gross Margin Targets (How to Choose a Range)"
 description: "A practical way to pick a gross margin target and avoid common modeling mistakes."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["gross-margin","unit-economics"]
 tools: ["usage-based-pricing-calculator","compute-cost-estimator","bandwidth-cost-calculator","storage-cost-calculator","monthly-cloud-cost-estimator","api-pricing-calculator"]
 glossary: ["gross-margin","cogs","unit-economics"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Use a target range, not a single number.
+- Segment margin targets by product line and customer size.
+- Include third-party pass-through costs in COGS.
+- Validate margin targets against competitors.
+- Refresh targets quarterly.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
-2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+1. Calculate blended unit cost from infra and vendor costs.
+2. Add fixed overhead to understand all-in cost.
+3. Choose a target gross margin range (for example 70-90%).
+4. Validate against competitive pricing and value delivered.
+5. Adjust pricing tiers to keep p90 usage within the target range.
+
+## Example targets
+- **Self-serve SaaS**: 75-85% gross margin.
+- **API products**: 70-85% depending on pass-through costs.
+- **Infra-heavy products**: 60-75% when costs are high.
+
+## Common mistakes
+- Picking a target without cost data.
+- Using a single margin target across very different products.
+- Ignoring how gross margin changes at high usage.
 
 
 ## Tools to use

@@ -1,23 +1,37 @@
 ---
 title: "Unit Economics Model Template (What to Include)"
 description: "A checklist for building a lightweight unit economics model you can keep accurate as costs change."
-updated: "2026-01-20"
+updated: "2026-01-29"
 tags: ["unit-economics"]
 tools: ["ltv-calculator","cac-payback-period-calculator","break-even-cac-calculator"]
 glossary: ["unit-economics","gross-margin","cogs","cac","ltv"]
 ---
 
 ## Quick checklist
-- Define the unit and write down assumptions.
-- Model at least two scenarios (p50 vs p90).
-- Use a minimum/platform fee if fixed overhead is meaningful.
-- Publish examples to reduce bill shock and support load.
+- Define your unit of value (seat, call, GB-month).
+- Separate variable costs from fixed overhead.
+- Include churn, ARPA, and CAC in the model.
+- Use at least two scenarios (p50 vs p90).
+- Revisit the model quarterly.
+
 ## Step-by-step
-1. Estimate your blended unit costs (infra + vendor pass-through).
-2. Add fixed overhead you need to recover.
-3. Pick a target gross margin range.
-4. Choose tiers and included usage based on typical and heavy customers.
-5. Validate outputs with a CSV export and shareable links.
+1. Define the unit and write down assumptions.
+2. Estimate blended unit costs (infra + vendor pass-through).
+3. Add fixed overhead you need to recover.
+4. Calculate gross margin and contribution margin.
+5. Add CAC and payback targets.
+6. Validate outputs with real billing data.
+
+## Example model sections
+- **Revenue**: ARPA, plan mix, expansion.
+- **Costs**: infra, vendor fees, support, onboarding.
+- **Retention**: churn, expansion, net retention.
+- **Acquisition**: CAC, payback, channel mix.
+
+## Common mistakes
+- Ignoring support costs that scale with customer count.
+- Mixing gross and net churn assumptions.
+- Failing to update cost inputs after vendor pricing changes.
 
 
 ## Tools to use
