@@ -555,6 +555,17 @@ button.primary:hover {
   border-top: none;
 }
 
+.compare .section-head,
+.sensitivity .section-head {
+  padding-top: 0.2rem;
+}
+
+.compare .actions,
+.sensitivity .actions {
+  align-items: center;
+  padding-top: 0.1rem;
+}
+
 .insights {
   margin-top: 1rem;
   padding-top: 0.4rem;
