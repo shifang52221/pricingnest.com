@@ -1,19 +1,33 @@
 ---
 title: "Blended Cost"
 description: "Weighted average unit cost across regions, tiers, and discounts."
-updated: "2026-01-20"
+updated: "2026-01-30"
 category: "unit-economics"
 glossary: ["unit-cost"]
 ---
 
 ## Definition
-Weighted average unit cost across regions, tiers, and discounts.
+Blended cost is the weighted average unit cost across regions, tiers, and discounts.
+
 ## Why it matters
-Unit economics terms connect pricing decisions to profitability. Clear definitions reduce spreadsheet errors.
-## Common pitfalls
-- Using an ambiguous definition across teams.
-- Not writing assumptions down.
-- Optimizing for simplicity but losing correctness.
+Blended costs make pricing models realistic. Using a single list price or peak cost can distort margins and payback.
+
+## Pricing implications
+If your blended cost is higher than expected, per-unit pricing or margin targets may need adjustment. Blended cost is the
+baseline for usage-based pricing and gross margin modeling.
+
+## Measurement tips
+Use recent billing data and weight by usage volume across regions and plans.
+
+## Checklist
+- Use weighted averages, not simple averages.
+- Include discounts and committed-use rates.
+- Separate variable and fixed costs.
+- Update blended cost monthly or quarterly.
+- Document assumptions and data sources.
+- Keep unit definitions consistent across models.
+- Validate against actual invoices.
+- Use blended cost for margin planning and tier design.
 
 
 ## Related glossary terms
