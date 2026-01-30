@@ -561,6 +561,51 @@ button.primary:hover {
   color: var(--muted);
 }
 
+.sensitivity {
+  margin-top: 1rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+}
+
+.sensitivity-note {
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.sensitivity-grid {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sensitivity-row {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.sensitivity-values {
+  margin-top: 0.45rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sensitivity-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+.sensitivity-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .share-actions {
   margin-top: 0.6rem;
   display: flex;

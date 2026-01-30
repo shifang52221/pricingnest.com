@@ -525,6 +525,47 @@ function renderCompare(root, slug, inputs) {
   }
 }
 
+function renderSensitivity(root, slug, inputs) {
+  const inputSelect = qs(root, "select[data-sensitivity-input]");
+  const rangeSelect = qs(root, "select[data-sensitivity-range]");
+  if (!(inputSelect instanceof HTMLSelectElement) || !(rangeSelect instanceof HTMLSelectElement)) return;
+
+  const targetName = inputSelect.value;
+  const deltaPct = Math.max(0, toNumber(rangeSelect.value));
+  const delta = deltaPct / 100;
+  const baseValueRaw = inputs[targetName];
+  const baseValue = toNumber(baseValueRaw);
+  const lowValue = Math.max(0, baseValue * (1 - delta));
+  const highValue = Math.max(0, baseValue * (1 + delta));
+
+  const lowInputs = { ...inputs, [targetName]: String(lowValue) };
+  const highInputs = { ...inputs, [targetName]: String(highValue) };
+
+  const currency = inputs.currency || "USD";
+  const baseResult = compute(slug, inputs);
+  const lowResult = compute(slug, lowInputs);
+  const highResult = compute(slug, highInputs);
+
+  const note = qs(root, "[data-sensitivity-note]");
+  if (note) {
+    const label = inputSelect.options[inputSelect.selectedIndex]?.textContent ?? targetName;
+    note.textContent = `${label}: ${formatNumber(baseValue)} with ${deltaPct}% range.`;
+  }
+
+  for (const row of qsa(root, "[data-sensitivity-output]")) {
+    const outputName = row.getAttribute("data-sensitivity-output");
+    const format = row.getAttribute("data-format") ?? "text";
+    const lowEl = qs(row, "[data-sensitivity-low]");
+    const baseEl = qs(row, "[data-sensitivity-base]");
+    const highEl = qs(row, "[data-sensitivity-high]");
+    if (!outputName || !lowEl || !baseEl || !highEl) continue;
+
+    lowEl.textContent = formatValue(format, currency, lowResult[outputName]);
+    baseEl.textContent = formatValue(format, currency, baseResult[outputName]);
+    highEl.textContent = formatValue(format, currency, highResult[outputName]);
+  }
+}
+
 function setupToolPage(root) {
   const slug = root.getAttribute("data-tool");
   if (!slug) return;
@@ -541,6 +582,8 @@ function setupToolPage(root) {
   const downloadBtn = qs(root, "button[data-download-csv]");
   const compareSaveBtn = qs(root, "button[data-compare-save]");
   const compareClearBtn = qs(root, "button[data-compare-clear]");
+  const sensitivityInput = qs(root, "select[data-sensitivity-input]");
+  const sensitivityRange = qs(root, "select[data-sensitivity-range]");
 
   const recompute = () => {
     const inputs = readInputs(form);
@@ -548,6 +591,7 @@ function setupToolPage(root) {
     const result = compute(slug, inputs);
     renderOutputs(root, currency, result);
     renderCompare(root, slug, inputs);
+    renderSensitivity(root, slug, inputs);
     if (shareLinkEl) shareLinkEl.textContent = buildShareUrl(form);
   };
 
@@ -619,6 +663,14 @@ function setupToolPage(root) {
       clearBaseline(slug);
       renderCompare(root, slug, readInputs(form));
     });
+  }
+
+  if (sensitivityInput instanceof HTMLSelectElement) {
+    sensitivityInput.addEventListener("change", recompute);
+  }
+
+  if (sensitivityRange instanceof HTMLSelectElement) {
+    sensitivityRange.addEventListener("change", recompute);
   }
 }
 
