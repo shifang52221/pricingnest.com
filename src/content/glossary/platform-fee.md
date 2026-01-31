@@ -3,6 +3,7 @@ title: "Platform Fee"
 description: "A base fee charged regardless of usage; recovers fixed costs."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["platform-fee-strategy"]
 glossary: ["fixed-cost","included-usage"]
 ---
 ## Definition

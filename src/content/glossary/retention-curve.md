@@ -3,6 +3,7 @@ title: "Retention Curve"
 description: "Retention plotted over time; highlights early churn vs long-term stickiness."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["retention-early-warning-signals"]
 glossary: ["cohort-retention"]
 ---
 

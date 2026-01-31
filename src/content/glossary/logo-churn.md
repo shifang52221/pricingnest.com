@@ -3,6 +3,7 @@ title: "Logo Churn"
 description: "Percent of customers who cancel in a period (customer churn)."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["revenue-vs-logo-churn"]
 glossary: ["churn"]
 ---
 

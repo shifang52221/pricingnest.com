@@ -3,6 +3,7 @@ title: "API Call"
 description: "A request to an API endpoint; can be priced per call or per 1,000 calls."
 updated: "2026-01-30"
 category: "api"
+guides: ["api-free-tier-guardrails"]
 ---
 
 ## Definition

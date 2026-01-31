@@ -3,6 +3,7 @@ title: "CAC Payback Period"
 description: "How many months of gross profit it takes to recover CAC."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["cac-payback-scenarios"]
 tools: ["cac-payback-period-calculator"]
 glossary: ["cac","gross-margin","arpa"]
 ---

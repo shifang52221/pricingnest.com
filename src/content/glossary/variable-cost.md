@@ -3,6 +3,7 @@ title: "Variable Cost"
 description: "Cost that scales with usage (calls, GB, minutes); drives unit economics and margin."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["monthly-cloud-cost-variance"]
 glossary: ["unit-cost","marginal-cost"]
 ---
 

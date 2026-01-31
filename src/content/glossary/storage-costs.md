@@ -3,6 +3,7 @@ title: "Storage Costs"
 description: "Costs to store data plus requests, replication, backups, and overhead."
 updated: "2026-01-30"
 category: "storage"
+guides: ["storage-cost-optimization"]
 tools: ["storage-cost-calculator"]
 glossary: ["gb-month","retrieval-fees","replication","backup","variable-cost"]
 ---

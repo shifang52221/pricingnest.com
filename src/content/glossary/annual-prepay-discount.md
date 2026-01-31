@@ -3,6 +3,7 @@ title: "Annual Prepay Discount"
 description: "Discount for annual commitment; trades revenue for cash flow and retention."
 updated: "2026-01-30"
 category: "pricing-experiments"
+guides: ["discount-guardrails"]
 tools: ["annual-discount-calculator"]
 glossary: ["mrr","churn","annual-plan","billing-cycle"]
 ---

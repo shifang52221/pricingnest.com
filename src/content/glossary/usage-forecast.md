@@ -3,6 +3,7 @@ title: "Usage Forecast"
 description: "Projected customer usage over time; used to design tiers and commitments."
 updated: "2026-01-30"
 category: "modeling"
+guides: ["usage-forecasting-pricing"]
 glossary: ["p50","p90"]
 ---
 

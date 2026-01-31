@@ -3,6 +3,7 @@ title: "Net New MRR"
 description: "New + expansion MRR minus churn and contraction; core growth metric."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["net-new-mrr-bridge"]
 tools: ["mrr-calculator"]
 glossary: ["mrr"]
 ---

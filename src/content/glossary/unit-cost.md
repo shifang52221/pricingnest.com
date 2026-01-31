@@ -3,6 +3,7 @@ title: "Unit Cost"
 description: "Cost per unit of usage (call, event, GB, minute) used to set margin-safe prices."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["compute-cost-baselines", "monthly-cloud-cost-variance"]
 tools: ["usage-based-pricing-calculator","api-cost-estimator"]
 glossary: ["cogs","gross-margin","variable-cost","usage-based-pricing"]
 ---

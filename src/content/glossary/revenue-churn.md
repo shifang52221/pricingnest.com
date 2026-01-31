@@ -3,6 +3,7 @@ title: "Revenue Churn"
 description: "Percent of recurring revenue lost in a period (gross or net)."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["revenue-vs-logo-churn"]
 glossary: ["churn","mrr"]
 ---
 

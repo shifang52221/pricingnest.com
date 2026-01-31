@@ -3,6 +3,7 @@ title: "LTV (Customer Lifetime Value)"
 description: "Expected gross profit over a customer's lifetime and key assumptions."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["ltv-sensitivity-analysis", "cac-payback-scenarios"]
 tools: ["ltv-calculator","break-even-cac-calculator"]
 glossary: ["arpa","churn","gross-margin"]
 ---

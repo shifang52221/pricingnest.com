@@ -3,6 +3,7 @@ title: "Overage"
 description: "Charges applied when a customer exceeds included usage or plan limits."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["overage-policy-design", "usage-tier-breakpoints"]
 tools: ["tiered-usage-pricing-calculator"]
 glossary: ["included-usage"]
 ---
