@@ -7,13 +7,15 @@
     "dev": "astro dev",
     "build": "node scripts/build.mjs",
     "build:astro": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "astro": "^5.1.0"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.0",
+    "@playwright/test": "^1.58.1",
     "typescript": "^5.7.3"
   }
 }
