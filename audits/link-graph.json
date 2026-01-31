@@ -3052,51 +3052,101 @@
     ]
   ],
   [
-    "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+    "https://pricingnest.com/guides/pricing-page-layout-checklist/",
     [
       "https://pricingnest.com/",
-      "https://pricingnest.com/glossary/gross-margin/",
-      "https://pricingnest.com/guides/api-free-tier-guardrails/",
-      "https://pricingnest.com/guides/api-overage-automation/",
-      "https://pricingnest.com/guides/api-pricing-model/",
-      "https://pricingnest.com/guides/api-rate-limit-pricing/",
-      "https://pricingnest.com/guides/api-tier-design/",
-      "https://pricingnest.com/guides/commit-and-consume-pricing/",
-      "https://pricingnest.com/guides/credit-based-pricing-model/",
-      "https://pricingnest.com/guides/platform-fee-strategy/",
-      "https://pricingnest.com/guides/request-pricing-model/",
-      "https://pricingnest.com/guides/saas-gross-margin-targets/",
-      "https://pricingnest.com/guides/usage-based-pricing-examples/",
-      "https://pricingnest.com/guides/usage-mix-modeling/",
-      "https://pricingnest.com/guides/usage-pricing-floor/",
-      "https://pricingnest.com/guides/value-metric-selection/",
+      "https://pricingnest.com/guides/",
+      "https://pricingnest.com/guides/pricing-page-layout-checklist/",
       "https://pricingnest.com/saas-pricing/",
-      "https://pricingnest.com/saas-pricing/api-cost-estimator/",
-      "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
-      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
-      "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/"
+      "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
+      "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
+      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
     ]
   ],
   [
-    "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+    "https://pricingnest.com/glossary/pricing-metric/",
     [
       "https://pricingnest.com/",
-      "https://pricingnest.com/glossary/seat-based-pricing/",
+      "https://pricingnest.com/glossary/",
+      "https://pricingnest.com/glossary/add-on/",
+      "https://pricingnest.com/glossary/feature-gating/",
+      "https://pricingnest.com/glossary/packaging/",
+      "https://pricingnest.com/glossary/pricing-metric/",
+      "https://pricingnest.com/guides/credit-based-pricing-model/",
+      "https://pricingnest.com/guides/minimum-commitment-model/",
+      "https://pricingnest.com/guides/platform-fee-strategy/",
+      "https://pricingnest.com/guides/pricing-localization/",
       "https://pricingnest.com/guides/pricing-metric-validation/",
-      "https://pricingnest.com/guides/seat-expansion-modeling/",
-      "https://pricingnest.com/guides/seat-minimums/",
-      "https://pricingnest.com/guides/seat-utilization-forecast/",
+      "https://pricingnest.com/guides/pricing-migration-plan/",
+      "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
+      "https://pricingnest.com/guides/pricing-page-copy/",
+      "https://pricingnest.com/guides/pricing-qa-checklist/",
+      "https://pricingnest.com/guides/pricing-segmentation/",
+      "https://pricingnest.com/guides/pricing-tier-design/",
+      "https://pricingnest.com/guides/pricing-tier-mistakes/",
+      "https://pricingnest.com/guides/regional-pricing-floor/",
+      "https://pricingnest.com/guides/rfp-pricing-response/",
+      "https://pricingnest.com/guides/usage-estimation-guide/",
+      "https://pricingnest.com/guides/value-metric-selection/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/glossary/overage/",
+      "https://pricingnest.com/glossary/usage-based-pricing/",
+      "https://pricingnest.com/guides/api-overage-automation/",
+      "https://pricingnest.com/guides/api-pricing-model/",
+      "https://pricingnest.com/guides/api-tier-design/",
+      "https://pricingnest.com/guides/credit-based-pricing-model/",
+      "https://pricingnest.com/guides/fair-use-policy-design/",
+      "https://pricingnest.com/guides/included-usage-design/",
+      "https://pricingnest.com/guides/overage-communication/",
+      "https://pricingnest.com/guides/overage-policy-design/",
+      "https://pricingnest.com/guides/pricing-metric-validation/",
       "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+      "https://pricingnest.com/guides/tiered-usage-pricing/",
+      "https://pricingnest.com/guides/trial-usage-limit-design/",
+      "https://pricingnest.com/guides/usage-alerts-design/",
+      "https://pricingnest.com/guides/usage-based-pricing-bill-shock/",
+      "https://pricingnest.com/guides/usage-based-pricing-examples/",
+      "https://pricingnest.com/guides/usage-cap-communication/",
+      "https://pricingnest.com/guides/usage-cap-design/",
+      "https://pricingnest.com/guides/usage-credit-expiration-policy/",
+      "https://pricingnest.com/guides/usage-estimation-guide/",
+      "https://pricingnest.com/guides/usage-forecasting-pricing/",
+      "https://pricingnest.com/guides/usage-mix-modeling/",
+      "https://pricingnest.com/guides/usage-pricing-floor/",
+      "https://pricingnest.com/guides/usage-pricing-onboarding/",
+      "https://pricingnest.com/guides/usage-reporting-dashboard/",
+      "https://pricingnest.com/guides/usage-spike-protection/",
       "https://pricingnest.com/guides/usage-tier-breakpoints/",
+      "https://pricingnest.com/saas-pricing/",
+      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/guides/usage-cap-communication/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/guides/",
+      "https://pricingnest.com/guides/usage-cap-communication/",
       "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
       "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/use-cases/",
-      "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
-      "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/"
+      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/guides/usage-reporting-dashboard/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/guides/",
+      "https://pricingnest.com/guides/usage-reporting-dashboard/",
+      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
     ]
   ],
   [
@@ -3151,6 +3201,65 @@
       "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
       "https://pricingnest.com/saas-pricing/storage-cost-calculator/",
       "https://pricingnest.com/saas-pricing/use-cases/infra-cost-recovery/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/guides/egress-pricing-playbook/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/guides/",
+      "https://pricingnest.com/guides/egress-pricing-playbook/",
+      "https://pricingnest.com/saas-pricing/bandwidth-cost-calculator/",
+      "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
+      "https://pricingnest.com/saas-pricing/storage-cost-calculator/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/glossary/gross-margin/",
+      "https://pricingnest.com/guides/api-free-tier-guardrails/",
+      "https://pricingnest.com/guides/api-overage-automation/",
+      "https://pricingnest.com/guides/api-pricing-model/",
+      "https://pricingnest.com/guides/api-rate-limit-pricing/",
+      "https://pricingnest.com/guides/api-tier-design/",
+      "https://pricingnest.com/guides/commit-and-consume-pricing/",
+      "https://pricingnest.com/guides/credit-based-pricing-model/",
+      "https://pricingnest.com/guides/platform-fee-strategy/",
+      "https://pricingnest.com/guides/request-pricing-model/",
+      "https://pricingnest.com/guides/saas-gross-margin-targets/",
+      "https://pricingnest.com/guides/usage-based-pricing-examples/",
+      "https://pricingnest.com/guides/usage-mix-modeling/",
+      "https://pricingnest.com/guides/usage-pricing-floor/",
+      "https://pricingnest.com/guides/value-metric-selection/",
+      "https://pricingnest.com/saas-pricing/",
+      "https://pricingnest.com/saas-pricing/api-cost-estimator/",
+      "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
+      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
+      "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
+      "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/"
+    ]
+  ],
+  [
+    "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+    [
+      "https://pricingnest.com/",
+      "https://pricingnest.com/glossary/seat-based-pricing/",
+      "https://pricingnest.com/guides/pricing-metric-validation/",
+      "https://pricingnest.com/guides/seat-expansion-modeling/",
+      "https://pricingnest.com/guides/seat-minimums/",
+      "https://pricingnest.com/guides/seat-utilization-forecast/",
+      "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+      "https://pricingnest.com/guides/usage-tier-breakpoints/",
+      "https://pricingnest.com/saas-pricing/",
+      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
+      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
+      "https://pricingnest.com/saas-pricing/use-cases/",
+      "https://pricingnest.com/saas-pricing/use-cases/api-pricing/",
+      "https://pricingnest.com/saas-pricing/use-cases/usage-based-pricing/"
     ]
   ],
   [
@@ -5401,32 +5510,6 @@
     ]
   ],
   [
-    "https://pricingnest.com/glossary/pricing-metric/",
-    [
-      "https://pricingnest.com/glossary/",
-      "https://pricingnest.com/glossary/add-on/",
-      "https://pricingnest.com/glossary/feature-gating/",
-      "https://pricingnest.com/glossary/packaging/",
-      "https://pricingnest.com/glossary/pricing-metric/",
-      "https://pricingnest.com/guides/credit-based-pricing-model/",
-      "https://pricingnest.com/guides/minimum-commitment-model/",
-      "https://pricingnest.com/guides/platform-fee-strategy/",
-      "https://pricingnest.com/guides/pricing-localization/",
-      "https://pricingnest.com/guides/pricing-metric-validation/",
-      "https://pricingnest.com/guides/pricing-migration-plan/",
-      "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
-      "https://pricingnest.com/guides/pricing-page-copy/",
-      "https://pricingnest.com/guides/pricing-qa-checklist/",
-      "https://pricingnest.com/guides/pricing-segmentation/",
-      "https://pricingnest.com/guides/pricing-tier-design/",
-      "https://pricingnest.com/guides/pricing-tier-mistakes/",
-      "https://pricingnest.com/guides/regional-pricing-floor/",
-      "https://pricingnest.com/guides/rfp-pricing-response/",
-      "https://pricingnest.com/guides/usage-estimation-guide/",
-      "https://pricingnest.com/guides/value-metric-selection/"
-    ]
-  ],
-  [
     "https://pricingnest.com/glossary/pricing-page/",
     [
       "https://pricingnest.com/glossary/",
@@ -6804,41 +6887,6 @@
     ]
   ],
   [
-    "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
-    [
-      "https://pricingnest.com/glossary/overage/",
-      "https://pricingnest.com/glossary/usage-based-pricing/",
-      "https://pricingnest.com/guides/api-overage-automation/",
-      "https://pricingnest.com/guides/api-pricing-model/",
-      "https://pricingnest.com/guides/api-tier-design/",
-      "https://pricingnest.com/guides/credit-based-pricing-model/",
-      "https://pricingnest.com/guides/fair-use-policy-design/",
-      "https://pricingnest.com/guides/included-usage-design/",
-      "https://pricingnest.com/guides/overage-communication/",
-      "https://pricingnest.com/guides/overage-policy-design/",
-      "https://pricingnest.com/guides/pricing-metric-validation/",
-      "https://pricingnest.com/guides/seat-vs-usage-pricing/",
-      "https://pricingnest.com/guides/tiered-usage-pricing/",
-      "https://pricingnest.com/guides/trial-usage-limit-design/",
-      "https://pricingnest.com/guides/usage-alerts-design/",
-      "https://pricingnest.com/guides/usage-based-pricing-bill-shock/",
-      "https://pricingnest.com/guides/usage-based-pricing-examples/",
-      "https://pricingnest.com/guides/usage-cap-communication/",
-      "https://pricingnest.com/guides/usage-cap-design/",
-      "https://pricingnest.com/guides/usage-credit-expiration-policy/",
-      "https://pricingnest.com/guides/usage-estimation-guide/",
-      "https://pricingnest.com/guides/usage-forecasting-pricing/",
-      "https://pricingnest.com/guides/usage-mix-modeling/",
-      "https://pricingnest.com/guides/usage-pricing-floor/",
-      "https://pricingnest.com/guides/usage-pricing-onboarding/",
-      "https://pricingnest.com/guides/usage-reporting-dashboard/",
-      "https://pricingnest.com/guides/usage-spike-protection/",
-      "https://pricingnest.com/guides/usage-tier-breakpoints/",
-      "https://pricingnest.com/saas-pricing/",
-      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/"
-    ]
-  ],
-  [
     "https://pricingnest.com/guides/overage-policy-design/",
     [
       "https://pricingnest.com/glossary/overage/",
@@ -6915,6 +6963,7 @@
       "https://pricingnest.com/glossary/pricing-page/",
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/pricing-page-faqs/",
+      "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
       "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
       "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
@@ -7244,20 +7293,11 @@
     ]
   ],
   [
-    "https://pricingnest.com/guides/egress-pricing-playbook/",
-    [
-      "https://pricingnest.com/guides/",
-      "https://pricingnest.com/guides/egress-pricing-playbook/",
-      "https://pricingnest.com/saas-pricing/bandwidth-cost-calculator/",
-      "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
-      "https://pricingnest.com/saas-pricing/storage-cost-calculator/"
-    ]
-  ],
-  [
     "https://pricingnest.com/guides/expansion-forecasting/",
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/expansion-forecasting/",
+      "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
       "https://pricingnest.com/saas-pricing/cohort-retention-curve-calculator/",
       "https://pricingnest.com/saas-pricing/ltv-calculator/",
@@ -7393,6 +7433,7 @@
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/pricing-metric-validation/",
+      "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
       "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
       "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
@@ -7413,6 +7454,7 @@
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
+      "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
       "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
       "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
@@ -7423,16 +7465,6 @@
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/pricing-page-cta-optimization/",
-      "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
-      "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
-      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
-    ]
-  ],
-  [
-    "https://pricingnest.com/guides/pricing-page-layout-checklist/",
-    [
-      "https://pricingnest.com/guides/",
-      "https://pricingnest.com/guides/pricing-page-layout-checklist/",
       "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
       "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
       "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
@@ -7480,6 +7512,7 @@
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/renewal-forecasting/",
+      "https://pricingnest.com/saas-pricing/",
       "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
       "https://pricingnest.com/saas-pricing/cohort-retention-curve-calculator/",
       "https://pricingnest.com/saas-pricing/ltv-calculator/",
@@ -7651,16 +7684,6 @@
     ]
   ],
   [
-    "https://pricingnest.com/guides/usage-cap-communication/",
-    [
-      "https://pricingnest.com/guides/",
-      "https://pricingnest.com/guides/usage-cap-communication/",
-      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
-      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
-    ]
-  ],
-  [
     "https://pricingnest.com/guides/usage-credit-expiration-policy/",
     [
       "https://pricingnest.com/guides/",
@@ -7685,16 +7708,6 @@
     [
       "https://pricingnest.com/guides/",
       "https://pricingnest.com/guides/usage-pricing-onboarding/",
-      "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
-      "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
-      "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
-    ]
-  ],
-  [
-    "https://pricingnest.com/guides/usage-reporting-dashboard/",
-    [
-      "https://pricingnest.com/guides/",
-      "https://pricingnest.com/guides/usage-reporting-dashboard/",
       "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
       "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
       "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/"
