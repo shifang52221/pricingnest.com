@@ -69,3 +69,66 @@ test("ltv calculator decreases with higher churn", async ({ page }) => {
 
   expect(ltvLowChurn).toBeGreaterThan(ltvHighChurn);
 });
+
+test("api pricing calculator reacts to higher costs", async ({ page }) => {
+  await page.goto("/saas-pricing/api-pricing-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="callsPerMonth"]', "1000000");
+  await page.fill('input[name="infraCostPer1kCalls"]', "0.1");
+  await page.fill('input[name="monthlyFixedCost"]', "500");
+  await page.fill('input[name="targetGrossMarginPct"]', "70");
+  const priceBase = await outputValue(page, "recommendedMonthlyPrice");
+
+  await page.fill('input[name="infraCostPer1kCalls"]', "0.2");
+  const priceHigherCost = await outputValue(page, "recommendedMonthlyPrice");
+
+  expect(priceHigherCost).toBeGreaterThan(priceBase);
+});
+
+test("api cost estimator increases with usage", async ({ page }) => {
+  await page.goto("/saas-pricing/api-cost-estimator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="callsPerMonth"]', "100000");
+  await page.fill('input[name="infraCostPer1kCalls"]', "0.08");
+  await page.fill('input[name="vendorCostPer1kCalls"]', "0.02");
+  await page.fill('input[name="monthlyFixedCost"]', "200");
+  const costBase = await outputValue(page, "monthlyTotalCost");
+
+  await page.fill('input[name="callsPerMonth"]', "200000");
+  const costHigherUsage = await outputValue(page, "monthlyTotalCost");
+
+  expect(costHigherUsage).toBeGreaterThan(costBase);
+});
+
+test("mrr calculator nets new revenue correctly", async ({ page }) => {
+  await page.goto("/saas-pricing/mrr-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="startingMrr"]', "10000");
+  await page.fill('input[name="newMrr"]', "2000");
+  await page.fill('input[name="expansionMrr"]', "500");
+  await page.fill('input[name="contractionMrr"]', "300");
+  await page.fill('input[name="churnedMrr"]', "700");
+
+  const netNew = await outputValue(page, "netNewMrr");
+  expect(netNew).toBe(1500);
+});
+
+test("compute cost estimator yields positive price at margin", async ({ page }) => {
+  await page.goto("/saas-pricing/compute-cost-estimator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="vcpuHours"]', "5000");
+  await page.fill('input[name="costPerVcpuHour"]', "0.02");
+  await page.fill('input[name="memoryGbHours"]', "8000");
+  await page.fill('input[name="costPerGbHour"]', "0.002");
+  await page.fill('input[name="monthlyFixedCost"]', "250");
+  await page.fill('input[name="targetGrossMarginPct"]', "70");
+
+  const monthlyCost = await outputValue(page, "monthlyCost");
+  const recommendedPrice = await outputValue(page, "recommendedMonthlyPrice");
+
+  expect(recommendedPrice).toBeGreaterThan(monthlyCost);
+});
