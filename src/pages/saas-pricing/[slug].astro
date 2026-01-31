@@ -203,6 +203,9 @@ const guideLinks = (() => {
     "tiered-usage-pricing-calculator",
     "api-pricing-calculator"
   ]);
+  const nrrRelated = new Set(["nrr-calculator", "mrr-calculator", "churn-impact-calculator"]);
+  const retentionRelated = new Set(["cohort-retention-curve-calculator", "ltv-calculator", "churn-impact-calculator"]);
+  const tierOptimizerRelated = new Set(["pricing-tier-optimizer", "usage-based-pricing-calculator", "pricing-increase-impact-calculator"]);
   const metricsRelated = new Set([
     "mrr-calculator",
     "arr-calculator",
@@ -223,6 +226,9 @@ const guideLinks = (() => {
   if (cloudCostRelated.has(tool.slug)) links.push({ href: "/guides/monthly-cloud-cost-breakdown/", label: "Guide: monthly cloud cost breakdown" });
   if (breakEvenRelated.has(tool.slug)) links.push({ href: "/guides/break-even-cac-guide/", label: "Guide: break-even CAC" });
   if (usageFloorRelated.has(tool.slug)) links.push({ href: "/guides/usage-pricing-floor/", label: "Guide: usage pricing floors" });
+  if (nrrRelated.has(tool.slug)) links.push({ href: "/guides/nrr-playbook/", label: "Guide: NRR playbook" });
+  if (retentionRelated.has(tool.slug)) links.push({ href: "/guides/cohort-retention-playbook/", label: "Guide: cohort retention" });
+  if (tierOptimizerRelated.has(tool.slug)) links.push({ href: "/guides/pricing-tier-design/", label: "Guide: pricing tier design" });
   if (seatVsUsageRelated.has(tool.slug)) links.push({ href: "/guides/seat-vs-usage-pricing/", label: "Guide: seat vs usage" });
   if (experimentsRelated.has(tool.slug)) links.push({ href: "/guides/pricing-experiments-playbook/", label: "Guide: pricing experiments" });
   if (annualDiscountRelated.has(tool.slug)) links.push({ href: "/guides/annual-prepay-discount/", label: "Guide: annual discount" });
