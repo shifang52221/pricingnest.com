@@ -1423,8 +1423,36 @@
     "canonical": "https://pricingnest.com/guides/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1856,
-    "internal_links": 130,
+    "main_content_words": 2097,
+    "internal_links": 150,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/activation-pricing-triggers/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/activation-pricing-triggers/",
+    "redirects": 0,
+    "title": "Activation Pricing Triggers | PricingNest",
+    "description": "Link activation events to pricing prompts and upgrades.",
+    "canonical": "https://pricingnest.com/guides/activation-pricing-triggers/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 228,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
+    "redirects": 0,
+    "title": "Add-on Attach Rate Optimization | PricingNest",
+    "description": "Increase attach rates without hurting core plan conversion.",
+    "canonical": "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 220,
+    "internal_links": 23,
     "schema": "none"
   },
   {
@@ -1638,6 +1666,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/billing-dunning-strategy/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/billing-dunning-strategy/",
+    "redirects": 0,
+    "title": "Billing Dunning Strategy | PricingNest",
+    "description": "Reduce churn with clear dunning steps and grace periods.",
+    "canonical": "https://pricingnest.com/guides/billing-dunning-strategy/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 214,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/break-even-cac-guide/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/break-even-cac-guide/",
@@ -1718,6 +1760,20 @@
     "robots": "index,follow",
     "hreflang": "",
     "main_content_words": 213,
+    "internal_links": 24,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/churn-risk-scoring/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/churn-risk-scoring/",
+    "redirects": 0,
+    "title": "Churn Risk Scoring | PricingNest",
+    "description": "Build a simple churn risk score to prioritize retention work.",
+    "canonical": "https://pricingnest.com/guides/churn-risk-scoring/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 219,
     "internal_links": 24,
     "schema": "none"
   },
@@ -2142,6 +2198,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/onboarding-milestone-pricing/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/onboarding-milestone-pricing/",
+    "redirects": 0,
+    "title": "Onboarding Milestone Pricing | PricingNest",
+    "description": "Align onboarding milestones with pricing prompts and upgrades.",
+    "canonical": "https://pricingnest.com/guides/onboarding-milestone-pricing/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 206,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/onboarding-to-retention/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/onboarding-to-retention/",
@@ -2184,6 +2254,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/partner-reseller-pricing/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/partner-reseller-pricing/",
+    "redirects": 0,
+    "title": "Partner and Reseller Pricing | PricingNest",
+    "description": "Set partner discounts and margins without eroding core pricing.",
+    "canonical": "https://pricingnest.com/guides/partner-reseller-pricing/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 215,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/plan-differentiation-matrix/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/plan-differentiation-matrix/",
@@ -2209,6 +2293,20 @@
     "hreflang": "",
     "main_content_words": 240,
     "internal_links": 24,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/price-change-communication/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/price-change-communication/",
+    "redirects": 0,
+    "title": "Price Change Communication | PricingNest",
+    "description": "Communicate price changes without spiking churn.",
+    "canonical": "https://pricingnest.com/guides/price-change-communication/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 214,
+    "internal_links": 23,
     "schema": "none"
   },
   {
@@ -2324,6 +2422,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/pricing-page-case-studies/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/pricing-page-case-studies/",
+    "redirects": 0,
+    "title": "Pricing Page Case Studies | PricingNest",
+    "description": "Use mini case studies to reduce pricing anxiety and improve conversion.",
+    "canonical": "https://pricingnest.com/guides/pricing-page-case-studies/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 216,
+    "internal_links": 21,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/pricing-page-comparison-table/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/pricing-page-comparison-table/",
@@ -2335,6 +2447,20 @@
     "hreflang": "",
     "main_content_words": 232,
     "internal_links": 23,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
+    "redirects": 0,
+    "title": "Pricing Page Competitive Positioning | PricingNest",
+    "description": "Position your pricing against alternatives without copying competitors.",
+    "canonical": "https://pricingnest.com/guides/pricing-page-competitive-positioning/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 213,
+    "internal_links": 22,
     "schema": "none"
   },
   {
@@ -2422,6 +2548,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/pricing-qa-checklist/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/pricing-qa-checklist/",
+    "redirects": 0,
+    "title": "Pricing QA Checklist | PricingNest",
+    "description": "A release checklist to prevent pricing and billing mistakes.",
+    "canonical": "https://pricingnest.com/guides/pricing-qa-checklist/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 214,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/pricing-rollout-playbook/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/pricing-rollout-playbook/",
@@ -2506,6 +2646,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/regional-pricing-floor/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/regional-pricing-floor/",
+    "redirects": 0,
+    "title": "Regional Pricing Floor | PricingNest",
+    "description": "Set regional price floors without breaking margin targets.",
+    "canonical": "https://pricingnest.com/guides/regional-pricing-floor/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 210,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/renewal-forecasting/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/renewal-forecasting/",
@@ -2545,6 +2699,20 @@
     "hreflang": "",
     "main_content_words": 222,
     "internal_links": 24,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/retention-campaign-calendar/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/retention-campaign-calendar/",
+    "redirects": 0,
+    "title": "Retention Campaign Calendar | PricingNest",
+    "description": "Plan retention campaigns by segment and renewal window.",
+    "canonical": "https://pricingnest.com/guides/retention-campaign-calendar/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 206,
+    "internal_links": 23,
     "schema": "none"
   },
   {
@@ -2590,6 +2758,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/revenue-leakage-audit/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/revenue-leakage-audit/",
+    "redirects": 0,
+    "title": "Revenue Leakage Audit | PricingNest",
+    "description": "Identify leakage between usage, billing, and revenue recognition.",
+    "canonical": "https://pricingnest.com/guides/revenue-leakage-audit/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 204,
+    "internal_links": 24,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/revenue-recognition-basics/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/revenue-recognition-basics/",
@@ -2614,6 +2796,20 @@
     "robots": "index,follow",
     "hreflang": "",
     "main_content_words": 241,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/rfp-pricing-response/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/rfp-pricing-response/",
+    "redirects": 0,
+    "title": "RFP Pricing Response | PricingNest",
+    "description": "Respond to RFP pricing requests with a clear rate card and assumptions.",
+    "canonical": "https://pricingnest.com/guides/rfp-pricing-response/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 218,
     "internal_links": 23,
     "schema": "none"
   },
@@ -2685,6 +2881,20 @@
     "hreflang": "",
     "main_content_words": 216,
     "internal_links": 24,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/seat-utilization-forecast/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/seat-utilization-forecast/",
+    "redirects": 0,
+    "title": "Seat Utilization Forecast | PricingNest",
+    "description": "Forecast seat usage to plan upgrades and pricing.",
+    "canonical": "https://pricingnest.com/guides/seat-utilization-forecast/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 214,
+    "internal_links": 23,
     "schema": "none"
   },
   {
@@ -2786,6 +2996,20 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/tier-grace-period-design/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/tier-grace-period-design/",
+    "redirects": 0,
+    "title": "Tier Grace Period Design | PricingNest",
+    "description": "Design grace periods that reduce churn without abuse.",
+    "canonical": "https://pricingnest.com/guides/tier-grace-period-design/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 215,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/tier-naming-strategy/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/tier-naming-strategy/",
@@ -2825,6 +3049,20 @@
     "hreflang": "",
     "main_content_words": 222,
     "internal_links": 24,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/trial-usage-limit-design/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/trial-usage-limit-design/",
+    "redirects": 0,
+    "title": "Trial Usage Limit Design | PricingNest",
+    "description": "Set trial limits that protect costs without blocking activation.",
+    "canonical": "https://pricingnest.com/guides/trial-usage-limit-design/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 223,
+    "internal_links": 23,
     "schema": "none"
   },
   {
@@ -2926,6 +3164,34 @@
     "schema": "none"
   },
   {
+    "url": "https://pricingnest.com/guides/usage-credit-expiration-policy/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/usage-credit-expiration-policy/",
+    "redirects": 0,
+    "title": "Usage Credit Expiration Policy | PricingNest",
+    "description": "Design credit expiration rules that feel fair and reduce churn.",
+    "canonical": "https://pricingnest.com/guides/usage-credit-expiration-policy/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 216,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-estimation-guide/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/usage-estimation-guide/",
+    "redirects": 0,
+    "title": "Usage Estimation Guide | PricingNest",
+    "description": "Help buyers estimate usage without complex spreadsheets.",
+    "canonical": "https://pricingnest.com/guides/usage-estimation-guide/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 222,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
     "url": "https://pricingnest.com/guides/usage-forecasting-pricing/",
     "status": 200,
     "final_url": "https://pricingnest.com/guides/usage-forecasting-pricing/",
@@ -2978,6 +3244,20 @@
     "robots": "index,follow",
     "hreflang": "",
     "main_content_words": 225,
+    "internal_links": 23,
+    "schema": "none"
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-reporting-dashboard/",
+    "status": 200,
+    "final_url": "https://pricingnest.com/guides/usage-reporting-dashboard/",
+    "redirects": 0,
+    "title": "Usage Reporting Dashboard | PricingNest",
+    "description": "Design usage dashboards that prevent bill shock and reduce support.",
+    "canonical": "https://pricingnest.com/guides/usage-reporting-dashboard/",
+    "robots": "index,follow",
+    "hreflang": "",
+    "main_content_words": 223,
     "internal_links": 23,
     "schema": "none"
   },
@@ -3061,8 +3341,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/annual-discount-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1097,
-    "internal_links": 33,
+    "main_content_words": 1101,
+    "internal_links": 34,
     "schema": "valid"
   },
   {
@@ -3089,8 +3369,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/api-pricing-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1345,
-    "internal_links": 40,
+    "main_content_words": 1349,
+    "internal_links": 41,
     "schema": "valid"
   },
   {
@@ -3103,8 +3383,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/arr-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 950,
-    "internal_links": 23,
+    "main_content_words": 954,
+    "internal_links": 24,
     "schema": "valid"
   },
   {
@@ -3131,8 +3411,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/break-even-cac-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1155,
-    "internal_links": 27,
+    "main_content_words": 1159,
+    "internal_links": 28,
     "schema": "valid"
   },
   {
@@ -3145,8 +3425,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/cac-payback-period-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1091,
-    "internal_links": 27,
+    "main_content_words": 1095,
+    "internal_links": 28,
     "schema": "valid"
   },
   {
@@ -3159,8 +3439,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/churn-impact-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1176,
-    "internal_links": 51,
+    "main_content_words": 1200,
+    "internal_links": 56,
     "schema": "valid"
   },
   {
@@ -3173,8 +3453,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/cohort-retention-curve-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1051,
-    "internal_links": 29,
+    "main_content_words": 1063,
+    "internal_links": 32,
     "schema": "valid"
   },
   {
@@ -3201,8 +3481,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/ltv-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1140,
-    "internal_links": 36,
+    "main_content_words": 1156,
+    "internal_links": 40,
     "schema": "valid"
   },
   {
@@ -3229,8 +3509,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/mrr-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1175,
-    "internal_links": 40,
+    "main_content_words": 1187,
+    "internal_links": 43,
     "schema": "valid"
   },
   {
@@ -3243,8 +3523,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/nrr-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 953,
-    "internal_links": 29,
+    "main_content_words": 957,
+    "internal_links": 30,
     "schema": "valid"
   },
   {
@@ -3271,8 +3551,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1262,
-    "internal_links": 55,
+    "main_content_words": 1301,
+    "internal_links": 64,
     "schema": "valid"
   },
   {
@@ -3285,8 +3565,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1129,
-    "internal_links": 42,
+    "main_content_words": 1164,
+    "internal_links": 50,
     "schema": "valid"
   },
   {
@@ -3299,8 +3579,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/seat-vs-usage-pricing-comparison/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1270,
-    "internal_links": 39,
+    "main_content_words": 1297,
+    "internal_links": 45,
     "schema": "valid"
   },
   {
@@ -3327,8 +3607,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/tiered-usage-pricing-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1424,
-    "internal_links": 37,
+    "main_content_words": 1447,
+    "internal_links": 42,
     "schema": "valid"
   },
   {
@@ -3341,8 +3621,8 @@
     "canonical": "https://pricingnest.com/saas-pricing/usage-based-pricing-calculator/",
     "robots": "index,follow",
     "hreflang": "",
-    "main_content_words": 1560,
-    "internal_links": 72,
+    "main_content_words": 1622,
+    "internal_links": 86,
     "schema": "valid"
   },
   {
