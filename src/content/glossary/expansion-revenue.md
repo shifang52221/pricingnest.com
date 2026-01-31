@@ -3,7 +3,7 @@ title: "Expansion Revenue"
 description: "Revenue gained from existing customers via upsells, usage growth, or add-ons."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["expansion-revenue-modeling", "net-new-mrr-bridge", "arpa-growth-levers", "seat-expansion-modeling"]
+guides: ["expansion-revenue-modeling", "net-new-mrr-bridge", "arpa-growth-levers", "seat-expansion-modeling", "mrr-expansion-tracking"]
 glossary: ["nrr","arpa"]
 ---
 

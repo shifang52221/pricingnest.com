@@ -3,6 +3,7 @@ title: "Support Costs"
 description: "Support effort that may scale with accounts or usage; influences COGS decisions."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["support-cost-allocation"]
 ---
 
 ## Definition

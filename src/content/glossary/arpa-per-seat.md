@@ -3,6 +3,7 @@ title: "Revenue per Seat"
 description: "Average recurring revenue per seat and how it changes under pricing models."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["seat-minimums"]
 glossary: ["arpa","seat-based-pricing"]
 ---
 

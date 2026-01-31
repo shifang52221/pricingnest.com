@@ -3,7 +3,7 @@ title: "COGS (Cost of Goods Sold)"
 description: "Direct costs to deliver your product (infra + vendor costs for SaaS)."
 updated: "2026-01-30"
 category: "unit-economics"
-guides: ["usage-allocation-cost"]
+guides: ["usage-allocation-cost", "support-cost-allocation"]
 tools: ["compute-cost-estimator","storage-cost-calculator"]
 glossary: ["gross-margin","variable-cost","fixed-cost","unit-cost"]
 ---

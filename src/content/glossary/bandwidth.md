@@ -3,7 +3,7 @@ title: "Bandwidth"
 description: "Data transferred per time, typically priced per GB with tiered rates."
 updated: "2026-01-30"
 category: "storage"
-guides: ["bandwidth-pricing-guardrails"]
+guides: ["bandwidth-pricing-guardrails", "cdn-cost-pass-through"]
 glossary: ["egress", "cdn", "origin-fetch", "gb-month", "retrieval-fees"]
 ---
 ## Definition

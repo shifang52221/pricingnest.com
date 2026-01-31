@@ -3,7 +3,7 @@ title: "Gross Margin"
 description: "The percent of revenue left after COGS; a core constraint for pricing."
 updated: "2026-01-30"
 category: "unit-economics"
-guides: ["price-floor-by-margin"]
+guides: ["price-floor-by-margin", "support-cost-allocation"]
 tools: ["usage-based-pricing-calculator","api-pricing-calculator"]
 glossary: ["cogs","variable-cost"]
 ---

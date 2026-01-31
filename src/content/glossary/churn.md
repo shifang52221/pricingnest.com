@@ -3,7 +3,7 @@ title: "Churn (Customer & Revenue)"
 description: "Loss of customers or recurring revenue over time (logo vs revenue churn)."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["churn-reduction-playbook", "downgrade-prevention"]
+guides: ["churn-reduction-playbook", "downgrade-prevention", "churn-survey-insights", "onboarding-to-retention", "annual-renewal-strategy"]
 tools: ["churn-impact-calculator","ltv-calculator"]
 glossary: ["mrr","ltv","nrr","grr"]
 ---

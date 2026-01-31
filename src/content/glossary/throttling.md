@@ -3,6 +3,7 @@ title: "Throttling"
 description: "Delaying or rejecting requests when usage exceeds limits; impacts user experience."
 updated: "2026-01-30"
 category: "api"
+guides: ["api-rate-limit-pricing"]
 glossary: ["rate-limit"]
 ---
 

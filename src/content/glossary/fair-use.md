@@ -3,6 +3,7 @@ title: "Fair Use"
 description: "Reasonable usage expectation for plans; prevents abuse and cost spikes."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["fair-use-policy-design"]
 glossary: ["usage-based-pricing"]
 ---
 

@@ -3,6 +3,7 @@ title: "Origin Fetch"
 description: "Traffic from CDN to origin; can affect egress and cost structure."
 updated: "2026-01-30"
 category: "storage"
+guides: ["cdn-cost-pass-through"]
 ---
 
 ## Definition

@@ -3,7 +3,7 @@ title: "Discount"
 description: "Reducing price to drive conversion or commitment; must be modeled for margin impact."
 updated: "2026-01-30"
 category: "pricing-experiments"
-guides: ["discount-guardrails", "billing-cycle-selection"]
+guides: ["discount-guardrails", "billing-cycle-selection", "sales-discount-approval", "rate-card-quoting"]
 tools: ["annual-discount-calculator"]
 ---
 

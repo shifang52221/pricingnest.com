@@ -3,6 +3,7 @@ title: "MRR"
 description: "Monthly recurring revenue; normalized subscription revenue per month."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["mrr-expansion-tracking"]
 tools: ["mrr-calculator","arr-calculator"]
 glossary: ["arr"]
 ---

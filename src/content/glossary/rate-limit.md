@@ -3,6 +3,7 @@ title: "Rate Limit"
 description: "Limits on requests per time window; can protect cost and plan fairness."
 updated: "2026-01-30"
 category: "api"
+guides: ["api-rate-limit-pricing"]
 ---
 
 ## Definition

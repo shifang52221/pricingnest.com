@@ -3,7 +3,7 @@ title: "Effective Monthly Rate"
 description: "Annual price normalized to a monthly equivalent for comparison."
 updated: "2026-01-30"
 category: "pricing-experiments"
-guides: ["billing-cycle-selection"]
+guides: ["billing-cycle-selection", "sales-discount-approval"]
 tools: ["annual-discount-calculator"]
 ---
 

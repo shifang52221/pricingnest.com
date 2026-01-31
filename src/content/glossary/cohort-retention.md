@@ -3,7 +3,7 @@ title: "Cohort Retention"
 description: "Retention measured by customer cohorts over time; helps interpret churn correctly."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["cohort-retention-playbook", "retention-curve-analysis"]
+guides: ["cohort-retention-playbook", "retention-curve-analysis", "retention-cohort-benchmarks"]
 glossary: ["cohort","churn"]
 ---
 

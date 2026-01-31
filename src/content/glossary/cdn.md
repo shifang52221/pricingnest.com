@@ -3,6 +3,7 @@ title: "CDN"
 description: "Content Delivery Network; reduces origin load but can introduce request fees."
 updated: "2026-01-30"
 category: "storage"
+guides: ["cdn-cost-pass-through"]
 ---
 
 ## Definition

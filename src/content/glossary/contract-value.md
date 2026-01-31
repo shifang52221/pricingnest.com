@@ -3,7 +3,7 @@ title: "Contract Value"
 description: "Value of a contract over its term; commonly expressed as TCV or ACV."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["contract-value-modeling", "minimum-commitment-model", "revenue-recognition-basics"]
+guides: ["contract-value-modeling", "minimum-commitment-model", "revenue-recognition-basics", "rate-card-quoting"]
 glossary: ["tcv","acv"]
 ---
 

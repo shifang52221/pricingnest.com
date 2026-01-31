@@ -3,7 +3,7 @@ title: "Annual Plan"
 description: "A plan billed yearly; often includes discounts and changes cash timing."
 updated: "2026-01-30"
 category: "pricing-experiments"
-guides: ["billing-cycle-selection"]
+guides: ["billing-cycle-selection", "annual-renewal-strategy"]
 glossary: ["annual-prepay-discount"]
 ---
 

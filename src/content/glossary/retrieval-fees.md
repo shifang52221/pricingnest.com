@@ -3,6 +3,7 @@ title: "Retrieval Fees"
 description: "Fees to read data back from cold storage; important for archival products."
 updated: "2026-01-30"
 category: "storage"
+guides: ["storage-retrieval-fees"]
 ---
 
 ## Definition

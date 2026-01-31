@@ -3,7 +3,7 @@ title: "Usage Cap"
 description: "A maximum usage limit; prevents extreme bills and protects margins."
 updated: "2026-01-30"
 category: "pricing-models"
-guides: ["usage-cap-design"]
+guides: ["usage-cap-design", "usage-alerts-design"]
 glossary: ["usage-based-pricing","bill-shock"]
 ---
 ## Definition

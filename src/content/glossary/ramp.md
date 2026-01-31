@@ -3,6 +3,7 @@ title: "Ramp"
 description: "How quickly customers grow into paid usage after signing up; affects payback and tier design."
 updated: "2026-01-30"
 category: "modeling"
+guides: ["ramp-pricing"]
 glossary: ["activation","time-to-value"]
 ---
 

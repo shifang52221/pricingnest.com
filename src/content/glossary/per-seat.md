@@ -3,6 +3,7 @@ title: "Per Seat"
 description: "Charging per user seat; simple to explain but can misalign with cost for automation-heavy customers."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["seat-minimums"]
 glossary: ["seat-based-pricing"]
 ---
 

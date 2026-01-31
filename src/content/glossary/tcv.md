@@ -3,7 +3,7 @@ title: "TCV (Total Contract Value)"
 description: "Total value over the full contract term (including multi-year commitments)."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["contract-value-modeling"]
+guides: ["contract-value-modeling", "rate-card-quoting"]
 glossary: ["contract-value"]
 ---
 

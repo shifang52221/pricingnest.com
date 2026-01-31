@@ -3,6 +3,7 @@ title: "Bill Shock"
 description: "Unexpectedly high invoices in usage pricing; reduces retention and trust."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["usage-alerts-design", "overage-communication", "usage-cap-design"]
 glossary: ["usage-based-pricing","churn"]
 ---
 
