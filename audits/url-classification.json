@@ -450,6 +450,12 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/glossary/renewal/",
+    "category": "resource",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/glossary/replication/",
     "category": "resource",
     "in_sitemap": true,
@@ -606,6 +612,12 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/addon-pricing-strategy/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/annual-discount-mistakes/",
     "category": "guide",
     "in_sitemap": true,
@@ -618,7 +630,25 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/annual-renewal-strategy/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/api-cost-estimation/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-free-tier-guardrails/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/api-overage-automation/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -630,7 +660,31 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/api-rate-limit-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/api-tier-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/arpa-growth-levers/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/arrr-funnel-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/bandwidth-pricing-guardrails/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -642,7 +696,139 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/billing-cycle-selection/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/break-even-cac-guide/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/cac-payback-scenarios/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/cac-payback-targets/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/capacity-planning-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/cdn-cost-pass-through/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/churn-reduction-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/churn-survey-insights/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/cohort-retention-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/commit-and-consume-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/compute-cost-baselines/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/compute-cost-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/contract-minimums-messaging/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/contract-value-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/credit-based-pricing-model/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/discount-guardrails/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/downgrade-prevention/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/egress-pricing-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/enterprise-pricing-guardrails/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/expansion-forecasting/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/expansion-revenue-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/fair-use-policy-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/feature-bundling-framework/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -660,13 +846,115 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/grr-vs-nrr/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/included-usage-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/ltv-cac-benchmarks/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/ltv-cac-range/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/ltv-sensitivity-analysis/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/minimum-commitment-model/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/monthly-cloud-cost-breakdown/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/monthly-cloud-cost-variance/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/mrr-expansion-tracking/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/mrr-to-arr-and-back/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/net-new-mrr-bridge/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/nrr-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/onboarding-to-retention/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/overage-communication/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/overage-policy-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/plan-differentiation-matrix/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/platform-fee-strategy/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/price-floor-by-margin/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/price-lock-policy/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -690,7 +978,145 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/pricing-localization/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-metric-validation/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-migration-plan/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-comparison-table/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-copy/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-cta-optimization/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-faqs/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-layout-checklist/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-page-trust-elements/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/pricing-page-unit-definition/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-rollout-playbook/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-segmentation/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-tier-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/pricing-tier-mistakes/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/ramp-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/rate-card-quoting/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/renewal-forecasting/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/replication-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/request-pricing-model/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/retention-cohort-benchmarks/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/retention-curve-analysis/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/retention-early-warning-signals/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/revenue-recognition-basics/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/revenue-vs-logo-churn/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -708,7 +1134,31 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/sales-discount-approval/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/seat-expansion-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/seat-minimums/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/seat-vs-usage-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/storage-cost-optimization/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -726,13 +1176,55 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/storage-retrieval-fees/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/support-cost-allocation/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/support-tier-packaging/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/tier-naming-strategy/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/tiered-usage-pricing/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/guides/trial-to-paid-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/guides/unit-economics-model-template/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-alerts-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-allocation-cost/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -745,6 +1237,60 @@
   },
   {
     "url": "https://pricingnest.com/guides/usage-based-pricing-examples/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-cap-communication/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-cap-design/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-forecasting-pricing/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-mix-modeling/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-pricing-floor/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-pricing-onboarding/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-spike-protection/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/usage-tier-breakpoints/",
+    "category": "guide",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/guides/value-metric-selection/",
     "category": "guide",
     "in_sitemap": true,
     "status": 200
@@ -810,6 +1356,12 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/saas-pricing/cohort-retention-curve-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/saas-pricing/compute-cost-estimator/",
     "category": "calculator",
     "in_sitemap": true,
@@ -834,6 +1386,12 @@
     "status": 200
   },
   {
+    "url": "https://pricingnest.com/saas-pricing/nrr-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
     "url": "https://pricingnest.com/saas-pricing/price-per-gb-month-calculator/",
     "category": "calculator",
     "in_sitemap": true,
@@ -841,6 +1399,12 @@
   },
   {
     "url": "https://pricingnest.com/saas-pricing/pricing-increase-impact-calculator/",
+    "category": "calculator",
+    "in_sitemap": true,
+    "status": 200
+  },
+  {
+    "url": "https://pricingnest.com/saas-pricing/pricing-tier-optimizer/",
     "category": "calculator",
     "in_sitemap": true,
     "status": 200
@@ -918,7 +1482,7 @@
     "status": 200
   },
   {
-    "url": "https://pricingnest.com/_astro/about.Bg8D3vKC.css",
+    "url": "https://pricingnest.com/_astro/about.UrnBqCXN.css",
     "category": "static",
     "in_sitemap": false,
     "status": 200
