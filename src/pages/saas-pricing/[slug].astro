@@ -499,7 +499,7 @@ const guideLinks = (() => {
     </div>
 
     <div class="grid analysis">
-      <section class="card col6 compare">
+      <section class="card col6 compare" id="compare">
         <div class="section-head">
           <h2>Compare</h2>
           <div class="actions">
@@ -528,7 +528,7 @@ const guideLinks = (() => {
           ))}
         </div>
       </section>
-      <section class="card col6 sensitivity">
+      <section class="card col6 sensitivity" id="sensitivity">
         <div class="section-head">
           <h2>Sensitivity</h2>
           <div class="actions">
@@ -811,6 +811,13 @@ const guideLinks = (() => {
         ) : null}
 
         <h2 style="margin-top: 1.25rem;">Next steps</h2>
+        <div class="muted" style="margin-top: 0.5rem;">Suggested actions</div>
+        <ul class="list">
+          <li><a href="#compare">Save a baseline in Compare</a></li>
+          <li><a href="#sensitivity">Run a sensitivity sweep</a></li>
+          <li>Copy the share link and download a CSV</li>
+        </ul>
+        <div class="muted" style="margin-top: 0.75rem;">More to explore</div>
         <ul class="list">
           {useCaseLinks.map((l) => (
             <li><a href={l.href}>{l.label}</a></li>
