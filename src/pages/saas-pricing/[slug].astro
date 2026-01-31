@@ -195,6 +195,14 @@ const guideLinks = (() => {
   const apiCostRelated = new Set(["api-cost-estimator", "api-pricing-calculator", "usage-based-pricing-calculator"]);
   const tieredUsageRelated = new Set(["tiered-usage-pricing-calculator", "usage-based-pricing-calculator", "seat-vs-usage-pricing-comparison"]);
   const storageRelated = new Set(["storage-cost-calculator", "bandwidth-cost-calculator", "price-per-gb-month-calculator"]);
+  const computeRelated = new Set(["compute-cost-estimator"]);
+  const cloudCostRelated = new Set(["monthly-cloud-cost-estimator"]);
+  const breakEvenRelated = new Set(["break-even-cac-calculator", "cac-payback-period-calculator", "ltv-calculator"]);
+  const usageFloorRelated = new Set([
+    "usage-based-pricing-calculator",
+    "tiered-usage-pricing-calculator",
+    "api-pricing-calculator"
+  ]);
   const metricsRelated = new Set([
     "mrr-calculator",
     "arr-calculator",
@@ -211,6 +219,10 @@ const guideLinks = (() => {
   if (apiCostRelated.has(tool.slug)) links.push({ href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" });
   if (tieredUsageRelated.has(tool.slug)) links.push({ href: "/guides/tiered-usage-pricing/", label: "Guide: tiered usage pricing" });
   if (storageRelated.has(tool.slug)) links.push({ href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs & pricing" });
+  if (computeRelated.has(tool.slug)) links.push({ href: "/guides/compute-cost-modeling/", label: "Guide: compute cost modeling" });
+  if (cloudCostRelated.has(tool.slug)) links.push({ href: "/guides/monthly-cloud-cost-breakdown/", label: "Guide: monthly cloud cost breakdown" });
+  if (breakEvenRelated.has(tool.slug)) links.push({ href: "/guides/break-even-cac-guide/", label: "Guide: break-even CAC" });
+  if (usageFloorRelated.has(tool.slug)) links.push({ href: "/guides/usage-pricing-floor/", label: "Guide: usage pricing floors" });
   if (seatVsUsageRelated.has(tool.slug)) links.push({ href: "/guides/seat-vs-usage-pricing/", label: "Guide: seat vs usage" });
   if (experimentsRelated.has(tool.slug)) links.push({ href: "/guides/pricing-experiments-playbook/", label: "Guide: pricing experiments" });
   if (annualDiscountRelated.has(tool.slug)) links.push({ href: "/guides/annual-prepay-discount/", label: "Guide: annual discount" });
