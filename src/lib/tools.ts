@@ -586,7 +586,7 @@ export const TOOLS: ToolDefinition[] = [
       { name: "netNewMrr", label: "Net new MRR", format: "currency" },
       { name: "mrrGrowthPct", label: "MRR growth", format: "percent" }
     ],
-    related: ["arr-calculator", "ltv-calculator", "churn-impact-calculator"],
+    related: ["arr-calculator", "ltv-calculator", "churn-impact-calculator", "nrr-calculator"],
     presets: [
       { label: "Early stage", values: { startingMrr: "10000", newMrr: "2500", expansionMrr: "300", contractionMrr: "150", churnedMrr: "250" } },
       { label: "Growth", values: { startingMrr: "80000", newMrr: "12000", expansionMrr: "9000", contractionMrr: "2000", churnedMrr: "4500" } }
@@ -682,6 +682,114 @@ export const TOOLS: ToolDefinition[] = [
       { q: "Does MRR include annual contracts?", a: "Typically you normalize annual contracts to a monthly equivalent (annual contract value / 12) so MRR is comparable across billing terms." },
       { q: "Should I report gross or net MRR?", a: "Use net MRR for growth reporting and track gross MRR to isolate churn impact. Keep definitions consistent across periods." },
       { q: "How do usage-based charges fit into MRR?", a: "If usage is predictable, include a normalized monthly average. Otherwise track usage revenue separately to avoid volatile MRR." }
+    ]
+  },
+  {
+    slug: "nrr-calculator",
+    title: "Net Revenue Retention (NRR) Calculator",
+    description: "Calculate net revenue retention from starting MRR plus expansion, contraction, and churn.",
+    inputs: [
+      { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
+      { name: "startingMrr", label: "Starting MRR", type: "number", defaultValue: "50000", min: "0", step: "0.01" },
+      { name: "expansionMrr", label: "Expansion MRR", type: "number", defaultValue: "4500", min: "0", step: "0.01" },
+      { name: "contractionMrr", label: "Contraction MRR", type: "number", defaultValue: "1200", min: "0", step: "0.01" },
+      { name: "churnedMrr", label: "Churned MRR", type: "number", defaultValue: "2500", min: "0", step: "0.01" }
+    ],
+    outputs: [
+      { name: "endingMrr", label: "Ending MRR", format: "currency" },
+      { name: "netRevenueDelta", label: "Net revenue change", format: "currency" },
+      { name: "nrrPct", label: "NRR", format: "percent" }
+    ],
+    related: ["mrr-calculator", "churn-impact-calculator", "ltv-calculator"],
+    presets: [
+      { label: "Healthy expansion", values: { startingMrr: "80000", expansionMrr: "12000", contractionMrr: "2000", churnedMrr: "3500" } },
+      { label: "Retention pressure", values: { startingMrr: "80000", expansionMrr: "5000", contractionMrr: "4000", churnedMrr: "9000" } }
+    ],
+    howItWorks: [
+      "Ending MRR = starting + expansion - contraction - churned.",
+      "NRR = ending MRR / starting MRR.",
+      "Net revenue change = ending MRR - starting MRR."
+    ],
+    assumptions: [
+      "All inputs are for the same period (usually monthly).",
+      "Expansion, contraction, and churn are measured on the same revenue base.",
+      "NRR excludes new customer MRR; only existing customer revenue changes are included."
+    ],
+    inputGuidance: [
+      "Exclude new MRR from this model to keep NRR clean.",
+      "Use net-of-credits MRR to match finance reporting.",
+      "Segment enterprise vs SMB cohorts if expansion behavior differs.",
+      "Track NRR monthly to catch expansion or churn shifts early.",
+      "Normalize annual contracts to monthly MRR for comparability."
+    ],
+    validationChecks: [
+      "If expansion is 0 and churn > 0, NRR should be below 100%.",
+      "If expansion exceeds churn + contraction, NRR should be above 100%.",
+      "Ending MRR should never be negative; if it is, review inputs."
+    ],
+    commonMistakes: [
+      "Including new customer MRR in NRR.",
+      "Mixing bookings or billings with MRR.",
+      "Using annual churn in a monthly NRR model.",
+      "Treating downgrades as churn instead of contraction."
+    ],
+    interpretation: [
+      "NRR above 100% means expansion more than offsets churn and contraction.",
+      "NRR below 100% signals retention or expansion issues in existing accounts.",
+      "Use NRR alongside GRR to understand expansion vs churn health."
+    ],
+    useCases: [
+      {
+        title: "Expansion health",
+        detail: "Track whether upsell offsets churn in existing customers."
+      },
+      {
+        title: "Cohort performance",
+        detail: "Compare NRR across segments or cohorts to spot weak retention."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Monthly NRR rollup",
+        steps: [
+          "Enter starting MRR for existing customers only.",
+          "Add expansion, contraction, and churned MRR.",
+          "Review NRR and net revenue change."
+        ]
+      },
+      {
+        title: "Stress test churn",
+        steps: [
+          "Increase churned MRR to a worst-case value.",
+          "Check how far NRR falls below 100%.",
+          "Set a target expansion plan to recover."
+        ]
+      }
+    ],
+    scenarios: [
+      {
+        title: "Expansion-driven SaaS",
+        detail: "High expansion and low churn to validate >120% NRR."
+      },
+      {
+        title: "Contraction risk",
+        detail: "Higher downgrades to see how quickly NRR drops."
+      },
+      {
+        title: "Churn spike",
+        detail: "Increase churned MRR to model a retention event."
+      }
+    ],
+    edgeCases: [
+      "If starting MRR is 0, NRR is undefined; track net revenue change instead.",
+      "If churned MRR exceeds starting MRR, ending MRR will be negative; review input scope.",
+      "NRR can exceed 200% in aggressive expansion models; validate against reality."
+    ],
+    faq: [
+      { q: "What is NRR?", a: "Net Revenue Retention measures how revenue from existing customers changes over time, including expansion, contraction, and churn." },
+      { q: "Does NRR include new customers?", a: "No. NRR only measures revenue from an existing customer base." },
+      { q: "What is a good NRR benchmark?", a: "Enterprise SaaS often targets 110-130% NRR, while SMB SaaS may be lower." },
+      { q: "How does NRR differ from GRR?", a: "GRR excludes expansion; NRR includes expansion so it can exceed 100%." }
     ]
   },
   {
@@ -899,6 +1007,114 @@ export const TOOLS: ToolDefinition[] = [
       { q: "What churn rate should I enter?", a: "Use a recent cohort-based revenue churn rate (gross or net). If you only have logo churn, treat this as a directional estimate." },
       { q: "What is the difference between gross and net churn?", a: "Gross churn looks only at lost revenue. Net churn includes expansion and contraction, which can offset churn." },
       { q: "How do I reflect cohort improvements?", a: "Run separate scenarios for older cohorts vs new cohorts to see how churn improvements affect the annual loss." }
+    ]
+  },
+  {
+    slug: "cohort-retention-curve-calculator",
+    title: "Cohort Retention Curve Calculator",
+    description: "Model a 6-month retention curve from a cohort size and a constant monthly retention rate.",
+    inputs: [
+      { name: "cohortSize", label: "Starting cohort size", type: "number", defaultValue: "1000", min: "0", step: "1" },
+      { name: "monthlyRetentionPct", label: "Monthly retention (%)", type: "number", defaultValue: "95", min: "0", step: "0.1" }
+    ],
+    outputs: [
+      { name: "month1RetentionPct", label: "Month 1 retention", format: "percent" },
+      { name: "month2RetentionPct", label: "Month 2 retention", format: "percent" },
+      { name: "month3RetentionPct", label: "Month 3 retention", format: "percent" },
+      { name: "month4RetentionPct", label: "Month 4 retention", format: "percent" },
+      { name: "month5RetentionPct", label: "Month 5 retention", format: "percent" },
+      { name: "month6RetentionPct", label: "Month 6 retention", format: "percent" },
+      { name: "month6Users", label: "Month 6 retained users", format: "number" }
+    ],
+    related: ["churn-impact-calculator", "ltv-calculator", "mrr-calculator"],
+    presets: [
+      { label: "Strong retention (97%)", values: { cohortSize: "1000", monthlyRetentionPct: "97" } },
+      { label: "Healthy retention (95%)", values: { cohortSize: "1000", monthlyRetentionPct: "95" } },
+      { label: "At-risk retention (90%)", values: { cohortSize: "1000", monthlyRetentionPct: "90" } }
+    ],
+    howItWorks: [
+      "We apply the monthly retention rate repeatedly across months.",
+      "Month N retention = (monthly retention rate ^ N) x 100.",
+      "Month 6 retained users = cohort size x monthly retention rate ^ 6."
+    ],
+    assumptions: [
+      "Retention is modeled as a constant monthly rate for six months.",
+      "This is a directional model; real cohorts often vary by month.",
+      "Use this for planning and sensitivity, not for exact cohort reporting."
+    ],
+    inputGuidance: [
+      "Use a trailing 3-6 month average retention rate for stability.",
+      "If early churn is higher, use the lower rate to be conservative.",
+      "Segment cohorts by plan or channel if retention differs materially.",
+      "If you have real cohort data, input the actual monthly retention instead.",
+      "Use the model to test how small improvements compound over time."
+    ],
+    validationChecks: [
+      "If retention is 100%, all monthly retention outputs should be 100%.",
+      "If retention is 0%, all outputs should be 0%.",
+      "Month 6 retained users should never exceed cohort size."
+    ],
+    commonMistakes: [
+      "Using annual retention as a monthly value.",
+      "Assuming retention is flat when early churn is spiky.",
+      "Using logo retention instead of revenue retention for financial planning."
+    ],
+    interpretation: [
+      "Small changes in monthly retention compound quickly over 6 months.",
+      "If month 6 retention falls below target, prioritize onboarding and activation.",
+      "Use this to set realistic retention goals for new segments."
+    ],
+    useCases: [
+      {
+        title: "Retention planning",
+        detail: "Estimate how improvements in monthly retention change the 6-month curve."
+      },
+      {
+        title: "Cohort benchmarking",
+        detail: "Compare healthy vs at-risk retention scenarios for targets."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Baseline retention curve",
+        steps: [
+          "Enter your starting cohort size.",
+          "Input the monthly retention rate.",
+          "Review the 6-month curve and retained users."
+        ]
+      },
+      {
+        title: "Retention improvement",
+        steps: [
+          "Increase retention by 1-2 points.",
+          "Observe the month 6 uplift.",
+          "Use the delta to size retention investments."
+        ]
+      }
+    ],
+    scenarios: [
+      {
+        title: "Product-market fit",
+        detail: "Use 97% retention to model a sticky product cohort."
+      },
+      {
+        title: "New segment",
+        detail: "Use 90% retention to model a higher-risk segment."
+      },
+      {
+        title: "Retention program",
+        detail: "Improve retention by 2 points to see compounding gains."
+      }
+    ],
+    edgeCases: [
+      "If cohort size is 0, all outputs should be 0.",
+      "If retention exceeds 100%, clamp to 100%.",
+      "Very low retention will reduce month 6 users to near zero."
+    ],
+    faq: [
+      { q: "Is this based on real cohort data?", a: "No. This is a model that assumes a constant monthly retention rate." },
+      { q: "Why only 6 months?", a: "Six months covers early retention dynamics where most SaaS churn happens." },
+      { q: "Can I use this for revenue retention?", a: "Yes, if the retention rate reflects revenue retention instead of user retention." }
     ]
   },
   {
@@ -1485,6 +1701,136 @@ export const TOOLS: ToolDefinition[] = [
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
       { q: "Should discounts vary by segment?", a: "Yes. Enterprise buyers may expect smaller discounts than SMB, especially if contracts are multi-year." },
       { q: "Does prepay reduce churn?", a: "Often yes, but you should validate with cohort data. Treat churn reduction as a separate assumption." }
+    ]
+  },
+  {
+    slug: "pricing-tier-optimizer",
+    title: "Pricing Tier Optimizer",
+    description: "Back into tier prices from a target ARPA and your expected plan mix.",
+    inputs: [
+      { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
+      { name: "targetArpa", label: "Target ARPA (monthly)", type: "number", defaultValue: "120", min: "0", step: "0.01" },
+      { name: "basicSharePct", label: "Basic plan share (%)", type: "number", defaultValue: "60", min: "0", step: "1" },
+      { name: "proSharePct", label: "Pro plan share (%)", type: "number", defaultValue: "30", min: "0", step: "1" },
+      { name: "enterpriseSharePct", label: "Enterprise plan share (%)", type: "number", defaultValue: "10", min: "0", step: "1" },
+      { name: "proMultiplier", label: "Pro price multiplier", type: "number", defaultValue: "2.5", min: "0", step: "0.1" },
+      { name: "enterpriseMultiplier", label: "Enterprise price multiplier", type: "number", defaultValue: "6", min: "0", step: "0.1" }
+    ],
+    outputs: [
+      { name: "basicPrice", label: "Basic tier price", format: "currency" },
+      { name: "proPrice", label: "Pro tier price", format: "currency" },
+      { name: "enterprisePrice", label: "Enterprise tier price", format: "currency" },
+      { name: "impliedArpa", label: "Implied ARPA", format: "currency" }
+    ],
+    related: ["mrr-calculator", "pricing-increase-impact-calculator", "usage-based-pricing-calculator"],
+    presets: [
+      {
+        label: "SMB mix",
+        values: {
+          targetArpa: "90",
+          basicSharePct: "70",
+          proSharePct: "25",
+          enterpriseSharePct: "5",
+          proMultiplier: "2.2",
+          enterpriseMultiplier: "5"
+        }
+      },
+      {
+        label: "Mid-market mix",
+        values: {
+          targetArpa: "180",
+          basicSharePct: "45",
+          proSharePct: "40",
+          enterpriseSharePct: "15",
+          proMultiplier: "2.8",
+          enterpriseMultiplier: "6.5"
+        }
+      }
+    ],
+    howItWorks: [
+      "We model ARPA as the weighted average of tier prices.",
+      "Basic price is solved so the weighted average matches your target ARPA.",
+      "Pro and Enterprise prices are set as multipliers of the basic tier."
+    ],
+    assumptions: [
+      "Plan shares represent the expected mix of active customers.",
+      "Multipliers capture how much higher Pro and Enterprise prices are vs Basic.",
+      "This is a pricing structure model, not a conversion or churn forecast."
+    ],
+    inputGuidance: [
+      "Use an ARPA target that aligns with revenue goals and margin constraints.",
+      "If plan shares do not sum to 100, we normalize them automatically.",
+      "Set multipliers based on value delivered or competitive benchmarks.",
+      "Run multiple mixes to stress-test how pricing shifts with segment mix.",
+      "Validate the final prices against willingness-to-pay research."
+    ],
+    validationChecks: [
+      "Implied ARPA should match your target ARPA.",
+      "If all plan shares are 0, prices will be 0; set a realistic mix.",
+      "If multipliers are 1, all tiers will be priced the same."
+    ],
+    commonMistakes: [
+      "Using a target ARPA without validating CAC or payback impact.",
+      "Setting enterprise multipliers too low for high-touch costs.",
+      "Ignoring how mix shifts can change ARPA over time.",
+      "Comparing prices to competitors without aligning on value."
+    ],
+    interpretation: [
+      "Use the basic tier price as your public anchor.",
+      "If prices look too high, reduce the target ARPA or adjust the mix.",
+      "If prices look too low, increase multipliers or shift mix assumptions."
+    ],
+    useCases: [
+      {
+        title: "Tier price design",
+        detail: "Translate a revenue target into concrete tier prices."
+      },
+      {
+        title: "Mix sensitivity",
+        detail: "See how a shift toward Pro customers changes pricing."
+      }
+    ],
+    walkthroughs: [
+      {
+        title: "Set a pricing ladder",
+        steps: [
+          "Enter your target ARPA and expected plan mix.",
+          "Set Pro and Enterprise multipliers.",
+          "Review suggested tier prices."
+        ]
+      },
+      {
+        title: "Test mix shift",
+        steps: [
+          "Increase Pro share and reduce Basic share.",
+          "Check how tier prices move.",
+          "Use the range to set guardrails."
+        ]
+      }
+    ],
+    scenarios: [
+      {
+        title: "SMB-heavy mix",
+        detail: "High Basic share with lower ARPA to test entry-level pricing."
+      },
+      {
+        title: "Enterprise mix",
+        detail: "Higher Enterprise share and larger multipliers to reflect high-touch costs."
+      },
+      {
+        title: "Upsell focus",
+        detail: "Increase Pro share to model a successful upgrade strategy."
+      }
+    ],
+    edgeCases: [
+      "If multipliers are 0, all prices will be 0; use realistic multipliers.",
+      "If target ARPA is 0, all prices will be 0.",
+      "Extremely high multipliers can push enterprise pricing beyond market norms."
+    ],
+    faq: [
+      { q: "Does this estimate conversion rates?", a: "No. It only solves for prices based on ARPA and plan mix." },
+      { q: "How should I set multipliers?", a: "Use competitor ranges, value differentiation, and cost-to-serve data." },
+      { q: "What if my plan mix changes over time?", a: "Re-run this model quarterly or after a major packaging change." }
     ]
   },
   {

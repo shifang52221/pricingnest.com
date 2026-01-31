@@ -272,3 +272,44 @@ test("monthly cloud cost estimator totals variable and fixed costs", async ({ pa
 
   expect(Math.round(total)).toBe(Math.round(variable + fixed));
 });
+
+test("nrr calculator exceeds 100% with strong expansion", async ({ page }) => {
+  await page.goto("/saas-pricing/nrr-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="startingMrr"]', "10000");
+  await page.fill('input[name="expansionMrr"]', "2500");
+  await page.fill('input[name="contractionMrr"]', "400");
+  await page.fill('input[name="churnedMrr"]', "900");
+
+  const nrr = await outputValue(page, "nrrPct");
+  expect(nrr).toBeGreaterThan(100);
+});
+
+test("cohort retention curve declines over time", async ({ page }) => {
+  await page.goto("/saas-pricing/cohort-retention-curve-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="cohortSize"]', "1000");
+  await page.fill('input[name="monthlyRetentionPct"]', "92");
+
+  const month1 = await outputValue(page, "month1RetentionPct");
+  const month6 = await outputValue(page, "month6RetentionPct");
+
+  expect(month1).toBeGreaterThan(month6);
+});
+
+test("pricing tier optimizer matches target ARPA", async ({ page }) => {
+  await page.goto("/saas-pricing/pricing-tier-optimizer/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="targetArpa"]', "120");
+  await page.fill('input[name="basicSharePct"]', "60");
+  await page.fill('input[name="proSharePct"]', "30");
+  await page.fill('input[name="enterpriseSharePct"]', "10");
+  await page.fill('input[name="proMultiplier"]', "2.5");
+  await page.fill('input[name="enterpriseMultiplier"]', "6");
+
+  const implied = await outputValue(page, "impliedArpa");
+  expect(Math.abs(implied - 120)).toBeLessThan(0.5);
+});

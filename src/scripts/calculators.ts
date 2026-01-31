@@ -177,6 +177,18 @@ export function compute(slug: string, inputs: Inputs): CalcResult {
 
       return { endingMrr, netNewMrr, mrrGrowthPct };
     }
+    case "nrr-calculator": {
+      const startingMrr = Math.max(0, toNumber(inputs.startingMrr));
+      const expansionMrr = Math.max(0, toNumber(inputs.expansionMrr));
+      const contractionMrr = Math.max(0, toNumber(inputs.contractionMrr));
+      const churnedMrr = Math.max(0, toNumber(inputs.churnedMrr));
+
+      const endingMrr = startingMrr + expansionMrr - contractionMrr - churnedMrr;
+      const netRevenueDelta = endingMrr - startingMrr;
+      const nrrPct = startingMrr > 0 ? (endingMrr / startingMrr) * 100 : 0;
+
+      return { endingMrr, netRevenueDelta, nrrPct };
+    }
     case "arr-calculator": {
       const mrr = Math.max(0, toNumber(inputs.mrr));
       const arr = mrr * 12;
@@ -190,6 +202,29 @@ export function compute(slug: string, inputs: Inputs): CalcResult {
       const annualChurnedRevenue = monthlyChurnedRevenue * 12;
 
       return { monthlyChurnedRevenue, annualChurnedRevenue };
+    }
+    case "cohort-retention-curve-calculator": {
+      const cohortSize = Math.max(0, toNumber(inputs.cohortSize));
+      const monthlyRetentionPct = clampPercent(toNumber(inputs.monthlyRetentionPct));
+      const rate = monthlyRetentionPct / 100;
+
+      const month1RetentionPct = Math.pow(rate, 1) * 100;
+      const month2RetentionPct = Math.pow(rate, 2) * 100;
+      const month3RetentionPct = Math.pow(rate, 3) * 100;
+      const month4RetentionPct = Math.pow(rate, 4) * 100;
+      const month5RetentionPct = Math.pow(rate, 5) * 100;
+      const month6RetentionPct = Math.pow(rate, 6) * 100;
+      const month6Users = cohortSize * Math.pow(rate, 6);
+
+      return {
+        month1RetentionPct,
+        month2RetentionPct,
+        month3RetentionPct,
+        month4RetentionPct,
+        month5RetentionPct,
+        month6RetentionPct,
+        month6Users
+      };
     }
     case "ltv-calculator": {
       const arpa = Math.max(0, toNumber(inputs.arpa));
@@ -253,6 +288,27 @@ export function compute(slug: string, inputs: Inputs): CalcResult {
       const annualSavings = monthlyPrice * 12 - annualPrice;
 
       return { annualPrice, effectiveMonthly, annualSavings };
+    }
+    case "pricing-tier-optimizer": {
+      const targetArpa = Math.max(0, toNumber(inputs.targetArpa));
+      const basicSharePct = clampPercent(toNumber(inputs.basicSharePct));
+      const proSharePct = clampPercent(toNumber(inputs.proSharePct));
+      const enterpriseSharePct = clampPercent(toNumber(inputs.enterpriseSharePct));
+      const proMultiplier = Math.max(0, toNumber(inputs.proMultiplier));
+      const enterpriseMultiplier = Math.max(0, toNumber(inputs.enterpriseMultiplier));
+
+      const shareTotal = basicSharePct + proSharePct + enterpriseSharePct;
+      const basicShare = shareTotal > 0 ? basicSharePct / shareTotal : 0;
+      const proShare = shareTotal > 0 ? proSharePct / shareTotal : 0;
+      const enterpriseShare = shareTotal > 0 ? enterpriseSharePct / shareTotal : 0;
+      const denominator = basicShare + proShare * proMultiplier + enterpriseShare * enterpriseMultiplier;
+
+      const basicPrice = denominator > 0 ? targetArpa / denominator : 0;
+      const proPrice = basicPrice * proMultiplier;
+      const enterprisePrice = basicPrice * enterpriseMultiplier;
+      const impliedArpa = basicPrice * denominator;
+
+      return { basicPrice, proPrice, enterprisePrice, impliedArpa };
     }
     case "storage-cost-calculator": {
       const avgGbStored = Math.max(0, toNumber(inputs.avgGbStored));
