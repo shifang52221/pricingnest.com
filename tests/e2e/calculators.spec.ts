@@ -198,3 +198,77 @@ test("break-even CAC increases with longer payback target", async ({ page }) => 
 
   expect(cacLong).toBeGreaterThan(cacShort);
 });
+
+test("pricing increase calculator shows higher revenue with small churn", async ({ page }) => {
+  await page.goto("/saas-pricing/pricing-increase-impact-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="currentPrice"]', "100");
+  await page.fill('input[name="customers"]', "1000");
+  await page.fill('input[name="priceIncreasePct"]', "10");
+  await page.fill('input[name="expectedChurnPct"]', "2");
+  const revenueAfter = await outputValue(page, "revenueAfter");
+
+  await page.fill('input[name="expectedChurnPct"]', "15");
+  const revenueAfterHighChurn = await outputValue(page, "revenueAfter");
+
+  expect(revenueAfter).toBeGreaterThan(revenueAfterHighChurn);
+});
+
+test("annual discount calculator increases savings with higher discount", async ({ page }) => {
+  await page.goto("/saas-pricing/annual-discount-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="monthlyPrice"]', "50");
+  await page.fill('input[name="annualDiscountPct"]', "10");
+  const savingsLow = await outputValue(page, "annualSavings");
+
+  await page.fill('input[name="annualDiscountPct"]', "25");
+  const savingsHigh = await outputValue(page, "annualSavings");
+
+  expect(savingsHigh).toBeGreaterThan(savingsLow);
+});
+
+test("arr calculator scales with mrr", async ({ page }) => {
+  await page.goto("/saas-pricing/arr-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="mrr"]', "12000");
+  const arrBase = await outputValue(page, "arr");
+
+  await page.fill('input[name="mrr"]', "20000");
+  const arrHigher = await outputValue(page, "arr");
+
+  expect(arrHigher).toBeGreaterThan(arrBase);
+});
+
+test("churn impact calculator increases annual churn with higher monthly churn", async ({ page }) => {
+  await page.goto("/saas-pricing/churn-impact-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="mrr"]', "15000");
+  await page.fill('input[name="monthlyChurnPct"]', "2");
+  const annualLow = await outputValue(page, "annualChurnedRevenue");
+
+  await page.fill('input[name="monthlyChurnPct"]', "6");
+  const annualHigh = await outputValue(page, "annualChurnedRevenue");
+
+  expect(annualHigh).toBeGreaterThan(annualLow);
+});
+
+test("monthly cloud cost estimator totals variable and fixed costs", async ({ page }) => {
+  await page.goto("/saas-pricing/monthly-cloud-cost-estimator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="computeCost"]', "800");
+  await page.fill('input[name="storageCost"]', "300");
+  await page.fill('input[name="bandwidthCost"]', "200");
+  await page.fill('input[name="otherCost"]', "100");
+  await page.fill('input[name="monthlyFixedCost"]', "250");
+
+  const total = await outputValue(page, "monthlyCloudCost");
+  const variable = await outputValue(page, "variableCost");
+  const fixed = await outputValue(page, "fixedCost");
+
+  expect(Math.round(total)).toBe(Math.round(variable + fixed));
+});
