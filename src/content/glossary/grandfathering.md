@@ -3,6 +3,7 @@ title: "Grandfathering"
 description: "Keeping existing customers on old pricing to reduce churn risk during increases."
 updated: "2026-01-30"
 category: "pricing-experiments"
+guides: ["pricing-rollout-playbook"]
 glossary: ["churn"]
 ---
 

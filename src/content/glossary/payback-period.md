@@ -3,6 +3,7 @@ title: "Payback Period"
 description: "Time required to recover CAC from gross profit; key unit economics metric."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["ltv-cac-range"]
 tools: ["cac-payback-period-calculator"]
 glossary: ["cac","ltv"]
 ---

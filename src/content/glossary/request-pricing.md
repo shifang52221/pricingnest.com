@@ -3,6 +3,7 @@ title: "Request Pricing"
 description: "Pricing based on API or storage requests; requires clear unit definitions."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["request-pricing-model"]
 glossary: ["request","usage-based-pricing"]
 ---
 ## Definition

@@ -3,6 +3,7 @@ title: "Pricing Page"
 description: "Your plan and unit definitions; must be clear to avoid sales/support friction."
 updated: "2026-01-30"
 category: "pricing-experiments"
+guides: ["trial-to-paid-pricing"]
 ---
 
 ## Definition

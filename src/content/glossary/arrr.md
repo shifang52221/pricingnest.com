@@ -3,6 +3,7 @@ title: "ARRR Funnel"
 description: "Acquisition, Activation, Retention, Revenue, Referral; a lifecycle view for growth and pricing."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["arrr-funnel-pricing"]
 glossary: ["activation","retention-curve","arpa","nrr"]
 ---
 ## Definition

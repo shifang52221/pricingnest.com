@@ -3,6 +3,7 @@ title: "Activation"
 description: "The moment a user experiences core value; the hinge point between signup and habit."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["trial-to-paid-pricing", "arrr-funnel-pricing"]
 glossary: ["time-to-value","arrr","retention-curve"]
 ---
 ## Definition

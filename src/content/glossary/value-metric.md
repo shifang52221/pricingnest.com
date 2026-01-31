@@ -3,6 +3,7 @@ title: "Value Metric"
 description: "The metric that best correlates with value delivered (seat, call, GB, etc.)."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["value-metric-selection"]
 glossary: ["usage-based-pricing","seat-based-pricing"]
 ---
 

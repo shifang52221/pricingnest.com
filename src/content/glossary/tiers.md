@@ -3,7 +3,7 @@ title: "Tiers"
 description: "Pricing levels with different limits or features; used to segment customers."
 updated: "2026-01-30"
 category: "pricing-models"
-guides: ["usage-tier-breakpoints", "pricing-page-comparison-table", "pricing-migration-plan"]
+guides: ["usage-tier-breakpoints", "pricing-page-comparison-table", "pricing-migration-plan", "included-usage-design", "enterprise-pricing-guardrails", "trial-to-paid-pricing"]
 glossary: ["feature-gating","included-usage"]
 ---
 ## Definition

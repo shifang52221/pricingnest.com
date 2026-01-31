@@ -3,6 +3,7 @@ title: "Run Rate"
 description: "A normalized revenue pace (e.g., MRR) used to project annualized performance."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["capacity-planning-pricing", "revenue-recognition-basics"]
 glossary: ["mrr","arr"]
 ---
 

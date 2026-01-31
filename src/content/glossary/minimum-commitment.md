@@ -3,6 +3,7 @@ title: "Minimum Commitment"
 description: "A minimum monthly or annual spend requirement, often paired with usage pricing."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["minimum-commitment-model", "enterprise-pricing-guardrails"]
 glossary: ["usage-based-pricing"]
 ---
 

@@ -3,6 +3,7 @@ title: "LTV:CAC"
 description: "Ratio of lifetime gross profit to CAC; a common unit economics health check."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["ltv-cac-range"]
 glossary: ["ltv","cac"]
 ---
 

@@ -3,6 +3,7 @@ title: "Revenue Recognition"
 description: "Accounting treatment of revenue over time; differs from cash collected."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["revenue-recognition-basics"]
 glossary: ["bookings","run-rate"]
 ---
 

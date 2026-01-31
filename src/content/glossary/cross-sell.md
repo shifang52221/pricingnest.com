@@ -3,6 +3,7 @@ title: "Cross-sell"
 description: "Selling a different product or add-on to an existing customer; can improve ARPA."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["addon-pricing-strategy"]
 glossary: ["arpa","expansion-revenue"]
 ---
 

@@ -3,6 +3,7 @@ title: "Rate Card"
 description: "A list of unit prices for usage, add-ons, and services; useful for enterprise quoting."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["request-pricing-model"]
 ---
 
 ## Definition

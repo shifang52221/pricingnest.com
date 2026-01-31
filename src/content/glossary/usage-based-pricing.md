@@ -3,6 +3,7 @@ title: "Usage-Based Pricing"
 description: "Charging based on consumption (calls, events, GB, minutes) instead of seats alone."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["usage-mix-modeling", "price-floor-by-margin"]
 tools: ["usage-based-pricing-calculator","tiered-usage-pricing-calculator"]
 glossary: ["seat-based-pricing","value-metric","unit-cost","overage"]
 ---

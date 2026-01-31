@@ -3,6 +3,7 @@ title: "Time to Value"
 description: "How quickly a customer reaches value; affects churn risk and pricing tolerance."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["trial-to-paid-pricing"]
 glossary: ["activation","arrr","retention-curve","churn"]
 ---
 ## Definition

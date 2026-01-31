@@ -3,6 +3,7 @@ title: "Churn Mitigation"
 description: "Tactics to reduce churn, from onboarding and guardrails to pricing and packaging."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["churn-reduction-playbook"]
 glossary: ["churn","churn-cohort","retention-curve","grace-period","downgrade"]
 ---
 ## Definition

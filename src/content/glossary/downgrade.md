@@ -3,6 +3,7 @@ title: "Downgrade"
 description: "Reduction in recurring revenue from a customer due to lower plan or usage."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["downgrade-prevention"]
 glossary: ["grr","churn"]
 ---
 

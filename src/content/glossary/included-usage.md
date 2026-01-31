@@ -3,6 +3,7 @@ title: "Included Usage"
 description: "Usage bundled into a plan or platform fee before overages apply."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["included-usage-design", "usage-mix-modeling", "usage-cap-design"]
 glossary: ["usage-based-pricing"]
 ---
 

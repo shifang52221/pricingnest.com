@@ -3,6 +3,7 @@ title: "Billing Cycle"
 description: "How often you invoice (monthly, annual); affects churn measurement and cash flow."
 updated: "2026-01-30"
 category: "pricing-experiments"
+guides: ["billing-cycle-selection", "revenue-recognition-basics"]
 glossary: ["mrr","annual-plan"]
 ---
 

@@ -3,6 +3,7 @@ title: "Marginal Cost"
 description: "Incremental cost to serve one more unit or customer; key for usage pricing."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["price-floor-by-margin"]
 glossary: ["unit-cost","variable-cost"]
 ---
 

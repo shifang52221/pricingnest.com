@@ -3,6 +3,7 @@ title: "Add-on"
 description: "Optional feature or capacity sold separately, often used for expansion revenue."
 updated: "2026-01-30"
 category: "pricing-models"
+guides: ["addon-pricing-strategy"]
 glossary: ["expansion-revenue","pricing-metric","overage","tiers"]
 ---
 ## Definition

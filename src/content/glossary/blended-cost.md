@@ -3,6 +3,7 @@ title: "Blended Cost"
 description: "Weighted average unit cost across regions, tiers, and discounts."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["usage-allocation-cost"]
 glossary: ["unit-cost"]
 ---
 

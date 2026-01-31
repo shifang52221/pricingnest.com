@@ -3,6 +3,7 @@ title: "Upsell"
 description: "Selling a higher plan or add-on to an existing customer; contributes to expansion revenue."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["addon-pricing-strategy"]
 glossary: ["expansion-revenue"]
 ---
 

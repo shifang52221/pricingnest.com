@@ -3,6 +3,7 @@ title: "Price Increase"
 description: "Raising prices; evaluate break-even churn and rollout strategy."
 updated: "2026-01-30"
 category: "pricing-experiments"
+guides: ["pricing-rollout-playbook", "downgrade-prevention"]
 tools: ["pricing-increase-impact-calculator"]
 glossary: ["churn"]
 ---

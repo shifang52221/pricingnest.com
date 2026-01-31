@@ -3,6 +3,7 @@ title: "CAC (Customer Acquisition Cost)"
 description: "Cost to acquire a customer; use with gross profit to estimate payback."
 updated: "2026-01-30"
 category: "unit-economics"
+guides: ["ltv-cac-range"]
 tools: ["cac-payback-period-calculator","break-even-cac-calculator"]
 glossary: ["cac-payback","ltv","payback-period","arpa"]
 ---
