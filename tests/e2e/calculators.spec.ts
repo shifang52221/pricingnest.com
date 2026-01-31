@@ -132,3 +132,69 @@ test("compute cost estimator yields positive price at margin", async ({ page }) 
 
   expect(recommendedPrice).toBeGreaterThan(monthlyCost);
 });
+
+test("bandwidth cost calculator responds to higher GB usage", async ({ page }) => {
+  await page.goto("/saas-pricing/bandwidth-cost-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="gbPerMonth"]', "2000");
+  await page.fill('input[name="costPerGb"]', "0.03");
+  await page.fill('input[name="monthlyFixedCost"]', "200");
+  await page.fill('input[name="targetGrossMarginPct"]', "75");
+  const priceBase = await outputValue(page, "recommendedMonthlyPrice");
+
+  await page.fill('input[name="gbPerMonth"]', "4000");
+  const priceHigherUsage = await outputValue(page, "recommendedMonthlyPrice");
+
+  expect(priceHigherUsage).toBeGreaterThan(priceBase);
+});
+
+test("storage cost calculator increases with requests", async ({ page }) => {
+  await page.goto("/saas-pricing/storage-cost-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="avgGbStored"]', "500");
+  await page.fill('input[name="costPerGbMonth"]', "0.02");
+  await page.fill('input[name="requestsPerMonth"]', "200000");
+  await page.fill('input[name="costPer10kRequests"]', "0.01");
+  await page.fill('input[name="monthlyFixedCost"]', "300");
+  await page.fill('input[name="targetGrossMarginPct"]', "70");
+  const priceBase = await outputValue(page, "recommendedMonthlyPrice");
+
+  await page.fill('input[name="requestsPerMonth"]', "600000");
+  const priceMoreRequests = await outputValue(page, "recommendedMonthlyPrice");
+
+  expect(priceMoreRequests).toBeGreaterThan(priceBase);
+});
+
+test("price per GB-month calculator reacts to higher storage", async ({ page }) => {
+  await page.goto("/saas-pricing/price-per-gb-month-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="avgGbStored"]', "200");
+  await page.fill('input[name="costPerGbMonth"]', "0.02");
+  await page.fill('input[name="monthlyFixedCost"]', "100");
+  await page.fill('input[name="targetGrossMarginPct"]', "80");
+  const priceBase = await outputValue(page, "recommendedMonthlyPrice");
+
+  await page.fill('input[name="avgGbStored"]', "400");
+  const priceMoreStorage = await outputValue(page, "recommendedMonthlyPrice");
+
+  expect(priceMoreStorage).toBeGreaterThan(priceBase);
+});
+
+test("break-even CAC increases with longer payback target", async ({ page }) => {
+  await page.goto("/saas-pricing/break-even-cac-calculator/");
+  await page.waitForSelector('form[data-tool-form]');
+
+  await page.fill('input[name="arpa"]', "120");
+  await page.fill('input[name="grossMarginPct"]', "80");
+  await page.fill('input[name="monthlyChurnPct"]', "4");
+  await page.fill('input[name="targetPaybackMonths"]', "6");
+  const cacShort = await outputValue(page, "breakEvenCac");
+
+  await page.fill('input[name="targetPaybackMonths"]', "12");
+  const cacLong = await outputValue(page, "breakEvenCac");
+
+  expect(cacLong).toBeGreaterThan(cacShort);
+});
