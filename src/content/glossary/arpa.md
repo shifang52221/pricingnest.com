@@ -3,6 +3,7 @@ title: "ARPA / ARPU"
 description: "Average revenue per account (or user) used in LTV and payback models."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["pricing-tier-design", "pricing-tier-mistakes"]
 tools: ["ltv-calculator","cac-payback-period-calculator"]
 glossary: ["ltv","mrr","arr"]
 ---

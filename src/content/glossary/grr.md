@@ -3,6 +3,7 @@ title: "GRR (Gross Revenue Retention)"
 description: "Revenue retention excluding expansions; isolates churn and downgrades."
 updated: "2026-01-30"
 category: "metrics"
+guides: ["grr-vs-nrr"]
 glossary: ["nrr","churn"]
 ---
 

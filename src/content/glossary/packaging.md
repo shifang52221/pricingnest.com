@@ -3,7 +3,7 @@ title: "Packaging"
 description: "How you bundle features and limits into plans; shapes value perception and conversion."
 updated: "2026-01-30"
 category: "pricing-models"
-guides: ["pricing-tier-design"]
+guides: ["pricing-tier-design", "pricing-tier-mistakes"]
 glossary: ["tiers","pricing-metric","value-metric","feature-gating","add-on"]
 ---
 ## Definition

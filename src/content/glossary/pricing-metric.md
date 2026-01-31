@@ -3,7 +3,7 @@ title: "Pricing Metric"
 description: "The unit you charge on; should be buyer-friendly and align with value/cost."
 updated: "2026-01-30"
 category: "pricing-models"
-guides: ["pricing-tier-design", "usage-pricing-floor"]
+guides: ["pricing-tier-design", "pricing-tier-mistakes", "usage-pricing-floor"]
 glossary: ["value-metric"]
 ---
 

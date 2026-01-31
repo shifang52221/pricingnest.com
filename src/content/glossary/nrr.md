@@ -3,7 +3,7 @@ title: "NRR (Net Revenue Retention)"
 description: "Revenue retention including expansions; key for growth and pricing impact."
 updated: "2026-01-30"
 category: "metrics"
-guides: ["nrr-playbook"]
+guides: ["nrr-playbook", "grr-vs-nrr"]
 glossary: ["grr","churn"]
 ---
 
