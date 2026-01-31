@@ -774,7 +774,14 @@ function setupToolPage(root) {
     renderInsights(root, slug, inputs, result);
     renderCompare(root, slug, inputs);
     renderSensitivity(root, slug, inputs);
-    if (shareLinkEl) shareLinkEl.textContent = buildShareUrl(form);
+    if (shareLinkEl) {
+      const shareUrl = buildShareUrl(form);
+      if (shareLinkEl instanceof HTMLInputElement || shareLinkEl instanceof HTMLTextAreaElement) {
+        shareLinkEl.value = shareUrl;
+      } else {
+        shareLinkEl.textContent = shareUrl;
+      }
+    }
   };
 
   form.addEventListener("input", recompute);
@@ -820,7 +827,7 @@ function setupToolPage(root) {
         window.prompt("Copy this link:", shareUrl);
       } finally {
         window.setTimeout(() => {
-          copyBtn.textContent = "Copy share link";
+          copyBtn.textContent = "Copy link";
         }, 1200);
       }
     });
