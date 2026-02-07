@@ -67,9 +67,9 @@ export const CURRENCY_OPTIONS = [
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
-    title: "Usage-Based Pricing Calculator",
+    title: "Usage-Based Pricing Calculator (Unit Price & Margin)",
     description:
-      "Estimate a per-unit price from unit costs, fixed overhead, and a target gross margin. Generates revenue and gross profit estimates.",
+      "Usage-based pricing calculator to estimate a per-unit price from unit costs, fixed overhead, and a target gross margin. Generates revenue and gross profit estimates.",
     inputs: [
       {
         name: "currency",
@@ -241,6 +241,10 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       {
+        q: "Is this a usage based pricing calculator?",
+        a: "Yes. It estimates a per-unit price from costs and a target margin, which is the core pricing step for usage-based models."
+      },
+      {
         q: "What is usage-based pricing?",
         a: "Usage-based pricing charges customers based on consumption (calls, events, GB, minutes) instead of seats or flat tiers."
       },
@@ -264,9 +268,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "compute-cost-estimator",
-    title: "Compute Cost Estimator",
+    title: "Compute Cost Estimator (vCPU & Memory Cost Calculator)",
     description:
-      "Estimate monthly compute cost from vCPU-hours and GB-hours, then back into a recommended price at your target gross margin.",
+      "Compute cost estimator and calculator for monthly vCPU-hours and GB-hours, then back into a recommended price at your target gross margin.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -404,6 +408,10 @@ export const TOOLS: ToolDefinition[] = [
       "If target margin is near 0, recommended price will be close to cost and may be unviable."
     ],
     faq: [
+      {
+        q: "Is this a cloud compute cost calculator?",
+        a: "Yes, as long as you enter your blended vCPU and memory rates. It does not fetch public cloud list prices."
+      },
       {
         q: "What are vCPU-hours and GB-hours?",
         a: "They are time-weighted usage of CPU and memory. For example, 2 vCPUs running for 1 hour is 2 vCPU-hours."
@@ -1588,9 +1596,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "annual-discount-calculator",
-    title: "Annual Discount Calculator",
+    title: "Annual Discount Calculator (Annual Pricing)",
     description:
-      "Convert a monthly price to an annual prepay price with a discount and compute the effective monthly rate and savings.",
+      "Annual pricing discount calculator that converts a monthly price to an annual prepay price and computes the effective monthly rate and savings.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "monthlyPrice", label: "Monthly price", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -1696,6 +1704,10 @@ export const TOOLS: ToolDefinition[] = [
       "If discount exceeds 30-40%, validate margin impact before offering."
     ],
     faq: [
+      {
+        q: "Is this an annual pricing calculator?",
+        a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings."
+      },
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
