@@ -274,7 +274,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "compute-cost-estimator",
     title: "Compute Cost Estimator (vCPU & Memory Cost Calculator)",
     description:
-      "Compute cost estimator and calculator for monthly vCPU-hours and GB-hours, then back into a recommended price at your target gross margin.",
+      "Compute cost calculator to estimate monthly compute costs from vCPU-hours and GB-hours, then back into a recommended price at your target gross margin.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -412,6 +412,10 @@ export const TOOLS: ToolDefinition[] = [
       "If target margin is near 0, recommended price will be close to cost and may be unviable."
     ],
     faq: [
+      {
+        q: "How do I estimate compute costs?",
+        a: "Enter vCPU-hours, memory GB-hours, and blended unit rates. The calculator returns total monthly compute cost and a recommended price."
+      },
       {
         q: "Is this a cloud compute cost calculator?",
         a: "Yes, as long as you enter your blended vCPU and memory rates. It does not fetch public cloud list prices."
@@ -1712,6 +1716,7 @@ export const TOOLS: ToolDefinition[] = [
         q: "Is this an annual pricing calculator?",
         a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings."
       },
+      { q: "How do I convert monthly to annual price?", a: "Multiply the monthly price by 12, then apply your annual discount percentage to the total." },
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
@@ -1972,7 +1977,7 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator",
-    description: "Estimate a monthly API plan price from calls, infra cost per 1k calls, fixed overhead, and a target gross margin.",
+    description: "API price calculator and cost estimate tool to set a monthly API plan price from calls, infra cost per 1,000 calls, fixed overhead, and a target gross margin.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2081,6 +2086,8 @@ export const TOOLS: ToolDefinition[] = [
       "If fixed overhead dominates, consider a base fee plus lower usage rate."
     ],
     faq: [
+      { q: "Is this an API price calculator?", a: "Yes. It estimates a monthly API plan price and the implied price per 1,000 calls from your costs and target margin." },
+      { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
       { q: "How do I handle free tiers or included calls?", a: "Model included calls as part of your plan design. You can estimate cost at expected usage (including free tier) and then set pricing tiers around meaningful breakpoints." },
       { q: "What gross margin should an API target?", a: "It depends on your category and scale. Start with a range (70-90%) and sanity-check competitiveness and cost recovery under different workloads." },
@@ -2622,9 +2629,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "storage-cost-calculator",
-    title: "Storage Cost Calculator",
+    title: "Storage Cost Calculator (Storage Pricing & Cost per GB)",
     description:
-      "Estimate storage cost from average GB stored, request volume, and per-unit costs, then compute a price at your target margin.",
+      "Storage pricing calculator and cost per GB estimator for average GB stored, request volume, and per-unit costs, then compute a price at your target margin.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
@@ -2735,6 +2742,8 @@ export const TOOLS: ToolDefinition[] = [
       "If cost per GB-month is 0, verify storage costs are included elsewhere."
     ],
     faq: [
+      { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
+      { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },
       { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." },
