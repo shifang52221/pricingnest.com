@@ -67,9 +67,9 @@ export const CURRENCY_OPTIONS = [
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
-    title: "Usage-Based Pricing Calculator (Unit Price & Margin)",
+    title: "Usage-Based Pricing Calculator (Price Per Unit)",
     description:
-      "Usage-based pricing calculator to estimate a per-unit price from unit costs, fixed overhead, and a target gross margin. Generates revenue and gross profit estimates.",
+      "Price per unit calculator for usage-based pricing to estimate a per-unit price from unit costs, fixed overhead, and a target gross margin. Generates revenue and gross profit estimates.",
     inputs: [
       {
         name: "currency",
@@ -240,6 +240,10 @@ export const TOOLS: ToolDefinition[] = [
       "If monthly units are very low, price per unit can be misleading without a base fee."
     ],
     faq: [
+      {
+        q: "How do I calculate price per unit?",
+        a: "Price per unit = (unit cost + fixed cost per unit) / (1 - target gross margin). This calculator applies that formula using your inputs."
+      },
       {
         q: "Is this a usage based pricing calculator?",
         a: "Yes. It estimates a per-unit price from costs and a target margin, which is the core pricing step for usage-based models."
