@@ -357,6 +357,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     inputGuidance: [
       "Use blended, post-discount vCPU and memory rates from recent billing data.",
+      "Convert monthly cloud bill data into blended vCPU-hour and GB-hour rates before setting compute plan pricing.",
       "Model steady-state hours rather than burst peaks unless you bill for peak capacity.",
       "Keep bandwidth and storage in their own calculators to avoid double counting.",
       "Include on-call and monitoring in fixed cost if they are required for uptime.",
@@ -437,6 +438,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "How do I estimate compute costs?",
         a: "Enter vCPU-hours, memory GB-hours, and blended unit rates. The calculator returns total monthly compute cost and a recommended price."
+      },
+      {
+        q: "How do I include GPU or accelerator costs in this compute pricing model?",
+        a: "Convert accelerator spend into an equivalent blended unit cost and include it in vCPU-hour rate, GB-hour rate, or fixed overhead so monthly compute cost remains all-in."
       },
       {
         q: "Is this a cloud compute cost calculator?",
@@ -1657,6 +1662,7 @@ export const TOOLS: ToolDefinition[] = [
     inputGuidance: [
       "Use your current monthly list price as the baseline.",
       "Apply the discount to the annual prepay total, not the monthly price.",
+      "Test 10%, 15%, and 20% annual discount scenarios and compare conversion, cash collection, and effective monthly rate.",
       "Check fees and taxes if they impact net revenue.",
       "Use segment-specific discounts if enterprise and SMB pricing differ.",
       "Compare effective monthly rate to competitor annual plans.",
@@ -1737,6 +1743,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "Is this an annual pricing calculator?",
         a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings."
+      },
+      {
+        q: "How do I calculate annual price from a monthly plan?",
+        a: "Multiply monthly list price by 12, then apply the annual discount to the full yearly amount to get annual prepay price."
       },
       { q: "How do I convert monthly to annual price?", a: "Multiply the monthly price by 12, then apply your annual discount percentage to the total." },
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
@@ -2032,6 +2042,7 @@ export const TOOLS: ToolDefinition[] = [
     inputGuidance: [
       "Use a blended infra cost per 1,000 calls based on recent bills and expected volume.",
       "Set calls per month to the plan you are pricing, not total company usage.",
+      "Map projected traffic into billable calls after free credits before setting list price per 1,000 calls.",
       "If you have free tiers, reduce paid calls to reflect actual billable usage.",
       "Include vendor or model costs in fixed overhead if they are not per-call.",
       "Use the target gross margin your finance team expects for API products.",
@@ -2110,6 +2121,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       { q: "Is this an API price calculator?", a: "Yes. It estimates a monthly API plan price and the implied price per 1,000 calls from your costs and target margin." },
+      { q: "How do I price an API per 1,000 calls from my monthly cost model?", a: "Estimate monthly cost, apply your target gross margin for monthly price, then divide by calls and multiply by 1,000 to publish a readable per-1,000 rate." },
       { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
       { q: "How do I handle free tiers or included calls?", a: "Model included calls as part of your plan design. You can estimate cost at expected usage (including free tier) and then set pricing tiers around meaningful breakpoints." },
@@ -2688,6 +2700,7 @@ export const TOOLS: ToolDefinition[] = [
     inputGuidance: [
       "Use average GB-month stored rather than peak snapshots.",
       "Include replication and backup overhead in cost per GB-month.",
+      "If request intensity is high, treat requests as a first-class pricing lever instead of only increasing the GB price.",
       "Model request costs with your blended per-10k request rate.",
       "Keep bandwidth in the bandwidth calculator to avoid double counting.",
       "Use presets for low and high request intensity workloads.",
@@ -2766,6 +2779,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
+      { q: "How do I calculate storage pricing per GB when request fees are significant?", a: "Model storage and request costs separately, then combine them into monthly cost before applying your gross margin target." },
       { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },

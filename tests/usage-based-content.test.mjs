@@ -14,7 +14,15 @@ const requiredSnippets = [
   "How do I choose a usage metric customers can understand?",
   "Can I use this for per-GB pricing?",
   "Per-GB pricing",
-  "Convert API cost estimate to price per 1,000 calls"
+  "Convert API cost estimate to price per 1,000 calls",
+  "Test 10%, 15%, and 20% annual discount scenarios and compare conversion, cash collection, and effective monthly rate.",
+  "How do I calculate annual price from a monthly plan?",
+  "Convert monthly cloud bill data into blended vCPU-hour and GB-hour rates before setting compute plan pricing.",
+  "How do I include GPU or accelerator costs in this compute pricing model?",
+  "If request intensity is high, treat requests as a first-class pricing lever instead of only increasing the GB price.",
+  "How do I calculate storage pricing per GB when request fees are significant?",
+  "Map projected traffic into billable calls after free credits before setting list price per 1,000 calls.",
+  "How do I price an API per 1,000 calls from my monthly cost model?"
 ];
 
 for (const snippet of requiredSnippets) {
