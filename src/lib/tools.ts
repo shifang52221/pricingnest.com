@@ -67,9 +67,9 @@ export const CURRENCY_OPTIONS = [
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
-    title: "Usage-Based Pricing Calculator (Price Per Unit)",
+    title: "Usage-Based Pricing Calculator - Price per Unit | PricingNest",
     description:
-      "Price per unit calculator for usage-based pricing to estimate a per-unit price from unit costs, fixed overhead, and a target gross margin. Generates revenue and gross profit estimates.",
+      "Free price-per-unit calculator for usage pricing. Estimate unit price, revenue, and gross profit. CSV export.",
     inputs: [
       {
         name: "currency",
@@ -272,9 +272,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "compute-cost-estimator",
-    title: "Compute Cost Estimator (vCPU & Memory Cost Calculator)",
+    title: "Compute Cost Estimator - vCPU & Memory Pricing | PricingNest",
     description:
-      "Compute cost calculator to estimate monthly compute costs from vCPU-hours and GB-hours, then back into a recommended price at your target gross margin.",
+      "Free compute cost estimator for vCPU-hours and GB-hours. Calculate monthly cost and a target-margin price. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -1604,9 +1604,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "annual-discount-calculator",
-    title: "Annual Discount Calculator (Annual Pricing)",
+    title: "Annual Discount Calculator - Annual Pricing | PricingNest",
     description:
-      "Annual pricing discount calculator that converts a monthly price to an annual prepay price and computes the effective monthly rate and savings.",
+      "Free annual discount calculator to convert monthly price to annual prepay, effective monthly rate, and savings. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "monthlyPrice", label: "Monthly price", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -1976,8 +1976,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "api-pricing-calculator",
-    title: "API Pricing Calculator",
-    description: "API price calculator and cost estimate tool to set a monthly API plan price from calls, infra cost per 1,000 calls, fixed overhead, and a target gross margin.",
+    title: "API Pricing Calculator - Cost per 1,000 Calls | PricingNest",
+    description:
+      "Free API pricing calculator to set monthly pricing from call volume, cost per 1,000 calls, and margin. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2629,9 +2630,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "storage-cost-calculator",
-    title: "Storage Cost Calculator (Storage Pricing & Cost per GB)",
+    title: "Storage Cost Calculator - Price per GB | PricingNest",
     description:
-      "Storage pricing calculator and cost per GB estimator for average GB stored, request volume, and per-unit costs, then compute a price at your target margin.",
+      "Free storage pricing calculator to estimate cost per GB, request fees, and a target-margin price. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
