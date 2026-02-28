@@ -13,6 +13,11 @@ const outputValue = async (page: any, name: string) => {
   return parseNumber(text);
 };
 
+test("storage calculator page title does not duplicate site suffix", async ({ page }) => {
+  await page.goto("/saas-pricing/storage-cost-calculator/");
+  await expect(page).not.toHaveTitle(/\| PricingNest \| PricingNest$/);
+});
+
 test("usage-based calculator updates outputs, compare, sensitivity, and share link", async ({ page }) => {
   await page.goto("/saas-pricing/usage-based-pricing-calculator/");
   await page.waitForSelector('form[data-tool-form]');
