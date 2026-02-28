@@ -21,7 +21,7 @@ test("usage-based calculator updates outputs, compare, sensitivity, and share li
   await page.fill('input[name="unitCost"]', "0.0003");
 
   const shareLink = page.locator("[data-share-link]");
-  await expect(shareLink).toContainText("monthlyUnits=200000");
+  await expect(shareLink).toHaveValue(/monthlyUnits=200000/);
 
   await page.click("button[data-compare-save]");
   await page.fill('input[name="monthlyUnits"]', "250000");
