@@ -161,6 +161,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     inputGuidance: [
       "Start with a typical monthly usage level (p50) before modeling higher-volume scenarios.",
+      "Choose one billable unit customers can forecast (per API call, per 1,000 calls, per GB, or per event).",
       "Use a blended unit cost that includes infra, vendor APIs, and any per-unit third-party fees.",
       "Put support, on-call, and tooling into fixed cost unless they scale directly with usage.",
       "Align target gross margin with your finance policy so pricing is comparable across tools.",
@@ -184,6 +185,7 @@ export const TOOLS: ToolDefinition[] = [
     interpretation: [
       "Treat the required unit price as your floor, not necessarily your list price.",
       "If the unit price looks high, shift more revenue to a base platform fee.",
+      "If required price per unit swings between p50 and p90, use tiered breakpoints and clear overage guardrails.",
       "Use p50 and p90 scenarios to decide tier boundaries and overage rates.",
       "Compare the implied price to competitors to confirm market fit."
     ],
@@ -195,6 +197,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Event analytics",
         detail: "Charge per event or per million events while recovering fixed overhead with a base fee."
+      },
+      {
+        title: "Per-GB pricing",
+        detail: "Estimate a per-GB floor for storage or bandwidth when cost and usage are metered monthly."
       }
     ],
     walkthroughs: [
@@ -212,6 +218,14 @@ export const TOOLS: ToolDefinition[] = [
           "Increase monthly units to a p90 scenario.",
           "Check if margin holds at scale.",
           "Adjust base fee or tiering if needed."
+        ]
+      },
+      {
+        title: "Convert API cost estimate to price per 1,000 calls",
+        steps: [
+          "Set monthly units to total API calls and divide your variable cost to a per-call value.",
+          "Use target margin to calculate required price per call.",
+          "Multiply by 1,000 to convert to a price per 1,000 calls for packaging."
         ]
       }
     ],
@@ -245,6 +259,10 @@ export const TOOLS: ToolDefinition[] = [
         a: "Price per unit = (unit cost + fixed cost per unit) / (1 - target gross margin). This calculator applies that formula using your inputs."
       },
       {
+        q: "How do I choose a usage metric customers can understand?",
+        a: "Use a unit customers already monitor in dashboards and invoices, such as API calls, events, minutes, or GB. Avoid internal metrics users cannot forecast."
+      },
+      {
         q: "Is this a usage based pricing calculator?",
         a: "Yes. It estimates a per-unit price from costs and a target margin, which is the core pricing step for usage-based models."
       },
@@ -255,6 +273,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "What should I use for cost per unit?",
         a: "Use your marginal cost for one unit (compute time, bandwidth, storage requests, vendor fees) in your chosen currency."
+      },
+      {
+        q: "Can I use this for per-GB pricing?",
+        a: "Yes. Set monthly units to your total billable GB, use your blended cost per GB, and the calculator will return a required per-GB price at your target margin."
       },
       {
         q: "Why does the required unit price change so much?",
