@@ -69,7 +69,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "usage-based-pricing-calculator",
     title: "Usage-Based Pricing Calculator - Price per Unit, Delta & CSV | PricingNest",
     description:
-      "Free usage-based pricing calculator. Calculate required price per unit, compare scenario deltas, and download CSV.",
+      "Free usage-based pricing calculator for price per unit, delta comparison, and CSV export.",
     inputs: [
       {
         name: "currency",
@@ -259,6 +259,10 @@ export const TOOLS: ToolDefinition[] = [
         a: "Price per unit = (unit cost + fixed cost per unit) / (1 - target gross margin). This calculator applies that formula using your inputs."
       },
       {
+        q: "How do I compare price-per-unit deltas and export CSV?",
+        a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export comparison-ready pricing scenarios."
+      },
+      {
         q: "How do I choose a usage metric customers can understand?",
         a: "Use a unit customers already monitor in dashboards and invoices, such as API calls, events, minutes, or GB. Avoid internal metrics users cannot forecast."
       },
@@ -296,7 +300,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "compute-cost-estimator",
     title: "Compute Cost Estimator - Compute Costs (vCPU & GB-Hour) | PricingNest",
     description:
-      "Free compute cost estimator to calculate compute costs from vCPU-hours and GB-hours, then set a target-margin price. CSV export.",
+      "Free compute cost estimator to calculate compute costs from vCPU-hours and GB-hours, then set compute pricing at target margin. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -438,6 +442,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "How do I estimate compute costs?",
         a: "Enter vCPU-hours, memory GB-hours, and blended unit rates. The calculator returns total monthly compute cost and a recommended price."
+      },
+      {
+        q: "How do I convert compute costs into compute pricing?",
+        a: "Estimate all-in monthly compute cost first, then divide by (1 - target margin) to get margin-safe compute pricing."
       },
       {
         q: "How do I include GPU or accelerator costs in this compute pricing model?",
@@ -1633,7 +1641,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "annual-discount-calculator",
     title: "Annual Discount Calculator - Monthly to Annual Price | PricingNest",
     description:
-      "Free annual discount calculator to convert monthly to annual price, effective monthly rate, and annual prepay savings. CSV export.",
+      "Free annual discount calculator for monthly to annual pricing: annual prepay price, effective monthly rate, and savings. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "monthlyPrice", label: "Monthly price", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -1740,15 +1748,12 @@ export const TOOLS: ToolDefinition[] = [
       "If discount exceeds 30-40%, validate margin impact before offering."
     ],
     faq: [
-      {
-        q: "Is this an annual pricing calculator?",
-        a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings."
-      },
+      { q: "How do I convert monthly to annual price?", a: "Multiply the monthly price by 12, then apply your annual discount percentage to the total." },
+      { q: "Is this an annual pricing calculator?", a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings." },
       {
         q: "How do I calculate annual price from a monthly plan?",
         a: "Multiply monthly list price by 12, then apply the annual discount to the full yearly amount to get annual prepay price."
       },
-      { q: "How do I convert monthly to annual price?", a: "Multiply the monthly price by 12, then apply your annual discount percentage to the total." },
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
@@ -2010,7 +2015,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator & Cost Estimator - Per 1,000 Calls | PricingNest",
     description:
-      "Free API pricing calculator and API cost estimator. Model call volume, cost per 1,000 calls, margin, and monthly plan price. CSV export.",
+      "Free API pricing calculator and API cost estimator. Build an API cost estimate from call volume and cost per 1,000 calls, then set monthly plan price. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2120,7 +2125,8 @@ export const TOOLS: ToolDefinition[] = [
       "If fixed overhead dominates, consider a base fee plus lower usage rate."
     ],
     faq: [
-      { q: "Is this an API price calculator?", a: "Yes. It estimates a monthly API plan price and the implied price per 1,000 calls from your costs and target margin." },
+      { q: "Is this an API pricing calculator and API cost estimator?", a: "Yes. It estimates monthly API cost and recommended monthly pricing, then converts that into an implied price per 1,000 calls." },
+      { q: "How do I build an API cost estimate and price per 1,000 calls?", a: "Estimate monthly API cost from call volume and unit costs, apply target margin for monthly price, then divide by calls and multiply by 1,000." },
       { q: "How do I price an API per 1,000 calls from my monthly cost model?", a: "Estimate monthly cost, apply your target gross margin for monthly price, then divide by calls and multiply by 1,000 to publish a readable per-1,000 rate." },
       { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
@@ -2666,7 +2672,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "storage-cost-calculator",
     title: "Storage Pricing Calculator - Cost per GB & Requests | PricingNest",
     description:
-      "Free storage pricing calculator to estimate cost per GB-month, request fees, and target-margin monthly price. CSV export.",
+      "Free storage pricing calculator to estimate storage cost per GB-month, request fees, and target-margin monthly price. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
@@ -2778,8 +2784,9 @@ export const TOOLS: ToolDefinition[] = [
       "If cost per GB-month is 0, verify storage costs are included elsewhere."
     ],
     faq: [
-      { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
+      { q: "How do I calculate storage cost per GB and storage pricing?", a: "Estimate monthly storage and request costs, then divide by (1 - target margin) to set storage pricing that protects margin." },
       { q: "How do I calculate storage pricing per GB when request fees are significant?", a: "Model storage and request costs separately, then combine them into monthly cost before applying your gross margin target." },
+      { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
       { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },

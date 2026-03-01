@@ -13,31 +13,31 @@ const expected = [
     slug: "storage-cost-calculator",
     title: "Storage Pricing Calculator - Cost per GB & Requests | PricingNest",
     description:
-      "Free storage pricing calculator to estimate cost per GB-month, request fees, and target-margin monthly price. CSV export."
+      "Free storage pricing calculator to estimate storage cost per GB-month, request fees, and target-margin monthly price. CSV export."
   },
   {
     slug: "usage-based-pricing-calculator",
     title: "Usage-Based Pricing Calculator - Price per Unit, Delta & CSV | PricingNest",
     description:
-      "Free usage-based pricing calculator. Calculate required price per unit, compare scenario deltas, and download CSV."
+      "Free usage-based pricing calculator for price per unit, delta comparison, and CSV export."
   },
   {
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator & Cost Estimator - Per 1,000 Calls | PricingNest",
     description:
-      "Free API pricing calculator and API cost estimator. Model call volume, cost per 1,000 calls, margin, and monthly plan price. CSV export."
+      "Free API pricing calculator and API cost estimator. Build an API cost estimate from call volume and cost per 1,000 calls, then set monthly plan price. CSV export."
   },
   {
     slug: "compute-cost-estimator",
     title: "Compute Cost Estimator - Compute Costs (vCPU & GB-Hour) | PricingNest",
     description:
-      "Free compute cost estimator to calculate compute costs from vCPU-hours and GB-hours, then set a target-margin price. CSV export."
+      "Free compute cost estimator to calculate compute costs from vCPU-hours and GB-hours, then set compute pricing at target margin. CSV export."
   },
   {
     slug: "annual-discount-calculator",
     title: "Annual Discount Calculator - Monthly to Annual Price | PricingNest",
     description:
-      "Free annual discount calculator to convert monthly to annual price, effective monthly rate, and annual prepay savings. CSV export."
+      "Free annual discount calculator for monthly to annual pricing: annual prepay price, effective monthly rate, and savings. CSV export."
   }
 ];
 
