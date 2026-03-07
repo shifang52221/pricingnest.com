@@ -23,10 +23,11 @@ const requiredSnippets = [
   "How do I calculate storage pricing per GB when request fees are significant?",
   "Map projected traffic into billable calls after free credits before setting list price per 1,000 calls.",
   "How do I price an API per 1,000 calls from my monthly cost model?",
-  "How do I compare price-per-unit deltas and export CSV?",
-  "How do I convert compute costs into compute pricing?",
+  "How do I build a price-per-unit delta CSV template?",
+  "How do I turn compute costs into compute pricing?",
   "How do I build an API cost estimate and price per 1,000 calls?",
-  "How do I calculate storage cost per GB and storage pricing?"
+  "How do I estimate fixed monthly costs per GB for storage pricing?",
+  "delta CSV template"
 ];
 
 for (const snippet of requiredSnippets) {

@@ -13,19 +13,19 @@ const expected = [
     slug: "storage-cost-calculator",
     title: "Storage Pricing Calculator - Cost per GB & Requests | PricingNest",
     description:
-      "Free storage pricing calculator to estimate storage cost per GB-month, request fees, and target-margin monthly price. CSV export."
+      "Free storage pricing calculator to estimate storage cost per GB-month, fixed monthly costs per GB assumptions, request fees, and target-margin monthly price. CSV export."
   },
   {
     slug: "usage-based-pricing-calculator",
     title: "Usage-Based Pricing Calculator - Price per Unit, Delta & CSV | PricingNest",
     description:
-      "Free usage-based pricing calculator for price per unit, delta comparison, and CSV export."
+      "Free usage based pricing calculator for price per unit, delta comparison, and a delta CSV template export."
   },
   {
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator & Cost Estimator - Per 1,000 Calls | PricingNest",
     description:
-      "Free API pricing calculator and API cost estimator. Build an API cost estimate from call volume and cost per 1,000 calls, then set monthly plan price. CSV export."
+      "Free API pricing calculator and API cost estimate tool. Build an API cost estimate from call volume and cost per 1,000 calls, then set monthly plan price. CSV export."
   },
   {
     slug: "compute-cost-estimator",
