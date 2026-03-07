@@ -263,6 +263,10 @@ export const TOOLS: ToolDefinition[] = [
         a: "Yes. If one customer action maps to one billable unit, this works as a cost per use calculator."
       },
       {
+        q: "How do I estimate usage cost before setting price?",
+        a: "Estimate usage cost from monthly units x cost per unit, then add fixed overhead and apply your target margin."
+      },
+      {
         q: "How do I build a price-per-unit delta CSV template?",
         a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export a reusable price-per-unit delta CSV template."
       },
@@ -1640,6 +1644,7 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "What is break-even churn?", a: "It is the churn rate at which the higher price produces the same revenue as before. If actual churn is lower, the increase raises revenue." },
       { q: "How can I estimate churn from a price increase?", a: "Use a range (best/base/worst). Segment by customer size, contract term, and price sensitivity. You can also run limited experiments or grandfather existing customers." },
+      { q: "How should I handle grandfathering pricing plans?", a: "Start by segmenting customers by contract term and price sensitivity, then model revenue impact for fully grandfathered, partially grandfathered, and no-grandfathering scenarios." },
       { q: "Does this model packaging changes?", a: "No. It's a simple sensitivity calculator for a single price point. For packaging changes, model migration by segment and expected conversion." },
       { q: "Should I grandfather existing customers?", a: "If churn risk is high, grandfathering can reduce churn but delays revenue uplift. Model both paths." },
       { q: "How do I estimate break-even churn?", a: "Use this output as a threshold. If your expected churn is below it, the increase should lift revenue." }
@@ -2135,6 +2140,7 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "Is this an API pricing calculator and API cost estimator?", a: "Yes. It estimates monthly API cost and recommended monthly pricing, then converts that into an implied price per 1,000 calls." },
       { q: "How do I build an API cost estimate and price per 1,000 calls?", a: "Estimate monthly API cost from call volume and unit costs, apply target margin for monthly price, then divide by calls and multiply by 1,000." },
+      { q: "How do I run a cost estimate api workflow?", a: "Use this API calculator to model calls and unit costs, review monthly API cost, then convert to a margin-safe monthly price and per-1,000-call rate." },
       { q: "How do I price an API per 1,000 calls from my monthly cost model?", a: "Estimate monthly cost, apply your target gross margin for monthly price, then divide by calls and multiply by 1,000 to publish a readable per-1,000 rate." },
       { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
@@ -2794,6 +2800,7 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "How do I estimate fixed monthly costs per GB for storage pricing?", a: "Start with total fixed monthly storage overhead, divide by average stored GB to get fixed monthly costs per GB, then combine with variable storage and request costs before applying margin." },
       { q: "How do I calculate storage pricing per GB when request fees are significant?", a: "Model storage and request costs separately, then combine them into monthly cost before applying your gross margin target." },
+      { q: "Can I use this as a cost per GB calculator?", a: "Yes. Enter your blended cost per GB-month and request assumptions to use this as a cost per GB calculator and pricing model." },
       { q: "Can I use this as a Google Cloud Storage price calculator?", a: "Yes. Use your own blended storage and request rates (for example from Google Cloud billing exports) to estimate a margin-safe storage price." },
       { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
       { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },

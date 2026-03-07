@@ -29,8 +29,12 @@ const requiredSnippets = [
   "How do I estimate fixed monthly costs per GB for storage pricing?",
   "delta CSV template",
   "Can I use this as a cost per use calculator?",
+  "How do I estimate usage cost before setting price?",
   "Is this a compute pricing calculator?",
   "Can I use this as a Google Cloud Storage price calculator?",
+  "Can I use this as a cost per GB calculator?",
+  "How should I handle grandfathering pricing plans?",
+  "How do I run a cost estimate api workflow?",
   "Use this API calculator to model call volume and cost per 1,000 calls"
 ];
 
