@@ -259,6 +259,10 @@ export const TOOLS: ToolDefinition[] = [
         a: "Price per unit = (unit cost + fixed cost per unit) / (1 - target gross margin). This calculator applies that formula using your inputs."
       },
       {
+        q: "Can I use this as a cost per use calculator?",
+        a: "Yes. If one customer action maps to one billable unit, this works as a cost per use calculator."
+      },
+      {
         q: "How do I build a price-per-unit delta CSV template?",
         a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export a reusable price-per-unit delta CSV template."
       },
@@ -298,9 +302,9 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "compute-cost-estimator",
-    title: "Compute Cost Estimator - Compute Costs (vCPU & GB-Hour) | PricingNest",
+    title: "Compute Pricing Calculator & Cost Estimator - vCPU & GB-Hour | PricingNest",
     description:
-      "Free compute cost estimator to calculate compute costs from vCPU-hours and GB-hours, then set compute pricing at target margin. CSV export.",
+      "Free compute pricing calculator and cost estimator to model vCPU-hour and GB-hour costs, then set margin-safe compute pricing. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -439,6 +443,10 @@ export const TOOLS: ToolDefinition[] = [
       "If target margin is near 0, recommended price will be close to cost and may be unviable."
     ],
     faq: [
+      {
+        q: "Is this a compute pricing calculator?",
+        a: "Yes. It is a compute pricing calculator that starts with your compute costs and converts them into a target-margin price."
+      },
       {
         q: "How do I estimate compute costs?",
         a: "Enter vCPU-hours, memory GB-hours, and blended unit rates. The calculator returns total monthly compute cost and a recommended price."
@@ -2015,7 +2023,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator & Cost Estimator - Per 1,000 Calls | PricingNest",
     description:
-      "Free API pricing calculator and API cost estimate tool. Build an API cost estimate from call volume and cost per 1,000 calls, then set monthly plan price. CSV export.",
+      "Free API pricing calculator and API cost estimate tool. Use this API calculator to model call volume and cost per 1,000 calls, then set monthly plan price. CSV export.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2670,7 +2678,7 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "storage-cost-calculator",
-    title: "Storage Pricing Calculator - Cost per GB & Requests | PricingNest",
+    title: "Storage Pricing Calculator & Price per GB Calculator | PricingNest",
     description:
       "Free storage pricing calculator to estimate storage cost per GB-month, fixed monthly costs per GB assumptions, request fees, and target-margin monthly price. CSV export.",
     inputs: [
@@ -2786,6 +2794,7 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "How do I estimate fixed monthly costs per GB for storage pricing?", a: "Start with total fixed monthly storage overhead, divide by average stored GB to get fixed monthly costs per GB, then combine with variable storage and request costs before applying margin." },
       { q: "How do I calculate storage pricing per GB when request fees are significant?", a: "Model storage and request costs separately, then combine them into monthly cost before applying your gross margin target." },
+      { q: "Can I use this as a Google Cloud Storage price calculator?", a: "Yes. Use your own blended storage and request rates (for example from Google Cloud billing exports) to estimate a margin-safe storage price." },
       { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
       { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },
       { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
