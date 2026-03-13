@@ -38,7 +38,10 @@ export type ToolWalkthrough = {
 export type ToolDefinition = {
   slug: string;
   title: string;
+  name?: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
   inputs: ToolInput[];
   outputs: ToolOutput[];
   related: string[];
@@ -67,9 +70,12 @@ export const CURRENCY_OPTIONS = [
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
-    title: "Usage-Based Pricing Calculator - Price per Unit, Delta & CSV | PricingNest",
-    description:
-      "Free usage based pricing calculator for price per unit, delta comparison, and a delta CSV template export.",
+    title: "Usage-Based Pricing Calculator",
+    name: "Usage-Based Pricing Calculator",
+    description: "Estimate a margin-safe price per unit from monthly usage, unit cost, fixed overhead, and target gross margin.",
+    metaTitle: "Usage-Based Pricing Calculator - Price per Unit | PricingNest",
+    metaDescription:
+      "Free usage-based pricing calculator to estimate a price per unit from monthly usage, unit cost, fixed cost, and target gross margin.",
     inputs: [
       {
         name: "currency",
@@ -306,9 +312,12 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "compute-cost-estimator",
-    title: "Compute Pricing Calculator & Cost Estimator - vCPU & GB-Hour | PricingNest",
-    description:
-      "Free compute pricing calculator and cost estimator to model vCPU-hour and GB-hour costs, then set margin-safe compute pricing. CSV export.",
+    title: "Compute Cost Estimator",
+    name: "Compute Cost Estimator",
+    description: "Estimate monthly compute cost from vCPU-hours, memory GB-hours, fixed overhead, and target gross margin.",
+    metaTitle: "Compute Cost Estimator - vCPU & Memory Pricing | PricingNest",
+    metaDescription:
+      "Free compute cost estimator to model vCPU-hour and GB-hour costs and turn them into a margin-safe monthly price.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -1652,9 +1661,12 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "annual-discount-calculator",
-    title: "Annual Discount Calculator - Monthly to Annual Price | PricingNest",
-    description:
-      "Free annual discount calculator for monthly to annual pricing: annual prepay price, effective monthly rate, and savings. CSV export.",
+    title: "Annual Discount Calculator",
+    name: "Annual Discount Calculator",
+    description: "Convert a monthly price into annual pricing, annual prepay savings, and an effective monthly rate.",
+    metaTitle: "Annual Discount Calculator - Annual Pricing | PricingNest",
+    metaDescription:
+      "Free annual discount calculator to convert a monthly price into annual pricing, annual prepay savings, and effective monthly rate.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "monthlyPrice", label: "Monthly price", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -2026,9 +2038,12 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "api-pricing-calculator",
-    title: "API Pricing Calculator & Cost Estimator - Per 1,000 Calls | PricingNest",
-    description:
-      "Free API pricing calculator and API cost estimate tool. Use this API calculator to model call volume and cost per 1,000 calls, then set monthly plan price. CSV export.",
+    title: "API Pricing Calculator",
+    name: "API Pricing Calculator",
+    description: "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead.",
+    metaTitle: "API Pricing Calculator - Cost per 1,000 Calls | PricingNest",
+    metaDescription:
+      "Free API pricing calculator to estimate cost per 1,000 calls, monthly API cost, and a margin-safe monthly price.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2684,9 +2699,12 @@ export const TOOLS: ToolDefinition[] = [
   },
   {
     slug: "storage-cost-calculator",
-    title: "Storage Pricing Calculator & Price per GB Calculator | PricingNest",
-    description:
-      "Free storage pricing calculator to estimate storage cost per GB-month, fixed monthly costs per GB assumptions, request fees, and target-margin monthly price. CSV export.",
+    title: "Storage Cost Calculator",
+    name: "Storage Cost Calculator",
+    description: "Estimate storage cost, request fees, and a target monthly storage price from your average stored GB and unit costs.",
+    metaTitle: "Storage Cost Calculator - Price per GB | PricingNest",
+    metaDescription:
+      "Free storage cost calculator to estimate price per GB-month, request fees, and a target-margin monthly storage price.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
@@ -2816,5 +2834,17 @@ export const TOOLS: ToolDefinition[] = [
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
   return TOOLS.find((t) => t.slug === slug);
+}
+
+export function getToolName(tool: ToolDefinition): string {
+  return tool.name ?? tool.title;
+}
+
+export function getToolMetaTitle(tool: ToolDefinition): string {
+  return tool.metaTitle ?? tool.title;
+}
+
+export function getToolMetaDescription(tool: ToolDefinition): string {
+  return tool.metaDescription ?? tool.description;
 }
 

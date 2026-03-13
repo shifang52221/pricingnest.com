@@ -35,7 +35,7 @@ const requiredSnippets = [
   "Can I use this as a cost per GB calculator?",
   "How should I handle grandfathering pricing plans?",
   "How do I run a cost estimate api workflow?",
-  "Use this API calculator to model call volume and cost per 1,000 calls"
+  "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead."
 ];
 
 for (const snippet of requiredSnippets) {
