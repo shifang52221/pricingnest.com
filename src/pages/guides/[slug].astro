@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getToolBySlug, getToolName } from "../../lib/tools";
 
 export async function getStaticPaths() {
   const entries = await getCollection("guides");
@@ -15,6 +16,12 @@ if (!entry) throw new Error(`Unknown guide slug: ${slug}`);
 
 const { Content } = await entry.render();
 const title = `${entry.data.title} | ${siteName}`;
+const relatedToolSlugs = entry.data.tools ?? [];
+const relatedTools = relatedToolSlugs
+  .map((toolSlug) => getToolBySlug(toolSlug))
+  .filter(Boolean)
+  // @ts-expect-error
+  .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: getToolName(tool) }));
 ---
 <BaseLayout title={title} description={entry.data.description}>
   <section class="hero">
@@ -34,8 +41,17 @@ const title = `${entry.data.title} | ${siteName}`;
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/glossary/">Glossary</a></li>
       </ul>
+      {relatedTools.length > 0 ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">Tools</h2>
+          <ul class="list">
+            {relatedTools.map((t) => (
+              <li><a href={t.href}>{t.label}</a></li>
+            ))}
+          </ul>
+        </>
+      ) : null}
       {entry.data.updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {entry.data.updated}</p> : null}
     </aside>
   </div>
 </BaseLayout>
-

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { getToolBySlug } from "../../lib/tools";
+import { getToolBySlug, getToolName } from "../../lib/tools";
 
 export async function getStaticPaths() {
   const entries = await getCollection("glossary");
@@ -25,7 +25,7 @@ const relatedTools = relatedToolSlugs
   .map((toolSlug) => getToolBySlug(toolSlug))
   .filter(Boolean)
   // @ts-expect-error
-  .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: tool.title }));
+  .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: getToolName(tool) }));
 
 const relatedGuides = relatedGuideSlugs.map((guideSlug) => ({
   href: `/guides/${guideSlug}/`,
@@ -99,4 +99,3 @@ const relatedGlossary = relatedGlossarySlugs.map((termSlug) => ({
     </aside>
   </div>
 </BaseLayout>
-

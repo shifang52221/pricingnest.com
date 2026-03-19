@@ -67,15 +67,24 @@ export const CURRENCY_OPTIONS = [
   { value: "EUR", label: "EUR (Euro)" }
 ] as const;
 
+export const SEO_PRIORITY_TOOL_SLUGS = [
+  "storage-cost-calculator",
+  "compute-cost-estimator",
+  "api-pricing-calculator",
+  "usage-based-pricing-calculator",
+  "pricing-increase-impact-calculator"
+] as const;
+
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
     title: "Usage-Based Pricing Calculator",
-    name: "Usage-Based Pricing Calculator",
-    description: "Estimate a margin-safe price per unit from monthly usage, unit cost, fixed overhead, and target gross margin.",
-    metaTitle: "Usage-Based Pricing Calculator - Price per Unit | PricingNest",
+    name: "Price Per Unit Calculator for Usage-Based Pricing",
+    description:
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template.",
+    metaTitle: "Price Per Unit Calculator & Delta CSV Template | PricingNest",
     metaDescription:
-      "Free usage-based pricing calculator to estimate a price per unit from monthly usage, unit cost, fixed cost, and target gross margin.",
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template.",
     inputs: [
       {
         name: "currency",
@@ -313,11 +322,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "compute-cost-estimator",
     title: "Compute Cost Estimator",
-    name: "Compute Cost Estimator",
-    description: "Estimate monthly compute cost from vCPU-hours, memory GB-hours, fixed overhead, and target gross margin.",
-    metaTitle: "Compute Cost Estimator - vCPU & Memory Pricing | PricingNest",
+    name: "Compute Pricing Calculator from vCPU and Memory Costs",
+    description:
+      "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
+    metaTitle: "Compute Pricing Calculator & Cost Estimator | PricingNest",
     metaDescription:
-      "Free compute cost estimator to model vCPU-hour and GB-hour costs and turn them into a margin-safe monthly price.",
+      "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -1542,8 +1552,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "pricing-increase-impact-calculator",
     title: "Pricing Increase Impact Calculator",
+    name: "Price Increase Calculator for Grandfathered Plans",
     description:
-      "Estimate the impact of a price increase on monthly revenue, including an assumption for customer churn from the increase.",
+      "Model revenue lift, churn risk, and break-even churn for a price increase. Compare fully grandfathered, partially grandfathered, and no-grandfathering scenarios.",
+    metaTitle: "Grandfathering Pricing Plans Calculator | PricingNest",
+    metaDescription:
+      "Model revenue lift, churn risk, and break-even churn for a price increase. Compare fully grandfathered, partially grandfathered, and no-grandfathering scenarios.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "currentPrice", label: "Current price (monthly)", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -2039,11 +2053,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator",
-    name: "API Pricing Calculator",
-    description: "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead.",
-    metaTitle: "API Pricing Calculator - Cost per 1,000 Calls | PricingNest",
+    name: "API Pricing Calculator for Cost per 1,000 Calls",
+    description:
+      "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing.",
+    metaTitle: "API Cost Calculator & Pricing Estimator | PricingNest",
     metaDescription:
-      "Free API pricing calculator to estimate cost per 1,000 calls, monthly API cost, and a margin-safe monthly price.",
+      "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2700,11 +2715,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "storage-cost-calculator",
     title: "Storage Cost Calculator",
-    name: "Storage Cost Calculator",
-    description: "Estimate storage cost, request fees, and a target monthly storage price from your average stored GB and unit costs.",
-    metaTitle: "Storage Cost Calculator - Price per GB | PricingNest",
+    name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
+    description:
+      "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
+    metaTitle: "Cost Per GB Calculator for Storage Pricing | PricingNest",
     metaDescription:
-      "Free storage cost calculator to estimate price per GB-month, request fees, and a target-margin monthly storage price.",
+      "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
@@ -2846,5 +2862,19 @@ export function getToolMetaTitle(tool: ToolDefinition): string {
 
 export function getToolMetaDescription(tool: ToolDefinition): string {
   return tool.metaDescription ?? tool.description;
+}
+
+export function getPriorityTools(tools: ToolDefinition[]): ToolDefinition[] {
+  const priorityLookup = new Map(SEO_PRIORITY_TOOL_SLUGS.map((slug, index) => [slug, index]));
+
+  return [...tools].sort((a, b) => {
+    const aPriority = priorityLookup.get(a.slug);
+    const bPriority = priorityLookup.get(b.slug);
+
+    if (aPriority != null && bPriority != null) return aPriority - bPriority;
+    if (aPriority != null) return -1;
+    if (bPriority != null) return 1;
+    return 0;
+  });
 }
 
