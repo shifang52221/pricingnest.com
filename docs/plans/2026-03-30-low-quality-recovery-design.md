@@ -81,6 +81,60 @@ This creates four overlapping risks:
 3. Weak query-to-page alignment for broader terms such as `storage pricing`, `compute pricing`, and `api cost`.
 4. Insufficient trust and methodology depth around the pages Google is already testing.
 
+## Deep Structural Findings
+
+The repo audit surfaced several additional structural risks that should be treated as part of the same recovery effort:
+
+### 1. Thin use-case pages are still indexable
+
+The `/saas-pricing/use-cases/` layer is currently too light to justify separate indexable URLs.
+
+Observed page depth:
+
+- `usage-based-pricing.astro` - about `127` words
+- `api-pricing.astro` - about `121` words
+- `infra-cost-recovery.astro` - about `103` words
+- `unit-economics.astro` - about `139` words
+- `pricing-experiments.astro` - about `120` words
+
+Each of these pages also includes an ad slot. This creates a poor quality-to-monetization ratio for URLs that are currently closer to shortcut pages than true workflows.
+
+### 2. The toolkit hub still contains SEO-first public language
+
+`src/pages/saas-pricing/index.astro` still contains phrasing such as `Tier-1 intent keywords` and routes users into some weak guide URLs. This weakens the people-first positioning established on the homepage and About page.
+
+### 3. Tool template linking is still too inventory-heavy
+
+`src/pages/saas-pricing/[slug].astro` contains a very large hardcoded guide-link matrix. The current template contains more than `100` guide-link rules. Even when deduped at render time, the structure still reflects a broad inventory model instead of a small cluster model.
+
+### 4. Editorial metadata is still generic at scale
+
+Template support for author/reviewer metadata exists, but the content layer is still sparse:
+
+- only `3` guide files currently have explicit `author`, `reviewedBy`, and `reviewed`
+- `0` glossary files currently have explicit `author`, `reviewedBy`, or `reviewed`
+- `0` guides and `0` glossary entries currently include `sources`
+
+This means visible trust framing exists, but much of it is still defaulted rather than page-specific.
+
+### 5. Secondary tools may also dilute quality signals
+
+The site has `21` calculators, but the current quality guardrails are strongest around only a smaller core subset. Roughly half of the tool inventory appears lighter in FAQs, scenarios, walkthroughs, or support depth than the five main priority tools. This is a secondary dilution risk that should be audited after the first recovery waves.
+
+### 6. Legal and support trust pages need consistency work
+
+Core trust pages exist, but they are uneven:
+
+- `contact.astro` is useful
+- `privacy-policy.astro` and `cookie-policy.astro` are acceptable but operationally oriented
+- `terms.astro` is extremely short and may not inspire confidence for users evaluating a business toolkit
+
+This is more of a user-trust issue than a ranking issue, but it still matters.
+
+### 7. Build and deployment verification must remain part of the recovery
+
+The local sitemap artifact can lag behind source changes. Recovery is not complete until a fresh build and deployed sitemap reflect the final governance decisions.
+
 ## Relevant Google Guidance
 
 This design aligns with published Google Search Central guidance:
@@ -158,10 +212,12 @@ Execution should still lean toward index-surface control in the first phase. The
 ### In Scope
 
 - Second-pass triage of indexable guides and glossary entries
+- Review of indexability and monetization on use-case pages
 - Deeper editorial treatment for retained pages
 - Stronger query-to-page alignment around top-performing calculator clusters
 - Hub-page curation improvements
 - Trust and methodology reinforcement across retained templates
+- Tightening of tool-page support clusters and template link sprawl
 - Cleanup policy for redundant planning artifacts and low-value leftovers in the working tree
 
 ### Out Of Scope

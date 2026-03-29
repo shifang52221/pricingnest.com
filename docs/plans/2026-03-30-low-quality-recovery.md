@@ -22,6 +22,7 @@ Batch size:
 
 - `35-45` guides moved to `noindex,follow`
 - `20-25` glossary entries moved to `noindex,follow`
+- `5` thin use-case pages reviewed for either `noindex,follow` or consolidation-level cleanup
 - `1` governance pass in `src/lib/content-governance-data.mjs`
 - `1` verification pass for sitemap and governance tests
 
@@ -34,8 +35,9 @@ Exit criteria:
 
 - indexed guides are reduced to roughly `80-90`
 - indexed glossary entries are reduced to roughly `65-70`
+- thin use-case pages no longer sit in the index as ad-backed shortcut pages
 - sitemap excludes the newly noindexed URLs
-- guide and glossary hubs no longer spotlight weak pages
+- guide, glossary, and toolkit hubs no longer spotlight weak pages
 
 ### Wave 2: First Core Cluster Deepening
 
@@ -118,6 +120,7 @@ To keep execution focused:
 - never rewrite more than `2 guides` in one batch except the final single-guide wave
 - never rewrite more than `4 glossary pages` in one batch
 - governance/noindex work can be done in larger batches because it is centralized and testable
+- use-case pages should be handled together as a single risk bucket, not rewritten one by one over many waves
 - do not mix broad governance changes and broad content rewrites in the same day unless verification is already green
 - every wave must end with tests plus a build before moving to the next wave
 
@@ -229,8 +232,16 @@ Expected: PASS once the new governance set brings indexable counts into the targ
 - Modify: `astro.config.mjs`
 - Modify: `src/pages/guides/index.astro`
 - Modify: `src/pages/glossary/index.astro`
+- Modify: `src/pages/saas-pricing/index.astro`
+- Modify: `src/pages/saas-pricing/use-cases/index.astro`
+- Modify: `src/pages/saas-pricing/use-cases/usage-based-pricing.astro`
+- Modify: `src/pages/saas-pricing/use-cases/api-pricing.astro`
+- Modify: `src/pages/saas-pricing/use-cases/infra-cost-recovery.astro`
+- Modify: `src/pages/saas-pricing/use-cases/unit-economics.astro`
+- Modify: `src/pages/saas-pricing/use-cases/pricing-experiments.astro`
 - Modify: `tests/sitemap-governance.test.mjs`
 - Modify: `tests/hub-curation.test.mjs`
+- Create: `tests/use-case-governance.test.mjs`
 
 **Step 1: Tighten sitemap behavior**
 
@@ -244,12 +255,31 @@ Change both hub pages so they:
 - avoid broad “browse everything” behavior that re-surfaces weak inventory
 - emphasize curated pathways into the calculator clusters
 
+Also update `src/pages/saas-pricing/index.astro` so it:
+
+- removes SEO-first public phrasing such as `Tier-1 intent keywords`
+- stops routing users into weak support pages from homepage-like hub sections
+- behaves as a curated gateway into the five core calculator clusters
+
+**Step 3: Resolve the use-case page risk**
+
+Treat the five detailed use-case pages as one structural decision, not five isolated pages.
+
+Preferred default:
+
+- keep `/saas-pricing/use-cases/` indexed as the hub
+- set the five child use-case pages to `noindex,follow` in this wave unless they are rewritten into materially deeper workflow pages immediately
+- remove `AdSlot` from these thin child pages while they remain lightweight
+
+If the team decides not to noindex them now, then they must be rewritten in a future wave before the recovery can be considered complete.
+
 Specific expectations:
 
 - `src/pages/guides/index.astro` should route users into decision guides for storage, compute, usage pricing, API pricing, and annual discount decisions.
 - `src/pages/glossary/index.astro` should route users into only the terms that help interpret calculator outputs and pricing trade-offs.
+- `src/pages/saas-pricing/use-cases/index.astro` should remain the single indexed use-case hub unless the child pages are substantially deepened.
 
-**Step 3: Run focused verification**
+**Step 4: Run focused verification**
 
 Run:
 
@@ -257,9 +287,10 @@ Run:
 npm run build
 node tests/sitemap-governance.test.mjs
 node tests/hub-curation.test.mjs
+node tests/use-case-governance.test.mjs
 ```
 
-Expected: PASS with noindexed URLs absent from `dist/sitemap-0.xml` and hub copy reflecting curated retained content.
+Expected: PASS with noindexed URLs absent from `dist/sitemap-0.xml`, hub copy reflecting curated retained content, and thin use-case pages no longer acting like indexable ad-backed shortcuts.
 
 ### Task 4: Lock core-tool support clusters before editing content
 
@@ -507,6 +538,7 @@ node tests/content-governance.test.mjs
 node tests/recovery-retention-thresholds.test.mjs
 node tests/sitemap-governance.test.mjs
 node tests/hub-curation.test.mjs
+node tests/use-case-governance.test.mjs
 node tests/template-quality.test.mjs
 node tests/editorial-metadata.test.mjs
 node tests/core-tool-depth.test.mjs
