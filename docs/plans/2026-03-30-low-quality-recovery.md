@@ -10,6 +10,126 @@
 
 ---
 
+## Execution Order And Batch Size
+
+This recovery should not be executed as scattered one-off edits. Use four controlled waves with clear exit criteria.
+
+### Wave 1: Index Surface Control
+
+Purpose: reduce low-quality-site risk quickly before doing broader content work.
+
+Batch size:
+
+- `35-45` guides moved to `noindex,follow`
+- `20-25` glossary entries moved to `noindex,follow`
+- `1` governance pass in `src/lib/content-governance-data.mjs`
+- `1` verification pass for sitemap and governance tests
+
+Do not do in this wave:
+
+- large content rewrites
+- design or layout changes beyond hub alignment required by the new retained set
+
+Exit criteria:
+
+- indexed guides are reduced to roughly `80-90`
+- indexed glossary entries are reduced to roughly `65-70`
+- sitemap excludes the newly noindexed URLs
+- guide and glossary hubs no longer spotlight weak pages
+
+### Wave 2: First Core Cluster Deepening
+
+Purpose: strengthen the strongest commercial-intent cluster first.
+
+Batch size:
+
+- `2` retained guides rewritten in depth
+- `3-4` retained glossary pages upgraded
+- `2` core tool clusters tightened in metadata/template links
+
+Recommended focus:
+
+- storage cluster
+- compute cluster
+
+Exit criteria:
+
+- storage and compute tools each point to a deliberate support path
+- the rewritten guides read like decision aids, not checklist pages
+- retained glossary pages explain how to interpret the tool outputs
+
+### Wave 3: Second Core Cluster Deepening
+
+Purpose: strengthen the next most important intent cluster without expanding inventory.
+
+Batch size:
+
+- `2` retained guides rewritten in depth
+- `3-4` retained glossary pages upgraded
+- `2` core tool clusters tightened in metadata/template links
+
+Recommended focus:
+
+- API pricing cluster
+- usage-based pricing cluster
+
+Exit criteria:
+
+- API and usage-based tool pages have clean next-step pathways
+- the support pages cover modeling trade-offs, not just definitions
+- no duplicate or weak support links remain in the cluster output
+
+### Wave 4: Final Core Page Strengthening And Trust Pass
+
+Purpose: finish the retained commercial-support layer and align site trust signals.
+
+Batch size:
+
+- `1` retained guide rewritten in depth
+- `2-3` retained glossary pages upgraded
+- `1` trust and UX pass across hub/tool retained pages
+- `1` cleanup review for redundant planning files
+
+Recommended focus:
+
+- annual discount cluster
+- sitewide methodology and review consistency
+
+Exit criteria:
+
+- all five core calculator clusters are complete
+- retained pages have consistent editorial and methodology cues
+- only clearly useful local changes remain in the working tree
+
+### Observation Window
+
+After Wave 4, pause expansion and observe for `2-4` weeks.
+
+During this period:
+
+- do not publish new thin support pages
+- monitor GSC impressions, average position, and page distribution weekly
+- only make surgical fixes if a clear issue appears
+
+## Workload Rules
+
+To keep execution focused:
+
+- never rewrite more than `2 guides` in one batch except the final single-guide wave
+- never rewrite more than `4 glossary pages` in one batch
+- governance/noindex work can be done in larger batches because it is centralized and testable
+- do not mix broad governance changes and broad content rewrites in the same day unless verification is already green
+- every wave must end with tests plus a build before moving to the next wave
+
+## Success Sequence
+
+The order matters:
+
+1. shrink the weak indexable surface
+2. strengthen the five calculator clusters
+3. tighten hub and trust signals around the retained set
+4. observe recovery before any new expansion
+
 ### Task 1: Lock recovery targets with a failing retention test
 
 **Files:**
