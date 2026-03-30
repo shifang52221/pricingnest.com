@@ -8,6 +8,22 @@ reviewed: "2026-03-30"
 tags: ["annual-pricing", "discounts", "retention"]
 tools: ["annual-discount-calculator", "pricing-increase-impact-calculator", "churn-impact-calculator", "usage-based-pricing-calculator"]
 glossary: ["annual-prepay-discount", "churn", "mrr", "gross-margin"]
+sources:
+  - kind: "internal-input"
+    label: "Renewal cohort and annual prepay cash-collection review"
+    note: "Compare monthly versus annual retention, upfront cash collected, and renewal rate by segment before setting discount depth."
+  - kind: "supporting-page"
+    label: "Annual Discount Calculator"
+    href: "/saas-pricing/annual-discount-calculator/"
+    note: "Use it to translate a proposed discount into an annual invoice and effective monthly rate."
+  - kind: "supporting-page"
+    label: "Churn Impact Calculator"
+    href: "/saas-pricing/churn-impact-calculator/"
+    note: "Test whether the expected retention lift offsets the discount and protects renewal economics."
+  - kind: "supporting-page"
+    label: "Annual Prepay Discount"
+    href: "/glossary/annual-prepay-discount/"
+    note: "Keep finance, sales, and product aligned on how annual prepay logic is defined."
 ---
 
 ## When annual discounts help

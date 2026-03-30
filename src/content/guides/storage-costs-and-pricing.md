@@ -8,6 +8,22 @@ reviewed: "2026-03-30"
 tags: ["storage", "unit-costs"]
 tools: ["storage-cost-calculator", "price-per-gb-month-calculator", "bandwidth-cost-calculator", "usage-based-pricing-calculator"]
 glossary: ["storage-costs", "gb-month", "retrieval-fees", "cogs", "gross-margin"]
+sources:
+  - kind: "internal-input"
+    label: "Storage class mix and retrieval behavior review"
+    note: "Validate average GB-month, request intensity, retrieval frequency, and egress cost before choosing one storage price."
+  - kind: "supporting-page"
+    label: "Storage Cost Calculator"
+    href: "/saas-pricing/storage-cost-calculator/"
+    note: "Use it to separate storage cost from request and retrieval cost before turning the output into a live price."
+  - kind: "supporting-page"
+    label: "Price Per GB-Month Calculator"
+    href: "/saas-pricing/price-per-gb-month-calculator/"
+    note: "Benchmark the candidate per-GB-month rate against the margin floor and buyer expectations."
+  - kind: "supporting-page"
+    label: "Retrieval Fees"
+    href: "/glossary/retrieval-fees/"
+    note: "Confirm the team is treating retrieval-heavy workloads as a pricing input, not an afterthought."
 ---
 
 ## When storage pricing needs its own model

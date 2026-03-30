@@ -8,6 +8,22 @@ reviewed: "2026-03-30"
 tags: ["cloud-costs", "unit-economics"]
 tools: ["compute-cost-estimator", "monthly-cloud-cost-estimator", "usage-based-pricing-calculator"]
 glossary: ["cogs", "gross-margin", "unit-cost", "variable-cost"]
+sources:
+  - kind: "internal-input"
+    label: "Cloud billing export and workload mix review"
+    note: "Check steady-state vCPU-hours, memory GB-hours, reserved-capacity assumptions, and fixed platform overhead before setting a compute price."
+  - kind: "supporting-page"
+    label: "Compute Cost Estimator"
+    href: "/saas-pricing/compute-cost-estimator/"
+    note: "Use it to compare base and heavy workload scenarios before publishing a blended compute rate."
+  - kind: "supporting-page"
+    label: "Monthly Cloud Cost Estimator"
+    href: "/saas-pricing/monthly-cloud-cost-estimator/"
+    note: "Cross-check whether the real cost issue is compute alone or a broader infrastructure mix."
+  - kind: "supporting-page"
+    label: "Unit Cost"
+    href: "/glossary/unit-cost/"
+    note: "Keep the pricing model anchored to a consistent unit-cost definition across finance and product teams."
 ---
 
 ## When compute should be priced explicitly

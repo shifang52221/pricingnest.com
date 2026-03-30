@@ -8,6 +8,22 @@ reviewed: "2026-03-30"
 tags: ["usage-based-pricing"]
 tools: ["usage-based-pricing-calculator", "tiered-usage-pricing-calculator", "api-pricing-calculator", "storage-cost-calculator"]
 glossary: ["usage-based-pricing", "value-metric", "included-usage", "usage-forecast", "gross-margin"]
+sources:
+  - kind: "internal-input"
+    label: "Usage distribution and margin scenario review"
+    note: "Compare average, heavy, and p90 account behavior so the chosen unit and included usage do not underrecover fixed cost."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Use it to check whether the candidate unit price holds the target margin across realistic scenarios."
+  - kind: "supporting-page"
+    label: "Tiered Usage Pricing Calculator"
+    href: "/saas-pricing/tiered-usage-pricing-calculator/"
+    note: "Test whether tiers or included usage produce a more stable outcome than pure pay-as-you-go pricing."
+  - kind: "supporting-page"
+    label: "Value Metric"
+    href: "/glossary/value-metric/"
+    note: "Confirm the billing unit still matches what buyers believe they are purchasing."
 ---
 
 ## When usage-based pricing is a good fit

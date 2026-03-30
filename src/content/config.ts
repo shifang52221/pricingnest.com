@@ -13,16 +13,32 @@ const baseSchema = z.object({
   tools: z.array(z.string()).optional(),
   guides: z.array(z.string()).optional(),
   glossary: z.array(z.string()).optional(),
+});
+
+const guideSourceKindSchema = z.enum(["internal-input", "supporting-page", "external-reference"]);
+
+const guideSourceSchema = z.object({
+  label: z.string(),
+  kind: guideSourceKindSchema,
+  href: z.string().optional(),
+  note: z.string().optional(),
+});
+
+const guideSchema = baseSchema.extend({
+  sources: z.array(guideSourceSchema).optional(),
+});
+
+const glossarySchema = baseSchema.extend({
   sources: z.array(z.string()).optional(),
 });
 
 export const collections = {
   guides: defineCollection({
     type: "content",
-    schema: baseSchema,
+    schema: guideSchema,
   }),
   glossary: defineCollection({
     type: "content",
-    schema: baseSchema,
+    schema: glossarySchema,
   }),
 };

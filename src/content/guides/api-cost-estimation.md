@@ -8,6 +8,22 @@ reviewed: "2026-03-30"
 tags: ["api-costs"]
 tools: ["api-pricing-calculator", "api-cost-estimator", "usage-based-pricing-calculator", "compute-cost-estimator"]
 glossary: ["api-call", "rate-limit", "pricing-metric", "gross-margin"]
+sources:
+  - kind: "internal-input"
+    label: "Request-volume log and vendor invoice review"
+    note: "Validate average versus heavy request volume, endpoint mix, and third-party pass-through cost before publishing a price per 1,000 calls."
+  - kind: "supporting-page"
+    label: "API Pricing Calculator"
+    href: "/saas-pricing/api-pricing-calculator/"
+    note: "Check whether the candidate rate per 1,000 calls still supports the target gross margin."
+  - kind: "supporting-page"
+    label: "API Cost Estimator"
+    href: "/saas-pricing/api-cost-estimator/"
+    note: "Use it to isolate backend unit cost assumptions before packaging them into plan pricing."
+  - kind: "supporting-page"
+    label: "Rate Limit"
+    href: "/glossary/rate-limit/"
+    note: "Review rate-limit language before finalizing packaging so throughput promises stay commercially consistent."
 ---
 
 ## When API pricing deserves its own model
