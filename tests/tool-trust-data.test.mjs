@@ -25,7 +25,17 @@ const coreSlugs = [
   "annual-discount-calculator",
 ];
 
-for (const field of ["reviewedBy?: string;", "reviewed?: string;", "sources?: string[];"]) {
+for (const field of [
+  'export type ToolSourceKind = "internal-input" | "supporting-page" | "external-reference";',
+  "export type ToolSource = {",
+  "label: string;",
+  "kind: ToolSourceKind;",
+  "href?: string;",
+  "note?: string;",
+  "reviewedBy?: string;",
+  "reviewed?: string;",
+  "sources?: ToolSource[];",
+]) {
   assertIncludes(toolsText, "tools type", field);
 }
 
@@ -33,10 +43,23 @@ for (const slug of coreSlugs) {
   const start = toolsText.indexOf(`slug: "${slug}"`);
   if (start === -1) throw new Error(`tools data: missing block for ${slug}`);
   const block = toolsText.slice(start, start + 9000);
-  for (const expected of ['reviewedBy: "PricingNest Editorial Team"', 'reviewed: "2026-03-30"', "sources: ["]) {
+  for (const expected of [
+    'reviewedBy: "PricingNest Editorial Team"',
+    'reviewed: "2026-03-30"',
+    "sources: [",
+    'kind: "internal-input"',
+    'kind: "supporting-page"',
+    "label:",
+    "note:",
+  ]) {
     if (!block.includes(expected)) {
       throw new Error(`${slug}: missing ${expected}`);
     }
+  }
+
+  const linkedSupportPages = block.match(/href:\s*"\/(guides|glossary)\//g) ?? [];
+  if (linkedSupportPages.length < 1) {
+    throw new Error(`${slug}: expected at least 1 linked supporting page in sources`);
   }
 }
 
@@ -44,8 +67,13 @@ for (const expected of [
   "const toolReviewedBy = tool.reviewedBy ??",
   "const toolReviewed = tool.reviewed ??",
   "const toolSources = tool.sources ?? [];",
+  "function formatToolSourceKind(",
   "Sources and references",
   "toolSources.length > 0",
+  'class="source-list"',
+  'class="source-item"',
+  "source.kind",
+  "source.note",
 ]) {
   assertIncludes(toolPageText, "tool page", expected);
 }

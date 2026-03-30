@@ -40,6 +40,15 @@ export type ToolClusterLink = {
   label: string;
 };
 
+export type ToolSourceKind = "internal-input" | "supporting-page" | "external-reference";
+
+export type ToolSource = {
+  label: string;
+  kind: ToolSourceKind;
+  href?: string;
+  note?: string;
+};
+
 export type ToolDefinition = {
   slug: string;
   title: string;
@@ -49,7 +58,7 @@ export type ToolDefinition = {
   metaDescription?: string;
   reviewedBy?: string;
   reviewed?: string;
-  sources?: string[];
+  sources?: ToolSource[];
   inputs: ToolInput[];
   outputs: ToolOutput[];
   related: string[];
@@ -134,9 +143,23 @@ export const TOOLS: ToolDefinition[] = [
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
-      "Recent billing export or vendor invoice for blended unit cost.",
-      "Current plan packaging and billable unit definitions used on your pricing page.",
-      "Retained review pages: usage-based pricing examples and value metric selection."
+      {
+        kind: "internal-input",
+        label: "Billing export or vendor invoice for blended unit cost",
+        note: "Validate the current unit-cost assumption before using the required price per unit as a pricing floor."
+      },
+      {
+        kind: "supporting-page",
+        label: "Usage-Based Pricing Examples",
+        href: "/guides/usage-based-pricing-examples/",
+        note: "Review packaging examples before turning the model into a live pricing page."
+      },
+      {
+        kind: "supporting-page",
+        label: "Value Metric Selection",
+        href: "/guides/value-metric-selection/",
+        note: "Confirm the billable unit matches what buyers can understand and forecast."
+      }
     ],
     inputs: [
       {
@@ -388,9 +411,23 @@ export const TOOLS: ToolDefinition[] = [
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
-      "Recent cloud billing export or reserved-capacity report for blended vCPU-hour and GB-hour rates.",
-      "Internal overhead assumptions for monitoring, support, and on-call coverage.",
-      "Retained review pages: compute cost modeling and monthly cloud cost breakdown."
+      {
+        kind: "internal-input",
+        label: "Cloud billing export or reserved-capacity report",
+        note: "Use a recent billing window to validate blended vCPU-hour and GB-hour assumptions before reviewing output."
+      },
+      {
+        kind: "supporting-page",
+        label: "Compute Cost Modeling",
+        href: "/guides/compute-cost-modeling/",
+        note: "Use this guide when raw infrastructure inputs need a clearer cost model before pricing."
+      },
+      {
+        kind: "supporting-page",
+        label: "Monthly Cloud Cost Breakdown",
+        href: "/guides/monthly-cloud-cost-breakdown/",
+        note: "Cross-check whether monitoring, support, and other overhead are being recovered."
+      }
     ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
@@ -1764,9 +1801,23 @@ export const TOOLS: ToolDefinition[] = [
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
-      "Current monthly list price and any active annual discount policy used by your team.",
-      "Cash collection, renewal, and discount guardrail assumptions from finance or pricing owners.",
-      "Retained review pages: annual prepay discount and discount guardrails."
+      {
+        kind: "internal-input",
+        label: "Current monthly list price and annual discount policy",
+        note: "Check the active commercial policy first so the calculator reflects real discount guardrails, not only list pricing."
+      },
+      {
+        kind: "supporting-page",
+        label: "Annual Prepay Discount",
+        href: "/guides/annual-prepay-discount/",
+        note: "Use this guide when deciding how much savings to exchange for upfront cash collection."
+      },
+      {
+        kind: "supporting-page",
+        label: "Discount Guardrails",
+        href: "/guides/discount-guardrails/",
+        note: "Review the guardrails before publishing or approving a deeper annual discount."
+      }
     ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
@@ -2167,9 +2218,23 @@ export const TOOLS: ToolDefinition[] = [
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
-      "Recent API traffic report plus blended infrastructure or vendor cost per 1,000 calls.",
-      "Current rate-limit, free-tier, and overage assumptions used in packaging.",
-      "Retained review pages: API cost estimation and API pricing model."
+      {
+        kind: "internal-input",
+        label: "API traffic report and blended cost per 1,000 calls",
+        note: "Validate current traffic, vendor cost, and infrastructure cost before relying on the implied price per 1,000 calls."
+      },
+      {
+        kind: "supporting-page",
+        label: "API Cost Estimation",
+        href: "/guides/api-cost-estimation/",
+        note: "Use this guide when the underlying request-cost model still needs cleanup before pricing."
+      },
+      {
+        kind: "supporting-page",
+        label: "API Pricing Model",
+        href: "/guides/api-pricing-model/",
+        note: "Review packaging patterns for rate limits, free tiers, and overage logic before shipping the plan."
+      }
     ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
@@ -2853,9 +2918,23 @@ export const TOOLS: ToolDefinition[] = [
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
-      "Recent storage billing export for blended GB-month, request, and retrieval assumptions.",
-      "Internal replication, backup, and support overhead assumptions for the storage workload.",
-      "Retained review pages: storage costs and pricing and storage retrieval fees."
+      {
+        kind: "internal-input",
+        label: "Storage billing export for GB-month, request, and retrieval assumptions",
+        note: "Validate the current storage workload before using the effective price per GB-month as a pricing reference."
+      },
+      {
+        kind: "supporting-page",
+        label: "Storage Costs and Pricing",
+        href: "/guides/storage-costs-and-pricing/",
+        note: "Use this guide to separate stored-volume economics from the rest of the storage workload."
+      },
+      {
+        kind: "supporting-page",
+        label: "Storage Retrieval Fees",
+        href: "/guides/storage-retrieval-fees/",
+        note: "Review retrieval behavior when request and access costs can materially change the pricing model."
+      }
     ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },

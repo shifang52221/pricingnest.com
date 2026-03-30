@@ -7,7 +7,8 @@ import {
   getToolMetaTitle,
   getToolName,
   TOOLS,
-  type ToolDefinition
+  type ToolDefinition,
+  type ToolSource
 } from "../../lib/tools";
 import toolPageScriptUrl from "../../scripts/tool-page.js?url";
 import { compute } from "../../scripts/calculators";
@@ -68,8 +69,14 @@ function isIndexableResourceLink(link: PageLink): boolean {
   return true;
 }
 
-function isReferenceHref(value: string): boolean {
-  return value.startsWith("/") || /^https?:\/\//i.test(value);
+function isExternalHref(value: string): boolean {
+  return /^https?:\/\//i.test(value);
+}
+
+function formatToolSourceKind(kind: ToolSource["kind"]): string {
+  if (kind === "internal-input") return "Internal input";
+  if (kind === "supporting-page") return "Supporting page";
+  return "External reference";
 }
 
 function formatCurrency(currency: string, value: number): string {
@@ -556,17 +563,31 @@ const recommendedLinks = coreToolClusterLinks
         {toolSources.length > 0 ? (
           <>
             <h2 style="margin-top: 1.25rem;">Sources and references</h2>
-            <ul class="list">
+            <div class="source-list">
               {toolSources.map((source) => (
-                <li>
-                  {isReferenceHref(source) ? (
-                    <a href={source}>{source}</a>
-                  ) : (
-                    source
-                  )}
-                </li>
+                <div class="source-item">
+                  <div class="source-item-head">
+                    <span class="badge source-kind">{formatToolSourceKind(source.kind)}</span>
+                  </div>
+                  <div class="source-item-body">
+                    {source.href ? (
+                      isExternalHref(source.href) ? (
+                        <a class="source-link" href={source.href} rel="noopener noreferrer" target="_blank">
+                          <strong>{source.label}</strong>
+                        </a>
+                      ) : (
+                        <a class="source-link" href={source.href}>
+                          <strong>{source.label}</strong>
+                        </a>
+                      )
+                    ) : (
+                      <strong>{source.label}</strong>
+                    )}
+                    {source.note ? <p class="muted source-note">{source.note}</p> : null}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </>
         ) : null}
 
