@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { getToolBySlug, getToolName } from "../../lib/tools";
+import { getGuideRobots } from "../../lib/content-governance";
 
 export async function getStaticPaths() {
   const entries = await getCollection("guides");
@@ -22,8 +23,45 @@ const relatedTools = relatedToolSlugs
   .filter(Boolean)
   // @ts-expect-error
   .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: getToolName(tool) }));
+const robots = getGuideRobots(entry.slug);
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const editorialTeamHref = "/about/#editorial-team";
+const reviewPolicyHref = "/about/#review-policy";
+const authorName = entry.data.author ?? "PricingNest Editorial Team";
+const authorType = authorName === "PricingNest Editorial Team" ? "Organization" : "Person";
+const reviewedBy = entry.data.reviewedBy ?? "PricingNest Editorial Team";
+const published = entry.data.published ?? entry.data.updated;
+const updated = entry.data.updated ?? published;
+const reviewed = entry.data.reviewed ?? updated;
+const sources = entry.data.sources ?? [];
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  url: canonical,
+  mainEntityOfPage: canonical,
+  author: {
+    "@type": authorType,
+    name: authorName,
+    ...(authorType === "Organization" ? { url: new URL(editorialTeamHref, siteUrl).toString() } : {})
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteName,
+    url: siteUrl
+  },
+  ...(published ? { datePublished: published } : {}),
+  ...(updated ? { dateModified: updated } : {})
+};
+
+function isUrl(value: string): boolean {
+  return /^https?:\/\//i.test(value);
+}
 ---
-<BaseLayout title={title} description={entry.data.description}>
+<BaseLayout title={title} description={entry.data.description} robots={robots}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <section class="hero">
     <h1>{entry.data.title}</h1>
     <p>{entry.data.description}</p>
@@ -35,12 +73,47 @@ const relatedTools = relatedToolSlugs
     </article>
 
     <aside class="card col4">
-      <h2>More</h2>
+      <h2>Methodology and review</h2>
+      <ul class="list">
+        <li><strong>Author:</strong> <a href={editorialTeamHref}>{authorName}</a></li>
+        <li><strong>Reviewed by:</strong> <a href={reviewPolicyHref}>{reviewedBy}</a></li>
+        {published ? <li><strong>Published:</strong> {published}</li> : null}
+        {reviewed ? <li><strong>Reviewed:</strong> {reviewed}</li> : null}
+      </ul>
+      <p class="muted" style="margin-top: 0.75rem;">
+        PricingNest Editorial Team reviews guides for clarity, explicit assumptions, and consistency with linked
+        calculators.
+      </p>
+      <p class="muted" style="margin-top: 0.75rem;">
+        See the <a href={editorialTeamHref}>editorial responsibility</a> and <a href={reviewPolicyHref}>review policy</a>
+        for how retained pages are updated.
+      </p>
+
+      {sources.length > 0 ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">Sources</h2>
+          <ul class="list">
+            {sources.map((source) => (
+              <li>
+                {isUrl(source) ? (
+                  <a href={source} rel="noopener noreferrer" target="_blank">{source}</a>
+                ) : (
+                  source
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+
+      <h2 style="margin-top: 1.25rem;">More</h2>
       <ul class="list">
         <li><a href="/guides/">All guides</a></li>
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/glossary/">Glossary</a></li>
+        <li><a href="/contact/">Report a correction</a></li>
       </ul>
+
       {relatedTools.length > 0 ? (
         <>
           <h2 style="margin-top: 1.25rem;">Tools</h2>
@@ -51,7 +124,8 @@ const relatedTools = relatedToolSlugs
           </ul>
         </>
       ) : null}
-      {entry.data.updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {entry.data.updated}</p> : null}
+
+      {updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {updated}</p> : null}
     </aside>
   </div>
 </BaseLayout>

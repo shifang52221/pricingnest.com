@@ -1,35 +1,58 @@
 ---
 title: "Included Usage"
 description: "Usage bundled into a plan or platform fee before overages apply."
-updated: "2026-01-30"
+updated: "2026-03-30"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-30"
 category: "pricing-models"
-guides: ["included-usage-design", "usage-mix-modeling", "usage-cap-design"]
-glossary: ["usage-based-pricing"]
+guides: ["usage-based-pricing-examples", "value-metric-selection"]
+tools: ["usage-based-pricing-calculator", "tiered-usage-pricing-calculator"]
+glossary: ["usage-based-pricing", "overage", "value-metric", "usage-forecast"]
 ---
 
 ## Definition
-Included usage is the amount of usage bundled into a plan or platform fee before overages apply.
 
-## Why it matters
-Included usage reduces bill shock and improves conversion. It also determines how quickly customers reach overages.
+Included usage is the amount of metered product usage bundled into a plan price or platform fee before overage charges
+start. It is the allowance a customer can consume without paying an incremental rate for every extra unit. In practice,
+included usage is one of the clearest ways to turn a raw usage model into something that still feels easy to buy.
 
-## Pricing implications
-If included usage is too high, you underprice heavy users. If it is too low, customers feel penalized early. Use cohort
-data to set the right level.
+## Why it matters in pricing decisions
 
-## Measurement tips
-Compare included usage to p50 and p90 usage to calibrate tiers.
+Included usage affects both conversion and margin. A good allowance makes the entry plan easier to understand, gives the
+buyer a safer first month, and reduces bill shock because the customer can see a clear amount of value included before
+variable charges begin. A weak allowance does the opposite. If the threshold is too low, the product feels punitive too
+early. If it is too high, heavy users can consume expensive capacity before the pricing model starts recovering cost.
 
-## Checklist
-- Set included usage based on typical customer usage.
-- Align included usage with the base fee value.
-- Use tiered overages after included usage.
-- Publish example bills showing included usage.
-- Re-evaluate included usage after pricing changes.
-- Avoid hidden limits that differ from published limits.
-- Track overage rates by plan.
-- Use included usage to reduce early churn.
+The best allowance is usually anchored to customer behavior, not a round number chosen for packaging convenience. Teams
+should compare included usage against p50 and p90 usage, the size of the base fee, and the point where overage begins to
+feel fair instead of surprising.
 
+## How to use it with PricingNest tools
 
-## Related glossary terms
-- [Usage Based Pricing](/glossary/usage-based-pricing/)
+Start with the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/) to understand whether
+your base fee and target margin can support an allowance at all. Then use the
+[Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/) to test how much usage should be
+included before a customer moves into overage tiers. The point is not only to find a number. It is to see whether the
+model still feels forecastable once the buyer moves beyond the entry allowance.
+
+For the commercial side, compare the result with
+[Usage-Based Pricing Examples](/guides/usage-based-pricing-examples/) and
+[Value Metric Selection](/guides/value-metric-selection/). That helps confirm the included amount matches the unit your
+buyer already understands.
+
+## Common interpretation mistakes
+
+One mistake is setting included usage from intuition instead of real usage data. Another is making the allowance look
+generous on the pricing page while the billing system measures a different unit behind the scenes. Teams also forget to
+explain reset timing, pooled usage rules, or what happens when usage spikes late in the month. A more subtle mistake is
+assuming included usage fixes a weak pricing model on its own. If the unit is still hard to forecast, a larger
+allowance will not remove the trust problem. It only delays it.
+
+## Example
+
+Imagine a workflow automation product charging $99 per month with 50,000 tasks included. Most customers use about
+35,000 tasks, while p90 accounts reach 110,000. In that case, the included usage gives typical buyers enough room to
+adopt the product without immediate overage anxiety, but it still lets the company charge fairly when heavier customers
+consume materially more infrastructure. If the team instead included 150,000 tasks, the plan might convert well but
+would likely bury the real cost of heavy usage inside a base fee that no longer protects margin.

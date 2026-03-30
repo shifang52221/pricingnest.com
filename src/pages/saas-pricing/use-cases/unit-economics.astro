@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
+import { getStaticPageRobots } from "../../../lib/content-governance";
+
+const robots = getStaticPageRobots("/saas-pricing/use-cases/unit-economics/");
 ---
 <BaseLayout
   title="SaaS Unit Economics - Use Case | PricingNest"
   description="A practical flow for SaaS unit economics: connect churn, LTV, CAC payback, break-even CAC, and ARR run rate."
+  robots={robots}
 >
   <section class="hero">
     <h1>Use case: SaaS unit economics</h1>
@@ -55,7 +58,6 @@ import AdSlot from "../../../components/AdSlot.astro";
         <a class="btn" href="/saas-pricing/mrr-calculator/">MRR calculator</a>
         <a class="btn" href="/saas-pricing/arr-calculator/">ARR calculator</a>
       </div>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 </BaseLayout>

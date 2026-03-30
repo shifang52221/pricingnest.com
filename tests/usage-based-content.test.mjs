@@ -34,7 +34,7 @@ const requiredSnippets = [
   "Can I use this as a Google Cloud Storage price calculator?",
   "Can I use this as a cost per GB calculator?",
   "How should I handle grandfathering pricing plans?",
-  "How do I run a cost estimate api workflow?",
+  "How do I go from API cost estimate to list price?",
   "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead."
 ];
 

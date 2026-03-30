@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
+import { getStaticPageRobots } from "../../../lib/content-governance";
+
+const robots = getStaticPageRobots("/saas-pricing/use-cases/pricing-experiments/");
 ---
 <BaseLayout
   title="Pricing Experiments - Use Case | PricingNest"
   description="A practical flow for pricing experiments: model price increase impact, estimate break-even churn, and compare annual discount tradeoffs."
+  robots={robots}
 >
   <section class="hero">
     <h1>Use case: pricing experiments</h1>
@@ -49,7 +52,6 @@ import AdSlot from "../../../components/AdSlot.astro";
         <li>Annual prepay strategy</li>
         <li>Sensitivity checks before rollout</li>
       </ul>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 </BaseLayout>

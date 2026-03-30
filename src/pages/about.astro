@@ -2,61 +2,135 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const lastReviewed = "2026-03-30";
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: `About ${siteName}`,
+  url: canonical,
+  description: "Editorial methodology, review standards, and correction policy for PricingNest calculators and guides.",
+  dateModified: lastReviewed,
+  mainEntity: {
+    "@type": "Organization",
+    name: siteName,
+    url: siteUrl
+  }
+};
 ---
 <BaseLayout
   title={`About | ${siteName}`}
-  description="What PricingNest is, how the calculators work, and what assumptions to use for SaaS pricing and cloud unit economics."
+  description="How PricingNest builds, reviews, and maintains SaaS pricing calculators, unit-economics models, and supporting guides."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section class="hero">
     <h1>About {siteName}</h1>
     <p>
-      {siteName} is a lightweight toolkit of SaaS pricing and cloud unit-economics calculators. The goal is to help you
-      sanity-check pricing decisions with transparent, input-driven models.
+      {siteName} is an editorial toolkit for SaaS pricing, packaging, and unit economics. The site is built to help
+      founders, product teams, finance partners, and operators work through pricing decisions with transparent formulas,
+      plain-English guidance, and reviewable assumptions.
     </p>
+    <p class="muted">Last reviewed: {lastReviewed}</p>
   </section>
 
   <div class="grid">
     <section class="card col8">
-      <h2>What this site does</h2>
+      <h2>Quick navigation</h2>
       <ul class="list">
-        <li>Provides calculators for pricing, margin, and unit economics.</li>
-        <li>Uses your inputs (no live cloud pricing feeds) so assumptions stay explicit.</li>
-        <li>Lets you export results to CSV and share pre-filled links.</li>
+        <li><a href="#editorial-team">Editorial responsibility</a></li>
+        <li><a href="#how-calculators-are-built">How calculators are built</a></li>
+        <li><a href="#review-policy">How pages are reviewed</a></li>
+        <li><a href="#corrections-policy">Corrections and updates</a></li>
       </ul>
 
-      <h2 style="margin-top: 1.25rem;">How the calculators work</h2>
+      <h2 style="margin-top: 1.25rem;">Who this site is for</h2>
       <p class="muted">
-        Each tool explains its formulas in plain language on the page. Outputs are derived directly from the inputs you
-        provide. Where the model is simplified (for example, using blended average costs), the assumptions section calls
-        that out.
+        PricingNest is designed for teams that need faster first-pass pricing analysis without hiding the math. The goal
+        is not to replace finance modeling or customer research. It is to make common pricing decisions easier to test,
+        explain, and review with other stakeholders.
       </p>
 
-      <h2 style="margin-top: 1.25rem;">Recommended inputs</h2>
+      <h2 id="editorial-team" style="margin-top: 1.25rem;">Editorial responsibility</h2>
+      <p class="muted">
+        PricingNest content is maintained by the <strong>PricingNest Editorial Team</strong>. The team is responsible for
+        calculator inputs, explanatory copy, retained guides, glossary definitions, and update decisions across the site.
+        The goal is to make each page clear enough for a founder, operator, or finance partner to review the assumptions
+        without relying on black-box output.
+      </p>
+
+      <h2 id="how-calculators-are-built" style="margin-top: 1.25rem;">How calculators are built</h2>
       <ul class="list">
-        <li>Use blended infra costs (weighted average across regions/instance types) when possible.</li>
-        <li>Separate fixed overhead from variable costs to avoid double-counting.</li>
-        <li>When uncertain, model a range (best/base/worst) instead of a single point estimate.</li>
+        <li>Every calculator is built from explicit inputs, formulas, and assumptions instead of hidden vendor feeds.</li>
+        <li>Default examples are meant to demonstrate logic, not to substitute for your own contracts, usage, or cloud bills.</li>
+        <li>Core pages link to guides and glossary terms so the decision context stays next to the math.</li>
+        <li>When a model is simplified, the page should say what is excluded and when deeper validation is still required.</li>
+      </ul>
+
+      <h2 id="review-policy" style="margin-top: 1.25rem;">How pages are reviewed</h2>
+      <ul class="list">
+        <li>Core pages are reviewed for clarity, output usefulness, and consistency with related guides and glossary terms.</li>
+        <li>We surface who reviewed a page and when it was last reviewed on retained guides and glossary entries.</li>
+        <li>Tool pages are reviewed for formula clarity, input usefulness, and whether the next-step links still support the main decision.</li>
+        <li>We treat a meaningful update as a change to formulas, assumptions, examples, guidance, or trust-critical wording, not a cosmetic edit.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Editorial standards</h2>
+      <ul class="list">
+        <li>We favor transparent assumptions over black-box estimates or SEO-first filler copy.</li>
+        <li>We connect calculators, guides, and glossary terms so the same concept is explained consistently across the site.</li>
+        <li>We revise pages when examples are unclear, assumptions are missing, or the content no longer helps pricing teams.</li>
+      </ul>
+
+      <h2 id="corrections-policy" style="margin-top: 1.25rem;">Corrections and updates</h2>
+      <p class="muted">
+        If a formula, example, explanation, or linked resource is wrong or unclear, use the contact page to send a
+        correction request. We review correction notes before updating retained pages, and we update visible review dates
+        when the change affects the substance of the page.
+      </p>
+      <ul class="list">
+        <li>Use <a href="/contact/">the contact page</a> for calculator feedback, corrections, or unclear wording.</li>
+        <li>We prioritize corrections that affect formulas, interpretation, assumptions, or navigation to related resources.</li>
+        <li>When a meaningful update changes decision guidance, we refresh the review date rather than silently editing the page.</li>
       </ul>
 
       <h2 style="margin-top: 1.25rem;">Limitations</h2>
       <ul class="list">
-        <li>Tools provide estimates only; validate with your own financials and customer behavior.</li>
-        <li>We do not account for every cost category by default (payment fees, support escalation, vendor minimums).</li>
-        <li>Unit economics can vary by segment; consider segmenting inputs for accuracy.</li>
+        <li>Tools provide estimates only and should be validated against your own financials, contracts, and usage data.</li>
+        <li>We do not model every cost category by default, including payment fees, support escalation, taxes, or vendor minimums.</li>
+        <li>Results can change materially by customer segment, geography, workload pattern, and discount policy.</li>
       </ul>
+
+      <h2 style="margin-top: 1.25rem;">Report a correction</h2>
+      <p class="muted">
+        If you spot a modeling issue, unclear explanation, or page that needs updating, use the contact page to send a
+        correction request. Feedback helps us improve formulas, assumptions, and wording before the same problem spreads
+        across multiple pages.
+      </p>
+      <p class="muted">
+        Editorial contact: <strong>PricingNest Editorial Team</strong>.
+      </p>
     </section>
 
     <aside class="card col4">
       <h2>Quick links</h2>
       <ul class="list">
         <li><a href="/saas-pricing/">All tools</a></li>
-        <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+        <li><a href="/guides/">Guide library</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
         <li><a href="/privacy-policy/">Privacy policy</a></li>
         <li><a href="/cookie-policy/">Cookie policy</a></li>
         <li><a href="/terms/">Terms</a></li>
         <li><a href="/contact/">Contact</a></li>
       </ul>
+
+      <h2 style="margin-top: 1.25rem;">Trust checklist</h2>
+      <ul class="list">
+        <li>Check the visible review or update date on retained pages.</li>
+        <li>Compare assumptions against your own usage and contracts before sharing a model.</li>
+        <li>Follow linked guides and glossary terms when a metric or pricing unit needs more context.</li>
+        <li>Use the correction route if a retained page is unclear or outdated.</li>
+      </ul>
     </aside>
   </div>
 </BaseLayout>
-

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
 ---
 <BaseLayout
   title="SaaS Pricing Use Cases | PricingNest"
@@ -21,6 +20,10 @@ import AdSlot from "../../../components/AdSlot.astro";
   <div class="grid">
     <section class="card col8">
       <h2>Use cases</h2>
+      <p class="muted">
+        This hub is meant to help teams choose the right calculator path quickly. Start here when you know the category
+        of decision you are making, then move into the calculator and the strongest retained guide for deeper evaluation.
+      </p>
       <ol class="list">
         <li>
           <a href="/saas-pricing/use-cases/usage-based-pricing/">Usage-based pricing</a> — set a per-unit price from costs,
@@ -46,21 +49,28 @@ import AdSlot from "../../../components/AdSlot.astro";
 
       <h2 style="margin-top: 1.25rem;">How to use these</h2>
       <ul class="list">
-        <li>Start with defaults, then switch to a conservative/base/aggressive scenario using presets.</li>
-        <li>Copy the share link to align on assumptions across your team.</li>
-        <li>Download CSV to keep a lightweight decision record for reviews.</li>
+        <li>Start with the calculator closest to the decision you need to defend internally.</li>
+        <li>Use share links and CSV export to align on assumptions before debating packaging or discount policy.</li>
+        <li>Open a retained guide when you need decision criteria, trade-offs, or implementation notes.</li>
       </ul>
     </section>
 
     <aside class="card col4">
-      <h2>Quick links</h2>
+      <h2>Start points</h2>
       <ul class="list">
-        <li><a href="/saas-pricing/">All tools</a></li>
-        <li><a href="/saas-pricing/mrr-calculator/">MRR calculator</a></li>
-        <li><a href="/saas-pricing/ltv-calculator/">LTV calculator</a></li>
-        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Price per unit calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API cost calculator</a></li>
+        <li><a href="/saas-pricing/storage-cost-calculator/">Cost per GB calculator</a></li>
+        <li><a href="/saas-pricing/compute-cost-estimator/">Compute pricing calculator</a></li>
+        <li><a href="/saas-pricing/annual-discount-calculator/">Annual discount calculator</a></li>
       </ul>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
+
+      <h2 style="margin-top: 1.25rem;">Related hubs</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/">Toolkit</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
+      </ul>
     </aside>
   </div>
 </BaseLayout>

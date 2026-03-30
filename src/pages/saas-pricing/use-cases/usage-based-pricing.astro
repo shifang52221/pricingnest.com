@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
+import { getStaticPageRobots } from "../../../lib/content-governance";
+
+const robots = getStaticPageRobots("/saas-pricing/use-cases/usage-based-pricing/");
 ---
 <BaseLayout
   title="Usage-Based Pricing - Use Case | PricingNest"
   description="A practical flow for usage-based pricing: estimate unit price from costs and margin, then validate against seat-based alternatives."
+  robots={robots}
 >
   <section class="hero">
     <h1>Use case: usage-based pricing</h1>
@@ -50,7 +53,6 @@ import AdSlot from "../../../components/AdSlot.astro";
         <li>Infra-heavy features</li>
         <li>Products with variable value by usage</li>
       </ul>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 </BaseLayout>

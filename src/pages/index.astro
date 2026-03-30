@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AdSlot from "../components/AdSlot.astro";
 
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -13,54 +12,56 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title="SaaS Pricing Toolkit - High-Intent Calculators"
-  description="A lightweight set of SaaS pricing and cloud cost tools designed for SEO and tier-1 traffic."
+  title="PricingNest | SaaS Pricing Models, Cost Calculators, and Unit Economics Guides"
+  description="Transparent SaaS pricing calculators, cost models, and practical guides for pricing teams, founders, finance, and product operators."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section class="hero">
-    <h1>SaaS Pricing & Cloud Cost Toolkit</h1>
+    <h1>SaaS Pricing Models You Can Explain</h1>
     <p>
-      Build pricing models, estimate unit economics, and compare plan structures. Each tool is input-driven (no external
-      pricing feeds), so it stays lightweight to maintain and easier to trust.
+      {siteName} helps SaaS teams model pricing, cost recovery, and unit economics with transparent formulas, practical
+      examples, and shareable calculator outputs. The goal is not to replace finance judgment. It is to make assumptions
+      explicit so pricing decisions are easier to review and defend.
     </p>
     <div class="btn-row">
       <a class="btn primary" href="/saas-pricing/">Open the toolkit</a>
-      <a class="btn ghost" href="/saas-pricing/storage-cost-calculator/">Open cost per GB calculator</a>
+      <a class="btn ghost" href="/about/">Read the methodology</a>
     </div>
     <div class="pill-row" aria-label="Highlights">
-      <span class="pill">Presets</span>
+      <span class="pill">Transparent formulas</span>
       <span class="pill">Shareable links</span>
+      <span class="pill">Worked examples</span>
       <span class="pill">CSV export</span>
-      <span class="pill">No live price feeds</span>
+      <span class="pill">No hidden vendor feed</span>
     </div>
   </section>
 
   <section class="card" style="margin-top: 1rem;">
-    <h2>Recommended paths</h2>
-    <p class="muted">Pick a path and follow the steps if you are not sure where to start.</p>
+    <h2>Start With the Decision You Need to Make</h2>
+    <p class="muted">Each path is designed to answer a real pricing question, not just generate another spreadsheet.</p>
     <div class="feature-grid" style="margin-top: 0.9rem;">
       <div class="feature col6">
-        <h3>New to pricing</h3>
+        <h3>Set a first pricing model</h3>
         <ol class="list">
           <li><a href="/saas-pricing/usage-based-pricing-calculator/">Model a baseline price per unit</a></li>
-          <li><a href="/guides/pricing-page-layout-checklist/">Apply the pricing page layout checklist</a></li>
-          <li><a href="/glossary/pricing-metric/">Confirm your pricing metric</a></li>
+          <li><a href="/guides/pricing-page-layout-checklist/">Review the pricing page structure</a></li>
+          <li><a href="/guides/value-metric-selection/">Choose a value metric your buyers understand</a></li>
         </ol>
       </div>
       <div class="feature col6">
-        <h3>Usage-based products</h3>
+        <h3>Launch usage-based billing</h3>
         <ol class="list">
           <li><a href="/saas-pricing/tiered-usage-pricing-calculator/">Design tiered usage pricing</a></li>
           <li><a href="/guides/usage-cap-communication/">Communicate usage caps clearly</a></li>
-          <li><a href="/guides/usage-reporting-dashboard/">Launch a usage dashboard</a></li>
+          <li><a href="/guides/usage-based-pricing-examples/">Review example packaging patterns</a></li>
         </ol>
       </div>
       <div class="feature col6">
-        <h3>Infra-heavy costs</h3>
+        <h3>Recover infrastructure costs</h3>
         <ol class="list">
           <li><a href="/saas-pricing/compute-cost-estimator/">Estimate compute pricing</a></li>
           <li><a href="/saas-pricing/storage-cost-calculator/">Estimate cost per GB</a></li>
-          <li><a href="/guides/egress-pricing-playbook/">Set an egress pricing floor</a></li>
+          <li><a href="/guides/monthly-cloud-cost-breakdown/">Break down monthly cloud cost drivers</a></li>
         </ol>
       </div>
     </div>
@@ -68,34 +69,35 @@ const jsonLd = {
 
   <div class="grid">
     <section class="card col8">
-      <h2>What this is for</h2>
+      <h2>Why Teams Use PricingNest</h2>
       <p class="muted">
-        Use these tools to sanity-check a new pricing page, model cost recovery for infra-heavy features, or compare
-        seat-based plans against usage-based billing before you ship.
+        The site is built for founders, product managers, pricing operators, and finance partners who need a fast model
+        they can explain to someone else. Each calculator is connected to a plain-English guide so the math and the
+        decision context stay together.
       </p>
 
       <div class="feature-grid" style="margin-top: 1rem;">
         <div class="feature col6">
-          <h3>Pricing model decisions</h3>
-          <p>Seat vs usage comparisons, unit pricing, and implied rate breakdowns you can share with your team.</p>
+          <h3>Transparent by design</h3>
+          <p>Inputs, formulas, assumptions, and outputs stay visible so teammates can challenge or refine the model.</p>
         </div>
         <div class="feature col6">
-          <h3>Cloud cost recovery</h3>
-          <p>Bandwidth and storage cost estimators that work with your own blended costs (no maintenance-heavy feeds).</p>
+          <h3>Built for real SaaS workflows</h3>
+          <p>Use the tools for usage pricing, API packaging, annual discounts, and infrastructure cost recovery.</p>
         </div>
         <div class="feature col6">
-          <h3>Spreadsheet-friendly</h3>
-          <p>Export a simple CSV report of inputs and outputs for documentation or internal pricing reviews.</p>
+          <h3>Easy to audit</h3>
+          <p>Shareable links and CSV exports make it easier to document why a recommendation changed from one review to the next.</p>
         </div>
         <div class="feature col6">
-          <h3>SEO-friendly toolkit structure</h3>
-          <p>Each calculator has its own focused page plus related tools to encourage multi-page browsing.</p>
+          <h3>Clear limitations</h3>
+          <p>We call out where a model is simplified, what costs are excluded, and when you should validate with deeper financial analysis.</p>
         </div>
       </div>
     </section>
 
     <aside class="card col4">
-      <h2>Quick start</h2>
+      <h2>Core calculators</h2>
       <ul class="list">
         <li><a href="/saas-pricing/storage-cost-calculator/">Cost per GB calculator</a></li>
         <li><a href="/saas-pricing/compute-cost-estimator/">Compute pricing calculator</a></li>
@@ -103,16 +105,22 @@ const jsonLd = {
         <li><a href="/saas-pricing/usage-based-pricing-calculator/">Price per unit calculator</a></li>
         <li><a href="/saas-pricing/pricing-increase-impact-calculator/">Grandfathering pricing plans calculator</a></li>
       </ul>
-      <AdSlot placement="home" containerStyle="margin-top: 1rem;" />
+      <h2 style="margin-top: 1.25rem;">Trust and methodology</h2>
+      <ul class="list">
+        <li><a href="/about/">How the models are built</a></li>
+        <li><a href="/guides/">Guide library</a></li>
+        <li><a href="/glossary/">Glossary of pricing terms</a></li>
+        <li><a href="/contact/">Send feedback or corrections</a></li>
+      </ul>
     </aside>
   </div>
 
   <section class="card" style="margin-top: 1rem;">
-    <h2>How teams use it</h2>
+    <h2>How Teams Review Pricing With It</h2>
     <div class="kpi-grid" style="margin-top: 0.75rem;">
       <div class="kpi col3">
         <strong>Pricing review</strong>
-        <span>Attach CSV exports to internal proposals and stakeholder discussions.</span>
+        <span>Attach calculator outputs to internal proposals and stakeholder discussions.</span>
       </div>
       <div class="kpi col3">
         <strong>COGS sanity check</strong>
@@ -123,8 +131,8 @@ const jsonLd = {
         <span>Compare seat vs usage at the same workload to avoid surprises.</span>
       </div>
       <div class="kpi col3">
-        <strong>Shareable defaults</strong>
-        <span>Send pre-filled links to align on assumptions across teams.</span>
+        <strong>Shared assumptions</strong>
+        <span>Send pre-filled links so product, finance, and sales work from the same model.</span>
       </div>
     </div>
   </section>

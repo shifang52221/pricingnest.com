@@ -35,6 +35,11 @@ export type ToolWalkthrough = {
   steps: string[];
 };
 
+export type ToolClusterLink = {
+  href: string;
+  label: string;
+};
+
 export type ToolDefinition = {
   slug: string;
   title: string;
@@ -42,6 +47,9 @@ export type ToolDefinition = {
   description: string;
   metaTitle?: string;
   metaDescription?: string;
+  reviewedBy?: string;
+  reviewed?: string;
+  sources?: string[];
   inputs: ToolInput[];
   outputs: ToolOutput[];
   related: string[];
@@ -75,6 +83,44 @@ export const SEO_PRIORITY_TOOL_SLUGS = [
   "pricing-increase-impact-calculator"
 ] as const;
 
+export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>> = {
+  "storage-cost-calculator": [
+    { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
+    { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
+    { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
+    { href: "/glossary/storage-costs/", label: "Glossary: storage costs" },
+    { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
+  ],
+  "compute-cost-estimator": [
+    { href: "/guides/compute-cost-modeling/", label: "Guide: compute cost modeling" },
+    { href: "/guides/monthly-cloud-cost-breakdown/", label: "Guide: monthly cloud cost breakdown" },
+    { href: "/glossary/cogs/", label: "Glossary: COGS" },
+    { href: "/glossary/unit-cost/", label: "Glossary: unit cost" },
+    { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
+  ],
+  "api-pricing-calculator": [
+    { href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" },
+    { href: "/guides/api-pricing-model/", label: "Guide: API pricing model" },
+    { href: "/glossary/api-call/", label: "Glossary: API call" },
+    { href: "/glossary/rate-limit/", label: "Glossary: rate limit" },
+    { href: "/glossary/pricing-metric/", label: "Glossary: pricing metric" }
+  ],
+  "usage-based-pricing-calculator": [
+    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
+    { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
+    { href: "/glossary/value-metric/", label: "Glossary: value metric" },
+    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
+    { href: "/glossary/included-usage/", label: "Glossary: included usage" }
+  ],
+  "annual-discount-calculator": [
+    { href: "/guides/annual-prepay-discount/", label: "Guide: annual prepay discount" },
+    { href: "/guides/discount-guardrails/", label: "Guide: discount guardrails" },
+    { href: "/glossary/annual-prepay-discount/", label: "Glossary: annual prepay discount" },
+    { href: "/glossary/grandfathering/", label: "Glossary: grandfathering" },
+    { href: "/glossary/churn/", label: "Glossary: churn" }
+  ]
+};
+
 export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
@@ -85,6 +131,13 @@ export const TOOLS: ToolDefinition[] = [
     metaTitle: "Price Per Unit Calculator & Delta CSV Template | PricingNest",
     metaDescription:
       "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-03-30",
+    sources: [
+      "Recent billing export or vendor invoice for blended unit cost.",
+      "Current plan packaging and billable unit definitions used on your pricing page.",
+      "Retained review pages: usage-based pricing examples and value metric selection."
+    ],
     inputs: [
       {
         name: "currency",
@@ -260,6 +313,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Free tier impact",
         detail: "Reduce paid units to reflect free usage and test whether a platform fee is needed."
+      },
+      {
+        title: "Enterprise minimum commit",
+        detail: "Model a customer with predictable baseline usage plus expansion headroom to decide whether a minimum commit should replace pure pay-as-you-go pricing."
       }
     ],
     edgeCases: [
@@ -328,6 +385,13 @@ export const TOOLS: ToolDefinition[] = [
     metaTitle: "Compute Pricing Calculator & Cost Estimator | PricingNest",
     metaDescription:
       "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-03-30",
+    sources: [
+      "Recent cloud billing export or reserved-capacity report for blended vCPU-hour and GB-hour rates.",
+      "Internal overhead assumptions for monitoring, support, and on-call coverage.",
+      "Retained review pages: compute cost modeling and monthly cloud cost breakdown."
+    ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "vcpuHours", label: "vCPU-hours per month", type: "number", defaultValue: "10000", min: "0", step: "1" },
@@ -422,6 +486,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Enterprise workload",
         detail: "Estimate pricing for a large customer with steady vCPU and memory demand."
+      },
+      {
+        title: "Internal platform chargeback",
+        detail: "Translate shared infrastructure usage into a defensible monthly charge for product teams or business units."
       }
     ],
     walkthroughs: [
@@ -439,6 +507,14 @@ export const TOOLS: ToolDefinition[] = [
           "Run a small workload and note effective price per vCPU-hour.",
           "Run a larger workload with lower unit costs.",
           "Use the spread to set tier pricing."
+        ]
+      },
+      {
+        title: "Reserved-capacity sanity check",
+        steps: [
+          "Enter your blended post-commit vCPU and memory rates from recent billing data.",
+          "Compare the recommended monthly price against an on-demand scenario.",
+          "Use the difference to decide whether commitment savings belong in list price or margin protection."
         ]
       }
     ],
@@ -458,6 +534,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Burst-prone workload",
         detail: "Increase vCPU-hours to simulate peak usage and validate margin."
+      },
+      {
+        title: "Committed-use baseline",
+        detail: "Use blended reserved-capacity rates and steady-state workload assumptions to price a committed production environment."
       }
     ],
     edgeCases: [
@@ -1681,6 +1761,13 @@ export const TOOLS: ToolDefinition[] = [
     metaTitle: "Annual Discount Calculator - Annual Pricing | PricingNest",
     metaDescription:
       "Free annual discount calculator to convert a monthly price into annual pricing, annual prepay savings, and effective monthly rate.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-03-30",
+    sources: [
+      "Current monthly list price and any active annual discount policy used by your team.",
+      "Cash collection, renewal, and discount guardrail assumptions from finance or pricing owners.",
+      "Retained review pages: annual prepay discount and discount guardrails."
+    ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "monthlyPrice", label: "Monthly price", type: "number", defaultValue: "49", min: "0", step: "0.01" },
@@ -1742,6 +1829,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Sales negotiation",
         detail: "Compare discount levels to balance cash flow and margin."
+      },
+      {
+        title: "Pricing page benchmark",
+        detail: "Check whether your annual headline savings are clear enough to publish on the pricing page without over-discounting."
       }
     ],
     walkthroughs: [
@@ -1760,24 +1851,36 @@ export const TOOLS: ToolDefinition[] = [
           "Compare effective monthly rate.",
           "Choose the lowest discount that converts."
         ]
+      },
+      {
+        title: "Pricing page annual toggle",
+        steps: [
+          "Start from the public monthly list price that buyers already see.",
+          "Test 10%, 15%, and 20% annual discounts against the same plan.",
+          "Choose the option that keeps the annual savings easy to explain without creating a deep margin giveaway."
+        ]
       }
     ],
     scenarios: [
       {
-        title: "10% annual discount",
-        detail: "Apply a 10% discount to a $49 monthly plan to compare effective monthly price."
+        title: "Self-serve SaaS upgrade",
+        detail: "Model a standard monthly plan moving to annual prepay so you can compare savings messaging and effective monthly price for self-serve buyers."
       },
       {
-        title: "15% annual discount",
-        detail: "Use a higher discount to model competitive prepay incentives."
+        title: "Competitive annual benchmark",
+        detail: "Test a stronger annual incentive when competitors already anchor buyers around double-digit prepaid savings."
       },
       {
-        title: "Enterprise pricing",
-        detail: "Apply discount to a higher monthly price to evaluate cash impact."
+        title: "Enterprise contract review",
+        detail: "Apply an annual discount to a higher-value plan to see how much cash collection you are trading for commitment."
       },
       {
-        title: "Low discount test",
-        detail: "Model a 5% discount to see if modest incentives still work."
+        title: "Low-incentive annual offer",
+        detail: "Use a modest discount to see whether a lighter annual incentive still feels publishable on the pricing page."
+      },
+      {
+        title: "Pricing page headline savings",
+        detail: "Compare how different annual discounts change the annual savings message and the effective monthly anchor shown on the pricing page."
       }
     ],
     edgeCases: [
@@ -1787,7 +1890,7 @@ export const TOOLS: ToolDefinition[] = [
       "If discount exceeds 30-40%, validate margin impact before offering."
     ],
     faq: [
-      { q: "How do I convert monthly to annual price?", a: "Multiply the monthly price by 12, then apply your annual discount percentage to the total." },
+      { q: "How do I choose between a 10% and 20% annual discount?", a: "Start with the smallest discount that still feels meaningful to buyers, then compare the cash-flow gain and margin give-up before increasing it." },
       { q: "Is this an annual pricing calculator?", a: "Yes. It converts a monthly price into an annual prepay price and shows the effective monthly rate and savings." },
       {
         q: "How do I calculate annual price from a monthly plan?",
@@ -1797,7 +1900,9 @@ export const TOOLS: ToolDefinition[] = [
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
       { q: "Should discounts vary by segment?", a: "Yes. Enterprise buyers may expect smaller discounts than SMB, especially if contracts are multi-year." },
-      { q: "Does prepay reduce churn?", a: "Often yes, but you should validate with cohort data. Treat churn reduction as a separate assumption." }
+      { q: "Does prepay reduce churn?", a: "Often yes, but you should validate with cohort data. Treat churn reduction as a separate assumption." },
+      { q: "What annual discount should I show on the pricing page?", a: "Show the smallest discount that still feels meaningful to buyers and is easy for sales to explain. For many SaaS teams that lands in the 10-20% range." },
+      { q: "Should I anchor annual plans on savings or effective monthly price?", a: "Use both if possible. Savings help with conversion messaging, while effective monthly price helps buyers compare annual and monthly plans on the same basis." }
     ]
   },
   {
@@ -2059,6 +2164,13 @@ export const TOOLS: ToolDefinition[] = [
     metaTitle: "API Cost Calculator & Pricing Estimator | PricingNest",
     metaDescription:
       "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-03-30",
+    sources: [
+      "Recent API traffic report plus blended infrastructure or vendor cost per 1,000 calls.",
+      "Current rate-limit, free-tier, and overage assumptions used in packaging.",
+      "Retained review pages: API cost estimation and API pricing model."
+    ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "callsPerMonth", label: "API calls per month", type: "number", defaultValue: "5000000", min: "0", step: "1" },
@@ -2123,6 +2235,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Volume tiering",
         detail: "Use high-volume inputs to design discounted enterprise tiers."
+      },
+      {
+        title: "LLM or model-backed API packaging",
+        detail: "Combine infrastructure cost and fixed model overhead to set a margin-safe API plan before publishing a per-1,000-call rate."
       }
     ],
     walkthroughs: [
@@ -2140,6 +2256,14 @@ export const TOOLS: ToolDefinition[] = [
           "Reduce calls to billable usage after free tier.",
           "Recalculate the recommended price.",
           "Validate margin with p90 volume."
+        ]
+      },
+      {
+        title: "Base-fee plus overage design",
+        steps: [
+          "Start with the recommended monthly price for the expected workload.",
+          "Decide what portion should be recovered through a platform fee.",
+          "Use the remaining amount to back into an overage price per 1,000 calls."
         ]
       }
     ],
@@ -2159,6 +2283,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Platform fee model",
         detail: "Set a base platform fee and use the implied per-1k price for overages."
+      },
+      {
+        title: "Bursty production traffic",
+        detail: "Use a higher-volume scenario with the same fixed overhead to test whether margins survive unexpected traffic spikes."
       }
     ],
     edgeCases: [
@@ -2169,8 +2297,9 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       { q: "Is this an API pricing calculator and API cost estimator?", a: "Yes. It estimates monthly API cost and recommended monthly pricing, then converts that into an implied price per 1,000 calls." },
+      { q: "What does this API pricing calculator estimate?", a: "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead." },
       { q: "How do I build an API cost estimate and price per 1,000 calls?", a: "Estimate monthly API cost from call volume and unit costs, apply target margin for monthly price, then divide by calls and multiply by 1,000." },
-      { q: "How do I run a cost estimate api workflow?", a: "Use this API calculator to model calls and unit costs, review monthly API cost, then convert to a margin-safe monthly price and per-1,000-call rate." },
+      { q: "How do I go from API cost estimate to list price?", a: "Use this API calculator to model calls and unit costs, review monthly API cost, then convert that cost baseline into a margin-safe monthly price and per-1,000-call rate." },
       { q: "How do I price an API per 1,000 calls from my monthly cost model?", a: "Estimate monthly cost, apply your target gross margin for monthly price, then divide by calls and multiply by 1,000 to publish a readable per-1,000 rate." },
       { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
       { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
@@ -2721,6 +2850,13 @@ export const TOOLS: ToolDefinition[] = [
     metaTitle: "Cost Per GB Calculator for Storage Pricing | PricingNest",
     metaDescription:
       "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-03-30",
+    sources: [
+      "Recent storage billing export for blended GB-month, request, and retrieval assumptions.",
+      "Internal replication, backup, and support overhead assumptions for the storage workload.",
+      "Retained review pages: storage costs and pricing and storage retrieval fees."
+    ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "5000", min: "0", step: "0.01" },
@@ -2787,6 +2923,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Backup pricing",
         detail: "Model backup storage with higher retention and lower access."
+      },
+      {
+        title: "Media or document delivery",
+        detail: "Test whether a read-heavy storage product needs a request component instead of a single blended GB-month price."
       }
     ],
     walkthroughs: [
@@ -2804,6 +2944,14 @@ export const TOOLS: ToolDefinition[] = [
           "Increase requests per month to a high-activity scenario.",
           "Check how recommended price changes.",
           "Decide if a request fee is needed."
+        ]
+      },
+      {
+        title: "Archive vs hot-storage comparison",
+        steps: [
+          "Run one scenario with high stored GB and low request volume.",
+          "Run a second scenario with moderate GB and high request intensity.",
+          "Use the difference to decide whether hot and cold storage should be separate plans."
         ]
       }
     ],
@@ -2823,6 +2971,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         title: "Multi-replica storage",
         detail: "Increase cost per GB-month to account for replication and backups."
+      },
+      {
+        title: "Request-heavy media delivery",
+        detail: "Hold stored GB roughly flat while increasing monthly requests to see when request-driven pricing becomes necessary."
       }
     ],
     edgeCases: [
@@ -2876,5 +3028,9 @@ export function getPriorityTools(tools: ToolDefinition[]): ToolDefinition[] {
     if (bPriority != null) return 1;
     return 0;
   });
+}
+
+export function getCoreToolClusterLinks(slug: string): ToolClusterLink[] | null {
+  return CORE_TOOL_CLUSTER_LINKS[slug] ? [...CORE_TOOL_CLUSTER_LINKS[slug]] : null;
 }
 

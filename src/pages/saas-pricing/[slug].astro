@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import AdSlot from "../../components/AdSlot.astro";
 import {
+  getCoreToolClusterLinks,
   getToolBySlug,
   getToolMetaDescription,
   getToolMetaTitle,
@@ -11,6 +11,7 @@ import {
 } from "../../lib/tools";
 import toolPageScriptUrl from "../../scripts/tool-page.js?url";
 import { compute } from "../../scripts/calculators";
+import { getGlossaryRobots, getGuideRobots } from "../../lib/content-governance";
 
 export function getStaticPaths() {
   return TOOLS.map((tool) => ({ params: { slug: tool.slug } }));
@@ -39,11 +40,37 @@ const hasEdgeCases = Array.isArray(tool.edgeCases) && tool.edgeCases.length > 0;
 const siteUrl = (Astro.site?.toString() ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const editorialTeamHref = "/about/#editorial-team";
+const methodologyHref = "/about/#how-calculators-are-built";
+const reviewPolicyHref = "/about/#review-policy";
+const correctionsPolicyHref = "/about/#corrections-policy";
+const toolReviewedBy = tool.reviewedBy ?? "PricingNest Editorial Team";
+const toolReviewed = tool.reviewed ?? "2026-03-30";
+const toolSources = tool.sources ?? [];
 const titleSuffix = `| ${siteName}`;
 const toolName = getToolName(tool);
 const toolMetaTitle = getToolMetaTitle(tool);
 const toolMetaDescription = getToolMetaDescription(tool);
 const pageTitle = toolMetaTitle.trim().endsWith(titleSuffix) ? toolMetaTitle : `${toolMetaTitle} ${titleSuffix}`;
+type PageLink = { href: string; label: string };
+
+function isIndexableResourceLink(link: PageLink): boolean {
+  if (link.href.startsWith("/guides/")) {
+    const slug = link.href.replace(/^\/guides\//, "").replace(/\/$/, "");
+    return getGuideRobots(slug) === "index,follow";
+  }
+
+  if (link.href.startsWith("/glossary/")) {
+    const slug = link.href.replace(/^\/glossary\//, "").replace(/\/$/, "");
+    return getGlossaryRobots(slug) === "index,follow";
+  }
+
+  return true;
+}
+
+function isReferenceHref(value: string): boolean {
+  return value.startsWith("/") || /^https?:\/\//i.test(value);
+}
 
 function formatCurrency(currency: string, value: number): string {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -107,6 +134,7 @@ const graph: any[] = [
     url: canonical,
     name: toolName,
     description: toolMetaDescription,
+    dateModified: toolReviewed,
     isPartOf: { "@id": websiteId },
     breadcrumb: { "@id": breadcrumbId }
   },
@@ -145,6 +173,15 @@ if (tool.faq && tool.faq.length > 0) {
 
 const jsonLd = { "@context": "https://schema.org", "@graph": graph };
 
+function dedupeLinks(links: PageLink[]): PageLink[] {
+  const seen = new Set<string>();
+  return links.filter((link) => {
+    if (seen.has(link.href)) return false;
+    seen.add(link.href);
+    return true;
+  });
+}
+
 const useCaseLinks = (() => {
   const unitEconomics = new Set([
     "mrr-calculator",
@@ -170,7 +207,7 @@ const useCaseLinks = (() => {
     "monthly-cloud-cost-estimator"
   ]);
 
-  const links: { href: string; label: string }[] = [{ href: "/saas-pricing/use-cases/", label: "All use cases" }];
+  const links: PageLink[] = [{ href: "/saas-pricing/use-cases/", label: "All use cases" }];
   if (usagePricing.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/usage-based-pricing/", label: "Use case: usage-based pricing" });
   if (tool.slug === "api-pricing-calculator") links.push({ href: "/saas-pricing/use-cases/api-pricing/", label: "Use case: API pricing" });
   if (infra.has(tool.slug)) links.push({ href: "/saas-pricing/use-cases/infra-cost-recovery/", label: "Use case: infra cost recovery" });
@@ -228,7 +265,7 @@ const guideLinks = (() => {
     "break-even-cac-calculator"
   ]);
 
-  const links: { href: string; label: string }[] = [];
+  const links: PageLink[] = [];
   if (grossMarginRelated.has(tool.slug)) links.push({ href: "/guides/saas-gross-margin-targets/", label: "Guide: gross margin targets" });
   if (grossMarginRelated.has(tool.slug)) links.push({ href: "/guides/price-floor-by-margin/", label: "Guide: price floor by margin" });
   if (grossMarginRelated.has(tool.slug)) links.push({ href: "/guides/support-cost-allocation/", label: "Guide: support cost allocation" });
@@ -357,6 +394,17 @@ const guideLinks = (() => {
   links.push({ href: "/glossary/", label: "Glossary: SaaS metrics & pricing terms" });
   return links;
 })();
+
+const coreToolClusterLinks = getCoreToolClusterLinks(tool.slug);
+
+const recommendedLinks = coreToolClusterLinks
+  ? dedupeLinks(coreToolClusterLinks)
+  : dedupeLinks([
+      ...useCaseLinks.filter((link) => link.href !== "/saas-pricing/use-cases/").slice(0, 2),
+      ...guideLinks.filter((link) => link.href !== "/glossary/").filter(isIndexableResourceLink).slice(0, 6),
+      { href: "/glossary/", label: "Glossary: SaaS metrics & pricing terms" },
+      { href: "/saas-pricing/", label: "Browse all tools" }
+    ]);
 ---
 
 <BaseLayout title={pageTitle} description={toolMetaDescription}>
@@ -473,7 +521,7 @@ const guideLinks = (() => {
           <div class="insights">
             <div class="section-head">
               <h2>Insights</h2>
-              <div class="muted" style="font-size: 0.85rem;">Auto-generated from your inputs.</div>
+              <div class="muted" style="font-size: 0.85rem;">Updated from your current assumptions.</div>
             </div>
             <div class="insights-list" data-insights>
               <div class="muted">Adjust inputs to see recommendations.</div>
@@ -494,6 +542,34 @@ const guideLinks = (() => {
       </section>
 
       <aside class="card col4">
+        <h2>Methodology and review</h2>
+        <ul class="list">
+          <li><strong>Reviewed by:</strong> <a href={reviewPolicyHref}>{toolReviewedBy}</a></li>
+          <li><strong>Last reviewed:</strong> {toolReviewed}</li>
+          <li><strong>Methodology:</strong> <a href={methodologyHref}>How calculators are built</a></li>
+        </ul>
+        <p class="muted" style="margin-top: 0.75rem;">
+          PricingNest tools are maintained by the <a href={editorialTeamHref}>editorial team</a> and reviewed for
+          formula clarity, input usefulness, and decision support.
+        </p>
+
+        {toolSources.length > 0 ? (
+          <>
+            <h2 style="margin-top: 1.25rem;">Sources and references</h2>
+            <ul class="list">
+              {toolSources.map((source) => (
+                <li>
+                  {isReferenceHref(source) ? (
+                    <a href={source}>{source}</a>
+                  ) : (
+                    source
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
         <h2>Related tools</h2>
         <div class="tools">
           {relatedTools.map((t) => (
@@ -505,8 +581,18 @@ const guideLinks = (() => {
         </div>
 
         <div style="margin-top: 1rem;">
-          <div class="muted" style="font-size: 0.85rem;">Advertisement</div>
-          <AdSlot placement="tool" containerStyle="margin-top: 0.5rem;" />
+          <h2 style="margin-top: 1.25rem;">Modeling note</h2>
+          <p class="muted" style="margin-top: 0.5rem;">
+            Use representative customer usage, blended infrastructure costs, and a realistic target margin before you
+            turn a scenario into a live pricing decision.
+          </p>
+        </div>
+        <div style="margin-top: 1rem;">
+          <h2 style="margin-top: 1.25rem;">Correction or feedback</h2>
+          <p class="muted" style="margin-top: 0.5rem;">
+            If an assumption, example, or linked resource is unclear, use the <a href="/contact/">contact page</a> or
+            review the <a href={correctionsPolicyHref}>corrections policy</a>.
+          </p>
         </div>
       </aside>
     </div>
@@ -589,8 +675,8 @@ const guideLinks = (() => {
       <section class="card col8" id="guide">
         <h2>Guide</h2>
         <p class="muted" style="margin-top: 0.5rem;">
-          This page is a calculator first, but it's also a quick reference you can share internally. Start with the
-          presets, then adjust inputs and copy the share link. Example defaults for this tool are shown below.
+          Use this page to test assumptions, compare scenarios, and document the reasoning behind a pricing decision.
+          Start with the example setup below, then adapt the inputs to match your own product, costs, and packaging.
         </p>
 
         <div class="toc" aria-label="On this page">
@@ -823,23 +909,23 @@ const guideLinks = (() => {
           </>
         ) : null}
 
-        <h2 style="margin-top: 1.25rem;">Next steps</h2>
-        <div class="muted" style="margin-top: 0.5rem;">Suggested actions</div>
+        <h2 style="margin-top: 1.25rem;">Recommended next steps</h2>
+        <div class="muted" style="margin-top: 0.5rem;">Suggested actions for reviewing this model</div>
         <ul class="list">
           <li><a href="#compare">Save a baseline in Compare</a></li>
           <li><a href="#sensitivity">Run a sensitivity sweep</a></li>
           <li>Copy the share link and download a CSV</li>
         </ul>
-        <div class="muted" style="margin-top: 0.75rem;">More to explore</div>
+        <div class="muted" style="margin-top: 0.75rem;">Curated follow-up resources</div>
         <ul class="list">
-          {useCaseLinks.map((l) => (
+          {recommendedLinks.map((l) => (
             <li><a href={l.href}>{l.label}</a></li>
           ))}
-          {guideLinks.map((l) => (
-            <li><a href={l.href}>{l.label}</a></li>
-          ))}
-          <li><a href="/saas-pricing/">Browse all tools</a></li>
         </ul>
+        <p class="muted" style="margin-top: 0.75rem;">
+          Review the <a href={methodologyHref}>methodology</a> and <a href={reviewPolicyHref}>review policy</a> before
+          using a saved scenario in a live pricing change.
+        </p>
       </aside>
     </div>
   </div>

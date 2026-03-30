@@ -1,33 +1,99 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getGuideRobots } from "../../lib/content-governance";
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
 const entries = await getCollection("guides");
-const guides = entries
-  .map((g) => ({ href: `/guides/${g.slug}/`, title: g.data.title, description: g.data.description }))
-  .sort((a, b) => a.title.localeCompare(b.title));
+const indexedEntries = entries.filter((entry) => getGuideRobots(entry.slug) === "index,follow");
+const guideMap = new Map(
+  indexedEntries.map((entry) => [
+    entry.slug,
+    { slug: entry.slug, href: `/guides/${entry.slug}/`, title: entry.data.title, description: entry.data.description }
+  ])
+);
+
+function pickGuides(slugs: string[]) {
+  return slugs.map((slug) => guideMap.get(slug)).filter(Boolean);
+}
+
+const featuredDecisionGuides = pickGuides([
+  "value-metric-selection",
+  "usage-based-pricing-examples",
+  "storage-costs-and-pricing",
+  "annual-prepay-discount"
+]);
+
+const packagingGuides = pickGuides([
+  "pricing-page-layout-checklist",
+  "pricing-page-comparison-table",
+  "pricing-page-trust-elements",
+  "pricing-tier-design",
+  "pricing-segmentation"
+]);
+
+const unitEconomicsGuides = pickGuides([
+  "monthly-cloud-cost-breakdown",
+  "compute-cost-modeling",
+  "storage-retrieval-fees",
+  "price-per-gb-month-explained"
+]);
+
+const curatedSlugs = new Set([
+  ...featuredDecisionGuides.map((guide) => guide.slug ?? ""),
+  ...packagingGuides.map((guide) => guide.slug ?? ""),
+  ...unitEconomicsGuides.map((guide) => guide.slug ?? "")
+]);
+
+const browseMoreGuides = indexedEntries
+  .map((entry) => ({ slug: entry.slug, href: `/guides/${entry.slug}/`, title: entry.data.title }))
+  .filter((entry) => !curatedSlugs.has(entry.slug))
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .slice(0, 12);
 ---
 <BaseLayout
   title={`Guides | ${siteName}`}
-  description="Practical guides for SaaS pricing decisions, unit economics, and cloud cost recovery."
+  description="Curated SaaS pricing guides for packaging, pricing page decisions, unit economics, and cost recovery."
 >
   <section class="hero">
     <h1>Guides</h1>
     <p>
-      Short, practical guides that explain how to use the calculators and how to make pricing decisions with transparent
-      assumptions.
+      Start with the guide closest to the pricing decision you are making. This hub surfaces retained, higher-value
+      reading paths first so you do not have to sort through every support page before finding the right next step.
     </p>
   </section>
 
   <div class="grid">
     <section class="card col8">
-      <h2>Featured</h2>
+      <h2>Featured decision guides</h2>
+      <p class="muted">Use these first when you are choosing a pricing model, packaging structure, or annual offer.</p>
       <div class="tools" style="margin-top: 0.9rem;">
-        {guides.map((g) => (
-          <a class="tool" href={g.href}>
-            <strong>{g.title}</strong>
-            <span>{g.description}</span>
+        {featuredDecisionGuides.map((guide) => (
+          <a class="tool" href={guide.href}>
+            <strong>{guide.title}</strong>
+            <span>{guide.description}</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 style="margin-top: 1.25rem;">Pricing page and packaging guides</h2>
+      <p class="muted">Focus here when the problem is plan clarity, buyer messaging, or feature segmentation.</p>
+      <div class="tools" style="margin-top: 0.9rem;">
+        {packagingGuides.map((guide) => (
+          <a class="tool" href={guide.href}>
+            <strong>{guide.title}</strong>
+            <span>{guide.description}</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 style="margin-top: 1.25rem;">Unit economics and cost recovery</h2>
+      <p class="muted">Use these when you need to back pricing into real compute, storage, and gross-margin constraints.</p>
+      <div class="tools" style="margin-top: 0.9rem;">
+        {unitEconomicsGuides.map((guide) => (
+          <a class="tool" href={guide.href}>
+            <strong>{guide.title}</strong>
+            <span>{guide.description}</span>
           </a>
         ))}
       </div>
@@ -38,7 +104,14 @@ const guides = entries
       <ul class="list">
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
-        <li><a href="/about/">About the toolkit</a></li>
+        <li><a href="/about/">About the methodology</a></li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Browse more guides</h2>
+      <ul class="list">
+        {browseMoreGuides.map((guide) => (
+          <li><a href={guide.href}>{guide.title}</a></li>
+        ))}
       </ul>
     </aside>
   </div>

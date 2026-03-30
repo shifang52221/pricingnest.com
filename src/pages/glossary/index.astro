@@ -1,38 +1,116 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getGlossaryRobots } from "../../lib/content-governance";
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
 const entries = await getCollection("glossary");
-const terms = entries
-  .map((t) => ({ href: `/glossary/${t.slug}/`, title: t.data.title, description: t.data.description }))
-  .sort((a, b) => a.title.localeCompare(b.title));
+const indexedEntries = entries.filter((entry) => getGlossaryRobots(entry.slug) === "index,follow");
+const termMap = new Map(
+  indexedEntries.map((entry) => [
+    entry.slug,
+    { slug: entry.slug, href: `/glossary/${entry.slug}/`, title: entry.data.title, description: entry.data.description }
+  ])
+);
+
+function pickTerms(slugs: string[]) {
+  return slugs.map((slug) => termMap.get(slug)).filter(Boolean);
+}
+
+const keyTerms = pickTerms([
+  "value-metric",
+  "gross-margin",
+  "unit-cost",
+  "cogs",
+  "included-usage"
+]);
+
+const pricingMechanicsTerms = pickTerms([
+  "pricing-metric",
+  "usage-based-pricing",
+  "rate-limit",
+  "gb-month",
+  "storage-costs"
+]);
+
+const unitEconomicsTerms = pickTerms([
+  "grandfathering",
+  "annual-prepay-discount",
+  "usage-forecast",
+  "support-costs",
+  "churn"
+]);
+
+const curatedTermSlugs = new Set([
+  ...keyTerms.map((term) => term.slug),
+  ...pricingMechanicsTerms.map((term) => term.slug),
+  ...unitEconomicsTerms.map((term) => term.slug)
+]);
+
+const browseMoreTerms = indexedEntries
+  .map((entry) => ({ slug: entry.slug, href: `/glossary/${entry.slug}/`, title: entry.data.title }))
+  .filter((entry) => !curatedTermSlugs.has(entry.slug))
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .slice(0, 14);
 ---
-<BaseLayout title={`Glossary | ${siteName}`} description="Short definitions for the key SaaS pricing and unit economics terms used in the toolkit.">
+<BaseLayout
+  title={`Glossary | ${siteName}`}
+  description="Curated definitions for the SaaS pricing, packaging, and unit-economics terms used across PricingNest."
+>
   <section class="hero">
     <h1>Glossary</h1>
-    <p>Quick definitions and links to the calculators and guides where each term shows up in practice.</p>
+    <p>Learn the core terms first, then move into the calculators and guides with clearer context and less noise.</p>
   </section>
 
   <div class="grid">
     <section class="card col8">
-      <h2>Terms</h2>
+      <h2>Key terms to learn first</h2>
+      <p class="muted">Start here if you are new to SaaS pricing or need a quick reset before modeling a decision.</p>
       <div class="tools" style="margin-top: 0.9rem;">
-        {terms.map((t) => (
-          <a class="tool" href={t.href}>
-            <strong>{t.title}</strong>
-            <span>{t.description}</span>
+        {keyTerms.map((term) => (
+          <a class="tool" href={term.href}>
+            <strong>{term.title}</strong>
+            <span>{term.description}</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 style="margin-top: 1.25rem;">Pricing mechanics</h2>
+      <p class="muted">These terms explain how plans are packaged, billed, and protected against margin leakage.</p>
+      <div class="tools" style="margin-top: 0.9rem;">
+        {pricingMechanicsTerms.map((term) => (
+          <a class="tool" href={term.href}>
+            <strong>{term.title}</strong>
+            <span>{term.description}</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 style="margin-top: 1.25rem;">Unit economics and retention</h2>
+      <p class="muted">Use these when pricing choices affect annual contracts, support load, or retention risk.</p>
+      <div class="tools" style="margin-top: 0.9rem;">
+        {unitEconomicsTerms.map((term) => (
+          <a class="tool" href={term.href}>
+            <strong>{term.title}</strong>
+            <span>{term.description}</span>
           </a>
         ))}
       </div>
     </section>
 
     <aside class="card col4">
-      <h2>Use the tools</h2>
+      <h2>Use the toolkit</h2>
       <ul class="list">
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/guides/">Guides</a></li>
         <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Browse more terms</h2>
+      <ul class="list">
+        {browseMoreTerms.map((term) => (
+          <li><a href={term.href}>{term.title}</a></li>
+        ))}
       </ul>
     </aside>
   </div>

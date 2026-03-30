@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
+import { getStaticPageRobots } from "../../../lib/content-governance";
+
+const robots = getStaticPageRobots("/saas-pricing/use-cases/api-pricing/");
 ---
 <BaseLayout
   title="API Pricing for SaaS - Use Case | SaaS Pricing Toolkit"
   description="A simple flow for pricing an API product: estimate costs, back into target margin, and compare seat vs usage."
+  robots={robots}
 >
   <section class="hero">
     <h1>Use case: API pricing for SaaS</h1>
@@ -48,7 +51,6 @@ import AdSlot from "../../../components/AdSlot.astro";
       <div class="btn-row" style="margin-top: 0.75rem;">
         <a class="btn" href="/saas-pricing/usage-based-pricing-calculator/">Price per unit calculator</a>
       </div>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 </BaseLayout>

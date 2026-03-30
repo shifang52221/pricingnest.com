@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import AdSlot from "../../../components/AdSlot.astro";
+import { getStaticPageRobots } from "../../../lib/content-governance";
+
+const robots = getStaticPageRobots("/saas-pricing/use-cases/infra-cost-recovery/");
 ---
 <BaseLayout
   title="Infra Cost Recovery - Use Case | SaaS Pricing Toolkit"
   description="A simple flow for pricing infra-heavy features: bandwidth + storage cost estimation, then pricing at target margin."
+  robots={robots}
 >
   <section class="hero">
     <h1>Use case: infra cost recovery</h1>
@@ -48,7 +51,6 @@ import AdSlot from "../../../components/AdSlot.astro";
         <li>Data retention add-ons</li>
         <li>Backup/export capabilities</li>
       </ul>
-      <AdSlot placement="use_case" containerStyle="margin-top: 1rem;" />
     </aside>
   </div>
 </BaseLayout>

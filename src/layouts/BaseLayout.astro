@@ -8,14 +8,8 @@ const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const title = Astro.props.title ?? siteName;
 const description =
   Astro.props.description ??
-  "A lightweight collection of SaaS pricing and cloud cost tools designed for SEO-friendly, high-intent queries.";
+  "A collection of input-driven calculators and practical guides for SaaS pricing, packaging, and unit economics.";
 const robots = Astro.props.robots ?? "index,follow";
-
-const adsenseClient =
-  process.env.PUBLIC_ADSENSE_CLIENT ??
-  import.meta.env.PUBLIC_ADSENSE_CLIENT ??
-  // Default to the live AdSense client so verification/review can succeed even if env vars are missing.
-  "ca-pub-8677561632094995";
 const ga4Id =
   process.env.PUBLIC_GA4_ID ??
   import.meta.env.PUBLIC_GA4_ID ??
@@ -24,15 +18,24 @@ const ga4Id =
 const contactEmail =
   process.env.PUBLIC_CONTACT_EMAIL ?? import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 
-const envFundingChoicesScriptSrc =
-  (process.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? import.meta.env.PUBLIC_FUNDING_CHOICES_SCRIPT_SRC ?? "").trim();
-const pubSlug = adsenseClient?.replace(/^ca-/, "") ?? "";
-const defaultFundingChoicesScriptSrc =
-  pubSlug ? `https://fundingchoicesmessages.google.com/i/${encodeURIComponent(pubSlug)}?ers=1` : "";
-const fundingChoicesScriptSrc = envFundingChoicesScriptSrc || defaultFundingChoicesScriptSrc;
-const useFundingChoices = Boolean(fundingChoicesScriptSrc) && !import.meta.env.DEV;
-
 const ogImage = `${siteUrl}/og.svg`;
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteUrl,
+  email: contactEmail,
+  description: "Input-driven calculators and practical guides for SaaS pricing and cloud unit economics.",
+  contactPoint: contactEmail
+    ? [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: contactEmail
+        }
+      ]
+    : undefined
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -44,7 +47,6 @@ const ogImage = `${siteUrl}/og.svg`;
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <meta name="googlebot" content={robots} />
-    {adsenseClient ? <meta name="google-adsense-account" content={adsenseClient} /> : null}
     <meta name="theme-color" content="#ffffff" />
     <meta name="application-name" content={siteName} />
     <meta property="og:title" content={title} />
@@ -59,18 +61,9 @@ const ogImage = `${siteUrl}/og.svg`;
     <meta name="twitter:image:alt" content={`${siteName} preview`} />
     <link rel="alternate" href={canonical} hreflang="en" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
     <slot name="head" />
-    {useFundingChoices && fundingChoicesScriptSrc ? (
-      <script async src={fundingChoicesScriptSrc}></script>
-    ) : null}
-    {adsenseClient ? (
-      <script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adsenseClient)}`}
-        crossorigin="anonymous"
-      ></script>
-    ) : null}
-    <script is:inline define:vars={{ ga4Id, useFundingChoices }}>
+    <script is:inline define:vars={{ ga4Id }}>
       (() => {
         const consentKey = "cookie_consent";
         const getConsent = () => {
@@ -82,9 +75,7 @@ const ogImage = `${siteUrl}/og.svg`;
         };
         const consent = getConsent();
 
-        // GA4/Consent Mode:
-        // - If using Funding Choices, the CMP will update consent state.
-        // - Otherwise, we use the local cookie banner state for a simple consent flow.
+        // GA4/Consent Mode for the local cookie banner.
         if (ga4Id) {
           // @ts-ignore
           window.dataLayer = window.dataLayer || [];
@@ -105,7 +96,7 @@ const ogImage = `${siteUrl}/og.svg`;
             wait_for_update: 500
           });
 
-          if (!useFundingChoices && consent === "accepted") {
+          if (consent === "accepted") {
             // @ts-ignore
             window.gtag("consent", "update", {
               ad_storage: "granted",
@@ -123,18 +114,13 @@ const ogImage = `${siteUrl}/og.svg`;
           g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
           document.head.appendChild(g);
 
-          // If Funding Choices is enabled, allow Consent Mode to control collection after consent updates.
-          // Otherwise, only start collecting after consent is accepted.
-          if (useFundingChoices || consent === "accepted") {
+          if (consent === "accepted") {
             // @ts-ignore
             window.gtag("js", new Date());
             // @ts-ignore
             window.gtag("config", ga4Id);
           }
         }
-
-        // Ads script is loaded unconditionally (for AdSense review/verification).
-        // Ad requests/slots are gated in the ad component when not using Funding Choices.
       })();
     </script>
   </head>
@@ -212,6 +198,6 @@ const ogImage = `${siteUrl}/og.svg`;
         </div>
       </div>
     </footer>
-    {useFundingChoices ? null : <CookieBanner />}
+    <CookieBanner />
   </body>
 </html>
