@@ -9,6 +9,22 @@ category: "pricing-models"
 guides: ["minimum-commitment-model", "annual-prepay-discount"]
 tools: ["usage-based-pricing-calculator", "api-pricing-calculator", "annual-discount-calculator"]
 glossary: ["usage-based-pricing", "annual-prepay-discount", "gross-margin", "value-metric"]
+sources:
+  - kind: "internal-input"
+    label: "Ramp timing and contracted-floor review"
+    note: "Validate onboarding cost, consumption ramp, and revenue floor assumptions before setting a minimum commitment."
+  - kind: "supporting-page"
+    label: "Minimum Commitment Model"
+    href: "/guides/minimum-commitment-model/"
+    note: "Use it to decide when a spend floor reinforces the model versus making the offer harder to buy."
+  - kind: "supporting-page"
+    label: "Annual Discount Calculator"
+    href: "/saas-pricing/annual-discount-calculator/"
+    note: "Check how commitment interacts with term length, prepayment, and realized revenue."
+  - kind: "supporting-page"
+    label: "Gross Margin"
+    href: "/glossary/gross-margin/"
+    note: "Keep the minimum floor tied to margin protection rather than using it to mask a weak variable model."
 ---
 
 ## Definition

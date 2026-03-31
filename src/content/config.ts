@@ -28,8 +28,17 @@ const guideSchema = baseSchema.extend({
   sources: z.array(guideSourceSchema).optional(),
 });
 
+const glossarySourceKindSchema = z.enum(["internal-input", "supporting-page", "external-reference"]);
+
+const glossarySourceSchema = z.object({
+  label: z.string(),
+  kind: glossarySourceKindSchema,
+  href: z.string().optional(),
+  note: z.string().optional(),
+});
+
 const glossarySchema = baseSchema.extend({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(glossarySourceSchema).optional(),
 });
 
 export const collections = {

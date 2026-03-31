@@ -9,6 +9,22 @@ category: "storage"
 tools: ["price-per-gb-month-calculator","storage-cost-calculator"]
 guides: ["storage-costs-and-pricing", "storage-retrieval-fees"]
 glossary: ["storage-costs","retrieval-fees","bandwidth","replication"]
+sources:
+  - kind: "internal-input"
+    label: "Average stored volume and storage-class review"
+    note: "Confirm average stored GB over time, region, and replication assumptions before treating GB-month as a pricing floor."
+  - kind: "supporting-page"
+    label: "Storage Costs & Pricing"
+    href: "/guides/storage-costs-and-pricing/"
+    note: "Use it to separate base storage economics from request, retrieval, and bandwidth behavior."
+  - kind: "supporting-page"
+    label: "Price Per GB Month Calculator"
+    href: "/saas-pricing/price-per-gb-month-calculator/"
+    note: "Check whether the candidate storage rate is viable once the average GB-month assumption is correct."
+  - kind: "supporting-page"
+    label: "Storage Costs"
+    href: "/glossary/storage-costs/"
+    note: "Review the broader storage-cost concept so GB-month is not mistaken for the whole workload bill."
 ---
 
 ## Definition

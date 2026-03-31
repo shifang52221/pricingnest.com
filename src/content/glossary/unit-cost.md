@@ -9,6 +9,22 @@ category: "unit-economics"
 guides: ["compute-cost-modeling", "storage-costs-and-pricing"]
 tools: ["usage-based-pricing-calculator", "api-cost-estimator", "compute-cost-estimator"]
 glossary: ["cogs", "gross-margin", "variable-cost", "blended-cost"]
+sources:
+  - kind: "internal-input"
+    label: "Billing export and blended-cost assumption review"
+    note: "Validate vendor invoices, cloud rates, and workload mix before using unit cost as a price-floor input."
+  - kind: "supporting-page"
+    label: "Compute Cost Modeling Guide"
+    href: "/guides/compute-cost-modeling/"
+    note: "Use it to separate steady-state compute assumptions from peak-load guesswork when estimating unit cost."
+  - kind: "supporting-page"
+    label: "API Cost Estimator"
+    href: "/saas-pricing/api-cost-estimator/"
+    note: "Check backend or pass-through cost per request before converting it into a live price."
+  - kind: "supporting-page"
+    label: "Gross Margin"
+    href: "/glossary/gross-margin/"
+    note: "Keep unit-cost decisions tied to the margin threshold the business is actually trying to protect."
 ---
 
 ## Definition

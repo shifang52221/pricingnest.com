@@ -9,6 +9,22 @@ category: "pricing-models"
 guides: ["usage-based-pricing-examples", "api-cost-estimation"]
 tools: ["tiered-usage-pricing-calculator", "usage-based-pricing-calculator", "api-pricing-calculator"]
 glossary: ["included-usage", "usage-based-pricing", "rate-limit", "gross-margin"]
+sources:
+  - kind: "internal-input"
+    label: "Threshold alerting and overage-rate review"
+    note: "Check usage alerts, threshold timing, and rate economics so overage feels predictable instead of punitive."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Examples"
+    href: "/guides/usage-based-pricing-examples/"
+    note: "Use it to compare flat, tiered, and softer overage structures before choosing customer-facing policy."
+  - kind: "supporting-page"
+    label: "Tiered Usage Pricing Calculator"
+    href: "/saas-pricing/tiered-usage-pricing-calculator/"
+    note: "Model how revenue and margin behave after customers move past included usage."
+  - kind: "supporting-page"
+    label: "Included Usage"
+    href: "/glossary/included-usage/"
+    note: "Review this term with overage because the threshold and the rate should be designed together."
 ---
 
 ## Definition

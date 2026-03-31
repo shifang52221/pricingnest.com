@@ -9,6 +9,22 @@ category: "unit-economics"
 guides: ["annual-prepay-discount", "storage-costs-and-pricing", "compute-cost-modeling"]
 tools: ["usage-based-pricing-calculator", "annual-discount-calculator", "api-pricing-calculator"]
 glossary: ["cogs", "variable-cost", "unit-cost"]
+sources:
+  - kind: "internal-input"
+    label: "Revenue, discount, and COGS review by segment"
+    note: "Compare realized revenue against true cost to serve by plan and segment before using margin targets in pricing decisions."
+  - kind: "supporting-page"
+    label: "Annual Prepay Discount"
+    href: "/guides/annual-prepay-discount/"
+    note: "Use it to judge whether term discounts weaken margin more than they improve retention or cash flow."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Test whether a candidate unit price still holds the target gross margin under realistic usage assumptions."
+  - kind: "supporting-page"
+    label: "Unit Cost"
+    href: "/glossary/unit-cost/"
+    note: "Review unit cost with margin so the team does not set pricing floors from a partial cost picture."
 ---
 
 ## Definition

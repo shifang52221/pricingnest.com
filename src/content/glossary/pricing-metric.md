@@ -9,6 +9,22 @@ category: "pricing-models"
 guides: ["pricing-tier-design", "usage-based-pricing-examples", "pricing-localization"]
 tools: ["usage-based-pricing-calculator", "api-pricing-calculator"]
 glossary: ["value-metric"]
+sources:
+  - kind: "internal-input"
+    label: "Billing model and invoice-unit review"
+    note: "Check that the unit shown on pricing pages, contracts, and invoices is consistent enough for forecasting, finance, and buyer understanding."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Examples"
+    href: "/guides/usage-based-pricing-examples/"
+    note: "Use it to compare how different charging units affect packaging, overage, and customer clarity."
+  - kind: "supporting-page"
+    label: "API Pricing Calculator"
+    href: "/saas-pricing/api-pricing-calculator/"
+    note: "Pressure-test whether the charged metric still produces a defendable rate at realistic usage volumes."
+  - kind: "supporting-page"
+    label: "Value Metric"
+    href: "/glossary/value-metric/"
+    note: "Review it alongside this term so the team does not confuse what customers value with what they are billed on."
 ---
 
 ## Definition

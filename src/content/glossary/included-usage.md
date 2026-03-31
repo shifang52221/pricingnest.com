@@ -9,6 +9,22 @@ category: "pricing-models"
 guides: ["usage-based-pricing-examples", "value-metric-selection"]
 tools: ["usage-based-pricing-calculator", "tiered-usage-pricing-calculator"]
 glossary: ["usage-based-pricing", "overage", "value-metric", "usage-forecast"]
+sources:
+  - kind: "internal-input"
+    label: "Usage distribution and p90 allowance review"
+    note: "Validate average, heavy, and p90 customer behavior before deciding how much usage to include in the base offer."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Examples"
+    href: "/guides/usage-based-pricing-examples/"
+    note: "Use it to compare allowance size, conversion clarity, and bill-shock risk across packaging options."
+  - kind: "supporting-page"
+    label: "Tiered Usage Pricing Calculator"
+    href: "/saas-pricing/tiered-usage-pricing-calculator/"
+    note: "Model where included usage should end and overage tiers should begin."
+  - kind: "supporting-page"
+    label: "Overage"
+    href: "/glossary/overage/"
+    note: "Keep included usage and the post-threshold charge logic aligned as one customer experience."
 ---
 
 ## Definition

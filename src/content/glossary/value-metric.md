@@ -9,6 +9,22 @@ category: "pricing-models"
 guides: ["value-metric-selection", "usage-based-pricing-examples"]
 tools: ["usage-based-pricing-calculator", "api-pricing-calculator"]
 glossary: ["pricing-metric", "usage-based-pricing", "seat-based-pricing"]
+sources:
+  - kind: "internal-input"
+    label: "Pricing page and buyer-interview unit review"
+    note: "Confirm the chosen unit matches how buyers describe value, compare offers, and forecast usage before naming it the value metric."
+  - kind: "supporting-page"
+    label: "Value Metric Selection"
+    href: "/guides/value-metric-selection/"
+    note: "Use it to evaluate whether the proposed metric reflects customer outcomes instead of internal convenience."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Test whether the chosen metric can support a viable unit price and margin profile."
+  - kind: "supporting-page"
+    label: "Pricing Metric"
+    href: "/glossary/pricing-metric/"
+    note: "Keep the team clear on the difference between the customer-value unit and the charged unit."
 ---
 
 ## Definition
