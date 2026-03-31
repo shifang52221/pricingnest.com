@@ -78,11 +78,11 @@ for (const pathname of staticNoindexCandidates) {
   );
 }
 
-assert(/import\s+\{\s*getGuideRobots\s*\}\s+from\s+"..\/..\/lib\/content-governance"/.test(guidesPageText), "guides page: missing getGuideRobots import");
+assert(guidesPageText.includes("getGuideRobots"), "guides page: missing getGuideRobots import");
 assert(guidesPageText.includes("const robots = getGuideRobots(entry.slug);"), "guides page: missing guide robots lookup");
 assert(/<BaseLayout[\s\S]*robots=\{robots\}/.test(guidesPageText), "guides page: BaseLayout missing robots prop");
 
-assert(/import\s+\{\s*getGlossaryRobots\s*\}\s+from\s+"..\/..\/lib\/content-governance"/.test(glossaryPageText), "glossary page: missing getGlossaryRobots import");
+assert(glossaryPageText.includes("getGlossaryRobots"), "glossary page: missing getGlossaryRobots import");
 assert(glossaryPageText.includes("const robots = getGlossaryRobots(entry.slug);"), "glossary page: missing glossary robots lookup");
 assert(/<BaseLayout[\s\S]*robots=\{robots\}/.test(glossaryPageText), "glossary page: BaseLayout missing robots prop");
 

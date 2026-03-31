@@ -7,7 +7,7 @@ reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-03-31"
 tags: ["pricing-page", "trust"]
 tools: ["pricing-tier-optimizer"]
-glossary: ["pricing-page", "billing-cycle", "annual-plan"]
+glossary: ["billing-cycle", "annual-plan", "annual-prepay-discount"]
 sources:
   - kind: "internal-input"
     label: "Sales objection and pricing-page clarity review"
@@ -54,6 +54,6 @@ sources:
 - [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/)
 
 ## Related glossary terms
-- [Pricing Page](/glossary/pricing-page/)
 - [Billing Cycle](/glossary/billing-cycle/)
 - [Annual Plan](/glossary/annual-plan/)
+- [Annual Prepay Discount](/glossary/annual-prepay-discount/)

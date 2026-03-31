@@ -89,44 +89,44 @@ export const SEO_PRIORITY_TOOL_SLUGS = [
   "compute-cost-estimator",
   "api-pricing-calculator",
   "usage-based-pricing-calculator",
-  "pricing-increase-impact-calculator"
+  "annual-discount-calculator"
 ] as const;
 
 export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>> = {
   "storage-cost-calculator": [
+    { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
     { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
-    { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
     { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
     { href: "/glossary/storage-costs/", label: "Glossary: storage costs" },
     { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
   ],
   "compute-cost-estimator": [
+    { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
     { href: "/guides/compute-cost-modeling/", label: "Guide: compute cost modeling" },
-    { href: "/guides/monthly-cloud-cost-breakdown/", label: "Guide: monthly cloud cost breakdown" },
     { href: "/glossary/cogs/", label: "Glossary: COGS" },
     { href: "/glossary/unit-cost/", label: "Glossary: unit cost" },
     { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
   ],
   "api-pricing-calculator": [
-    { href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" },
+    { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
     { href: "/guides/api-pricing-model/", label: "Guide: API pricing model" },
     { href: "/glossary/api-call/", label: "Glossary: API call" },
     { href: "/glossary/rate-limit/", label: "Glossary: rate limit" },
     { href: "/glossary/pricing-metric/", label: "Glossary: pricing metric" }
   ],
   "usage-based-pricing-calculator": [
-    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
     { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
+    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
     { href: "/glossary/value-metric/", label: "Glossary: value metric" },
     { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
     { href: "/glossary/included-usage/", label: "Glossary: included usage" }
   ],
   "annual-discount-calculator": [
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/guides/annual-prepay-discount/", label: "Guide: annual prepay discount" },
-    { href: "/guides/discount-guardrails/", label: "Guide: discount guardrails" },
     { href: "/glossary/annual-prepay-discount/", label: "Glossary: annual prepay discount" },
-    { href: "/glossary/grandfathering/", label: "Glossary: grandfathering" },
-    { href: "/glossary/churn/", label: "Glossary: churn" }
+    { href: "/glossary/churn/", label: "Glossary: churn" },
+    { href: "/glossary/billing-cycle/", label: "Glossary: billing cycle" }
   ]
 };
 

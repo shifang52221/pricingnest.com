@@ -19,25 +19,25 @@ function pickTerms(slugs: string[]) {
 
 const keyTerms = pickTerms([
   "value-metric",
+  "usage-based-pricing",
+  "annual-prepay-discount",
   "gross-margin",
-  "unit-cost",
-  "cogs",
-  "included-usage"
+  "churn"
 ]);
 
 const pricingMechanicsTerms = pickTerms([
   "pricing-metric",
-  "usage-based-pricing",
   "rate-limit",
+  "included-usage",
   "gb-month",
   "storage-costs"
 ]);
 
 const unitEconomicsTerms = pickTerms([
-  "grandfathering",
-  "annual-prepay-discount",
-  "usage-forecast",
+  "cogs",
+  "unit-cost",
   "support-costs",
+  "usage-forecast",
   "churn"
 ]);
 

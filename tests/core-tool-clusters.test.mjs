@@ -13,24 +13,24 @@ const toolPageText = readFileSync(toolPagePath, "utf-8");
 
 const expectations = {
   "storage-cost-calculator": {
-    guide: "/guides/storage-costs-and-pricing/",
-    support: ["/guides/storage-retrieval-fees/", "/glossary/gb-month/", "/glossary/storage-costs/"],
+    guide: "/guides/price-per-gb-month-explained/",
+    support: ["/guides/storage-costs-and-pricing/", "/glossary/gb-month/", "/glossary/storage-costs/"],
   },
   "compute-cost-estimator": {
-    guide: "/guides/compute-cost-modeling/",
-    support: ["/guides/monthly-cloud-cost-breakdown/", "/glossary/cogs/", "/glossary/unit-cost/"],
+    guide: "/guides/saas-gross-margin-targets/",
+    support: ["/guides/compute-cost-modeling/", "/glossary/cogs/", "/glossary/unit-cost/"],
   },
   "api-pricing-calculator": {
-    guide: "/guides/api-cost-estimation/",
+    guide: "/guides/value-metric-selection/",
     support: ["/guides/api-pricing-model/", "/glossary/api-call/", "/glossary/rate-limit/"],
   },
   "usage-based-pricing-calculator": {
-    guide: "/guides/usage-based-pricing-examples/",
-    support: ["/guides/value-metric-selection/", "/glossary/value-metric/", "/glossary/usage-based-pricing/"],
+    guide: "/guides/value-metric-selection/",
+    support: ["/guides/usage-based-pricing-examples/", "/glossary/value-metric/", "/glossary/usage-based-pricing/"],
   },
   "annual-discount-calculator": {
-    guide: "/guides/annual-prepay-discount/",
-    support: ["/guides/discount-guardrails/", "/glossary/annual-prepay-discount/", "/glossary/grandfathering/"],
+    guide: "/guides/minimum-commitment-model/",
+    support: ["/guides/annual-prepay-discount/", "/glossary/annual-prepay-discount/", "/glossary/churn/"],
   },
 };
 

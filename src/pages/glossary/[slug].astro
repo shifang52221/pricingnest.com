@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { getToolBySlug, getToolName } from "../../lib/tools";
-import { getGlossaryRobots } from "../../lib/content-governance";
+import { getGlossaryRobots, getGuideRobots } from "../../lib/content-governance";
 
 export async function getStaticPaths() {
   const entries = await getCollection("glossary");
@@ -32,6 +32,7 @@ const relatedTools = relatedToolSlugs
 const guideTitleMap = new Map(guideEntries.map((guide) => [guide.slug, guide.data.title]));
 const glossaryTitleMap = new Map(glossaryEntries.map((term) => [term.slug, term.data.title]));
 const relatedGuides = relatedGuideSlugs
+  .filter((guideSlug) => getGuideRobots(guideSlug) === "index,follow")
   .map((guideSlug) => {
     const label = guideTitleMap.get(guideSlug);
     if (!label) return null;
@@ -40,6 +41,7 @@ const relatedGuides = relatedGuideSlugs
   .filter(Boolean);
 
 const relatedGlossary = relatedGlossarySlugs
+  .filter((termSlug) => getGlossaryRobots(termSlug) === "index,follow")
   .map((termSlug) => {
     const label = glossaryTitleMap.get(termSlug);
     if (!label) return null;

@@ -7,7 +7,7 @@ reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-03-31"
 tags: ["pricing", "enterprise"]
 tools: ["pricing-tier-optimizer", "pricing-increase-impact-calculator", "mrr-calculator"]
-glossary: ["minimum-commitment", "contract-value", "pricing-metric", "tcv"]
+glossary: ["minimum-commitment", "contract-value", "pricing-metric", "billing-cycle"]
 sources:
   - kind: "internal-input"
     label: "Ramp timing and contracted-floor review"
@@ -59,4 +59,4 @@ sources:
 - [Minimum Commitment](/glossary/minimum-commitment/)
 - [Contract Value](/glossary/contract-value/)
 - [Pricing Metric](/glossary/pricing-metric/)
-- [TCV](/glossary/tcv/)
+- [Billing Cycle](/glossary/billing-cycle/)
