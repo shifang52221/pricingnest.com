@@ -39,17 +39,6 @@ const unitEconomicsGuides = pickGuides([
   "price-per-gb-month-explained"
 ]);
 
-const curatedSlugs = new Set([
-  ...featuredDecisionGuides.map((guide) => guide.slug ?? ""),
-  ...packagingGuides.map((guide) => guide.slug ?? ""),
-  ...unitEconomicsGuides.map((guide) => guide.slug ?? "")
-]);
-
-const browseMoreGuides = indexedEntries
-  .map((entry) => ({ slug: entry.slug, href: `/guides/${entry.slug}/`, title: entry.data.title }))
-  .filter((entry) => !curatedSlugs.has(entry.slug))
-  .sort((a, b) => a.title.localeCompare(b.title))
-  .slice(0, 12);
 ---
 <BaseLayout
   title={`Guides | ${siteName}`}
@@ -103,15 +92,15 @@ const browseMoreGuides = indexedEntries
       <h2>Start here</h2>
       <ul class="list">
         <li><a href="/saas-pricing/">All calculators</a></li>
-        <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+        <li><a href="/glossary/">Core glossary terms</a></li>
         <li><a href="/about/">About the methodology</a></li>
       </ul>
 
-      <h2 style="margin-top: 1.25rem;">Browse more guides</h2>
+      <h2 style="margin-top: 1.25rem;">How to use this hub</h2>
       <ul class="list">
-        {browseMoreGuides.map((guide) => (
-          <li><a href={guide.href}>{guide.title}</a></li>
-        ))}
+        <li>Open one decision guide first instead of comparing many thin support pages.</li>
+        <li>Run the linked calculator once you know the pricing question you are solving.</li>
+        <li>Use glossary terms only when you need to clarify margin, usage, or packaging language.</li>
       </ul>
     </aside>
   </div>

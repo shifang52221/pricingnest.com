@@ -11,8 +11,9 @@ export async function getStaticPaths() {
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
 const { slug } = Astro.params as { slug: string };
-const entries = await getCollection("glossary");
-const entry = entries.find((e) => e.slug === slug);
+const glossaryEntries = await getCollection("glossary");
+const guideEntries = await getCollection("guides");
+const entry = glossaryEntries.find((e) => e.slug === slug);
 if (!entry) throw new Error(`Unknown glossary slug: ${slug}`);
 
 const { Content } = await entry.render();
@@ -28,21 +29,23 @@ const relatedTools = relatedToolSlugs
   // @ts-expect-error
   .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: getToolName(tool) }));
 
-const relatedGuides = relatedGuideSlugs.map((guideSlug) => ({
-  href: `/guides/${guideSlug}/`,
-  label: guideSlug
-    .split("-")
-    .map((s) => (s ? s[0].toUpperCase() + s.slice(1) : s))
-    .join(" "),
-}));
+const guideTitleMap = new Map(guideEntries.map((guide) => [guide.slug, guide.data.title]));
+const glossaryTitleMap = new Map(glossaryEntries.map((term) => [term.slug, term.data.title]));
+const relatedGuides = relatedGuideSlugs
+  .map((guideSlug) => {
+    const label = guideTitleMap.get(guideSlug);
+    if (!label) return null;
+    return { href: `/guides/${guideSlug}/`, label };
+  })
+  .filter(Boolean);
 
-const relatedGlossary = relatedGlossarySlugs.map((termSlug) => ({
-  href: `/glossary/${termSlug}/`,
-  label: termSlug
-    .split("-")
-    .map((s) => (s ? s[0].toUpperCase() + s.slice(1) : s))
-    .join(" "),
-}));
+const relatedGlossary = relatedGlossarySlugs
+  .map((termSlug) => {
+    const label = glossaryTitleMap.get(termSlug);
+    if (!label) return null;
+    return { href: `/glossary/${termSlug}/`, label };
+  })
+  .filter(Boolean);
 const robots = getGlossaryRobots(entry.slug);
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -135,46 +138,50 @@ function formatGlossarySourceKind(kind: GlossarySource["kind"]): string {
         </>
       ) : null}
 
-      <h2 style="margin-top: 1.25rem;">Related</h2>
+      {(relatedTools.length > 0 || relatedGuides.length > 0 || relatedGlossary.length > 0) ? (
+        <>
+          <h2 style="margin-top: 1.25rem;">Recommended next steps</h2>
+          {relatedTools.length > 0 ? (
+            <>
+              <p class="muted" style="margin-top: 0.5rem;">Run a calculator that uses this concept directly.</p>
+              <ul class="list">
+                {relatedTools.map((t) => (
+                  <li><a href={t.href}>{t.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {relatedGuides.length > 0 ? (
+            <>
+              <p class="muted" style="margin-top: 0.85rem;">Read the decision guide where this term matters in practice.</p>
+              <ul class="list">
+                {relatedGuides.map((g) => (
+                  <li><a href={g?.href}>{g?.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {relatedGlossary.length > 0 ? (
+            <>
+              <p class="muted" style="margin-top: 0.85rem;">Review adjacent terms if you need more context.</p>
+              <ul class="list">
+                {relatedGlossary.map((g) => (
+                  <li><a href={g?.href}>{g?.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </>
+      ) : null}
+
+      <h2 style="margin-top: 1.25rem;">Use the toolkit</h2>
       <ul class="list">
-        <li><a href="/glossary/">All glossary terms</a></li>
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/guides/">Guides</a></li>
+        <li><a href="/glossary/">All glossary terms</a></li>
+        <li><a href="/about/">About the methodology</a></li>
         <li><a href="/contact/">Report a correction</a></li>
       </ul>
-
-      {relatedTools.length > 0 ? (
-        <>
-          <h2 style="margin-top: 1.25rem;">Tools</h2>
-          <ul class="list">
-            {relatedTools.map((t) => (
-              <li><a href={t.href}>{t.label}</a></li>
-            ))}
-          </ul>
-        </>
-      ) : null}
-
-      {relatedGuides.length > 0 ? (
-        <>
-          <h2 style="margin-top: 1.25rem;">Guides</h2>
-          <ul class="list">
-            {relatedGuides.map((g) => (
-              <li><a href={g.href}>{g.label}</a></li>
-            ))}
-          </ul>
-        </>
-      ) : null}
-
-      {relatedGlossary.length > 0 ? (
-        <>
-          <h2 style="margin-top: 1.25rem;">More terms</h2>
-          <ul class="list">
-            {relatedGlossary.map((g) => (
-              <li><a href={g.href}>{g.label}</a></li>
-            ))}
-          </ul>
-        </>
-      ) : null}
 
       {updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {updated}</p> : null}
     </aside>

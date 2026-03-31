@@ -11,18 +11,28 @@ export async function getStaticPaths() {
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
 const { slug } = Astro.params as { slug: string };
-const entries = await getCollection("guides");
-const entry = entries.find((e) => e.slug === slug);
+const guideEntries = await getCollection("guides");
+const glossaryEntries = await getCollection("glossary");
+const entry = guideEntries.find((e) => e.slug === slug);
 if (!entry) throw new Error(`Unknown guide slug: ${slug}`);
 
 const { Content } = await entry.render();
 const title = `${entry.data.title} | ${siteName}`;
 const relatedToolSlugs = entry.data.tools ?? [];
+const relatedGlossarySlugs = entry.data.glossary ?? [];
+const glossaryTitleMap = new Map(glossaryEntries.map((term) => [term.slug, term.data.title]));
 const relatedTools = relatedToolSlugs
   .map((toolSlug) => getToolBySlug(toolSlug))
   .filter(Boolean)
   // @ts-expect-error
   .map((tool) => ({ href: `/saas-pricing/${tool.slug}/`, label: getToolName(tool) }));
+const relatedGlossary = relatedGlossarySlugs
+  .map((termSlug) => {
+    const label = glossaryTitleMap.get(termSlug);
+    if (!label) return null;
+    return { href: `/glossary/${termSlug}/`, label };
+  })
+  .filter(Boolean);
 const robots = getGuideRobots(entry.slug);
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
@@ -127,24 +137,40 @@ function formatGuideSourceKind(kind: GuideSource["kind"]): string {
         </>
       ) : null}
 
-      <h2 style="margin-top: 1.25rem;">More</h2>
-      <ul class="list">
-        <li><a href="/guides/">All guides</a></li>
-        <li><a href="/saas-pricing/">All calculators</a></li>
-        <li><a href="/glossary/">Glossary</a></li>
-        <li><a href="/contact/">Report a correction</a></li>
-      </ul>
-
-      {relatedTools.length > 0 ? (
+      {(relatedTools.length > 0 || relatedGlossary.length > 0) ? (
         <>
-          <h2 style="margin-top: 1.25rem;">Tools</h2>
-          <ul class="list">
-            {relatedTools.map((t) => (
-              <li><a href={t.href}>{t.label}</a></li>
-            ))}
-          </ul>
+          <h2 style="margin-top: 1.25rem;">Recommended next steps</h2>
+          {relatedTools.length > 0 ? (
+            <>
+              <p class="muted" style="margin-top: 0.5rem;">Run the calculator closest to this decision.</p>
+              <ul class="list">
+                {relatedTools.map((t) => (
+                  <li><a href={t.href}>{t.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {relatedGlossary.length > 0 ? (
+            <>
+              <p class="muted" style="margin-top: 0.85rem;">Clarify the key terms before you publish or change pricing.</p>
+              <ul class="list">
+                {relatedGlossary.map((term) => (
+                  <li><a href={term?.href}>{term?.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </>
       ) : null}
+
+      <h2 style="margin-top: 1.25rem;">Use the toolkit</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/">All calculators</a></li>
+        <li><a href="/guides/">All guides</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
+        <li><a href="/about/">About the methodology</a></li>
+        <li><a href="/contact/">Report a correction</a></li>
+      </ul>
 
       {updated ? <p class="muted" style="margin-top: 1rem;">Last updated: {updated}</p> : null}
     </aside>

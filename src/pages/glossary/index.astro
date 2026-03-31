@@ -41,17 +41,6 @@ const unitEconomicsTerms = pickTerms([
   "churn"
 ]);
 
-const curatedTermSlugs = new Set([
-  ...keyTerms.map((term) => term.slug),
-  ...pricingMechanicsTerms.map((term) => term.slug),
-  ...unitEconomicsTerms.map((term) => term.slug)
-]);
-
-const browseMoreTerms = indexedEntries
-  .map((entry) => ({ slug: entry.slug, href: `/glossary/${entry.slug}/`, title: entry.data.title }))
-  .filter((entry) => !curatedTermSlugs.has(entry.slug))
-  .sort((a, b) => a.title.localeCompare(b.title))
-  .slice(0, 14);
 ---
 <BaseLayout
   title={`Glossary | ${siteName}`}
@@ -103,14 +92,14 @@ const browseMoreTerms = indexedEntries
       <ul class="list">
         <li><a href="/saas-pricing/">All calculators</a></li>
         <li><a href="/guides/">Guides</a></li>
-        <li><a href="/saas-pricing/use-cases/">Use cases</a></li>
+        <li><a href="/about/">About the methodology</a></li>
       </ul>
 
-      <h2 style="margin-top: 1.25rem;">Browse more terms</h2>
+      <h2 style="margin-top: 1.25rem;">How to use this hub</h2>
       <ul class="list">
-        {browseMoreTerms.map((term) => (
-          <li><a href={term.href}>{term.title}</a></li>
-        ))}
+        <li>Start with one key term before jumping into a calculator.</li>
+        <li>Move into a guide when you need decision criteria, not just a definition.</li>
+        <li>Use these terms to clarify pricing language, not to browse the whole inventory.</li>
       </ul>
     </aside>
   </div>
