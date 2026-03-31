@@ -1,10 +1,29 @@
 ---
 title: "Pricing Page Trust Elements"
 description: "Use proof and policy clarity to reduce pricing anxiety."
-updated: "2026-01-31"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 tags: ["pricing-page", "trust"]
 tools: ["pricing-tier-optimizer"]
 glossary: ["pricing-page", "billing-cycle", "annual-plan"]
+sources:
+  - kind: "internal-input"
+    label: "Sales objection and pricing-page clarity review"
+    note: "Collect the top buyer objections around billing, cancellation, proof, and renewal terms before choosing which trust elements belong near the plans."
+  - kind: "supporting-page"
+    label: "Pricing Tier Design Guide"
+    href: "/guides/pricing-tier-design/"
+    note: "Use it to keep trust elements close to the plan structure and not disconnected from how tiers are actually sold."
+  - kind: "supporting-page"
+    label: "Pricing Page Comparison Table"
+    href: "/guides/pricing-page-comparison-table/"
+    note: "Check whether the comparison layout makes billing terms, included usage, and plan differences clearer instead of noisier."
+  - kind: "supporting-page"
+    label: "Billing Cycle"
+    href: "/glossary/billing-cycle/"
+    note: "Keep renewal and billing-language explanations consistent between the pricing page and supporting documentation."
 ---
 
 ## Quick checklist

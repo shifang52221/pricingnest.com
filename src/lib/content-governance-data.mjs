@@ -44,7 +44,18 @@ export const GUIDE_GOVERNANCE = {
   "tier-grace-period-design": "noindex,follow",
   "usage-spike-protection": "noindex,follow",
   "addon-pricing-strategy": "noindex,follow",
-  "renewal-forecasting": "noindex,follow"
+  "renewal-forecasting": "noindex,follow",
+  // Wave 2: inventory-like support pages should not compete with retained pricing guides.
+  "pricing-page-cta-optimization": "noindex,follow",
+  "pricing-page-faqs": "noindex,follow",
+  "pricing-page-unit-definition": "noindex,follow",
+  "price-change-communication": "noindex,follow",
+  "contract-minimums-messaging": "noindex,follow",
+  "usage-reporting-dashboard": "noindex,follow",
+  "usage-estimation-guide": "noindex,follow",
+  "trial-usage-limit-design": "noindex,follow",
+  "tier-naming-strategy": "noindex,follow",
+  "plan-differentiation-matrix": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {
@@ -75,7 +86,14 @@ export const GLOSSARY_GOVERNANCE = {
   "mrr": "noindex,follow",
   "price-increase": "noindex,follow",
   "annual-plan": "noindex,follow",
-  "cross-sell": "noindex,follow"
+  "cross-sell": "noindex,follow",
+  // Wave 2: generic support terms should not dilute the retained glossary layer.
+  "request": "noindex,follow",
+  "renewal": "noindex,follow",
+  "run-rate": "noindex,follow",
+  "tcv": "noindex,follow",
+  "pricing-page": "noindex,follow",
+  "upsell": "noindex,follow"
 };
 
 export const STATIC_PAGE_GOVERNANCE = {

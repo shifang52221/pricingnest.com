@@ -31,7 +31,7 @@ const resolveBuildTime = async () => {
 
 const run = async () => {
   process.env.SITEMAP_LASTMOD = await resolveBuildTime();
-  const result = spawnSync("astro", ["build"], { stdio: "inherit", shell: true, env: process.env });
+  const result = spawnSync("astro", ["build", "--force"], { stdio: "inherit", shell: true, env: process.env });
   process.exit(result.status ?? 1);
 };
 

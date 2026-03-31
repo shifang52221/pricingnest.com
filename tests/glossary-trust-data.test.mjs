@@ -20,6 +20,10 @@ const retainedGlossarySlugs = [
   "overage",
   "minimum-commitment",
   "gb-month",
+  "rate-limit",
+  "annual-prepay-discount",
+  "usage-based-pricing",
+  "churn",
 ];
 
 const assertIncludes = (text, label, expected) => {
@@ -62,6 +66,8 @@ for (const slug of retainedGlossarySlugs) {
   const text = readFileSync(filePath, "utf-8");
 
   for (const expected of [
+    'reviewedBy: "PricingNest Editorial Team"',
+    "reviewed:",
     "sources:",
     'kind: "internal-input"',
     'kind: "supporting-page"',

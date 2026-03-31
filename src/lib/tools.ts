@@ -136,10 +136,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "Usage-Based Pricing Calculator",
     name: "Price Per Unit Calculator for Usage-Based Pricing",
     description:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template.",
-    metaTitle: "Price Per Unit Calculator & Delta CSV Template | PricingNest",
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export results for pricing review.",
+    metaTitle: "Usage-Based Pricing Calculator & Price Per Unit Model | PricingNest",
     metaDescription:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template.",
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and review pricing trade-offs for real usage models.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
@@ -362,8 +362,8 @@ export const TOOLS: ToolDefinition[] = [
         a: "Estimate usage cost from monthly units x cost per unit, then add fixed overhead and apply your target margin."
       },
       {
-        q: "How do I build a price-per-unit delta CSV template?",
-        a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export a reusable price-per-unit delta CSV template."
+        q: "How do I export pricing scenarios to CSV?",
+        a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export the current scenario for pricing review."
       },
       {
         q: "How do I choose a usage metric customers can understand?",

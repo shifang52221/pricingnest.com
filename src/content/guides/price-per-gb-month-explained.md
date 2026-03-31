@@ -1,10 +1,29 @@
 ---
 title: "Price per GB-Month (What It Means + Examples)"
 description: "How GB-month pricing works, how to explain it on a pricing page, and example workloads."
-updated: "2026-01-29"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 tags: ["storage"]
 tools: ["price-per-gb-month-calculator","storage-cost-calculator"]
 glossary: ["gb-month","storage-costs","cogs"]
+sources:
+  - kind: "internal-input"
+    label: "Storage mix and request-pattern review"
+    note: "Validate average stored GB, request volume, retrieval behavior, and replication overhead before explaining a GB-month price on the pricing page."
+  - kind: "supporting-page"
+    label: "Price Per GB-Month Calculator"
+    href: "/saas-pricing/price-per-gb-month-calculator/"
+    note: "Use it to convert a target monthly storage bill into a clearer per-GB-month price for buyer-facing packaging."
+  - kind: "supporting-page"
+    label: "Storage Cost Calculator"
+    href: "/saas-pricing/storage-cost-calculator/"
+    note: "Cross-check whether request fees, backup cost, or fixed overhead should be separated from the headline storage rate."
+  - kind: "supporting-page"
+    label: "GB-Month"
+    href: "/glossary/gb-month/"
+    note: "Use the glossary definition when explaining how average stored volume is measured across the month."
 ---
 
 ## Quick checklist

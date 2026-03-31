@@ -1,11 +1,30 @@
 ---
 title: "Usage-Based Pricing"
 description: "Charging based on consumption (calls, events, GB, minutes) instead of seats alone."
-updated: "2026-01-30"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 category: "pricing-models"
 guides: ["usage-mix-modeling", "price-floor-by-margin"]
 tools: ["usage-based-pricing-calculator","tiered-usage-pricing-calculator"]
 glossary: ["seat-based-pricing","value-metric","unit-cost","overage"]
+sources:
+  - kind: "internal-input"
+    label: "Usage distribution and bill-shock review"
+    note: "Check average versus heavy account behavior, margin by unit, and buyer predictability before using usage-based pricing as the default model."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Use it to test whether the chosen unit still supports the target gross margin once fixed overhead is included."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Examples"
+    href: "/guides/usage-based-pricing-examples/"
+    note: "Review concrete unit, tier, and included-usage patterns before publishing the pricing model."
+  - kind: "supporting-page"
+    label: "Value Metric"
+    href: "/glossary/value-metric/"
+    note: "Keep the billing model tied to a unit that buyers understand and that scales with customer value."
 ---
 ## Definition
 Usage-based pricing charges customers based on measurable consumption instead of a fixed seat count or flat fee.

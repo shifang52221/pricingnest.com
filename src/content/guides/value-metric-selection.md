@@ -1,10 +1,29 @@
 ---
 title: "Value Metric Selection"
 description: "Choose a value metric that aligns with customer value and your cost drivers."
-updated: "2026-01-31"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 tags: ["pricing", "packaging"]
 tools: ["usage-based-pricing-calculator", "pricing-tier-optimizer", "api-pricing-calculator"]
 glossary: ["value-metric", "pricing-metric", "usage-based-pricing", "arpa"]
+sources:
+  - kind: "internal-input"
+    label: "Customer value interview and usage distribution review"
+    note: "Validate which customer outcome buyers already track, how usage varies by segment, and where cost rises fastest before locking the primary metric."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Use it to test whether the candidate metric supports a margin-safe unit price across average and heavy accounts."
+  - kind: "supporting-page"
+    label: "API Pricing Calculator"
+    href: "/saas-pricing/api-pricing-calculator/"
+    note: "Cross-check the metric when request volume is a realistic billing unit and API cost scales with usage."
+  - kind: "supporting-page"
+    label: "Value Metric"
+    href: "/glossary/value-metric/"
+    note: "Keep the team aligned on the difference between the value metric customers feel and the pricing metric used on the page."
 ---
 
 ## Quick checklist

@@ -1,10 +1,29 @@
 ---
 title: "SaaS Gross Margin Targets (How to Choose a Range)"
 description: "A practical way to pick a gross margin target and avoid common modeling mistakes."
-updated: "2026-01-29"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 tags: ["gross-margin","unit-economics"]
 tools: ["usage-based-pricing-calculator","compute-cost-estimator","bandwidth-cost-calculator","storage-cost-calculator","monthly-cloud-cost-estimator","api-pricing-calculator"]
 glossary: ["gross-margin","cogs","unit-economics"]
+sources:
+  - kind: "internal-input"
+    label: "Blended COGS and margin guardrail review"
+    note: "Check vendor invoices, support load, and blended infrastructure cost by product line before publishing one gross-margin target range."
+  - kind: "supporting-page"
+    label: "Usage-Based Pricing Calculator"
+    href: "/saas-pricing/usage-based-pricing-calculator/"
+    note: "Use it to see whether the current unit price still reaches the chosen margin range once fixed overhead is included."
+  - kind: "supporting-page"
+    label: "Compute Cost Estimator"
+    href: "/saas-pricing/compute-cost-estimator/"
+    note: "Cross-check compute-heavy workloads before setting one target that may be too aggressive for infrastructure-heavy segments."
+  - kind: "supporting-page"
+    label: "Gross Margin"
+    href: "/glossary/gross-margin/"
+    note: "Keep the finance and product teams aligned on the exact margin definition used in pricing decisions."
 ---
 
 ## Quick checklist

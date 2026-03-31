@@ -1,10 +1,29 @@
 ---
 title: "Minimum Commitment Modeling"
 description: "Use minimum commitments to protect margin while supporting growth plans."
-updated: "2026-01-31"
+updated: "2026-03-31"
+author: "PricingNest Editorial Team"
+reviewedBy: "PricingNest Editorial Team"
+reviewed: "2026-03-31"
 tags: ["pricing", "enterprise"]
 tools: ["pricing-tier-optimizer", "pricing-increase-impact-calculator", "mrr-calculator"]
 glossary: ["minimum-commitment", "contract-value", "pricing-metric", "tcv"]
+sources:
+  - kind: "internal-input"
+    label: "Ramp timing and contracted-floor review"
+    note: "Check onboarding cost, expected expansion pace, and the minimum revenue floor needed to cover platform and support overhead."
+  - kind: "supporting-page"
+    label: "Annual Discount Calculator"
+    href: "/saas-pricing/annual-discount-calculator/"
+    note: "Use it to test how a minimum spend interacts with annual prepay and effective monthly pricing."
+  - kind: "supporting-page"
+    label: "Pricing Increase Calculator for Grandfathered Plans"
+    href: "/saas-pricing/pricing-increase-impact-calculator/"
+    note: "Model the downside if a weak minimum commitment pushes buyers into later price-change friction."
+  - kind: "supporting-page"
+    label: "Minimum Commitment"
+    href: "/glossary/minimum-commitment/"
+    note: "Keep the commercial definition of the floor consistent across pricing pages, contracts, and renewal discussions."
 ---
 
 ## Quick checklist
