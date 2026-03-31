@@ -40,9 +40,9 @@ const expected = [
   {
     slug: "api-pricing-calculator",
     name: "API Pricing Calculator for Cost per 1,000 Calls",
-    metaTitle: "API Cost Calculator & Pricing Estimator | PricingNest",
+    metaTitle: "API Pricing Calculator & Price Per 1,000 Calls Floor | PricingNest",
     metaDescription:
-      "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing."
+      "Calculate a margin-safe API price from call volume, infra cost per 1,000 calls, fixed overhead, and target gross margin. Compare billable-call scenarios, set a price floor, and decide when a platform fee or minimum commitment is needed."
   },
   {
     slug: "storage-cost-calculator",

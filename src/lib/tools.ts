@@ -110,8 +110,8 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
   "api-pricing-calculator": [
     { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
     { href: "/guides/api-pricing-model/", label: "Guide: API pricing model" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/api-call/", label: "Glossary: API call" },
-    { href: "/glossary/rate-limit/", label: "Glossary: rate limit" },
     { href: "/glossary/pricing-metric/", label: "Glossary: pricing metric" }
   ],
   "usage-based-pricing-calculator": [
@@ -2213,29 +2213,35 @@ export const TOOLS: ToolDefinition[] = [
     title: "API Pricing Calculator",
     name: "API Pricing Calculator for Cost per 1,000 Calls",
     description:
-      "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing.",
-    metaTitle: "API Cost Calculator & Pricing Estimator | PricingNest",
+      "Estimate a margin-safe API plan price and price per 1,000 calls from billable volume, infra cost, fixed overhead, and target gross margin.",
+    metaTitle: "API Pricing Calculator & Price Per 1,000 Calls Floor | PricingNest",
     metaDescription:
-      "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe plan price. Use real call volume and overhead to turn API cost estimates into pricing.",
+      "Calculate a margin-safe API price from call volume, infra cost per 1,000 calls, fixed overhead, and target gross margin. Compare billable-call scenarios, set a price floor, and decide when a platform fee or minimum commitment is needed.",
     reviewedBy: "PricingNest Editorial Team",
-    reviewed: "2026-03-30",
+    reviewed: "2026-03-31",
     sources: [
       {
         kind: "internal-input",
-        label: "API traffic report and blended cost per 1,000 calls",
-        note: "Validate current traffic, vendor cost, and infrastructure cost before relying on the implied price per 1,000 calls."
+        label: "Billable-call mix, blended infra cost, and pricing-floor review",
+        note: "Review current volume, blended cost per 1,000 calls, and the revenue floor before publishing an API price."
       },
       {
         kind: "supporting-page",
-        label: "API Cost Estimation",
-        href: "/guides/api-cost-estimation/",
-        note: "Use this guide when the underlying request-cost model still needs cleanup before pricing."
+        label: "Value Metric Selection",
+        href: "/guides/value-metric-selection/",
+        note: "Confirm the billable metric is something buyers can forecast and justify."
       },
       {
         kind: "supporting-page",
         label: "API Pricing Model",
         href: "/guides/api-pricing-model/",
         note: "Review packaging patterns for rate limits, free tiers, and overage logic before shipping the plan."
+      },
+      {
+        kind: "supporting-page",
+        label: "Minimum Commitment Modeling",
+        href: "/guides/minimum-commitment-model/",
+        note: "Decide when a platform fee or minimum spend is necessary to recover fixed costs."
       }
     ],
     inputs: [
@@ -2289,10 +2295,10 @@ export const TOOLS: ToolDefinition[] = [
       "Treating the output as a final price without market sanity checks."
     ],
     interpretation: [
-      "Use the recommended monthly price as a starting point for plan pricing.",
-      "If the per-1,000 call price is high, add a base fee and lower usage rates.",
-      "Compare the implied price to competitor benchmarks before publishing.",
-      "Run p90 call volume to ensure margins survive heavy usage."
+      "Treat the recommended monthly price and per-1,000-call output as a floor that informs tiers, overages, and platform fees.",
+      "Combine that floor with a platform fee or minimum commitment when low-volume accounts struggle to cover fixed costs.",
+      "Use p50 and p90 billable-call scenarios to confirm your margin guardrails still hold during peak load.",
+      "Compare the implied price to competitors before turning it into a published rate."
     ],
     useCases: [
       {
@@ -2363,17 +2369,42 @@ export const TOOLS: ToolDefinition[] = [
       "If fixed overhead dominates, consider a base fee plus lower usage rate."
     ],
     faq: [
-      { q: "Is this an API pricing calculator and API cost estimator?", a: "Yes. It estimates monthly API cost and recommended monthly pricing, then converts that into an implied price per 1,000 calls." },
-      { q: "What does this API pricing calculator estimate?", a: "Estimate API cost per 1,000 calls, monthly API cost, and a margin-safe monthly price from your call volume and overhead." },
-      { q: "How do I build an API cost estimate and price per 1,000 calls?", a: "Estimate monthly API cost from call volume and unit costs, apply target margin for monthly price, then divide by calls and multiply by 1,000." },
-      { q: "How do I go from API cost estimate to list price?", a: "Use this API calculator to model calls and unit costs, review monthly API cost, then convert that cost baseline into a margin-safe monthly price and per-1,000-call rate." },
-      { q: "How do I price an API per 1,000 calls from my monthly cost model?", a: "Estimate monthly cost, apply your target gross margin for monthly price, then divide by calls and multiply by 1,000 to publish a readable per-1,000 rate." },
-      { q: "Can I use this as a cost estimate for an API plan?", a: "Yes. The monthly cost output is your cost estimate, and the recommended price adds your target gross margin." },
-      { q: "What should I enter for infra cost per 1,000 calls?", a: "Use your blended marginal cost per 1,000 calls (compute, queueing, DB, vendor APIs, observability)." },
-      { q: "How do I handle free tiers or included calls?", a: "Model included calls as part of your plan design. You can estimate cost at expected usage (including free tier) and then set pricing tiers around meaningful breakpoints." },
-      { q: "What gross margin should an API target?", a: "It depends on your category and scale. Start with a range (70-90%) and sanity-check competitiveness and cost recovery under different workloads." },
-      { q: "Should I price per call or per 1,000 calls?", a: "Per 1,000 calls is easier to read on pricing pages while still mapping to unit costs. The calculator supports both interpretations." },
-      { q: "How do I model a minimum monthly fee?", a: "Set a base platform fee outside this calculator, then use the implied price per 1,000 calls for overages." }
+      {
+        q: "Is this an API pricing calculator?",
+        a: "Yes. It estimates monthly API cost and the margin-safe monthly price that feeds into your pricing page."
+      },
+      {
+        q: "How do I choose between pricing per call and per 1,000 calls?",
+        a: "Per 1,000 calls is more customer-friendly while per call keeps the math internal. Multiply per-call cost by 1,000 to compare or present a friendly per-1,000 rate."
+      },
+      {
+        q: "What should count as a billable API call?",
+        a: "Bill for actions that materially drive compute, storage, or vendor cost and that buyers can reasonably forecast."
+      },
+      {
+        q: "When should I add a platform fee or minimum commitment?",
+        a: "Add one when low-volume accounts cannot cover fixed support, infrastructure, or onboarding expenses through the variable rate alone."
+      },
+      {
+        q: "How do I test whether gross margin survives heavier traffic?",
+        a: "Run p50 and p90 scenarios using the same unit economics. If margin erodes at scale, add tiers, overage guardrails, or minimum spends."
+      },
+      {
+        q: "How do I turn a price-per-1,000-calls floor into included usage and overages?",
+        a: "Treat the required price as the floor, then design included usage, platform fees, and overage rates around it."
+      },
+      {
+        q: "What should I enter for infra cost per 1,000 calls?",
+        a: "Use your blended marginal cost per 1,000 calls, including compute, queueing, databases, vendor APIs, and observability."
+      },
+      {
+        q: "How do I handle free tiers or included calls?",
+        a: "Reduce billable calls to reflect expected paid usage after free credits, then retrace the pricing floor for each scenario."
+      },
+      {
+        q: "What gross margin should an API target?",
+        a: "Start with your finance team’s target (typically 70-90%) and sanity-check it against competitor benchmarks before publishing a rate."
+      }
     ]
   },
   {

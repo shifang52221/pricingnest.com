@@ -22,7 +22,7 @@ const expectations = {
   },
   "api-pricing-calculator": {
     guide: "/guides/value-metric-selection/",
-    support: ["/guides/api-pricing-model/", "/glossary/api-call/", "/glossary/rate-limit/"],
+    support: ["/guides/api-pricing-model/", "/guides/minimum-commitment-model/", "/glossary/api-call/", "/glossary/pricing-metric/"],
   },
   "usage-based-pricing-calculator": {
     guide: "/guides/value-metric-selection/",
