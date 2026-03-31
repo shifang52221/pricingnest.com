@@ -12,9 +12,9 @@ const expected = [
   {
     slug: "usage-based-pricing-calculator",
     name: "Price Per Unit Calculator for Usage-Based Pricing",
-    metaTitle: "Price Per Unit Calculator & Delta CSV Template | PricingNest",
+    metaTitle: "Usage-Based Pricing Calculator & Price Per Unit Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export a delta CSV template."
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare p50 and p90 scenarios, set a pricing floor, and decide when a platform fee or minimum commitment is needed."
   },
   {
     slug: "compute-cost-estimator",

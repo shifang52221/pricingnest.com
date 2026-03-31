@@ -26,7 +26,7 @@ const expectations = {
   },
   "usage-based-pricing-calculator": {
     guide: "/guides/value-metric-selection/",
-    support: ["/guides/usage-based-pricing-examples/", "/glossary/value-metric/", "/glossary/usage-based-pricing/"],
+    support: ["/guides/saas-gross-margin-targets/", "/guides/minimum-commitment-model/", "/glossary/value-metric/", "/glossary/usage-based-pricing/"],
   },
   "annual-discount-calculator": {
     guide: "/guides/minimum-commitment-model/",

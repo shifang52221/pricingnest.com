@@ -45,7 +45,6 @@ for (const slug of coreSlugs) {
   const block = toolsText.slice(start, start + 9000);
   for (const expected of [
     'reviewedBy: "PricingNest Editorial Team"',
-    'reviewed: "2026-03-30"',
     "sources: [",
     'kind: "internal-input"',
     'kind: "supporting-page"',
@@ -55,6 +54,10 @@ for (const slug of coreSlugs) {
     if (!block.includes(expected)) {
       throw new Error(`${slug}: missing ${expected}`);
     }
+  }
+
+  if (!/reviewed:\s*"2026-03-(30|31)"/.test(block)) {
+    throw new Error(`${slug}: missing reviewed date on 2026-03-30 or 2026-03-31`);
   }
 
   const linkedSupportPages = block.match(/href:\s*"\/(guides|glossary)\//g) ?? [];

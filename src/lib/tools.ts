@@ -116,10 +116,10 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
   ],
   "usage-based-pricing-calculator": [
     { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
-    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
+    { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/value-metric/", label: "Glossary: value metric" },
-    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
-    { href: "/glossary/included-usage/", label: "Glossary: included usage" }
+    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" }
   ],
   "annual-discount-calculator": [
     { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
@@ -137,28 +137,34 @@ export const TOOLS: ToolDefinition[] = [
     name: "Price Per Unit Calculator for Usage-Based Pricing",
     description:
       "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export results for pricing review.",
-    metaTitle: "Usage-Based Pricing Calculator & Price Per Unit Model | PricingNest",
+    metaTitle: "Usage-Based Pricing Calculator & Price Per Unit Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and review pricing trade-offs for real usage models.",
+      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare p50 and p90 scenarios, set a pricing floor, and decide when a platform fee or minimum commitment is needed.",
     reviewedBy: "PricingNest Editorial Team",
-    reviewed: "2026-03-30",
+    reviewed: "2026-03-31",
     sources: [
       {
         kind: "internal-input",
-        label: "Billing export or vendor invoice for blended unit cost",
-        note: "Validate the current unit-cost assumption before using the required price per unit as a pricing floor."
-      },
-      {
-        kind: "supporting-page",
-        label: "Usage-Based Pricing Examples",
-        href: "/guides/usage-based-pricing-examples/",
-        note: "Review packaging examples before turning the model into a live pricing page."
+        label: "Usage distribution, blended unit cost, and pricing-floor review",
+        note: "Check p50 and p90 usage, blended marginal cost, and the revenue floor needed before publishing a pure usage price."
       },
       {
         kind: "supporting-page",
         label: "Value Metric Selection",
         href: "/guides/value-metric-selection/",
-        note: "Confirm the billable unit matches what buyers can understand and forecast."
+        note: "Confirm the billable unit is easy for buyers to forecast and still maps to the value they receive."
+      },
+      {
+        kind: "supporting-page",
+        label: "SaaS Gross Margin Targets",
+        href: "/guides/saas-gross-margin-targets/",
+        note: "Check whether the required unit price still clears your gross-margin guardrail once heavier accounts are included."
+      },
+      {
+        kind: "supporting-page",
+        label: "Minimum Commitment Modeling",
+        href: "/guides/minimum-commitment-model/",
+        note: "Use a minimum spend or platform fee when fixed-cost recovery is too uneven to leave entirely inside the variable rate."
       }
     ],
     inputs: [
@@ -275,7 +281,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     interpretation: [
       "Treat the required unit price as your floor, not necessarily your list price.",
-      "If the unit price looks high, shift more revenue to a base platform fee.",
+      "Use the required unit price together with a platform fee or minimum commitment when fixed-cost recovery is too uneven across accounts.",
       "If required price per unit swings between p50 and p90, use tiered breakpoints and clear overage guardrails.",
       "Use p50 and p90 scenarios to decide tier boundaries and overage rates.",
       "Compare the implied price to competitors to confirm market fit."
@@ -354,20 +360,20 @@ export const TOOLS: ToolDefinition[] = [
         a: "Price per unit = (unit cost + fixed cost per unit) / (1 - target gross margin). This calculator applies that formula using your inputs."
       },
       {
-        q: "Can I use this as a cost per use calculator?",
-        a: "Yes. If one customer action maps to one billable unit, this works as a cost per use calculator."
+        q: "How do I choose a value metric before setting price per unit?",
+        a: "Choose a unit customers already understand, forecast, and connect to value, such as API calls, events, minutes, or GB. If buyers cannot explain the metric, the pricing page will usually underperform."
       },
       {
-        q: "How do I estimate usage cost before setting price?",
-        a: "Estimate usage cost from monthly units x cost per unit, then add fixed overhead and apply your target margin."
+        q: "When is fixed cost per unit too high for pure usage pricing?",
+        a: "If fixed cost per unit stays large even at realistic p50 volume, pure usage pricing can force an unstable headline rate. That is usually a sign you need a platform fee, a minimum commitment, or both."
       },
       {
-        q: "How do I export pricing scenarios to CSV?",
-        a: "Save a baseline scenario, adjust your inputs, review output deltas, then use Download CSV to export the current scenario for pricing review."
+        q: "When should I add a platform fee or minimum commitment?",
+        a: "Add one when low-volume accounts cannot cover fixed support, infrastructure, or onboarding cost through the variable rate alone. A minimum commitment is especially useful when customers have a predictable baseline usage floor."
       },
       {
-        q: "How do I choose a usage metric customers can understand?",
-        a: "Use a unit customers already monitor in dashboards and invoices, such as API calls, events, minutes, or GB. Avoid internal metrics users cannot forecast."
+        q: "How do I test whether gross margin still holds at higher usage?",
+        a: "Use p50 and p90 scenarios with the same unit economics. If required price or gross margin changes materially at higher usage, you likely need tiered breakpoints, overage guardrails, or a minimum spend."
       },
       {
         q: "Is this a usage based pricing calculator?",
@@ -386,16 +392,12 @@ export const TOOLS: ToolDefinition[] = [
         a: "Yes. Set monthly units to your total billable GB, use your blended cost per GB, and the calculator will return a required per-GB price at your target margin."
       },
       {
-        q: "Why does the required unit price change so much?",
-        a: "Fixed costs get spread across monthly units. Lower volume means higher fixed cost per unit and a higher required price to hit the same margin."
+        q: "How do I turn a unit-price floor into tiers or annual pricing?",
+        a: "Use the required unit price as the floor, then design included usage, tier breakpoints, and annual terms around it. The floor tells you how low the blended economics can go before discounts or packaging start hurting margin."
       },
       {
         q: "Should I include payment fees or taxes in unit cost?",
         a: "Include any fees that scale with revenue or usage if they materially affect margin. Taxes are usually excluded from pricing models."
-      },
-      {
-        q: "How do I model a minimum fee with usage pricing?",
-        a: "Set a base platform fee outside this calculator and then price the usage units based on the required per-unit price."
       }
     ]
   },
