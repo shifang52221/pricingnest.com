@@ -96,9 +96,9 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
   "storage-cost-calculator": [
     { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
     { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
+    { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
     { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
-    { href: "/glossary/storage-costs/", label: "Glossary: storage costs" },
-    { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
+    { href: "/glossary/retrieval-fees/", label: "Glossary: retrieval fees" }
   ],
   "compute-cost-estimator": [
     { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
