@@ -56,8 +56,12 @@ for (const slug of coreSlugs) {
     }
   }
 
-  if (!/reviewed:\s*"2026-03-(30|31)"/.test(block)) {
-    throw new Error(`${slug}: missing reviewed date on 2026-03-30 or 2026-03-31`);
+  const reviewedMatch = block.match(/reviewed:\s*"(\d{4}-\d{2}-\d{2})"/);
+  if (!reviewedMatch) {
+    throw new Error(`${slug}: missing reviewed date in YYYY-MM-DD format`);
+  }
+  if (reviewedMatch[1] < "2026-03-30") {
+    throw new Error(`${slug}: reviewed date ${reviewedMatch[1]} is older than 2026-03-30`);
   }
 
   const linkedSupportPages = block.match(/href:\s*"\/(guides|glossary)\//g) ?? [];
