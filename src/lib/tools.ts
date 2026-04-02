@@ -2931,28 +2931,34 @@ export const TOOLS: ToolDefinition[] = [
     name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
     description:
       "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
-    metaTitle: "Cost Per GB Calculator for Storage Pricing | PricingNest",
+    metaTitle: "Storage Pricing Calculator & Price Per GB-Month Floor | PricingNest",
     metaDescription:
-      "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
+      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately.",
     reviewedBy: "PricingNest Editorial Team",
-    reviewed: "2026-03-30",
+    reviewed: "2026-04-02",
     sources: [
       {
         kind: "internal-input",
-        label: "Storage billing export for GB-month, request, and retrieval assumptions",
-        note: "Validate the current storage workload before using the effective price per GB-month as a pricing reference."
+        label: "Storage billing export review for GB-month usage, request mix, and retrieval mix",
+        note: "Validate average GB stored, request-heavy cohorts, and retrieval-sensitive workloads before setting a single GB-month rate."
+      },
+      {
+        kind: "supporting-page",
+        label: "Price Per GB-Month Explained",
+        href: "/guides/price-per-gb-month-explained/",
+        note: "Use this guide to convert blended storage cost into a defendable price floor by target margin."
       },
       {
         kind: "supporting-page",
         label: "Storage Costs and Pricing",
         href: "/guides/storage-costs-and-pricing/",
-        note: "Use this guide to separate stored-volume economics from the rest of the storage workload."
+        note: "Separate stored-volume economics from request and access behavior before finalizing plan structure."
       },
       {
         kind: "supporting-page",
         label: "Storage Retrieval Fees",
         href: "/guides/storage-retrieval-fees/",
-        note: "Review retrieval behavior when request and access costs can materially change the pricing model."
+        note: "Decide when retrieval-heavy behavior should stay inside the base rate versus be billed as a separate fee."
       }
     ],
     inputs: [
@@ -3008,10 +3014,10 @@ export const TOOLS: ToolDefinition[] = [
       "Assuming request rates are flat across all customers."
     ],
     interpretation: [
-      "Use the recommended price as the all-in storage plan price for the modeled workload.",
-      "If request costs dominate, add a request fee or add-on.",
-      "If storage costs dominate, keep pricing simple with a GB-month rate.",
-      "Compare read-heavy and archive scenarios to decide tier names."
+      "Treat the recommended price per GB-month as the margin-safe floor for the specific workload mix you modeled.",
+      "If request or retrieval-sensitive costs dominate, test a separate request or retrieval charge instead of inflating the base GB-month rate.",
+      "If stored-volume cost dominates and access is predictable, keep a simpler GB-month price with fewer add-ons.",
+      "Compare archive and request-heavy scenarios to decide when hot and archive tiers need different pricing."
     ],
     useCases: [
       {
@@ -3082,18 +3088,14 @@ export const TOOLS: ToolDefinition[] = [
       "If cost per GB-month is 0, verify storage costs are included elsewhere."
     ],
     faq: [
-      { q: "How do I estimate fixed monthly costs per GB for storage pricing?", a: "Start with total fixed monthly storage overhead, divide by average stored GB to get fixed monthly costs per GB, then combine with variable storage and request costs before applying margin." },
-      { q: "How do I calculate storage pricing per GB when request fees are significant?", a: "Model storage and request costs separately, then combine them into monthly cost before applying your gross margin target." },
-      { q: "Can I use this as a cost per GB calculator?", a: "Yes. Enter your blended cost per GB-month and request assumptions to use this as a cost per GB calculator and pricing model." },
-      { q: "Can I use this as a Google Cloud Storage price calculator?", a: "Yes. Use your own blended storage and request rates (for example from Google Cloud billing exports) to estimate a margin-safe storage price." },
-      { q: "Is this a storage pricing calculator?", a: "Yes. It estimates storage costs and a recommended price per GB-month based on your target margin." },
-      { q: "What is cost per GB-month?", a: "It is the monthly cost to store one GB. Use your blended rate after discounts, tiers, replication, and backups." },
-      { q: "What counts as a request?", a: "Any operation you want to price against (GET/PUT/LIST, reads/writes). Use your provider's definition." },
+      { q: "How do I turn cost per GB-month into a storage price floor?", a: "Add storage, request, retrieval-sensitive, and fixed overhead costs into a monthly total, then divide by average GB-month and apply your gross-margin target to set a defensible floor." },
+      { q: "When should I charge separately for requests or retrievals?", a: "Split out request or retrieval fees when access-heavy cohorts materially reduce margin under a single blended GB-month price." },
+      { q: "When should hot and archive storage use different pricing?", a: "Use different tiers when archive workloads are storage-heavy but access-light, while hot workloads carry higher request or retrieval cost intensity." },
+      { q: "When does fixed storage overhead require a platform fee or minimum commitment?", a: "Add a platform fee or minimum commitment when fixed monthly overhead cannot be recovered reliably from variable GB-month pricing across smaller accounts." },
+      { q: "How do I test whether gross margin still holds for request-heavy workloads?", a: "Run a request-heavy scenario with higher operations and retrieval activity, then confirm gross margin still clears target before publishing a single all-in rate." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },
       { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." },
-      { q: "How do I handle lifecycle tiers?", a: "Use a blended cost per GB-month based on the storage mix across tiers." },
-      { q: "Should I charge separately for requests?", a: "If requests drive meaningful cost, keep a request component or add-on to avoid margin leakage." },
-      { q: "Should I separate hot and cold storage pricing?", a: "Yes. Different storage classes have different costs and access patterns, so separate tiers often improve margin and clarity." }
+      { q: "How do I handle lifecycle tiers?", a: "Use a blended cost per GB-month based on the storage mix across tiers." }
     ]
   }
 ];
