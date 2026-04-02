@@ -18,7 +18,7 @@ const expectations = {
   },
   "compute-cost-estimator": {
     guide: "/guides/saas-gross-margin-targets/",
-    support: ["/guides/compute-cost-modeling/", "/glossary/cogs/", "/glossary/unit-cost/"],
+    support: ["/guides/compute-cost-modeling/", "/guides/minimum-commitment-model/", "/glossary/unit-cost/", "/glossary/gross-margin/"],
   },
   "api-pricing-calculator": {
     guide: "/guides/value-metric-selection/",

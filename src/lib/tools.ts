@@ -103,7 +103,7 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
   "compute-cost-estimator": [
     { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
     { href: "/guides/compute-cost-modeling/", label: "Guide: compute cost modeling" },
-    { href: "/glossary/cogs/", label: "Glossary: COGS" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/unit-cost/", label: "Glossary: unit cost" },
     { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
   ],
@@ -407,16 +407,22 @@ export const TOOLS: ToolDefinition[] = [
     name: "Compute Pricing Calculator from vCPU and Memory Costs",
     description:
       "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
-    metaTitle: "Compute Pricing Calculator & Cost Estimator | PricingNest",
+    metaTitle: "Compute Pricing Calculator & Monthly Price Floor | PricingNest",
     metaDescription:
-      "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
+      "Calculate a margin-safe compute price from vCPU-hours, memory GB-hours, blended unit cost, fixed overhead, and target gross margin. Compare baseline and heavier workloads, set a price floor, and decide when a platform fee or minimum commitment is needed.",
     reviewedBy: "PricingNest Editorial Team",
-    reviewed: "2026-03-30",
+    reviewed: "2026-03-31",
     sources: [
       {
         kind: "internal-input",
-        label: "Cloud billing export or reserved-capacity report",
-        note: "Use a recent billing window to validate blended vCPU-hour and GB-hour assumptions before reviewing output."
+        label: "Blended capacity cost and reserved-capacity review",
+        note: "Check vCPU-hour and GB-hour blended costs plus reserved-capacity assumptions before locking the pricing floor."
+      },
+      {
+        kind: "supporting-page",
+        label: "SaaS Gross Margin Targets",
+        href: "/guides/saas-gross-margin-targets/",
+        note: "Confirm your margin guardrails before turning compute costs into published pricing."
       },
       {
         kind: "supporting-page",
@@ -426,9 +432,9 @@ export const TOOLS: ToolDefinition[] = [
       },
       {
         kind: "supporting-page",
-        label: "Monthly Cloud Cost Breakdown",
-        href: "/guides/monthly-cloud-cost-breakdown/",
-        note: "Cross-check whether monitoring, support, and other overhead are being recovered."
+        label: "Minimum Commitment Modeling",
+        href: "/guides/minimum-commitment-model/",
+        note: "Decide when a base platform fee or minimum spend is required to cover structural fixed costs."
       }
     ],
     inputs: [
@@ -512,10 +518,10 @@ export const TOOLS: ToolDefinition[] = [
       "Assuming autoscaling removes the need for baseline capacity."
     ],
     interpretation: [
-      "Use the recommended monthly price as a baseline plan price for the modeled workload.",
-      "If price per vCPU-hour is uncompetitive, reduce fixed overhead or target margin.",
-      "Compare multiple workloads to justify tiers or minimums.",
-      "Large fixed overhead suggests a base fee plus usage pricing."
+      "Treat the recommended monthly price as a floor that anchors tiered plans or flat commitments.",
+      "Use p50 and p90 capacity scenarios to see whether the floor still covers blended unit cost at scale.",
+      "If fixed compute cost dominates at low volume, add a platform fee or minimum commitment to protect margin.",
+      "Stress-test the floor with heavier workloads before publishing a compute pricing page."
     ],
     useCases: [
       {
@@ -586,44 +592,24 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       {
-        q: "Is this a compute pricing calculator?",
-        a: "Yes. It is a compute pricing calculator that starts with your compute costs and converts them into a target-margin price."
+        q: "When is fixed compute cost too high for pure variable pricing?",
+        a: "If your fixed capacity spend makes the floor climb above competitive benchmarks, add a base platform fee or commitment."
       },
       {
-        q: "How do I estimate compute costs?",
-        a: "Enter vCPU-hours, memory GB-hours, and blended unit rates. The calculator returns total monthly compute cost and a recommended price."
+        q: "How should I treat reserved capacity or savings plans in pricing?",
+        a: "Blend reserved-capacity rates into your blended unit costs before calculating the margin-safe floor."
       },
       {
-        q: "How do I turn compute costs into compute pricing?",
-        a: "Estimate all-in monthly compute cost first, then divide by (1 - target margin) to get margin-safe compute pricing."
+        q: "When should I add a platform fee or minimum commitment?",
+        a: "Add one whenever low-volume workloads cannot cover fixed infrastructure, monitoring, or support costs through usage rates."
       },
       {
-        q: "How do I include GPU or accelerator costs in this compute pricing model?",
-        a: "Convert accelerator spend into an equivalent blended unit cost and include it in vCPU-hour rate, GB-hour rate, or fixed overhead so monthly compute cost remains all-in."
+        q: "How do I test whether gross margin survives heavier workloads?",
+        a: "Run p50 and p90 scenarios through the same unit economics and watch how margin shifts before publishing new tiers."
       },
       {
-        q: "Is this a cloud compute cost calculator?",
-        a: "Yes, as long as you enter your blended vCPU and memory rates. It does not fetch public cloud list prices."
-      },
-      {
-        q: "What are vCPU-hours and GB-hours?",
-        a: "They are time-weighted usage of CPU and memory. For example, 2 vCPUs running for 1 hour is 2 vCPU-hours."
-      },
-      {
-        q: "Should I include reserved instances or savings plans?",
-        a: "Yes. Use your effective blended cost per hour after commitments if that reflects your expected baseline."
-      },
-      {
-        q: "Does this include bandwidth or storage costs?",
-        a: "No. This tool focuses on compute (CPU + memory). Add bandwidth/storage separately or include them in fixed overhead if you want an all-in estimate."
-      },
-      {
-        q: "How do I model bursty workloads?",
-        a: "Use multiple scenarios with higher vCPU-hours or GB-hours to represent peak usage, then compare the price range."
-      },
-      {
-        q: "Should I treat autoscaling as lower cost?",
-        a: "Autoscaling reduces idle hours, so your blended cost per hour may drop. Use a blended rate from actual billing."
+        q: "How do I turn a compute price floor into committed tiers or minimums?",
+        a: "Use the floor as your lowest tier or included usage level, then layer in commitments and overages based on margin sensitivity."
       }
     ]
   },

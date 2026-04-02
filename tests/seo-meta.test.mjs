@@ -19,9 +19,9 @@ const expected = [
   {
     slug: "compute-cost-estimator",
     name: "Compute Pricing Calculator from vCPU and Memory Costs",
-    metaTitle: "Compute Pricing Calculator & Cost Estimator | PricingNest",
+    metaTitle: "Compute Pricing Calculator & Monthly Price Floor | PricingNest",
     metaDescription:
-      "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price."
+      "Calculate a margin-safe compute price from vCPU-hours, memory GB-hours, blended unit cost, fixed overhead, and target gross margin. Compare baseline and heavier workloads, set a price floor, and decide when a platform fee or minimum commitment is needed."
   },
   {
     slug: "annual-discount-calculator",
