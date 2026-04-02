@@ -31,6 +31,12 @@ const expected = [
       "Free annual discount calculator to convert a monthly price into annual pricing, annual prepay savings, and effective monthly rate."
   },
   {
+    slug: "bandwidth-cost-calculator",
+    metaTitle: "Bandwidth Pricing Calculator & Price Per GB Floor | PricingNest",
+    metaDescription:
+      "Calculate a margin-safe bandwidth price from monthly GB egress, blended cost per GB, fixed overhead, and target gross margin. Set a price-per-GB floor, decide when bandwidth should be billed separately or passed through, and test CDN-heavy or regional traffic before publishing rates."
+  },
+  {
     slug: "pricing-increase-impact-calculator",
     name: "Price Increase Calculator for Grandfathered Plans",
     metaTitle: "Grandfathering Pricing Plans Calculator | PricingNest",
@@ -60,7 +66,9 @@ const assertIncludes = (slug, key, value) => {
 };
 
 for (const item of expected) {
-  assertIncludes(item.slug, "name", item.name);
+  if (item.name) {
+    assertIncludes(item.slug, "name", item.name);
+  }
   assertIncludes(item.slug, "metaTitle", item.metaTitle);
   assertIncludes(item.slug, "metaDescription", item.metaDescription);
 }

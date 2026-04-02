@@ -93,6 +93,13 @@ export const SEO_PRIORITY_TOOL_SLUGS = [
 ] as const;
 
 export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>> = {
+  "bandwidth-cost-calculator": [
+    { href: "/guides/bandwidth-pricing-guide/", label: "Guide: bandwidth pricing guide" },
+    { href: "/guides/bandwidth-pricing-guardrails/", label: "Guide: bandwidth pricing guardrails" },
+    { href: "/guides/cdn-cost-pass-through/", label: "Guide: CDN cost pass-through" },
+    { href: "/glossary/egress/", label: "Glossary: egress" },
+    { href: "/glossary/bandwidth/", label: "Glossary: bandwidth" }
+  ],
   "storage-cost-calculator": [
     { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
     { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
@@ -2810,6 +2817,36 @@ export const TOOLS: ToolDefinition[] = [
     title: "Bandwidth Cost Calculator",
     description:
       "Estimate egress/bandwidth cost and a recommended price using your own per-GB costs, fixed overhead, and target gross margin.",
+    metaTitle: "Bandwidth Pricing Calculator & Price Per GB Floor | PricingNest",
+    metaDescription:
+      "Calculate a margin-safe bandwidth price from monthly GB egress, blended cost per GB, fixed overhead, and target gross margin. Set a price-per-GB floor, decide when bandwidth should be billed separately or passed through, and test CDN-heavy or regional traffic before publishing rates.",
+    reviewedBy: "PricingNest Editorial Team",
+    reviewed: "2026-04-02",
+    sources: [
+      {
+        kind: "internal-input",
+        label: "Bandwidth billing export review for blended egress cost, CDN mix, and regional traffic share",
+        note: "Validate weighted cost per GB, CDN-heavy cohorts, and regional traffic mix before publishing one global bandwidth rate."
+      },
+      {
+        kind: "supporting-page",
+        label: "Bandwidth Pricing Guide",
+        href: "/guides/bandwidth-pricing-guide/",
+        note: "Use this guide to turn blended egress cost into a defendable per-GB price floor."
+      },
+      {
+        kind: "supporting-page",
+        label: "Bandwidth Pricing Guardrails",
+        href: "/guides/bandwidth-pricing-guardrails/",
+        note: "Set overage, spike, and high-traffic guardrails before relying on a single public bandwidth rate."
+      },
+      {
+        kind: "supporting-page",
+        label: "CDN Cost Pass-Through",
+        href: "/guides/cdn-cost-pass-through/",
+        note: "Decide when CDN-heavy traffic should stay inside base pricing versus move to a separate pass-through line item."
+      }
+    ],
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "gbPerMonth", label: "GB egress per month", type: "number", defaultValue: "2000", min: "0", step: "0.01" },
@@ -2860,10 +2897,11 @@ export const TOOLS: ToolDefinition[] = [
       "Leaving out request fees that are material."
     ],
     interpretation: [
-      "Use effective price per GB to set overage rates or a separate line item.",
-      "If prices look high, improve cache hit rates or reduce egress costs.",
-      "Consider regional pricing if costs vary materially.",
-      "Pair bandwidth with storage pricing to avoid double counting."
+      "Treat effective price per GB as the margin-safe floor for the traffic mix you modeled.",
+      "If bandwidth cost is volatile or externally billed, test a separate bandwidth line item or pass-through threshold instead of hiding it inside a bundled plan price.",
+      "If CDN or origin-driven costs differ materially across cohorts, compare blended and high-traffic scenarios before publishing one public rate.",
+      "If regional egress cost varies materially, use regional pricing guardrails or enterprise exceptions instead of forcing one global GB price.",
+      "If fixed overhead is meaningful relative to usage, pair bandwidth pricing with a base fee or minimum commitment."
     ],
     useCases: [
       {
@@ -2918,11 +2956,38 @@ export const TOOLS: ToolDefinition[] = [
       "If cost per GB spikes in a region, consider region-specific pricing."
     ],
     faq: [
-      { q: "Is this a CDN pricing calculator?", a: "It's a cost and price estimator. Enter your own per-GB costs and assumptions." },
-      { q: "What cost per GB should I use?", a: "Use a blended egress cost per GB after discounts, tiers, and CDN mix. If you have multiple regions, use a weighted average." },
-      { q: "Should I include origin fetch and request costs?", a: "If request pricing is meaningful for your workload, include it in fixed overhead or model it separately and add it to the monthly cost." },
-      { q: "How do I handle free CDN tiers?", a: "Treat free tiers as a lower blended cost per GB or subtract a fixed free allowance before pricing." },
-      { q: "What if bandwidth is a pass-through cost?", a: "Use a lower target margin or price bandwidth as a separate line item to keep usage transparent." }
+      {
+        q: "How do I turn blended egress cost into a bandwidth price floor?",
+        a: "Add variable egress cost and fixed overhead into monthly cost, divide by expected GB, then apply your target gross-margin buffer to set a defendable floor."
+      },
+      {
+        q: "When should bandwidth be priced as a separate line item?",
+        a: "Break bandwidth out when usage varies widely across accounts or when bundling it would force low-usage customers to subsidize heavy ones."
+      },
+      {
+        q: "When should CDN costs be passed through separately?",
+        a: "Use a separate pass-through or surcharge when CDN-heavy traffic materially changes margin and a single blended rate would either underprice heavy cohorts or overprice everyone else."
+      },
+      {
+        q: "How should I handle regional egress differences in pricing?",
+        a: "Use weighted regional averages for standard plans, then add regional guardrails, enterprise carve-outs, or separate rate cards when one region is materially more expensive."
+      },
+      {
+        q: "When does bandwidth overhead require a base fee or minimum commitment?",
+        a: "Add a base fee or minimum commit when support, monitoring, and traffic overhead are too large to recover reliably from per-GB pricing alone."
+      },
+      {
+        q: "Should I use peak or average monthly GB when pricing bandwidth?",
+        a: "Use average monthly GB for your baseline, then stress-test traffic spikes or p90 months before publishing public rates."
+      },
+      {
+        q: "How do I test whether margin still holds for traffic spikes or heavy accounts?",
+        a: "Run a heavier traffic scenario with higher GB, weaker cache performance, or a costlier regional mix and confirm gross margin still clears your target."
+      },
+      {
+        q: "Can I combine bandwidth with storage or compute in one plan?",
+        a: "Yes, but model each cost driver separately first so you know whether a blended plan hides bandwidth risk or needs an explicit overage component."
+      }
     ]
   },
   {

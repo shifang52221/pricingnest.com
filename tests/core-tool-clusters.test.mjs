@@ -12,6 +12,10 @@ const toolsModule = await import(pathToFileURL(toolsPath).href);
 const toolPageText = readFileSync(toolPagePath, "utf-8");
 
 const expectations = {
+  "bandwidth-cost-calculator": {
+    guide: "/guides/bandwidth-pricing-guide/",
+    support: ["/guides/bandwidth-pricing-guardrails/", "/guides/cdn-cost-pass-through/", "/glossary/egress/", "/glossary/bandwidth/"],
+  },
   "storage-cost-calculator": {
     guide: "/guides/price-per-gb-month-explained/",
     support: ["/guides/storage-costs-and-pricing/", "/guides/storage-retrieval-fees/", "/glossary/gb-month/", "/glossary/retrieval-fees/"],
