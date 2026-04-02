@@ -23,8 +23,8 @@ const assert = (condition, message) => {
   }
 };
 
-assert(indexedGuideCount <= 90, `wave 1 recovery: expected <= 90 indexed guides, got ${indexedGuideCount}`);
-assert(indexedGlossaryCount <= 70, `wave 1 recovery: expected <= 70 indexed glossary entries, got ${indexedGlossaryCount}`);
+assert(indexedGuideCount <= 74, `wave 1 recovery: expected <= 74 indexed guides, got ${indexedGuideCount}`);
+assert(indexedGlossaryCount <= 57, `wave 1 recovery: expected <= 57 indexed glossary entries, got ${indexedGlossaryCount}`);
 
 const expectedGuideNoindex = [
   "pricing-page-case-studies",
@@ -38,7 +38,13 @@ const expectedGuideNoindex = [
   "onboarding-milestone-pricing",
   "pricing-page-copy",
   "billing-dunning-strategy",
-  "pricing-rollout-playbook"
+  "pricing-rollout-playbook",
+  "activation-pricing-triggers",
+  "add-on-attach-rate-optimization",
+  "api-free-tier-guardrails",
+  "api-rate-limit-pricing",
+  "pricing-page-layout-checklist",
+  "pricing-tier-mistakes"
 ];
 
 const expectedGlossaryNoindex = [
@@ -54,7 +60,14 @@ const expectedGlossaryNoindex = [
   "discount",
   "annual-plan",
   "bookings",
-  "contract-value"
+  "contract-value",
+  "a-b-test",
+  "activation",
+  "acv",
+  "arrr",
+  "cohort",
+  "p50",
+  "p90"
 ];
 
 for (const slug of expectedGuideNoindex) {

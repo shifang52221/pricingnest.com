@@ -29,7 +29,32 @@ const staticNoindexUrls = Object.entries(governanceModule.STATIC_PAGE_GOVERNANCE
   .filter(([, robots]) => robots === "noindex,follow")
   .map(([pathname]) => `https://pricingnest.com${pathname}`);
 
-for (const url of [...guideNoindexUrls, ...glossaryNoindexUrls, ...staticNoindexUrls]) {
+const nextWaveGuideNoindexUrls = [
+  "https://pricingnest.com/guides/activation-pricing-triggers/",
+  "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
+  "https://pricingnest.com/guides/api-free-tier-guardrails/",
+  "https://pricingnest.com/guides/api-rate-limit-pricing/",
+  "https://pricingnest.com/guides/pricing-page-layout-checklist/",
+  "https://pricingnest.com/guides/pricing-tier-mistakes/"
+];
+
+const nextWaveGlossaryNoindexUrls = [
+  "https://pricingnest.com/glossary/a-b-test/",
+  "https://pricingnest.com/glossary/activation/",
+  "https://pricingnest.com/glossary/acv/",
+  "https://pricingnest.com/glossary/arrr/",
+  "https://pricingnest.com/glossary/cohort/",
+  "https://pricingnest.com/glossary/p50/",
+  "https://pricingnest.com/glossary/p90/"
+];
+
+for (const url of [
+  ...guideNoindexUrls,
+  ...glossaryNoindexUrls,
+  ...staticNoindexUrls,
+  ...nextWaveGuideNoindexUrls,
+  ...nextWaveGlossaryNoindexUrls
+]) {
   assert(!sitemapText.includes(`<loc>${url}</loc>`), `sitemap governance: noindex URL should be excluded from sitemap: ${url}`);
 }
 

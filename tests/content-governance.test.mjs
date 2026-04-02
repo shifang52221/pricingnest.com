@@ -40,7 +40,13 @@ const guideNoindexCandidates = [
   "rate-card-quoting",
   "retention-campaign-calendar",
   "revenue-recognition-basics",
-  "sales-discount-approval"
+  "sales-discount-approval",
+  "activation-pricing-triggers",
+  "add-on-attach-rate-optimization",
+  "api-free-tier-guardrails",
+  "api-rate-limit-pricing",
+  "pricing-page-layout-checklist",
+  "pricing-tier-mistakes"
 ];
 
 const glossaryNoindexCandidates = [
@@ -52,7 +58,14 @@ const glossaryNoindexCandidates = [
   "tiers",
   "unit-economics",
   "platform-fee",
-  "discount"
+  "discount",
+  "a-b-test",
+  "activation",
+  "acv",
+  "arrr",
+  "cohort",
+  "p50",
+  "p90"
 ];
 
 const staticNoindexCandidates = [

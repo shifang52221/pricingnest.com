@@ -55,7 +55,14 @@ export const GUIDE_GOVERNANCE = {
   "usage-estimation-guide": "noindex,follow",
   "trial-usage-limit-design": "noindex,follow",
   "tier-naming-strategy": "noindex,follow",
-  "plan-differentiation-matrix": "noindex,follow"
+  "plan-differentiation-matrix": "noindex,follow",
+  // Wave 3: strict-contraction first batch for weak indexed inventory pages.
+  "activation-pricing-triggers": "noindex,follow",
+  "add-on-attach-rate-optimization": "noindex,follow",
+  "api-free-tier-guardrails": "noindex,follow",
+  "api-rate-limit-pricing": "noindex,follow",
+  "pricing-page-layout-checklist": "noindex,follow",
+  "pricing-tier-mistakes": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {
@@ -93,7 +100,15 @@ export const GLOSSARY_GOVERNANCE = {
   "run-rate": "noindex,follow",
   "tcv": "noindex,follow",
   "pricing-page": "noindex,follow",
-  "upsell": "noindex,follow"
+  "upsell": "noindex,follow",
+  // Wave 3: stricter glossary contraction for thin, generic support terms.
+  "a-b-test": "noindex,follow",
+  "activation": "noindex,follow",
+  "acv": "noindex,follow",
+  "arrr": "noindex,follow",
+  "cohort": "noindex,follow",
+  "p50": "noindex,follow",
+  "p90": "noindex,follow"
 };
 
 export const STATIC_PAGE_GOVERNANCE = {
