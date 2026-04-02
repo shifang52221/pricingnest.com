@@ -68,11 +68,13 @@ if (storageStart === -1 || storageObjectStart === -1 || storageEnd === -1) {
 }
 
 const storageBlock = text.slice(storageObjectStart, storageEnd);
+const normalizedStorageBlock = storageBlock.replace(/\r\n/g, "\n");
+
+const expectedMetaDescriptionSnippet =
+  'metaDescription:\n      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately."';
 
 const requiredSnippets = [
   'metaTitle: "Storage Pricing Calculator & Price Per GB-Month Floor | PricingNest"',
-  "metaDescription:",
-  '"Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately."',
   'label: "Price Per GB-Month Explained"',
   'label: "Storage Costs and Pricing"',
   'label: "Storage Retrieval Fees"',
@@ -93,6 +95,10 @@ for (const snippet of requiredSnippets) {
   if (!storageBlock.includes(snippet)) {
     throw new Error(`storage pricing content missing snippet: ${snippet}`);
   }
+}
+
+if (!normalizedStorageBlock.includes(expectedMetaDescriptionSnippet)) {
+  throw new Error(`storage pricing content missing snippet: ${expectedMetaDescriptionSnippet}`);
 }
 
 for (const snippet of forbiddenSnippets) {
