@@ -47,9 +47,9 @@ const expected = [
   {
     slug: "storage-cost-calculator",
     name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
-    metaTitle: "Cost Per GB Calculator for Storage Pricing | PricingNest",
+    metaTitle: "Storage Pricing Calculator & Price Per GB-Month Floor | PricingNest",
     metaDescription:
-      "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model."
+      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately."
   }
 ];
 

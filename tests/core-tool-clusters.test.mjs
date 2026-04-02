@@ -14,7 +14,7 @@ const toolPageText = readFileSync(toolPagePath, "utf-8");
 const expectations = {
   "storage-cost-calculator": {
     guide: "/guides/price-per-gb-month-explained/",
-    support: ["/guides/storage-costs-and-pricing/", "/glossary/gb-month/", "/glossary/storage-costs/"],
+    support: ["/guides/storage-costs-and-pricing/", "/guides/storage-retrieval-fees/", "/glossary/gb-month/", "/glossary/retrieval-fees/"],
   },
   "compute-cost-estimator": {
     guide: "/guides/saas-gross-margin-targets/",
