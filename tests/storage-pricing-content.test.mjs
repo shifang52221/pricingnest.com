@@ -9,17 +9,70 @@ const toolsPath = join(__dirname, "..", "src", "lib", "tools.ts");
 const text = readFileSync(toolsPath, "utf-8");
 
 const storageStart = text.indexOf('slug: "storage-cost-calculator"');
-const storageEnd = text.indexOf("export function getToolBySlug", storageStart);
+const storageObjectStart = text.lastIndexOf("{", storageStart);
 
-if (storageStart === -1 || storageEnd === -1) {
+const findMatchingBrace = (source, startIndex) => {
+  let depth = 0;
+  let inSingleQuote = false;
+  let inDoubleQuote = false;
+  let inTemplateString = false;
+  let isEscaped = false;
+
+  for (let index = startIndex; index < source.length; index += 1) {
+    const char = source[index];
+
+    if (inSingleQuote || inDoubleQuote || inTemplateString) {
+      if (isEscaped) {
+        isEscaped = false;
+        continue;
+      }
+
+      if (char === "\\") {
+        isEscaped = true;
+        continue;
+      }
+
+      if (inSingleQuote && char === "'") inSingleQuote = false;
+      if (inDoubleQuote && char === '"') inDoubleQuote = false;
+      if (inTemplateString && char === "`") inTemplateString = false;
+      continue;
+    }
+
+    if (char === "'") {
+      inSingleQuote = true;
+      continue;
+    }
+    if (char === '"') {
+      inDoubleQuote = true;
+      continue;
+    }
+    if (char === "`") {
+      inTemplateString = true;
+      continue;
+    }
+
+    if (char === "{") depth += 1;
+    if (char === "}") {
+      depth -= 1;
+      if (depth === 0) return index + 1;
+    }
+  }
+
+  return -1;
+};
+
+const storageEnd = storageObjectStart === -1 ? -1 : findMatchingBrace(text, storageObjectStart);
+
+if (storageStart === -1 || storageObjectStart === -1 || storageEnd === -1) {
   throw new Error("storage pricing content: could not isolate storage-cost-calculator block");
 }
 
-const storageBlock = text.slice(storageStart, storageEnd);
+const storageBlock = text.slice(storageObjectStart, storageEnd);
 
 const requiredSnippets = [
   'metaTitle: "Storage Pricing Calculator & Price Per GB-Month Floor | PricingNest"',
-  'metaDescription:\n      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately."',
+  "metaDescription:",
+  '"Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately."',
   'label: "Price Per GB-Month Explained"',
   'label: "Storage Costs and Pricing"',
   'label: "Storage Retrieval Fees"',
