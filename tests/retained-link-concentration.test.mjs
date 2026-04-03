@@ -14,6 +14,7 @@ const pricingPageTrustGuidePath = join(__dirname, "..", "src", "content", "guide
 const pricePerGbMonthGuidePath = join(__dirname, "..", "src", "content", "guides", "price-per-gb-month-explained.md");
 const valueMetricSelectionGuidePath = join(__dirname, "..", "src", "content", "guides", "value-metric-selection.md");
 const saasGrossMarginTargetsGuidePath = join(__dirname, "..", "src", "content", "guides", "saas-gross-margin-targets.md");
+const apiPricingModelGuidePath = join(__dirname, "..", "src", "content", "guides", "api-pricing-model.md");
 const apiCallGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "api-call.md");
 const annualPrepayDiscountGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "annual-prepay-discount.md");
 const rateLimitGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "rate-limit.md");
@@ -28,6 +29,7 @@ const pricingPageTrustGuideText = readFileSync(pricingPageTrustGuidePath, "utf-8
 const pricePerGbMonthGuideText = readFileSync(pricePerGbMonthGuidePath, "utf-8");
 const valueMetricSelectionGuideText = readFileSync(valueMetricSelectionGuidePath, "utf-8");
 const saasGrossMarginTargetsGuideText = readFileSync(saasGrossMarginTargetsGuidePath, "utf-8");
+const apiPricingModelGuideText = readFileSync(apiPricingModelGuidePath, "utf-8");
 const apiCallGlossaryText = readFileSync(apiCallGlossaryPath, "utf-8");
 const annualPrepayDiscountGlossaryText = readFileSync(annualPrepayDiscountGlossaryPath, "utf-8");
 const rateLimitGlossaryText = readFileSync(rateLimitGlossaryPath, "utf-8");
@@ -86,6 +88,10 @@ assertExcludes(valueMetricSelectionGuideText, "value metric selection guide", "/
 assertIncludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/gross-margin/");
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/cogs/");
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/unit-economics/");
+
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/api-call/");
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/rate-limit/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/cogs/");
 
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-pricing-model/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/saas-pricing/api-pricing-calculator/");

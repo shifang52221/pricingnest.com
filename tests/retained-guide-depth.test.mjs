@@ -123,6 +123,19 @@ const guideChecks = [
     ],
     keywords: ["pass-through costs", "blended unit cost", "self-serve", "enterprise", "margin floor"],
   },
+  {
+    slug: "api-pricing-model",
+    minWords: 500,
+    headings: [
+      "## When API pricing deserves its own model",
+      "## Inputs to confirm before you price",
+      "## Where API teams underprice",
+      "## Pricing options and trade-offs",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["billable unit", "free tier", "rate limit", "overage", "gross margin"],
+  },
 ];
 
 const assert = (condition, message) => {
