@@ -405,7 +405,7 @@ const guideLinks = (() => {
 const coreToolClusterLinks = getCoreToolClusterLinks(tool.slug);
 
 const recommendedLinks = coreToolClusterLinks
-  ? dedupeLinks(coreToolClusterLinks.filter(isIndexableResourceLink))
+  ? dedupeLinks(coreToolClusterLinks)
   : dedupeLinks([
       ...useCaseLinks.filter((link) => link.href !== "/saas-pricing/use-cases/").slice(0, 2),
       ...guideLinks.filter((link) => link.href !== "/glossary/").filter(isIndexableResourceLink).slice(0, 6),
