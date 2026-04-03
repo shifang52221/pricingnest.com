@@ -20,7 +20,7 @@ sources:
   - kind: "supporting-page"
     label: "Value Metric"
     href: "/glossary/value-metric/"
-    note: "Keep the billing model tied to a outcome the buyer already recognizes."
+    note: "Keep the billing model tied to an outcome the buyer already recognizes."
   - kind: "supporting-page"
     label: "Tiered Usage Pricing Calculator"
     href: "/saas-pricing/tiered-usage-pricing-calculator/"
@@ -46,9 +46,8 @@ Run the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calcu
 the unit price still creates margin after included usage and overage are factored in. Use the [Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/)
 to validate that each plan’s included usage, tiers, and upgrade logic stay explainable as volume grows. Review [Value Metric](/glossary/value-metric/)
 and [Pricing Metric](/glossary/pricing-metric/) to make sure the unit you bill on is still aligned with the outcome customers care about.
-
-## Next steps
-- Align your hire-metric review with [Value Metric Selection](/guides/value-metric-selection/) so that the usage unit you bill on matches the customer outcome narrative.
+If the unit still feels fuzzy, compare it against the retained [Value Metric Selection](/guides/value-metric-selection/) guide before
+finalizing tiers or overage thresholds.
 
 ## Common interpretation mistakes
 - Selling usage-based pricing without publishing usage examples, which makes it impossible for buyers to estimate cost.

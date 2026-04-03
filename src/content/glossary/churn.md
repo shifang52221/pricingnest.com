@@ -6,9 +6,9 @@ author: "PricingNest Editorial Team"
 reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-04-03"
 category: "metrics"
-guides: ["churn-reduction-playbook", "downgrade-prevention", "annual-renewal-strategy", "pricing-increase-playbook"]
+guides: ["annual-prepay-discount", "pricing-increase-playbook"]
 tools: ["churn-impact-calculator","ltv-calculator","pricing-increase-impact-calculator"]
-glossary: ["mrr","ltv","nrr","grr","annual-prepay-discount"]
+glossary: ["annual-prepay-discount","ltv","nrr","grr","gross-margin"]
 sources:
   - kind: "internal-input"
     label: "Cancellation, downgrade, and cohort retention review"
