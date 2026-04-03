@@ -97,6 +97,32 @@ const guideChecks = [
     ],
     keywords: ["request-heavy", "retrieval", "replication", "backup", "minimum commitment"],
   },
+  {
+    slug: "value-metric-selection",
+    minWords: 500,
+    headings: [
+      "## When value metric selection becomes a pricing problem",
+      "## Inputs to confirm before you lock the metric",
+      "## Where teams choose the wrong metric",
+      "## Value metric vs pricing metric vs packaging simplicity",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["buyer-visible value", "cost alignment", "segment fit", "pricing metric", "migration risk"],
+  },
+  {
+    slug: "saas-gross-margin-targets",
+    minWords: 500,
+    headings: [
+      "## When gross margin targets shape pricing decisions",
+      "## Inputs to confirm before choosing a target range",
+      "## Where teams set the wrong margin target",
+      "## Margin target vs growth, pass-through costs, and packaging",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["pass-through costs", "blended unit cost", "self-serve", "enterprise", "margin floor"],
+  },
 ];
 
 const assert = (condition, message) => {

@@ -12,6 +12,8 @@ const baseLayoutPath = join(__dirname, "..", "src", "layouts", "BaseLayout.astro
 const minimumCommitmentGuidePath = join(__dirname, "..", "src", "content", "guides", "minimum-commitment-model.md");
 const pricingPageTrustGuidePath = join(__dirname, "..", "src", "content", "guides", "pricing-page-trust-elements.md");
 const pricePerGbMonthGuidePath = join(__dirname, "..", "src", "content", "guides", "price-per-gb-month-explained.md");
+const valueMetricSelectionGuidePath = join(__dirname, "..", "src", "content", "guides", "value-metric-selection.md");
+const saasGrossMarginTargetsGuidePath = join(__dirname, "..", "src", "content", "guides", "saas-gross-margin-targets.md");
 const rateLimitGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "rate-limit.md");
 const billingCycleGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "billing-cycle.md");
 
@@ -22,6 +24,8 @@ const baseLayoutText = readFileSync(baseLayoutPath, "utf-8");
 const minimumCommitmentGuideText = readFileSync(minimumCommitmentGuidePath, "utf-8");
 const pricingPageTrustGuideText = readFileSync(pricingPageTrustGuidePath, "utf-8");
 const pricePerGbMonthGuideText = readFileSync(pricePerGbMonthGuidePath, "utf-8");
+const valueMetricSelectionGuideText = readFileSync(valueMetricSelectionGuidePath, "utf-8");
+const saasGrossMarginTargetsGuideText = readFileSync(saasGrossMarginTargetsGuidePath, "utf-8");
 const rateLimitGlossaryText = readFileSync(rateLimitGlossaryPath, "utf-8");
 const billingCycleGlossaryText = readFileSync(billingCycleGlossaryPath, "utf-8");
 
@@ -70,6 +74,14 @@ assertExcludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossar
 assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/gb-month/");
 assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/storage-costs/");
 assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/cogs/");
+
+assertIncludes(valueMetricSelectionGuideText, "value metric selection guide", "/glossary/value-metric/");
+assertIncludes(valueMetricSelectionGuideText, "value metric selection guide", "/glossary/pricing-metric/");
+assertExcludes(valueMetricSelectionGuideText, "value metric selection guide", "/glossary/arpa/");
+
+assertIncludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/gross-margin/");
+assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/cogs/");
+assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/unit-economics/");
 
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
 assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-rate-limit-pricing/");
