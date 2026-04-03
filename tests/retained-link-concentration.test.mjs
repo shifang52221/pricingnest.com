@@ -11,6 +11,7 @@ const homepagePath = join(__dirname, "..", "src", "pages", "index.astro");
 const baseLayoutPath = join(__dirname, "..", "src", "layouts", "BaseLayout.astro");
 const minimumCommitmentGuidePath = join(__dirname, "..", "src", "content", "guides", "minimum-commitment-model.md");
 const pricingPageTrustGuidePath = join(__dirname, "..", "src", "content", "guides", "pricing-page-trust-elements.md");
+const pricePerGbMonthGuidePath = join(__dirname, "..", "src", "content", "guides", "price-per-gb-month-explained.md");
 
 const guidesPageText = readFileSync(guidesPagePath, "utf-8");
 const glossaryPageText = readFileSync(glossaryPagePath, "utf-8");
@@ -18,6 +19,7 @@ const homepageText = readFileSync(homepagePath, "utf-8");
 const baseLayoutText = readFileSync(baseLayoutPath, "utf-8");
 const minimumCommitmentGuideText = readFileSync(minimumCommitmentGuidePath, "utf-8");
 const pricingPageTrustGuideText = readFileSync(pricingPageTrustGuidePath, "utf-8");
+const pricePerGbMonthGuideText = readFileSync(pricePerGbMonthGuidePath, "utf-8");
 
 const assertIncludes = (text, label, expected) => {
   if (!text.includes(expected)) {
@@ -59,6 +61,11 @@ for (const unexpected of [
 
 assertExcludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossary/tcv/");
 assertIncludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossary/billing-cycle/");
+assertExcludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossary/contract-value/");
+
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/gb-month/");
+assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/storage-costs/");
+assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/cogs/");
 
 assertExcludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/pricing-page/");
 assertIncludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/annual-prepay-discount/");
