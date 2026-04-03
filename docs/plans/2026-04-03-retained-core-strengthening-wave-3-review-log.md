@@ -1,44 +1,59 @@
 # Retained Core Strengthening Wave 3 Review Log
 
 ## What This Batch Changed
-- Added guard-rail tests that force `api-pricing-model`, `usage-based-pricing`, and `churn` to follow retained depth, trust, and link discipline before being rewritten.
-- Rewrote `api-pricing-model` as a retained decision guide with new trust metadata, sources, and retained-core link targets.
-- Rebuilt `usage-based-pricing` and `churn` as retained glossary support pages that explain packaging, margin protection, pricing-risk, and renewal interpretation with links to stronger retained neighbors.
-- Added `value-metric-selection`, `pricing-increase-impact-calculator`, `annual-prepay-discount`, and related retained references so the glossary pair now leans on the right support ecosystem.
+- Strengthened one retained guide bridge page:
+  - `api-pricing-model`
+- Strengthened two retained glossary bridge pages:
+  - `usage-based-pricing`
+  - `churn`
+- Added retained depth coverage so `api-pricing-model` now has the same retained-guide bar as the stronger decision pages.
+- Added retained link-concentration coverage so:
+  - `api-pricing-model` now depends on `api-call` and `rate-limit` instead of weaker glossary support such as `cogs`
+  - `usage-based-pricing` now depends on `value-metric-selection` instead of `usage-mix-modeling`
+  - `churn` now depends on retained annual and pricing-impact pathways instead of weak `noindex` support pages
+- Extended retained guide trust coverage so `api-pricing-model` now carries the same source metadata floor as the stronger retained guides.
 
 ## What This Batch Intentionally Did Not Change
-- No URL changes or new pages.
-- No formula or calculator logic changes.
-- No bandwidth topic work in this batch (deferred until the unified bandwidth upload is live-verified).
-- No contraction wave beyond the existing governance baseline.
+- No URL structure changes.
+- No new pages.
+- No calculator formula changes.
+- No new contraction wave.
+- No bandwidth guide work in this batch.
 - No push, merge, or live-site verification.
 
 ## Verification Run
-- node tests/retained-guide-depth.test.mjs
-- node tests/retained-glossary-depth.test.mjs
-- node tests/guide-trust-data.test.mjs
-- node tests/glossary-trust-data.test.mjs
-- node tests/retained-link-concentration.test.mjs
-- node tests/site-quality-signals.test.mjs
-- node tests/template-quality.test.mjs
-- node tests/hub-curation.test.mjs
-- node tests/navigation-deduping.test.mjs
-- node tests/tool-trust-data.test.mjs
-- node tests/seo-meta.test.mjs
-- node tests/content-governance.test.mjs
-- node tests/recovery-retention-thresholds.test.mjs
-- npm run build
-- node tests/sitemap-governance.test.mjs
+- `node tests/retained-guide-depth.test.mjs`
+- `node tests/retained-glossary-depth.test.mjs`
+- `node tests/guide-trust-data.test.mjs`
+- `node tests/glossary-trust-data.test.mjs`
+- `node tests/retained-link-concentration.test.mjs`
+- `node tests/site-quality-signals.test.mjs`
+- `node tests/template-quality.test.mjs`
+- `node tests/hub-curation.test.mjs`
+- `node tests/navigation-deduping.test.mjs`
+- `node tests/tool-trust-data.test.mjs`
+- `node tests/seo-meta.test.mjs`
+- `node tests/content-governance.test.mjs`
+- `node tests/recovery-retention-thresholds.test.mjs`
+- `npm run build`
+- `node tests/sitemap-governance.test.mjs`
 
-All commanded runs passed in `retained-core-strengthening-wave-3`.
+All passed in `retained-core-strengthening-wave-3`.
 
 ## Remaining Risks
-- Titles for both glossaries still use legacy naming; if editorial teams widen the scope again they must keep the retained headings precise.
-- The expanded depth and links now depend on precise wordings; future copy tweaks should be reviewed against the locked tests before merge.
-- The site still carries a large long-tail inventory outside the retained core; this batch lifts the key bridges but other thin pages remain for future contractions.
+- The site still carries a broad long-tail inventory outside the retained core, so retained strengthening lowers low-quality-site risk but does not eliminate it by itself.
+- The unified bandwidth batch and its live verification are still pending, which means the current recovery line is stronger locally than it is on the live site.
+- Several tool-adjacent pages outside this batch still need a future pass if the site continues to look mixed-quality after deployment and Search Console re-crawl.
 
 ## Next Recommended Batch
-- Suggested next retained effort:
-  - `storage-cost-calculator` tightening (per the original calculator roadmap)
-  - `api-pricing-model` adjacencies such as `api-pricing-guardrails` if index data still shows those queries before releasing bandwidth changes
-  - Continued monitor of retained glossary terms flagged as `observe-for-now` once new traffic evidence appears
+- Do not start another retained bridge batch immediately.
+- Recommended next step:
+  - unify and live-verify the held bandwidth batch
+  - check no-cache HTML on the live site
+  - only then decide whether the next batch should be:
+    - `bandwidth-pricing-guide`
+    - `storage-cost-calculator` tightening
+    - another small retained support pass near the storage or pricing-change cluster
+- Rationale:
+  - the main risk now is not lack of another retained page rewrite
+  - the bigger risk is that the strengthened recovery line is still not fully reflected in the live environment
