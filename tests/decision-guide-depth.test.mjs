@@ -42,6 +42,30 @@ const guideChecks = [
     ],
     keywords: ["retrieval", "request fees", "egress", "cold storage"],
   },
+  {
+    slug: "bandwidth-pricing-guardrails",
+    headings: [
+      "## When bandwidth guardrails are necessary",
+      "## What to confirm before setting the guardrails",
+      "## Where bandwidth guardrails fail",
+      "## Guardrail options and trade-offs",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["burst traffic", "egress", "gross margin", "included usage"],
+  },
+  {
+    slug: "cdn-cost-pass-through",
+    headings: [
+      "## When CDN pass-through is justified",
+      "## What to confirm before you pass costs through",
+      "## When pass-through hurts trust and conversion",
+      "## Pass-through vs blended pricing vs enterprise custom terms",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["pass-through", "regional mix", "cache hit rate", "conversion"],
+  },
 ];
 
 const assert = (condition, message) => {

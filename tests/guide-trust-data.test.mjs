@@ -18,6 +18,9 @@ const coreGuideSlugs = [
   "storage-costs-and-pricing",
   "usage-based-pricing-examples",
   "api-pricing-model",
+  "bandwidth-pricing-guide",
+  "bandwidth-pricing-guardrails",
+  "cdn-cost-pass-through",
 ];
 
 const assertIncludes = (text, label, expected) => {

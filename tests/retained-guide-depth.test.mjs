@@ -136,6 +136,19 @@ const guideChecks = [
     ],
     keywords: ["billable unit", "free tier", "rate limit", "overage", "gross margin"],
   },
+  {
+    slug: "bandwidth-pricing-guide",
+    minWords: 500,
+    headings: [
+      "## When bandwidth pricing deserves its own model",
+      "## Inputs to confirm before you publish a rate",
+      "## Where bandwidth teams underprice",
+      "## Pricing options and trade-offs",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["egress", "cdn", "gross margin", "regional mix", "pass-through"],
+  },
 ];
 
 const assert = (condition, message) => {
