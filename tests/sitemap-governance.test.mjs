@@ -34,7 +34,13 @@ const nextWaveGuideNoindexUrls = [
   "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
   "https://pricingnest.com/guides/api-free-tier-guardrails/",
   "https://pricingnest.com/guides/api-rate-limit-pricing/",
+  "https://pricingnest.com/guides/pricing-migration-plan/",
+  "https://pricingnest.com/guides/pricing-page-comparison-table/",
   "https://pricingnest.com/guides/pricing-page-layout-checklist/",
+  "https://pricingnest.com/guides/pricing-segmentation/",
+  "https://pricingnest.com/guides/rfp-pricing-response/",
+  "https://pricingnest.com/guides/seat-utilization-forecast/",
+  "https://pricingnest.com/guides/usage-mix-modeling/",
   "https://pricingnest.com/guides/pricing-tier-mistakes/"
 ];
 
@@ -43,7 +49,11 @@ const nextWaveGlossaryNoindexUrls = [
   "https://pricingnest.com/glossary/activation/",
   "https://pricingnest.com/glossary/acv/",
   "https://pricingnest.com/glossary/arrr/",
+  "https://pricingnest.com/glossary/backup/",
+  "https://pricingnest.com/glossary/burst-traffic/",
   "https://pricingnest.com/glossary/cohort/",
+  "https://pricingnest.com/glossary/replication/",
+  "https://pricingnest.com/glossary/usage-forecast/",
   "https://pricingnest.com/glossary/p50/",
   "https://pricingnest.com/glossary/p90/"
 ];

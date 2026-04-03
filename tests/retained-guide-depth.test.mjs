@@ -71,6 +71,71 @@ const guideChecks = [
     ],
     keywords: ["cash flow", "retention", "renewal", "effective monthly rate", "discount guardrails"],
   },
+  {
+    slug: "minimum-commitment-model",
+    minWords: 500,
+    headings: [
+      "## When minimum commitments are the right pricing tool",
+      "## Inputs to confirm before you set a commitment",
+      "## Where minimum commitments go wrong",
+      "## Commitment vs platform fee vs included usage",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["platform fee", "billing cycle", "annual prepay", "gross margin", "contracted floor"],
+  },
+  {
+    slug: "price-per-gb-month-explained",
+    minWords: 500,
+    headings: [
+      "## When price per GB-month is a useful buyer-facing metric",
+      "## Inputs to confirm before publishing a storage price",
+      "## Where storage teams underprice",
+      "## When to separate request, retrieval, or replication charges",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["request-heavy", "retrieval", "replication", "backup", "minimum commitment"],
+  },
+  {
+    slug: "value-metric-selection",
+    minWords: 500,
+    headings: [
+      "## When value metric selection becomes a pricing problem",
+      "## Inputs to confirm before you lock the metric",
+      "## Where teams choose the wrong metric",
+      "## Value metric vs pricing metric vs packaging simplicity",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["buyer-visible value", "cost alignment", "segment fit", "pricing metric", "migration risk"],
+  },
+  {
+    slug: "saas-gross-margin-targets",
+    minWords: 500,
+    headings: [
+      "## When gross margin targets shape pricing decisions",
+      "## Inputs to confirm before choosing a target range",
+      "## Where teams set the wrong margin target",
+      "## Margin target vs growth, pass-through costs, and packaging",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["pass-through costs", "blended unit cost", "self-serve", "enterprise", "margin floor"],
+  },
+  {
+    slug: "api-pricing-model",
+    minWords: 500,
+    headings: [
+      "## When API pricing deserves its own model",
+      "## Inputs to confirm before you price",
+      "## Where API teams underprice",
+      "## Pricing options and trade-offs",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["billable unit", "free tier", "rate limit", "overage", "gross margin"],
+  },
 ];
 
 const assert = (condition, message) => {
