@@ -21,9 +21,11 @@ const retainedGlossarySlugs = [
   "minimum-commitment",
   "gb-month",
   "rate-limit",
+  "billing-cycle",
   "annual-prepay-discount",
   "usage-based-pricing",
   "churn",
+  "api-call",
 ];
 
 const assertIncludes = (text, label, expected) => {

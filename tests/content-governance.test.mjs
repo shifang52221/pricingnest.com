@@ -45,7 +45,13 @@ const guideNoindexCandidates = [
   "add-on-attach-rate-optimization",
   "api-free-tier-guardrails",
   "api-rate-limit-pricing",
+  "pricing-migration-plan",
+  "pricing-page-comparison-table",
   "pricing-page-layout-checklist",
+  "pricing-segmentation",
+  "rfp-pricing-response",
+  "seat-utilization-forecast",
+  "usage-mix-modeling",
   "pricing-tier-mistakes"
 ];
 
@@ -63,7 +69,11 @@ const glossaryNoindexCandidates = [
   "activation",
   "acv",
   "arrr",
+  "backup",
+  "burst-traffic",
   "cohort",
+  "replication",
+  "usage-forecast",
   "p50",
   "p90"
 ];

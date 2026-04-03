@@ -23,8 +23,8 @@ const assert = (condition, message) => {
   }
 };
 
-assert(indexedGuideCount <= 74, `wave 1 recovery: expected <= 74 indexed guides, got ${indexedGuideCount}`);
-assert(indexedGlossaryCount <= 57, `wave 1 recovery: expected <= 57 indexed glossary entries, got ${indexedGlossaryCount}`);
+assert(indexedGuideCount <= 68, `wave 2 recovery: expected <= 68 indexed guides, got ${indexedGuideCount}`);
+assert(indexedGlossaryCount <= 53, `wave 2 recovery: expected <= 53 indexed glossary entries, got ${indexedGlossaryCount}`);
 
 const expectedGuideNoindex = [
   "pricing-page-case-studies",
@@ -43,7 +43,13 @@ const expectedGuideNoindex = [
   "add-on-attach-rate-optimization",
   "api-free-tier-guardrails",
   "api-rate-limit-pricing",
+  "pricing-migration-plan",
+  "pricing-page-comparison-table",
   "pricing-page-layout-checklist",
+  "pricing-segmentation",
+  "rfp-pricing-response",
+  "seat-utilization-forecast",
+  "usage-mix-modeling",
   "pricing-tier-mistakes"
 ];
 
@@ -65,7 +71,11 @@ const expectedGlossaryNoindex = [
   "activation",
   "acv",
   "arrr",
+  "backup",
+  "burst-traffic",
   "cohort",
+  "replication",
+  "usage-forecast",
   "p50",
   "p90"
 ];
@@ -73,14 +83,14 @@ const expectedGlossaryNoindex = [
 for (const slug of expectedGuideNoindex) {
   assert(
     governanceModule.GUIDE_GOVERNANCE[slug] === "noindex,follow",
-    `wave 1 recovery: expected guide ${slug} to be noindex,follow`
+    `wave 2 recovery: expected guide ${slug} to be noindex,follow`
   );
 }
 
 for (const slug of expectedGlossaryNoindex) {
   assert(
     governanceModule.GLOSSARY_GOVERNANCE[slug] === "noindex,follow",
-    `wave 1 recovery: expected glossary ${slug} to be noindex,follow`
+    `wave 2 recovery: expected glossary ${slug} to be noindex,follow`
   );
 }
 
