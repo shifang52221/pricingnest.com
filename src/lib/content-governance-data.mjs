@@ -62,7 +62,15 @@ export const GUIDE_GOVERNANCE = {
   "api-free-tier-guardrails": "noindex,follow",
   "api-rate-limit-pricing": "noindex,follow",
   "pricing-page-layout-checklist": "noindex,follow",
-  "pricing-tier-mistakes": "noindex,follow"
+  "pricing-tier-mistakes": "noindex,follow",
+  // Wave 4: tighten retained-core visibility by removing more thin guide inventory
+  // that still overlaps stronger calculator-adjacent pages.
+  "pricing-migration-plan": "noindex,follow",
+  "pricing-page-comparison-table": "noindex,follow",
+  "pricing-segmentation": "noindex,follow",
+  "rfp-pricing-response": "noindex,follow",
+  "seat-utilization-forecast": "noindex,follow",
+  "usage-mix-modeling": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {
@@ -108,7 +116,13 @@ export const GLOSSARY_GOVERNANCE = {
   "arrr": "noindex,follow",
   "cohort": "noindex,follow",
   "p50": "noindex,follow",
-  "p90": "noindex,follow"
+  "p90": "noindex,follow",
+  // Wave 4: remove generic glossary support terms that are too thin to justify
+  // retained indexed visibility under the stricter glossary bar.
+  "backup": "noindex,follow",
+  "burst-traffic": "noindex,follow",
+  "replication": "noindex,follow",
+  "usage-forecast": "noindex,follow"
 };
 
 export const STATIC_PAGE_GOVERNANCE = {
