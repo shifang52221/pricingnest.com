@@ -102,6 +102,32 @@ const termChecks = [
     ],
     keywords: ["average", "storage", "retrieval", "region", "replication"],
   },
+  {
+    slug: "rate-limit",
+    minWords: 260,
+    headings: [
+      "## Definition",
+      "## Why it matters in pricing decisions",
+      "## How rate limits affect plan design and margin protection",
+      "## How to use it with PricingNest tools",
+      "## Common interpretation mistakes",
+      "## Example",
+    ],
+    keywords: ["burst traffic", "fairness", "error budget", "overage", "buyer expectation"],
+  },
+  {
+    slug: "billing-cycle",
+    minWords: 260,
+    headings: [
+      "## Definition",
+      "## Why it matters in pricing decisions",
+      "## How billing cycle changes discount, churn, and cash flow interpretation",
+      "## How to use it with PricingNest tools",
+      "## Common interpretation mistakes",
+      "## Example",
+    ],
+    keywords: ["monthly versus annual", "cash flow", "renewal behavior", "effective monthly rate", "mrr"],
+  },
 ];
 
 const assert = (condition, message) => {
