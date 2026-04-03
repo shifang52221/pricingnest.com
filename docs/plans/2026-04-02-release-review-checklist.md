@@ -16,18 +16,19 @@
 ## Standard Verification Commands
 ```bash
 node tests/content-governance.test.mjs
-node tests/sitemap-governance.test.mjs
 node tests/site-quality-signals.test.mjs
 node tests/template-quality.test.mjs
 node tests/hub-curation.test.mjs
 node tests/navigation-deduping.test.mjs
 node tests/tool-trust-data.test.mjs
 npm run build
+node tests/sitemap-governance.test.mjs
 ```
 
 ## Batch-Specific Verification Rule
 - Always add the wave-specific or feature-specific tests for the batch before the standard verification set.
 - Examples: `bandwidth-pricing-content`, `wave-two-governance`, `recovery-retention-thresholds`, or any newly added retained-depth tests.
+- If a test reads generated `dist` artifacts, rebuild first and then run that verification against the fresh output.
 
 ## Diff Review Questions
 - Did the batch only touch the approved scope?
