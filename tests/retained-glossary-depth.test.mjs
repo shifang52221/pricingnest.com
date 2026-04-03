@@ -154,6 +154,32 @@ const termChecks = [
     ],
     keywords: ["effective monthly rate", "renewal behavior", "cash flow", "margin protection", "annual versus monthly"],
   },
+  {
+    slug: "usage-based-pricing",
+    minWords: 260,
+    headings: [
+      "## Definition",
+      "## Why it matters in pricing decisions",
+      "## How usage-based pricing changes packaging and margin protection",
+      "## How to use it with PricingNest tools",
+      "## Common interpretation mistakes",
+      "## Example",
+    ],
+    keywords: ["value metric", "included usage", "overage", "forecast", "segment predictability"],
+  },
+  {
+    slug: "churn",
+    minWords: 260,
+    headings: [
+      "## Definition",
+      "## Why it matters in pricing decisions",
+      "## How churn changes pricing, retention, and expansion interpretation",
+      "## How to use it with PricingNest tools",
+      "## Common interpretation mistakes",
+      "## Example",
+    ],
+    keywords: ["logo churn", "revenue churn", "renewal behavior", "price change", "ltv sensitivity"],
+  },
 ];
 
 const assert = (condition, message) => {

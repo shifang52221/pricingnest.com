@@ -19,6 +19,8 @@ const apiCallGlossaryPath = join(__dirname, "..", "src", "content", "glossary", 
 const annualPrepayDiscountGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "annual-prepay-discount.md");
 const rateLimitGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "rate-limit.md");
 const billingCycleGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "billing-cycle.md");
+const usageBasedPricingGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "usage-based-pricing.md");
+const churnGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "churn.md");
 
 const guidesPageText = readFileSync(guidesPagePath, "utf-8");
 const glossaryPageText = readFileSync(glossaryPagePath, "utf-8");
@@ -34,6 +36,8 @@ const apiCallGlossaryText = readFileSync(apiCallGlossaryPath, "utf-8");
 const annualPrepayDiscountGlossaryText = readFileSync(annualPrepayDiscountGlossaryPath, "utf-8");
 const rateLimitGlossaryText = readFileSync(rateLimitGlossaryPath, "utf-8");
 const billingCycleGlossaryText = readFileSync(billingCycleGlossaryPath, "utf-8");
+const usageBasedPricingGlossaryText = readFileSync(usageBasedPricingGlossaryPath, "utf-8");
+const churnGlossaryText = readFileSync(churnGlossaryPath, "utf-8");
 
 const assertIncludes = (text, label, expected) => {
   if (!text.includes(expected)) {
@@ -101,6 +105,15 @@ assertExcludes(apiCallGlossaryText, "api call glossary", "/guides/request-pricin
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/guides/annual-prepay-discount/");
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/saas-pricing/annual-discount-calculator/");
 assertExcludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/glossary/annual-plan/");
+
+assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/guides/value-metric-selection/");
+assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/saas-pricing/usage-based-pricing-calculator/");
+assertExcludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/guides/usage-mix-modeling/");
+
+assertIncludes(churnGlossaryText, "churn glossary", "/guides/annual-prepay-discount/");
+assertIncludes(churnGlossaryText, "churn glossary", "/saas-pricing/pricing-increase-impact-calculator/");
+assertExcludes(churnGlossaryText, "churn glossary", "/guides/churn-survey-insights/");
+assertExcludes(churnGlossaryText, "churn glossary", "/guides/annual-renewal-strategy/");
 
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
 assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-rate-limit-pricing/");
