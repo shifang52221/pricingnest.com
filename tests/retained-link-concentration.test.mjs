@@ -15,6 +15,9 @@ const pricePerGbMonthGuidePath = join(__dirname, "..", "src", "content", "guides
 const valueMetricSelectionGuidePath = join(__dirname, "..", "src", "content", "guides", "value-metric-selection.md");
 const saasGrossMarginTargetsGuidePath = join(__dirname, "..", "src", "content", "guides", "saas-gross-margin-targets.md");
 const apiPricingModelGuidePath = join(__dirname, "..", "src", "content", "guides", "api-pricing-model.md");
+const bandwidthPricingGuidePath = join(__dirname, "..", "src", "content", "guides", "bandwidth-pricing-guide.md");
+const bandwidthPricingGuardrailsGuidePath = join(__dirname, "..", "src", "content", "guides", "bandwidth-pricing-guardrails.md");
+const cdnCostPassThroughGuidePath = join(__dirname, "..", "src", "content", "guides", "cdn-cost-pass-through.md");
 const apiCallGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "api-call.md");
 const annualPrepayDiscountGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "annual-prepay-discount.md");
 const rateLimitGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "rate-limit.md");
@@ -32,6 +35,9 @@ const pricePerGbMonthGuideText = readFileSync(pricePerGbMonthGuidePath, "utf-8")
 const valueMetricSelectionGuideText = readFileSync(valueMetricSelectionGuidePath, "utf-8");
 const saasGrossMarginTargetsGuideText = readFileSync(saasGrossMarginTargetsGuidePath, "utf-8");
 const apiPricingModelGuideText = readFileSync(apiPricingModelGuidePath, "utf-8");
+const bandwidthPricingGuideText = readFileSync(bandwidthPricingGuidePath, "utf-8");
+const bandwidthPricingGuardrailsGuideText = readFileSync(bandwidthPricingGuardrailsGuidePath, "utf-8");
+const cdnCostPassThroughGuideText = readFileSync(cdnCostPassThroughGuidePath, "utf-8");
 const apiCallGlossaryText = readFileSync(apiCallGlossaryPath, "utf-8");
 const annualPrepayDiscountGlossaryText = readFileSync(annualPrepayDiscountGlossaryPath, "utf-8");
 const rateLimitGlossaryText = readFileSync(rateLimitGlossaryPath, "utf-8");
@@ -96,6 +102,22 @@ assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/api-call/");
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/rate-limit/");
 assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/cogs/");
+
+assertIncludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/guides/bandwidth-pricing-guardrails/");
+assertIncludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/guides/cdn-cost-pass-through/");
+assertIncludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/glossary/egress/");
+assertExcludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/glossary/cogs/");
+
+assertIncludes(bandwidthPricingGuardrailsGuideText, "bandwidth pricing guardrails guide", "/guides/bandwidth-pricing-guide/");
+assertIncludes(bandwidthPricingGuardrailsGuideText, "bandwidth pricing guardrails guide", "/guides/cdn-cost-pass-through/");
+assertIncludes(bandwidthPricingGuardrailsGuideText, "bandwidth pricing guardrails guide", "/saas-pricing/bandwidth-cost-calculator/");
+assertExcludes(bandwidthPricingGuardrailsGuideText, "bandwidth pricing guardrails guide", "/glossary/cogs/");
+
+assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/guides/bandwidth-pricing-guide/");
+assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/guides/bandwidth-pricing-guardrails/");
+assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/saas-pricing/bandwidth-cost-calculator/");
+assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glossary/origin-fetch/");
+assertExcludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glossary/cogs/");
 
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-pricing-model/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/saas-pricing/api-pricing-calculator/");
