@@ -22,9 +22,9 @@ sources:
     href: "/saas-pricing/pricing-increase-impact-calculator/"
     note: "Model how pricing changes and renewals respond to different churn assumptions."
   - kind: "supporting-page"
-    label: "Annual Prepay Discount"
-    href: "/glossary/annual-prepay-discount/"
-    note: "Review how commitment and renewal pricing guardrails interact with churn targets."
+    label: "Annual Prepay Discount (Break-Even Guide)"
+    href: "/guides/annual-prepay-discount/"
+    note: "Review how commitment and renewal pricing guardrails interact with churn targets before treating churn as a simple discount problem."
 ---
 ## Definition
 Churn is the rate at which customers or recurring revenue are lost, measured either as logo churn (customer count) or revenue churn (cash collected).

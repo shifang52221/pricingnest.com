@@ -65,8 +65,6 @@ or adjusts the tiered upgrade path before publishing a pricing page that buyers 
 ## Tools to use
 - [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/)
 - [Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/)
-- [Value Metric](/glossary/value-metric/)
-- [Pricing Metric](/glossary/pricing-metric/)
 
 ## Related glossary terms
 - [Value Metric](/glossary/value-metric/)
