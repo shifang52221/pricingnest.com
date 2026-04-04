@@ -111,6 +111,19 @@ const guideChecks = [
     keywords: ["buyer-visible value", "cost alignment", "segment fit", "pricing metric", "migration risk"],
   },
   {
+    slug: "pricing-page-trust-elements",
+    minWords: 500,
+    headings: [
+      "## When pricing page trust becomes a pricing problem",
+      "## What buyers need to verify before they trust the page",
+      "## Where pricing pages lose trust",
+      "## Proof, policy clarity, and pricing-page simplicity",
+      "## How to interpret the calculator outputs",
+      "## Next steps",
+    ],
+    keywords: ["billing cycle", "renewal", "cancellation", "annual prepay", "included usage"],
+  },
+  {
     slug: "saas-gross-margin-targets",
     minWords: 500,
     headings: [

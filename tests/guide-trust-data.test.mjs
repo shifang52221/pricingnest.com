@@ -17,6 +17,7 @@ const coreGuideSlugs = [
   "compute-cost-modeling",
   "storage-costs-and-pricing",
   "usage-based-pricing-examples",
+  "pricing-page-trust-elements",
   "api-pricing-model",
   "bandwidth-pricing-guide",
   "bandwidth-pricing-guardrails",
