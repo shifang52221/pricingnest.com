@@ -145,8 +145,14 @@ assertIncludes(billingCycleGlossaryText, "billing cycle glossary", "/saas-pricin
 assertExcludes(billingCycleGlossaryText, "billing cycle glossary", "/guides/annual-renewal-strategy/");
 assertExcludes(billingCycleGlossaryText, "billing cycle glossary", "/glossary/annual-plan/");
 
+assertIncludes(pricingPageTrustGuideText, "pricing page trust guide", "/guides/value-metric-selection/");
+assertIncludes(pricingPageTrustGuideText, "pricing page trust guide", "/guides/annual-prepay-discount/");
+assertIncludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/billing-cycle/");
 assertExcludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/pricing-page/");
 assertIncludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/annual-prepay-discount/");
+assertExcludes(pricingPageTrustGuideText, "pricing page trust guide", "/guides/pricing-page-comparison-table/");
+assertExcludes(pricingPageTrustGuideText, "pricing page trust guide", "/guides/pricing-tier-design/");
+assertExcludes(pricingPageTrustGuideText, "pricing page trust guide", "/glossary/annual-plan/");
 
 assertIncludes(baseLayoutText, "base layout", "/saas-pricing/use-cases/");
 for (const unexpected of [
