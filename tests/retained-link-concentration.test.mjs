@@ -99,8 +99,14 @@ assertIncludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/cogs/");
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/unit-economics/");
 
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-cost-estimation/");
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/guides/value-metric-selection/");
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/api-call/");
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/rate-limit/");
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/overage/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-free-tier-guardrails/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-tier-design/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-rate-limit-pricing/");
 assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/cogs/");
 
 assertIncludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/guides/bandwidth-pricing-guardrails/");
