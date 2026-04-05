@@ -126,9 +126,14 @@ assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glo
 assertExcludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glossary/cogs/");
 
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-pricing-model/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/value-metric-selection/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/glossary/rate-limit/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/glossary/overage/");
 assertExcludes(apiCallGlossaryText, "api call glossary", "/guides/api-free-tier-guardrails/");
 assertExcludes(apiCallGlossaryText, "api call glossary", "/guides/request-pricing-model/");
+assertExcludes(apiCallGlossaryText, "api call glossary", "/glossary/usage-based-pricing/");
+assertExcludes(apiCallGlossaryText, "api call glossary", "/glossary/pricing-metric/");
 
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/guides/annual-prepay-discount/");
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/saas-pricing/annual-discount-calculator/");

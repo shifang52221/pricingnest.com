@@ -135,12 +135,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
-      "## How API calls affect plan design and margin protection",
+      "## How API call boundaries become commercially misleading",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["billable event", "free tier", "burst", "overage", "buyer estimation"],
+    keywords: ["billable event", "retries", "request mix", "buyer estimation", "premium endpoints"],
   },
   {
     slug: "annual-prepay-discount",
