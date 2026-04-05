@@ -99,8 +99,14 @@ assertIncludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/cogs/");
 assertExcludes(saasGrossMarginTargetsGuideText, "saas gross margin targets guide", "/glossary/unit-economics/");
 
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-cost-estimation/");
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/guides/value-metric-selection/");
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/api-call/");
 assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/rate-limit/");
+assertIncludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/overage/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-free-tier-guardrails/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-tier-design/");
+assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/guides/api-rate-limit-pricing/");
 assertExcludes(apiPricingModelGuideText, "api pricing model guide", "/glossary/cogs/");
 
 assertIncludes(bandwidthPricingGuideText, "bandwidth pricing guide", "/guides/bandwidth-pricing-guardrails/");
@@ -120,9 +126,14 @@ assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glo
 assertExcludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glossary/cogs/");
 
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-pricing-model/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/value-metric-selection/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/glossary/rate-limit/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/glossary/overage/");
 assertExcludes(apiCallGlossaryText, "api call glossary", "/guides/api-free-tier-guardrails/");
 assertExcludes(apiCallGlossaryText, "api call glossary", "/guides/request-pricing-model/");
+assertExcludes(apiCallGlossaryText, "api call glossary", "/glossary/usage-based-pricing/");
+assertExcludes(apiCallGlossaryText, "api call glossary", "/glossary/pricing-metric/");
 
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/guides/annual-prepay-discount/");
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/saas-pricing/annual-discount-calculator/");
@@ -132,13 +143,34 @@ assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/
 assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/saas-pricing/usage-based-pricing-calculator/");
 assertExcludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/guides/usage-mix-modeling/");
 
+const overageGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "overage.md");
+const overageGlossaryText = readFileSync(overageGlossaryPath, "utf-8");
+
 assertIncludes(churnGlossaryText, "churn glossary", "/guides/annual-prepay-discount/");
 assertIncludes(churnGlossaryText, "churn glossary", "/saas-pricing/pricing-increase-impact-calculator/");
 assertExcludes(churnGlossaryText, "churn glossary", "/guides/churn-survey-insights/");
 assertExcludes(churnGlossaryText, "churn glossary", "/guides/annual-renewal-strategy/");
 
+assertIncludes(overageGlossaryText, "overage glossary", "/guides/api-pricing-model/");
+assertIncludes(overageGlossaryText, "overage glossary", "/guides/usage-based-pricing-examples/");
+assertIncludes(overageGlossaryText, "overage glossary", "/saas-pricing/tiered-usage-pricing-calculator/");
+assertIncludes(overageGlossaryText, "overage glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(overageGlossaryText, "overage glossary", "/glossary/included-usage/");
+assertIncludes(overageGlossaryText, "overage glossary", "/glossary/rate-limit/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/api-cost-estimation/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/overage-policy-design/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/overage-communication/");
+assertExcludes(overageGlossaryText, "overage glossary", "/glossary/usage-based-pricing/");
+
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/value-metric-selection/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/api-call/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/overage/");
 assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-rate-limit-pricing/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/request-pricing-model/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/usage-based-pricing/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/pricing-metric/");
 
 assertIncludes(billingCycleGlossaryText, "billing cycle glossary", "/guides/minimum-commitment-model/");
 assertIncludes(billingCycleGlossaryText, "billing cycle glossary", "/saas-pricing/annual-discount-calculator/");

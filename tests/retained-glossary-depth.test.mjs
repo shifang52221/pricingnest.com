@@ -72,11 +72,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
+      "## How overage moves from predictable extension to packaging problem",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["included usage", "margin", "alerts", "bill shock", "tier"],
+    keywords: ["included usage", "paid escalation path", "buyer trust", "margin protection", "manual exceptions"],
   },
   {
     slug: "minimum-commitment",
@@ -108,12 +109,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
-      "## How rate limits affect plan design and margin protection",
+      "## How rate limits move from engineering guardrail to visible packaging rule",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["burst traffic", "fairness", "error budget", "overage", "buyer expectation"],
+    keywords: ["burst traffic", "fairness rule", "packaging rule", "buyer expectation", "upgrade path"],
   },
   {
     slug: "billing-cycle",
@@ -134,12 +135,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
-      "## How API calls affect plan design and margin protection",
+      "## How API call boundaries become commercially misleading",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["billable event", "free tier", "burst", "overage", "buyer estimation"],
+    keywords: ["billable event", "retries", "request mix", "buyer estimation", "premium endpoints"],
   },
   {
     slug: "annual-prepay-discount",
