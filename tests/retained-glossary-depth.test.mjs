@@ -108,12 +108,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
-      "## How rate limits affect plan design and margin protection",
+      "## How rate limits move from engineering guardrail to visible packaging rule",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["burst traffic", "fairness", "error budget", "overage", "buyer expectation"],
+    keywords: ["burst traffic", "fairness rule", "packaging rule", "buyer expectation", "upgrade path"],
   },
   {
     slug: "billing-cycle",

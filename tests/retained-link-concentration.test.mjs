@@ -144,7 +144,14 @@ assertExcludes(churnGlossaryText, "churn glossary", "/guides/churn-survey-insigh
 assertExcludes(churnGlossaryText, "churn glossary", "/guides/annual-renewal-strategy/");
 
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/value-metric-selection/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/api-call/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/overage/");
 assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-rate-limit-pricing/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/guides/request-pricing-model/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/usage-based-pricing/");
+assertExcludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/pricing-metric/");
 
 assertIncludes(billingCycleGlossaryText, "billing cycle glossary", "/guides/minimum-commitment-model/");
 assertIncludes(billingCycleGlossaryText, "billing cycle glossary", "/saas-pricing/annual-discount-calculator/");
