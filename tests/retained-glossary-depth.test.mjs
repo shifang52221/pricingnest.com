@@ -72,11 +72,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
+      "## How overage moves from predictable extension to packaging problem",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["included usage", "margin", "alerts", "bill shock", "tier"],
+    keywords: ["included usage", "paid escalation path", "buyer trust", "margin protection", "manual exceptions"],
   },
   {
     slug: "minimum-commitment",

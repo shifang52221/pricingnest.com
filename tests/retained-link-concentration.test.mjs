@@ -138,10 +138,24 @@ assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/
 assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/saas-pricing/usage-based-pricing-calculator/");
 assertExcludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/guides/usage-mix-modeling/");
 
+const overageGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "overage.md");
+const overageGlossaryText = readFileSync(overageGlossaryPath, "utf-8");
+
 assertIncludes(churnGlossaryText, "churn glossary", "/guides/annual-prepay-discount/");
 assertIncludes(churnGlossaryText, "churn glossary", "/saas-pricing/pricing-increase-impact-calculator/");
 assertExcludes(churnGlossaryText, "churn glossary", "/guides/churn-survey-insights/");
 assertExcludes(churnGlossaryText, "churn glossary", "/guides/annual-renewal-strategy/");
+
+assertIncludes(overageGlossaryText, "overage glossary", "/guides/api-pricing-model/");
+assertIncludes(overageGlossaryText, "overage glossary", "/guides/usage-based-pricing-examples/");
+assertIncludes(overageGlossaryText, "overage glossary", "/saas-pricing/tiered-usage-pricing-calculator/");
+assertIncludes(overageGlossaryText, "overage glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(overageGlossaryText, "overage glossary", "/glossary/included-usage/");
+assertIncludes(overageGlossaryText, "overage glossary", "/glossary/rate-limit/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/api-cost-estimation/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/overage-policy-design/");
+assertExcludes(overageGlossaryText, "overage glossary", "/guides/overage-communication/");
+assertExcludes(overageGlossaryText, "overage glossary", "/glossary/usage-based-pricing/");
 
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/value-metric-selection/");
