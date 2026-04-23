@@ -18,25 +18,33 @@ function pickGuides(slugs: string[]) {
 }
 
 const featuredDecisionGuides = pickGuides([
-  "value-metric-selection",
-  "minimum-commitment-model",
-  "pricing-page-trust-elements",
-  "saas-gross-margin-targets"
+  "usage-based-pricing-examples",
+  "api-cost-estimation",
+  "storage-costs-and-pricing",
+  "compute-cost-modeling"
 ]);
 
-const packagingGuides = pickGuides([
-  "value-metric-selection",
-  "pricing-page-trust-elements",
+const usagePathGuides = pickGuides([
   "usage-based-pricing-examples",
-  "api-pricing-model",
+  "value-metric-selection",
   "minimum-commitment-model"
 ]);
 
-const unitEconomicsGuides = pickGuides([
-  "saas-gross-margin-targets",
-  "price-per-gb-month-explained",
+const apiPathGuides = pickGuides([
+  "api-cost-estimation",
+  "api-pricing-model",
+  "value-metric-selection"
+]);
+
+const storagePathGuides = pickGuides([
   "storage-costs-and-pricing",
-  "storage-retrieval-fees",
+  "price-per-gb-month-explained",
+  "storage-retrieval-fees"
+]);
+
+const computePathGuides = pickGuides([
+  "compute-cost-modeling",
+  "saas-gross-margin-targets",
   "minimum-commitment-model"
 ]);
 
@@ -48,15 +56,15 @@ const unitEconomicsGuides = pickGuides([
   <section class="hero">
     <h1>Guides</h1>
     <p>
-      Start with the guide closest to the pricing decision you are making. This hub surfaces retained, higher-value
-      reading paths first so you do not have to sort through every support page before finding the right next step.
+      Start with the path that matches the pricing decision you are making. This hub is meant to push one retained
+      guide path first, not send you browsing a larger guide library.
     </p>
   </section>
 
   <div class="grid">
     <section class="card col8">
-      <h2>Featured decision guides</h2>
-      <p class="muted">Use these first when you are choosing a pricing model, packaging structure, or annual offer.</p>
+      <h2>Four retained guide paths</h2>
+      <p class="muted">Open one path first, then follow only the retained support guides that sharpen the next decision.</p>
       <div class="tools" style="margin-top: 0.9rem;">
         {featuredDecisionGuides.map((guide) => (
           <a class="tool" href={guide.href}>
@@ -66,26 +74,39 @@ const unitEconomicsGuides = pickGuides([
         ))}
       </div>
 
-      <h2 style="margin-top: 1.25rem;">Pricing page and packaging guides</h2>
-      <p class="muted">Focus here when the problem is plan clarity, buyer messaging, or feature segmentation.</p>
-      <div class="tools" style="margin-top: 0.9rem;">
-        {packagingGuides.map((guide) => (
-          <a class="tool" href={guide.href}>
-            <strong>{guide.title}</strong>
-            <span>{guide.description}</span>
-          </a>
-        ))}
-      </div>
-
-      <h2 style="margin-top: 1.25rem;">Unit economics and cost recovery</h2>
-      <p class="muted">Use these when you need to back pricing into real compute, storage, and gross-margin constraints.</p>
-      <div class="tools" style="margin-top: 0.9rem;">
-        {unitEconomicsGuides.map((guide) => (
-          <a class="tool" href={guide.href}>
-            <strong>{guide.title}</strong>
-            <span>{guide.description}</span>
-          </a>
-        ))}
+      <div class="feature-grid" style="margin-top: 1rem;">
+        <div class="feature col6">
+          <h3>Usage pricing path</h3>
+          <ul class="list">
+            {usagePathGuides.map((guide) => (
+              <li><a href={guide.href}>{guide.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>API pricing path</h3>
+          <ul class="list">
+            {apiPathGuides.map((guide) => (
+              <li><a href={guide.href}>{guide.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>Storage pricing path</h3>
+          <ul class="list">
+            {storagePathGuides.map((guide) => (
+              <li><a href={guide.href}>{guide.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>Compute pricing path</h3>
+          <ul class="list">
+            {computePathGuides.map((guide) => (
+              <li><a href={guide.href}>{guide.title}</a></li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -99,9 +120,10 @@ const unitEconomicsGuides = pickGuides([
 
       <h2 style="margin-top: 1.25rem;">How to use this hub</h2>
       <ul class="list">
-        <li>Open one decision guide first instead of comparing many thin support pages.</li>
+        <li>Start with one retained guide path instead of browsing the whole inventory.</li>
+        <li>Choose the path that matches usage, API, storage, or compute pricing before opening supporting reads.</li>
         <li>Run the linked calculator once you know the pricing question you are solving.</li>
-        <li>Use glossary terms only when you need to clarify margin, usage, or packaging language.</li>
+        <li>Use glossary terms only when you need to clarify one concept that blocks the next decision.</li>
       </ul>
     </aside>
   </div>

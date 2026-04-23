@@ -78,11 +78,17 @@ const requiredSnippets = [
   'label: "Price Per GB-Month Explained"',
   'label: "Storage Costs and Pricing"',
   'label: "Storage Retrieval Fees"',
+  'title: "Base storage versus access-charge review"',
   'q: "How do I turn cost per GB-month into a storage price floor?"',
+  'q: "When should included storage be separated from overage storage pricing?"',
   'q: "When should I charge separately for requests or retrievals?"',
   'q: "When should hot and archive storage use different pricing?"',
   'q: "When does fixed storage overhead require a platform fee or minimum commitment?"',
-  'q: "How do I test whether gross margin still holds for request-heavy workloads?"'
+  'q: "How do I test whether gross margin still holds for request-heavy workloads?"',
+  'q: "What if replication or durability requirements change the storage cost a lot?"',
+  "Use included storage for the predictable baseline you want most customers to consume",
+  "If request or retrieval-sensitive costs dominate, test a separate request or retrieval charge",
+  "If one customer segment needs materially higher replication, backup, or compliance overhead"
 ];
 
 const forbiddenSnippets = [

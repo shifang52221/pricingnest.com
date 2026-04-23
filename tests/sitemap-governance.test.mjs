@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,7 +9,7 @@ const __dirname = dirname(__filename);
 const governancePath = join(__dirname, "..", "src", "lib", "content-governance.ts");
 const sitemapPath = join(__dirname, "..", "dist", "sitemap-0.xml");
 
-const governanceModule = await import(pathToFileURL(governancePath).href);
+const governanceModule = await importTypeScriptModule(governancePath);
 const sitemapText = readFileSync(sitemapPath, "utf-8");
 
 const assert = (condition, message) => {
@@ -30,18 +31,19 @@ const staticNoindexUrls = Object.entries(governanceModule.STATIC_PAGE_GOVERNANCE
   .map(([pathname]) => `https://pricingnest.com${pathname}`);
 
 const nextWaveGuideNoindexUrls = [
-  "https://pricingnest.com/guides/activation-pricing-triggers/",
-  "https://pricingnest.com/guides/add-on-attach-rate-optimization/",
-  "https://pricingnest.com/guides/api-free-tier-guardrails/",
-  "https://pricingnest.com/guides/api-rate-limit-pricing/",
-  "https://pricingnest.com/guides/pricing-migration-plan/",
-  "https://pricingnest.com/guides/pricing-page-comparison-table/",
-  "https://pricingnest.com/guides/pricing-page-layout-checklist/",
-  "https://pricingnest.com/guides/pricing-segmentation/",
-  "https://pricingnest.com/guides/rfp-pricing-response/",
-  "https://pricingnest.com/guides/seat-utilization-forecast/",
-  "https://pricingnest.com/guides/usage-mix-modeling/",
-  "https://pricingnest.com/guides/pricing-tier-mistakes/"
+  "https://pricingnest.com/guides/api-overage-automation/",
+  "https://pricingnest.com/guides/arpa-growth-levers/",
+  "https://pricingnest.com/guides/churn-reduction-playbook/",
+  "https://pricingnest.com/guides/churn-risk-scoring/",
+  "https://pricingnest.com/guides/monthly-cloud-cost-variance/",
+  "https://pricingnest.com/guides/net-new-mrr-bridge/",
+  "https://pricingnest.com/guides/price-lock-policy/",
+  "https://pricingnest.com/guides/retention-early-warning-signals/",
+  "https://pricingnest.com/guides/saas-metrics-cheat-sheet/",
+  "https://pricingnest.com/guides/unit-economics-model-template/",
+  "https://pricingnest.com/guides/usage-cap-communication/",
+  "https://pricingnest.com/guides/usage-pricing-onboarding/",
+  "https://pricingnest.com/guides/usage-tier-breakpoints/"
 ];
 
 const nextWaveGlossaryNoindexUrls = [

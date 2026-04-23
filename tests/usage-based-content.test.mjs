@@ -23,12 +23,15 @@ const requiredSnippets = [
   'label: "Value Metric Selection"',
   'label: "SaaS Gross Margin Targets"',
   'label: "Minimum Commitment Modeling"',
+  'title: "Included usage and overage review"',
   'q: "How do I choose a value metric before setting price per unit?"',
+  'q: "How do I decide what should be included usage versus overage?"',
   'q: "When is fixed cost per unit too high for pure usage pricing?"',
   'q: "When should I add a platform fee or minimum commitment?"',
   'q: "How do I test whether gross margin still holds at higher usage?"',
   'q: "How do I turn a unit-price floor into tiers or annual pricing?"',
-  "Use the required unit price together with a platform fee or minimum commitment when fixed-cost recovery is too uneven across accounts."
+  "Use the required unit price together with a platform fee or minimum commitment when fixed-cost recovery is too uneven across accounts.",
+  "Use the floor to decide what should stay inside included usage and what should move into overage pricing."
 ];
 
 const forbiddenSnippets = [

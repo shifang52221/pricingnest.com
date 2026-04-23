@@ -70,7 +70,24 @@ export const GUIDE_GOVERNANCE = {
   "pricing-segmentation": "noindex,follow",
   "rfp-pricing-response": "noindex,follow",
   "seat-utilization-forecast": "noindex,follow",
-  "usage-mix-modeling": "noindex,follow"
+  "usage-mix-modeling": "noindex,follow",
+  // Wave 5: narrow another set of weak template-like inventory pages so retained
+  // calculator-adjacent guides carry more of the indexed guide surface.
+  "api-overage-automation": "noindex,follow",
+  "arpa-growth-levers": "noindex,follow",
+  "churn-reduction-playbook": "noindex,follow",
+  "churn-risk-scoring": "noindex,follow",
+  "monthly-cloud-cost-variance": "noindex,follow",
+  "net-new-mrr-bridge": "noindex,follow",
+  "price-lock-policy": "noindex,follow",
+  "retention-early-warning-signals": "noindex,follow",
+  // Wave 6: remove another very small set of template-like inventory pages so
+  // the usage retained path carries more of the indexed guide surface.
+  "saas-metrics-cheat-sheet": "noindex,follow",
+  "unit-economics-model-template": "noindex,follow",
+  "usage-cap-communication": "noindex,follow",
+  "usage-pricing-onboarding": "noindex,follow",
+  "usage-tier-breakpoints": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {

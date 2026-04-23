@@ -85,11 +85,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
+      "## When minimum commitment is a justified pricing floor",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["enterprise", "revenue", "ramp", "consumption", "margin"],
+    keywords: ["pricing floor", "fixed cost", "variable model", "consumption ramp", "gross margin"],
   },
   {
     slug: "gb-month",
@@ -97,11 +98,12 @@ const termChecks = [
     headings: [
       "## Definition",
       "## Why it matters in pricing decisions",
+      "## When GB-month is an honest buyer-facing storage unit",
       "## How to use it with PricingNest tools",
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["average", "storage", "retrieval", "region", "replication"],
+    keywords: ["buyer-facing", "request-heavy", "retrieval-sensitive", "replication", "misleading average"],
   },
   {
     slug: "rate-limit",
@@ -140,7 +142,7 @@ const termChecks = [
       "## Common interpretation mistakes",
       "## Example",
     ],
-    keywords: ["billable event", "retries", "request mix", "buyer estimation", "premium endpoints"],
+    keywords: ["billable event", "retries", "request mix", "buyer estimation", "packaging structure"],
   },
   {
     slug: "annual-prepay-discount",

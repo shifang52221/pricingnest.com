@@ -9,9 +9,12 @@ const guidesPagePath = join(__dirname, "..", "src", "pages", "guides", "[slug].a
 const glossaryPagePath = join(__dirname, "..", "src", "pages", "glossary", "[slug].astro");
 const homepagePath = join(__dirname, "..", "src", "pages", "index.astro");
 const baseLayoutPath = join(__dirname, "..", "src", "layouts", "BaseLayout.astro");
+const apiCostEstimationGuidePath = join(__dirname, "..", "src", "content", "guides", "api-cost-estimation.md");
 const minimumCommitmentGuidePath = join(__dirname, "..", "src", "content", "guides", "minimum-commitment-model.md");
 const pricingPageTrustGuidePath = join(__dirname, "..", "src", "content", "guides", "pricing-page-trust-elements.md");
 const pricePerGbMonthGuidePath = join(__dirname, "..", "src", "content", "guides", "price-per-gb-month-explained.md");
+const storageCostsAndPricingGuidePath = join(__dirname, "..", "src", "content", "guides", "storage-costs-and-pricing.md");
+const usageBasedPricingExamplesGuidePath = join(__dirname, "..", "src", "content", "guides", "usage-based-pricing-examples.md");
 const valueMetricSelectionGuidePath = join(__dirname, "..", "src", "content", "guides", "value-metric-selection.md");
 const saasGrossMarginTargetsGuidePath = join(__dirname, "..", "src", "content", "guides", "saas-gross-margin-targets.md");
 const apiPricingModelGuidePath = join(__dirname, "..", "src", "content", "guides", "api-pricing-model.md");
@@ -20,6 +23,8 @@ const bandwidthPricingGuardrailsGuidePath = join(__dirname, "..", "src", "conten
 const cdnCostPassThroughGuidePath = join(__dirname, "..", "src", "content", "guides", "cdn-cost-pass-through.md");
 const apiCallGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "api-call.md");
 const annualPrepayDiscountGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "annual-prepay-discount.md");
+const gbMonthGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "gb-month.md");
+const minimumCommitmentGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "minimum-commitment.md");
 const rateLimitGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "rate-limit.md");
 const billingCycleGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "billing-cycle.md");
 const usageBasedPricingGlossaryPath = join(__dirname, "..", "src", "content", "glossary", "usage-based-pricing.md");
@@ -29,9 +34,12 @@ const guidesPageText = readFileSync(guidesPagePath, "utf-8");
 const glossaryPageText = readFileSync(glossaryPagePath, "utf-8");
 const homepageText = readFileSync(homepagePath, "utf-8");
 const baseLayoutText = readFileSync(baseLayoutPath, "utf-8");
+const apiCostEstimationGuideText = readFileSync(apiCostEstimationGuidePath, "utf-8");
 const minimumCommitmentGuideText = readFileSync(minimumCommitmentGuidePath, "utf-8");
 const pricingPageTrustGuideText = readFileSync(pricingPageTrustGuidePath, "utf-8");
 const pricePerGbMonthGuideText = readFileSync(pricePerGbMonthGuidePath, "utf-8");
+const storageCostsAndPricingGuideText = readFileSync(storageCostsAndPricingGuidePath, "utf-8");
+const usageBasedPricingExamplesGuideText = readFileSync(usageBasedPricingExamplesGuidePath, "utf-8");
 const valueMetricSelectionGuideText = readFileSync(valueMetricSelectionGuidePath, "utf-8");
 const saasGrossMarginTargetsGuideText = readFileSync(saasGrossMarginTargetsGuidePath, "utf-8");
 const apiPricingModelGuideText = readFileSync(apiPricingModelGuidePath, "utf-8");
@@ -40,6 +48,8 @@ const bandwidthPricingGuardrailsGuideText = readFileSync(bandwidthPricingGuardra
 const cdnCostPassThroughGuideText = readFileSync(cdnCostPassThroughGuidePath, "utf-8");
 const apiCallGlossaryText = readFileSync(apiCallGlossaryPath, "utf-8");
 const annualPrepayDiscountGlossaryText = readFileSync(annualPrepayDiscountGlossaryPath, "utf-8");
+const gbMonthGlossaryText = readFileSync(gbMonthGlossaryPath, "utf-8");
+const minimumCommitmentGlossaryText = readFileSync(minimumCommitmentGlossaryPath, "utf-8");
 const rateLimitGlossaryText = readFileSync(rateLimitGlossaryPath, "utf-8");
 const billingCycleGlossaryText = readFileSync(billingCycleGlossaryPath, "utf-8");
 const usageBasedPricingGlossaryText = readFileSync(usageBasedPricingGlossaryPath, "utf-8");
@@ -87,9 +97,46 @@ assertExcludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossar
 assertIncludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossary/billing-cycle/");
 assertExcludes(minimumCommitmentGuideText, "minimum commitment guide", "/glossary/contract-value/");
 
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/guides/api-pricing-model/");
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/guides/value-metric-selection/");
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/saas-pricing/api-cost-estimator/");
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/glossary/api-call/");
+assertIncludes(apiCostEstimationGuideText, "api cost estimation guide", "/glossary/rate-limit/");
+assertExcludes(apiCostEstimationGuideText, "api cost estimation guide", "/guides/request-pricing-model/");
+assertExcludes(apiCostEstimationGuideText, "api cost estimation guide", "/guides/api-tier-design/");
+assertExcludes(apiCostEstimationGuideText, "api cost estimation guide", "/guides/commit-and-consume-pricing/");
+
 assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/gb-month/");
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/guides/storage-costs-and-pricing/");
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/guides/storage-retrieval-fees/");
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/saas-pricing/storage-cost-calculator/");
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/saas-pricing/price-per-gb-month-calculator/");
+assertIncludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/minimum-commitment/");
+assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/guides/storage-request-costs/");
 assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/storage-costs/");
 assertExcludes(pricePerGbMonthGuideText, "price per gb-month guide", "/glossary/cogs/");
+
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/guides/price-per-gb-month-explained/");
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/guides/storage-retrieval-fees/");
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/saas-pricing/storage-cost-calculator/");
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/saas-pricing/price-per-gb-month-calculator/");
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/glossary/gb-month/");
+assertIncludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/glossary/gross-margin/");
+assertExcludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/guides/storage-request-costs/");
+assertExcludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/glossary/storage-costs/");
+assertExcludes(storageCostsAndPricingGuideText, "storage costs and pricing guide", "/glossary/cogs/");
+
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/guides/value-metric-selection/");
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/guides/minimum-commitment-model/");
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/saas-pricing/usage-based-pricing-calculator/");
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/saas-pricing/tiered-usage-pricing-calculator/");
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/glossary/value-metric/");
+assertIncludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/glossary/overage/");
+assertExcludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/guides/usage-cap-communication/");
+assertExcludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/guides/usage-pricing-onboarding/");
+assertExcludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/guides/usage-tier-breakpoints/");
+assertExcludes(usageBasedPricingExamplesGuideText, "usage based pricing examples guide", "/glossary/usage-forecast/");
 
 assertIncludes(valueMetricSelectionGuideText, "value metric selection guide", "/glossary/value-metric/");
 assertIncludes(valueMetricSelectionGuideText, "value metric selection guide", "/glossary/pricing-metric/");
@@ -126,6 +173,7 @@ assertIncludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glo
 assertExcludes(cdnCostPassThroughGuideText, "cdn cost pass-through guide", "/glossary/cogs/");
 
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-pricing-model/");
+assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/api-cost-estimation/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/guides/value-metric-selection/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/saas-pricing/api-pricing-calculator/");
 assertIncludes(apiCallGlossaryText, "api call glossary", "/glossary/rate-limit/");
@@ -138,6 +186,21 @@ assertExcludes(apiCallGlossaryText, "api call glossary", "/glossary/pricing-metr
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/guides/annual-prepay-discount/");
 assertIncludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/saas-pricing/annual-discount-calculator/");
 assertExcludes(annualPrepayDiscountGlossaryText, "annual prepay discount glossary", "/glossary/annual-plan/");
+
+assertIncludes(gbMonthGlossaryText, "gb-month glossary", "/guides/storage-costs-and-pricing/");
+assertIncludes(gbMonthGlossaryText, "gb-month glossary", "/guides/price-per-gb-month-explained/");
+assertIncludes(gbMonthGlossaryText, "gb-month glossary", "/saas-pricing/storage-cost-calculator/");
+assertIncludes(gbMonthGlossaryText, "gb-month glossary", "/saas-pricing/price-per-gb-month-calculator/");
+assertIncludes(gbMonthGlossaryText, "gb-month glossary", "/glossary/minimum-commitment/");
+assertExcludes(gbMonthGlossaryText, "gb-month glossary", "/glossary/storage-costs/");
+
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/guides/minimum-commitment-model/");
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/guides/api-cost-estimation/");
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/guides/storage-costs-and-pricing/");
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/saas-pricing/api-pricing-calculator/");
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/saas-pricing/storage-cost-calculator/");
+assertIncludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/glossary/gross-margin/");
+assertExcludes(minimumCommitmentGlossaryText, "minimum commitment glossary", "/glossary/usage-based-pricing/");
 
 assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/guides/value-metric-selection/");
 assertIncludes(usageBasedPricingGlossaryText, "usage based pricing glossary", "/saas-pricing/usage-based-pricing-calculator/");
@@ -163,6 +226,7 @@ assertExcludes(overageGlossaryText, "overage glossary", "/guides/overage-communi
 assertExcludes(overageGlossaryText, "overage glossary", "/glossary/usage-based-pricing/");
 
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-pricing-model/");
+assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/api-cost-estimation/");
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/guides/value-metric-selection/");
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/saas-pricing/api-pricing-calculator/");
 assertIncludes(rateLimitGlossaryText, "rate limit glossary", "/glossary/api-call/");

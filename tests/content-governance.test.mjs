@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -9,7 +10,7 @@ const governancePath = join(__dirname, "..", "src", "lib", "content-governance.t
 const guidesPagePath = join(__dirname, "..", "src", "pages", "guides", "[slug].astro");
 const glossaryPagePath = join(__dirname, "..", "src", "pages", "glossary", "[slug].astro");
 
-const governanceModule = await import(pathToFileURL(governancePath).href);
+const governanceModule = await importTypeScriptModule(governancePath);
 const guidesPageText = readFileSync(guidesPagePath, "utf-8");
 const glossaryPageText = readFileSync(glossaryPagePath, "utf-8");
 
@@ -52,7 +53,20 @@ const guideNoindexCandidates = [
   "rfp-pricing-response",
   "seat-utilization-forecast",
   "usage-mix-modeling",
-  "pricing-tier-mistakes"
+  "pricing-tier-mistakes",
+  "api-overage-automation",
+  "arpa-growth-levers",
+  "churn-reduction-playbook",
+  "churn-risk-scoring",
+  "monthly-cloud-cost-variance",
+  "net-new-mrr-bridge",
+  "price-lock-policy",
+  "retention-early-warning-signals",
+  "saas-metrics-cheat-sheet",
+  "unit-economics-model-template",
+  "usage-cap-communication",
+  "usage-pricing-onboarding",
+  "usage-tier-breakpoints"
 ];
 
 const glossaryNoindexCandidates = [
