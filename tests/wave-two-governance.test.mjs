@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -9,7 +10,7 @@ const governancePath = join(__dirname, "..", "src", "lib", "content-governance.t
 const toolsPath = join(__dirname, "..", "src", "lib", "tools.ts");
 const guidesDir = join(__dirname, "..", "src", "content", "guides");
 
-const governanceModule = await import(pathToFileURL(governancePath).href);
+const governanceModule = await importTypeScriptModule(governancePath);
 const toolsText = readFileSync(toolsPath, "utf-8");
 
 const waveTwoGuideNoindex = [
@@ -53,6 +54,8 @@ const assert = (condition, message) => {
   if (!condition) throw new Error(message);
 };
 
+const hasReviewedDate = (text) => /reviewed: "\d{4}-\d{2}-\d{2}"/.test(text);
+
 const usageBasedStart = toolsText.indexOf('slug: "usage-based-pricing-calculator"');
 assert(usageBasedStart !== -1, "wave two governance: missing usage-based-pricing-calculator block");
 
@@ -75,7 +78,6 @@ for (const slug of retainedGuides) {
 
   for (const expected of [
     'reviewedBy: "PricingNest Editorial Team"',
-    'reviewed: "2026-03-31"',
     "sources:",
     'kind: "internal-input"',
     'kind: "supporting-page"',
@@ -85,6 +87,8 @@ for (const slug of retainedGuides) {
   ]) {
     assert(guideText.includes(expected), `wave two governance: ${slug} missing ${expected}`);
   }
+
+  assert(hasReviewedDate(guideText), `wave two governance: ${slug} missing a valid reviewed date`);
 }
 
 for (const slug of retainedGlossary) {

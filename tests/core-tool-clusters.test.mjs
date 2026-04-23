@@ -1,6 +1,7 @@
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,7 +9,7 @@ const __dirname = dirname(__filename);
 const toolsPath = join(__dirname, "..", "src", "lib", "tools.ts");
 const toolPagePath = join(__dirname, "..", "src", "pages", "saas-pricing", "[slug].astro");
 
-const toolsModule = await import(pathToFileURL(toolsPath).href);
+const toolsModule = await importTypeScriptModule(toolsPath);
 const toolPageText = readFileSync(toolPagePath, "utf-8");
 
 const expectations = {

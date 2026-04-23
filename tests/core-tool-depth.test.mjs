@@ -1,12 +1,12 @@
-import { pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const toolsPath = join(__dirname, "..", "src", "lib", "tools.ts");
 
-const { TOOLS } = await import(pathToFileURL(toolsPath).href);
+const { TOOLS } = await importTypeScriptModule(toolsPath);
 
 const expectations = [
   "usage-based-pricing-calculator",

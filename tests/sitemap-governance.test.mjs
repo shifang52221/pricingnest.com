@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { importTypeScriptModule } from "./helpers/import-typescript-module.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,7 +9,7 @@ const __dirname = dirname(__filename);
 const governancePath = join(__dirname, "..", "src", "lib", "content-governance.ts");
 const sitemapPath = join(__dirname, "..", "dist", "sitemap-0.xml");
 
-const governanceModule = await import(pathToFileURL(governancePath).href);
+const governanceModule = await importTypeScriptModule(governancePath);
 const sitemapText = readFileSync(sitemapPath, "utf-8");
 
 const assert = (condition, message) => {
