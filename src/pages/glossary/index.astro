@@ -17,28 +17,29 @@ function pickTerms(slugs: string[]) {
   return slugs.map((slug) => termMap.get(slug)).filter(Boolean);
 }
 
-const keyTerms = pickTerms([
-  "value-metric",
-  "usage-based-pricing",
-  "annual-prepay-discount",
-  "gross-margin",
-  "churn"
-]);
-
-const pricingMechanicsTerms = pickTerms([
-  "pricing-metric",
+const apiTerms = pickTerms([
+  "api-call",
   "rate-limit",
-  "included-usage",
-  "minimum-commitment",
   "overage"
 ]);
 
-const unitEconomicsTerms = pickTerms([
+const storageTerms = pickTerms([
+  "gb-month",
+  "minimum-commitment",
+  "gross-margin"
+]);
+
+const usageTerms = pickTerms([
+  "value-metric",
+  "usage-based-pricing",
+  "overage"
+]);
+
+const computeTerms = pickTerms([
   "gross-margin",
   "unit-cost",
-  "gb-month",
-  "annual-prepay-discount",
-  "churn"
+  "minimum-commitment",
+  "included-usage"
 ]);
 
 ---
@@ -48,42 +49,46 @@ const unitEconomicsTerms = pickTerms([
 >
   <section class="hero">
     <h1>Glossary</h1>
-    <p>Learn the core terms first, then move into the calculators and guides with clearer context and less noise.</p>
+    <p>Learn only the language you need before opening the matching calculator or guide path.</p>
   </section>
 
   <div class="grid">
     <section class="card col8">
-      <h2>Key terms to learn first</h2>
-      <p class="muted">Start here if you are new to SaaS pricing or need a quick reset before modeling a decision.</p>
-      <div class="tools" style="margin-top: 0.9rem;">
-        {keyTerms.map((term) => (
-          <a class="tool" href={term.href}>
-            <strong>{term.title}</strong>
-            <span>{term.description}</span>
-          </a>
-        ))}
-      </div>
-
-      <h2 style="margin-top: 1.25rem;">Pricing mechanics</h2>
-      <p class="muted">These terms explain how plans are packaged, billed, and protected against margin leakage.</p>
-      <div class="tools" style="margin-top: 0.9rem;">
-        {pricingMechanicsTerms.map((term) => (
-          <a class="tool" href={term.href}>
-            <strong>{term.title}</strong>
-            <span>{term.description}</span>
-          </a>
-        ))}
-      </div>
-
-      <h2 style="margin-top: 1.25rem;">Unit economics and retention</h2>
-      <p class="muted">Use these when pricing choices affect annual contracts, support load, or retention risk.</p>
-      <div class="tools" style="margin-top: 0.9rem;">
-        {unitEconomicsTerms.map((term) => (
-          <a class="tool" href={term.href}>
-            <strong>{term.title}</strong>
-            <span>{term.description}</span>
-          </a>
-        ))}
+      <h2>Four retained glossary paths</h2>
+      <p class="muted">Start with the smallest set of terms that will help you read the next calculator or guide with less noise.</p>
+      <div class="feature-grid" style="margin-top: 1rem;">
+        <div class="feature col6">
+          <h3>API pricing terms</h3>
+          <ul class="list">
+            {apiTerms.map((term) => (
+              <li><a href={term.href}>{term.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>Storage pricing terms</h3>
+          <ul class="list">
+            {storageTerms.map((term) => (
+              <li><a href={term.href}>{term.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>Usage pricing terms</h3>
+          <ul class="list">
+            {usageTerms.map((term) => (
+              <li><a href={term.href}>{term.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="feature col6">
+          <h3>Compute pricing terms</h3>
+          <ul class="list">
+            {computeTerms.map((term) => (
+              <li><a href={term.href}>{term.title}</a></li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -97,9 +102,9 @@ const unitEconomicsTerms = pickTerms([
 
       <h2 style="margin-top: 1.25rem;">How to use this hub</h2>
       <ul class="list">
-        <li>Start with one key term before jumping into a calculator.</li>
-        <li>Move into a guide when you need decision criteria, not just a definition.</li>
-        <li>Use these terms to clarify pricing language, not to browse the whole inventory.</li>
+        <li>Start with the path that matches API, storage, usage, or compute pricing.</li>
+        <li>Move into a guide when you need decision criteria, not another definition.</li>
+        <li>Use these terms to clarify one blocker, not to browse the full inventory.</li>
       </ul>
     </aside>
   </div>

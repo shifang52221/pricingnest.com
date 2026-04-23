@@ -101,11 +101,11 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
     { href: "/glossary/bandwidth/", label: "Glossary: bandwidth" }
   ],
   "storage-cost-calculator": [
-    { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
     { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
+    { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
     { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
     { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
-    { href: "/glossary/retrieval-fees/", label: "Glossary: retrieval fees" }
+    { href: "/glossary/minimum-commitment/", label: "Glossary: minimum commitment" }
   ],
   "compute-cost-estimator": [
     { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
@@ -115,18 +115,19 @@ export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>
     { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
   ],
   "api-pricing-calculator": [
-    { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
+    { href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" },
     { href: "/guides/api-pricing-model/", label: "Guide: API pricing model" },
-    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/api-call/", label: "Glossary: API call" },
-    { href: "/glossary/pricing-metric/", label: "Glossary: pricing metric" }
+    { href: "/glossary/rate-limit/", label: "Glossary: rate limit" },
+    { href: "/glossary/overage/", label: "Glossary: overage" }
   ],
   "usage-based-pricing-calculator": [
     { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
-    { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
+    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
     { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/value-metric/", label: "Glossary: value metric" },
-    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" }
+    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
+    { href: "/glossary/overage/", label: "Glossary: overage" }
   ],
   "annual-discount-calculator": [
     { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
@@ -289,6 +290,7 @@ export const TOOLS: ToolDefinition[] = [
     interpretation: [
       "Treat the required unit price as your floor, not necessarily your list price.",
       "Use the required unit price together with a platform fee or minimum commitment when fixed-cost recovery is too uneven across accounts.",
+      "Use the floor to decide what should stay inside included usage and what should move into overage pricing.",
       "If required price per unit swings between p50 and p90, use tiered breakpoints and clear overage guardrails.",
       "Use p50 and p90 scenarios to decide tier boundaries and overage rates.",
       "Compare the implied price to competitors to confirm market fit."
@@ -322,6 +324,14 @@ export const TOOLS: ToolDefinition[] = [
           "Increase monthly units to a p90 scenario.",
           "Check if margin holds at scale.",
           "Adjust base fee or tiering if needed."
+        ]
+      },
+      {
+        title: "Included usage and overage review",
+        steps: [
+          "Start with the floor and decide how much usage a typical customer should receive before overages apply.",
+          "Check whether that included usage still leaves room to recover fixed cost through the base fee or minimum commitment.",
+          "Use overage pricing only for consumption above the predictable baseline."
         ]
       },
       {
@@ -369,6 +379,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "How do I choose a value metric before setting price per unit?",
         a: "Choose a unit customers already understand, forecast, and connect to value, such as API calls, events, minutes, or GB. If buyers cannot explain the metric, the pricing page will usually underperform."
+      },
+      {
+        q: "How do I decide what should be included usage versus overage?",
+        a: "Let included usage cover the predictable baseline a buyer can estimate before purchase, then use overage for expansion above that baseline. If fixed cost recovery depends too much on unpredictable overage, move more revenue into a platform fee or minimum commitment."
       },
       {
         q: "When is fixed cost per unit too high for pure usage pricing?",
@@ -526,6 +540,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     interpretation: [
       "Treat the recommended monthly price as a floor that anchors tiered plans or flat commitments.",
+      "Use the floor to decide when a flat monthly plan is still honest and when compute should move into committed tiers, included usage, or overages.",
       "Use p50 and p90 capacity scenarios to see whether the floor still covers blended unit cost at scale.",
       "If fixed compute cost dominates at low volume, add a platform fee or minimum commitment to protect margin.",
       "Stress-test the floor with heavier workloads before publishing a compute pricing page."
@@ -559,6 +574,14 @@ export const TOOLS: ToolDefinition[] = [
           "Run a small workload and note effective price per vCPU-hour.",
           "Run a larger workload with lower unit costs.",
           "Use the spread to set tier pricing."
+        ]
+      },
+      {
+        title: "Monthly plan versus commitment review",
+        steps: [
+          "Start with the recommended monthly price for the baseline workload you expect to sell most often.",
+          "Check whether fixed overhead is forcing the plan to carry too much recovery work for smaller accounts.",
+          "If it is, move the packaging toward minimum commitments, included baseline capacity, or committed tiers."
         ]
       },
       {
@@ -603,12 +626,32 @@ export const TOOLS: ToolDefinition[] = [
         a: "If your fixed capacity spend makes the floor climb above competitive benchmarks, add a base platform fee or commitment."
       },
       {
+        q: "When should I keep compute pricing as a flat monthly plan?",
+        a: "Keep a flat monthly plan when the baseline workload is predictable, buyers value budget certainty, and heavier customers do not materially distort the same unit economics. If one fixed monthly number only works for a narrow band of usage, it is no longer the honest default package."
+      },
+      {
+        q: "How should I choose a baseline workload before pricing compute?",
+        a: "Start with a representative steady-state workload that matches the customer segment you actually want to sell. Then run a heavier scenario so you can see whether the same floor still works when compute demand spikes."
+      },
+      {
         q: "How should I treat reserved capacity or savings plans in pricing?",
         a: "Blend reserved-capacity rates into your blended unit costs before calculating the margin-safe floor."
       },
       {
+        q: "When should compute pricing move to included usage or overages?",
+        a: "Move there when a single monthly plan hides too much divergence between baseline and heavier workloads. Included usage can cover the expected baseline capacity, while overages or larger commitment bands protect margin for customers that consume far more compute than the default plan assumes."
+      },
+      {
+        q: "Should I price compute as a monthly plan or as included usage plus overages?",
+        a: "Use a monthly plan when workloads are stable and buyers value predictability. Move to included usage plus overages when compute demand can expand materially across accounts and you need a clearer way to protect margin above the baseline workload."
+      },
+      {
         q: "When should I add a platform fee or minimum commitment?",
         a: "Add one whenever low-volume workloads cannot cover fixed infrastructure, monitoring, or support costs through usage rates."
+      },
+      {
+        q: "How do I turn a compute floor into included usage or committed tiers?",
+        a: "Use the floor as the minimum economics for the baseline workload you want to include, then build committed tiers or included usage around that level. Put heavier consumption into overages or larger commitment bands if the same blended rate would otherwise erode margin."
       },
       {
         q: "How do I test whether gross margin survives heavier workloads?",
@@ -617,6 +660,18 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "How do I turn a compute price floor into committed tiers or minimums?",
         a: "Use the floor as your lowest tier or included usage level, then layer in commitments and overages based on margin sensitivity."
+      },
+      {
+        q: "What if memory-heavy and CPU-heavy workloads need different pricing?",
+        a: "If one workload shape materially changes blended unit cost, do not force both into one public compute rate. Use separate tiers, clearer packaging guardrails, or enterprise exceptions so your cheaper cohort does not subsidize the more expensive one."
+      },
+      {
+        q: "What if one public compute rate stops fitting very different workload shapes?",
+        a: "That usually means the packaging has become too broad. Split the rate into clearer segments, committed tiers, or included-baseline structures so one customer shape is not quietly subsidizing another."
+      },
+      {
+        q: "Should regional cost differences be blended into one compute price?",
+        a: "Blend regions into one price only when the cost spread is modest and the buyer experience stays simple. If one region is materially more expensive, use regional guardrails or enterprise pricing exceptions instead of letting one global rate hide the difference."
       }
     ]
   },
@@ -2290,6 +2345,7 @@ export const TOOLS: ToolDefinition[] = [
     interpretation: [
       "Treat the recommended monthly price and per-1,000-call output as a floor that informs tiers, overages, and platform fees.",
       "Combine that floor with a platform fee or minimum commitment when low-volume accounts struggle to cover fixed costs.",
+      "Keep rate limits separate from the billable event so traffic controls do not silently become pricing logic.",
       "Use p50 and p90 billable-call scenarios to confirm your margin guardrails still hold during peak load.",
       "Compare the implied price to competitors before turning it into a published rate."
     ],
@@ -2322,6 +2378,14 @@ export const TOOLS: ToolDefinition[] = [
           "Reduce calls to billable usage after free tier.",
           "Recalculate the recommended price.",
           "Validate margin with p90 volume."
+        ]
+      },
+      {
+        title: "Billable call and rate-limit review",
+        steps: [
+          "Confirm the billable API call is an event customers can explain and forecast.",
+          "Check that rate limits are protecting abuse or burst traffic instead of hiding weak packaging.",
+          "Only after that should you turn the floor into included usage and overage pricing."
         ]
       },
       {
@@ -2373,6 +2437,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "What should count as a billable API call?",
         a: "Bill for actions that materially drive compute, storage, or vendor cost and that buyers can reasonably forecast."
+      },
+      {
+        q: "How should rate limits relate to billable API calls?",
+        a: "Rate limits should protect reliability and abuse boundaries, while the billable API call should stay tied to a commercially clear unit. If the rate limit is doing margin protection work, move that logic into included usage, overage pricing, or a minimum commitment instead."
       },
       {
         q: "When should I add a platform fee or minimum commitment?",
@@ -3080,8 +3148,10 @@ export const TOOLS: ToolDefinition[] = [
     ],
     interpretation: [
       "Treat the recommended price per GB-month as the margin-safe floor for the specific workload mix you modeled.",
+      "Use included storage for the predictable baseline you want to keep simple, then move heavier or access-sensitive usage into overages or separate charges when one blended rate stops being honest.",
       "If request or retrieval-sensitive costs dominate, test a separate request or retrieval charge instead of inflating the base GB-month rate.",
       "If stored-volume cost dominates and access is predictable, keep a simpler GB-month price with fewer add-ons.",
+      "If low-volume accounts cannot cover fixed overhead through variable storage alone, recover that gap with a platform fee or minimum commitment.",
       "Compare archive and request-heavy scenarios to decide when hot and archive tiers need different pricing."
     ],
     useCases: [
@@ -3113,6 +3183,14 @@ export const TOOLS: ToolDefinition[] = [
           "Increase requests per month to a high-activity scenario.",
           "Check how recommended price changes.",
           "Decide if a request fee is needed."
+        ]
+      },
+      {
+        title: "Base storage versus access-charge review",
+        steps: [
+          "Start with the price per GB-month floor for the baseline storage pattern you expect most customers to use.",
+          "Check whether request, retrieval, or durability-sensitive costs are forcing that base rate too high for low-access accounts.",
+          "If they are, keep the base storage price cleaner and move the volatile recovery into separate access charges, overages, or commitments."
         ]
       },
       {
@@ -3155,12 +3233,14 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       { q: "How do I turn cost per GB-month into a storage price floor?", a: "Add storage, request, retrieval-sensitive, and fixed overhead costs into a monthly total, then divide by average GB-month and apply your gross-margin target to set a defensible floor." },
       { q: "When should I charge separately for requests or retrievals?", a: "Split out request or retrieval fees when access-heavy cohorts materially reduce margin under a single blended GB-month price." },
+      { q: "When should included storage be separated from overage storage pricing?", a: "Use included storage for the predictable baseline you want most customers to consume, then move higher-volume or higher-access usage into overages when one blended GB-month rate would hide margin risk." },
       { q: "When should hot and archive storage use different pricing?", a: "Use different tiers when archive workloads are storage-heavy but access-light, while hot workloads carry higher request or retrieval cost intensity." },
       { q: "When does fixed storage overhead require a platform fee or minimum commitment?", a: "Add a platform fee or minimum commitment when fixed monthly overhead cannot be recovered reliably from variable GB-month pricing across smaller accounts." },
       { q: "How do I test whether gross margin still holds for request-heavy workloads?", a: "Run a request-heavy scenario with higher operations and retrieval activity, then confirm gross margin still clears target before publishing a single all-in rate." },
       { q: "Can I include egress?", a: "Yes - use the bandwidth tool and combine the two estimates for a full storage product model." },
       { q: "Should I use peak or average stored GB?", a: "Use average GB-month for cost. If customers have spiky storage, consider modeling a higher average or adding a minimum/overage policy." },
-      { q: "How do I handle lifecycle tiers?", a: "Use a blended cost per GB-month based on the storage mix across tiers." }
+      { q: "How do I handle lifecycle tiers?", a: "Use a blended cost per GB-month based on the storage mix across tiers." },
+      { q: "What if replication or durability requirements change the storage cost a lot?", a: "If one customer segment needs materially higher replication, backup, or compliance overhead, treat it as a separate tier or add-on rather than hiding it inside one average storage price." }
     ]
   }
 ];

@@ -17,20 +17,26 @@ const expectations = {
     support: ["/guides/bandwidth-pricing-guardrails/", "/guides/cdn-cost-pass-through/", "/glossary/egress/", "/glossary/bandwidth/"],
   },
   "storage-cost-calculator": {
-    guide: "/guides/price-per-gb-month-explained/",
-    support: ["/guides/storage-costs-and-pricing/", "/guides/storage-retrieval-fees/", "/glossary/gb-month/", "/glossary/retrieval-fees/"],
+    guide: "/guides/storage-costs-and-pricing/",
+    support: ["/guides/price-per-gb-month-explained/", "/guides/storage-retrieval-fees/", "/glossary/gb-month/", "/glossary/minimum-commitment/"],
   },
   "compute-cost-estimator": {
     guide: "/guides/saas-gross-margin-targets/",
     support: ["/guides/compute-cost-modeling/", "/guides/minimum-commitment-model/", "/glossary/unit-cost/", "/glossary/gross-margin/"],
   },
   "api-pricing-calculator": {
-    guide: "/guides/value-metric-selection/",
-    support: ["/guides/api-pricing-model/", "/guides/minimum-commitment-model/", "/glossary/api-call/", "/glossary/pricing-metric/"],
+    guide: "/guides/api-cost-estimation/",
+    support: ["/guides/api-pricing-model/", "/glossary/api-call/", "/glossary/rate-limit/", "/glossary/overage/"],
   },
   "usage-based-pricing-calculator": {
     guide: "/guides/value-metric-selection/",
-    support: ["/guides/saas-gross-margin-targets/", "/guides/minimum-commitment-model/", "/glossary/value-metric/", "/glossary/usage-based-pricing/"],
+    support: [
+      "/guides/usage-based-pricing-examples/",
+      "/guides/minimum-commitment-model/",
+      "/glossary/value-metric/",
+      "/glossary/usage-based-pricing/",
+      "/glossary/overage/",
+    ],
   },
   "annual-discount-calculator": {
     guide: "/guides/minimum-commitment-model/",

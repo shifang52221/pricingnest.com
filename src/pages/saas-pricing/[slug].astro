@@ -54,6 +54,13 @@ const toolMetaTitle = getToolMetaTitle(tool);
 const toolMetaDescription = getToolMetaDescription(tool);
 const pageTitle = toolMetaTitle.trim().endsWith(titleSuffix) ? toolMetaTitle : `${toolMetaTitle} ${titleSuffix}`;
 type PageLink = { href: string; label: string };
+type FlagshipAction = { label: string; href?: string };
+type FlagshipPageContent = {
+  decisionSummary: string[];
+  packagingChangeHeading: string;
+  packagingChangeSignals: string[];
+  nextSteps: FlagshipAction[];
+};
 
 function isIndexableResourceLink(link: PageLink): boolean {
   if (link.href.startsWith("/guides/")) {
@@ -188,6 +195,121 @@ function dedupeLinks(links: PageLink[]): PageLink[] {
     return true;
   });
 }
+
+const FLAGSHIP_TOOL_PAGE_SLUGS = new Set([
+  "usage-based-pricing-calculator",
+  "api-pricing-calculator",
+  "compute-cost-estimator",
+  "storage-cost-calculator"
+]);
+
+const FLAGSHIP_FOLLOW_UP_LINKS: Readonly<Record<string, PageLink[]>> = {
+  "usage-based-pricing-calculator": [
+    { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
+    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
+    { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
+    { href: "/glossary/value-metric/", label: "Glossary: value metric" },
+    { href: "/glossary/overage/", label: "Glossary: overage" }
+  ],
+  "api-pricing-calculator": [
+    { href: "/guides/api-cost-estimation/", label: "Guide: API cost estimation" },
+    { href: "/guides/api-pricing-model/", label: "Guide: API pricing model" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
+    { href: "/glossary/api-call/", label: "Glossary: API call" },
+    { href: "/glossary/rate-limit/", label: "Glossary: rate limit" },
+    { href: "/glossary/overage/", label: "Glossary: overage" }
+  ],
+  "compute-cost-estimator": [
+    { href: "/guides/saas-gross-margin-targets/", label: "Guide: SaaS gross margin targets" },
+    { href: "/guides/compute-cost-modeling/", label: "Guide: compute cost modeling" },
+    { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
+    { href: "/glossary/unit-cost/", label: "Glossary: unit cost" },
+    { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
+  ],
+  "storage-cost-calculator": [
+    { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
+    { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
+    { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
+    { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
+    { href: "/glossary/minimum-commitment/", label: "Glossary: minimum commitment" }
+  ]
+};
+
+const FLAGSHIP_TOOL_PAGE_CONTENT: Readonly<Record<string, FlagshipPageContent>> = {
+  "usage-based-pricing-calculator": {
+    decisionSummary: [
+      "Use the required unit price as the floor for a metric buyers can estimate before they ever see a contract.",
+      "Recover structural fixed cost with a platform fee or minimum commitment before you push that burden into overage.",
+      "Only turn the floor into pricing once p50 and p90 scenarios still support included usage, overage, and margin."
+    ],
+    packagingChangeHeading: "When the current floor is not enough",
+    packagingChangeSignals: [
+      "If buyers cannot forecast the billable unit with confidence, fix the metric before you adjust the price.",
+      "If typical accounts would burn through the first invoice too unpredictably, add included usage and clearer overage guardrails.",
+      "If low-volume accounts cannot cover fixed cost at the floor, use a minimum commitment or platform fee instead of forcing one headline rate."
+    ],
+    nextSteps: [
+      { href: "#compare", label: "Save a baseline in Compare before changing packaging." },
+      { href: "#sensitivity", label: "Stress-test p50 and p90 scenarios in Sensitivity." },
+      { label: "Use the curated retained resources below to translate the floor into included usage, overage, and minimum commitment decisions." }
+    ]
+  },
+  "api-pricing-calculator": {
+    decisionSummary: [
+      "Treat the recommended monthly price and per-1,000-call output as the floor for a billable event customers can explain.",
+      "Keep rate limits separate from the billable event so throttling protects the product without doing the pricing work.",
+      "If smaller plans cannot cover fixed cost at the floor, move recovery into a platform fee or minimum commitment before widening overage."
+    ],
+    packagingChangeHeading: "When the current floor is not enough",
+    packagingChangeSignals: [
+      "If buyers cannot explain what counts as a billable API call, simplify the event definition before changing the numeric rate.",
+      "If rate limits are doing more of the margin protection than the pricing model, move recovery into platform fees, included usage, or overages.",
+      "If burst traffic breaks margin even when the billable event is clear, add overage guardrails and minimum commitments for heavier accounts."
+    ],
+    nextSteps: [
+      { href: "#compare", label: "Save a baseline in Compare before changing the packaging mix." },
+      { href: "#sensitivity", label: "Stress-test heavier traffic in Sensitivity before publishing a rate card." },
+      { label: "Use the curated retained resources below to separate billable calls, rate limits, overages, and minimum commitments." }
+    ]
+  },
+  "compute-cost-estimator": {
+    decisionSummary: [
+      "Use the recommended monthly price as the floor for a representative baseline workload, not as an automatic public package.",
+      "If fixed compute overhead is doing too much of the recovery work, move that burden into a minimum commitment or base fee before forcing one flat monthly rate.",
+      "If smaller steady workloads and larger bursty workloads cannot honestly share one public rate, split the packaging instead of hiding the difference."
+    ],
+    packagingChangeHeading: "When the monthly price is not enough",
+    packagingChangeSignals: [
+      "If the baseline monthly price only works for one narrow workload shape, stop treating it as the default package for every account.",
+      "If low-volume accounts cannot support fixed compute overhead, add a minimum commitment or base fee before widening the variable rate.",
+      "If heavier workloads blow through the same economics too quickly, move from one monthly plan to committed tiers, included baseline capacity, or overages."
+    ],
+    nextSteps: [
+      { href: "#compare", label: "Save a baseline in Compare before changing compute packaging." },
+      { href: "#sensitivity", label: "Stress-test heavier workloads in Sensitivity before publishing one monthly price." },
+      { label: "Use the retained resources below to decide whether compute should stay a flat monthly plan or move into committed structure." }
+    ]
+  },
+  "storage-cost-calculator": {
+    decisionSummary: [
+      "Use the effective price per GB-month as the floor for a specific storage and access pattern, not as an automatic public rate for every account.",
+      "If request, retrieval, or durability overhead is doing too much of the recovery work, separate that burden before you inflate one all-in storage price.",
+      "If archive-heavy and access-heavy customers cannot honestly share one public GB-month rate, split the packaging instead of hiding the difference."
+    ],
+    packagingChangeHeading: "When one storage price stops being honest",
+    packagingChangeSignals: [
+      "If access-heavy workloads materially change margin, stop pretending the base GB-month rate should recover request and retrieval behavior for everyone.",
+      "If small accounts cannot carry fixed storage overhead, add a platform fee or minimum commitment before pushing the gap into variable storage pricing.",
+      "If archive and hot-storage patterns have meaningfully different economics, separate the plans instead of averaging them into one headline rate."
+    ],
+    nextSteps: [
+      { href: "#compare", label: "Save a baseline in Compare before changing storage packaging." },
+      { href: "#sensitivity", label: "Stress-test request-heavy and archive-heavy scenarios in Sensitivity." },
+      { label: "Use the retained resources below to decide what belongs in the base storage price and what should stay separate." }
+    ]
+  }
+};
 
 const useCaseLinks = (() => {
   const unitEconomics = new Set([
@@ -402,11 +524,16 @@ const guideLinks = (() => {
   return links;
 })();
 
+const isFlagshipToolPage = FLAGSHIP_TOOL_PAGE_SLUGS.has(tool.slug);
+const flagshipPageContent = isFlagshipToolPage ? FLAGSHIP_TOOL_PAGE_CONTENT[tool.slug] ?? null : null;
+const flagshipFollowUpLinks = isFlagshipToolPage ? FLAGSHIP_FOLLOW_UP_LINKS[tool.slug] ?? [] : [];
 const coreToolClusterLinks = getCoreToolClusterLinks(tool.slug);
 
-const recommendedLinks = coreToolClusterLinks
-  ? dedupeLinks(coreToolClusterLinks)
-  : dedupeLinks([
+const recommendedLinks = isFlagshipToolPage
+  ? dedupeLinks(flagshipFollowUpLinks)
+  : coreToolClusterLinks
+    ? dedupeLinks(coreToolClusterLinks)
+    : dedupeLinks([
       ...useCaseLinks.filter((link) => link.href !== "/saas-pricing/use-cases/").slice(0, 2),
       ...guideLinks.filter((link) => link.href !== "/glossary/").filter(isIndexableResourceLink).slice(0, 6),
       { href: "/glossary/", label: "Glossary: SaaS metrics & pricing terms" },
@@ -534,6 +661,20 @@ const recommendedLinks = coreToolClusterLinks
               <div class="muted">Adjust inputs to see recommendations.</div>
             </div>
           </div>
+
+          {flagshipPageContent ? (
+            <div class="insights">
+              <div class="section-head">
+                <h2>Decision summary</h2>
+                <div class="muted" style="font-size: 0.85rem;">Use the floor as packaging guidance, not just math.</div>
+              </div>
+              <ul class="list">
+                {flagshipPageContent.decisionSummary.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           <div class="share">
             <div class="muted share-label">Share link</div>
@@ -699,6 +840,17 @@ const recommendedLinks = coreToolClusterLinks
           Use this page to test assumptions, compare scenarios, and document the reasoning behind a pricing decision.
           Start with the example setup below, then adapt the inputs to match your own product, costs, and packaging.
         </p>
+
+        {flagshipPageContent ? (
+          <>
+            <h2 id="packaging-change" style="margin-top: 1.25rem;">{flagshipPageContent.packagingChangeHeading}</h2>
+            <ul class="list">
+              {flagshipPageContent.packagingChangeSignals.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
         <div class="toc" aria-label="On this page">
           <a href="#example">Example</a>
@@ -930,12 +1082,24 @@ const recommendedLinks = coreToolClusterLinks
           </>
         ) : null}
 
-        <h2 style="margin-top: 1.25rem;">Recommended next steps</h2>
-        <div class="muted" style="margin-top: 0.5rem;">Suggested actions for reviewing this model</div>
+        <h2 style="margin-top: 1.25rem;">{flagshipPageContent ? "What to do next" : "Recommended next steps"}</h2>
+        <div class="muted" style="margin-top: 0.5rem;">
+          {flagshipPageContent ? "Use a tighter retained path before shipping pricing changes." : "Suggested actions for reviewing this model"}
+        </div>
         <ul class="list">
-          <li><a href="#compare">Save a baseline in Compare</a></li>
-          <li><a href="#sensitivity">Run a sensitivity sweep</a></li>
-          <li>Copy the share link and download a CSV</li>
+          {flagshipPageContent
+            ? flagshipPageContent.nextSteps.map((item) => (
+                <li>
+                  {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+                </li>
+              ))
+            : (
+                <>
+                  <li><a href="#compare">Save a baseline in Compare</a></li>
+                  <li><a href="#sensitivity">Run a sensitivity sweep</a></li>
+                  <li>Copy the share link and download a CSV</li>
+                </>
+              )}
         </ul>
         <div class="muted" style="margin-top: 0.75rem;">Curated follow-up resources</div>
         <ul class="list">

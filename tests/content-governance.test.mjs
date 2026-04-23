@@ -52,7 +52,20 @@ const guideNoindexCandidates = [
   "rfp-pricing-response",
   "seat-utilization-forecast",
   "usage-mix-modeling",
-  "pricing-tier-mistakes"
+  "pricing-tier-mistakes",
+  "api-overage-automation",
+  "arpa-growth-levers",
+  "churn-reduction-playbook",
+  "churn-risk-scoring",
+  "monthly-cloud-cost-variance",
+  "net-new-mrr-bridge",
+  "price-lock-policy",
+  "retention-early-warning-signals",
+  "saas-metrics-cheat-sheet",
+  "unit-economics-model-template",
+  "usage-cap-communication",
+  "usage-pricing-onboarding",
+  "usage-tier-breakpoints"
 ];
 
 const glossaryNoindexCandidates = [

@@ -37,34 +37,53 @@ const jsonLd = {
   </section>
 
   <section class="card" style="margin-top: 1rem;">
-    <h2>Start With the Decision You Need to Make</h2>
-    <p class="muted">Each path is designed to answer a real pricing question, not just generate another spreadsheet.</p>
+    <h2>Four core pricing workflows</h2>
+    <p class="muted">Start with one primary calculator path and only the retained support that helps you make the next decision.</p>
     <div class="feature-grid" style="margin-top: 0.9rem;">
       <div class="feature col6">
-        <h3>Set a first pricing model</h3>
+        <h3>Price API usage without hiding packaging risk</h3>
+        <ol class="list">
+          <li><a href="/saas-pricing/api-pricing-calculator/">Model the public API rate first</a></li>
+          <li><a href="/guides/api-cost-estimation/">Check where cost estimation turns into packaging structure</a></li>
+          <li><a href="/glossary/api-call/">Define the billable event buyers will estimate</a></li>
+          <li><a href="/glossary/rate-limit/">Decide whether throughput stays hidden or becomes visible packaging</a></li>
+        </ol>
+      </div>
+      <div class="feature col6">
+        <h3>Turn storage cost into an honest buyer-facing price</h3>
+        <ol class="list">
+          <li><a href="/saas-pricing/storage-cost-calculator/">Model storage economics before publishing the rate</a></li>
+          <li><a href="/guides/storage-costs-and-pricing/">Decide when GB-month alone stops being enough</a></li>
+          <li><a href="/glossary/gb-month/">Keep the buyer-facing storage unit clear</a></li>
+          <li><a href="/glossary/minimum-commitment/">Add a commercial floor only when the variable model needs one</a></li>
+        </ol>
+      </div>
+      <div class="feature col6">
+        <h3>Set a usage price without creating bill shock</h3>
         <ol class="list">
           <li><a href="/saas-pricing/usage-based-pricing-calculator/">Model a baseline price per unit</a></li>
           <li><a href="/guides/value-metric-selection/">Choose a value metric your buyers understand</a></li>
-          <li><a href="/guides/pricing-page-trust-elements/">Clarify the proof and policy signals on the pricing page</a></li>
+          <li><a href="/guides/usage-based-pricing-examples/">Decide when the raw unit price needs tiers, included usage, or a floor</a></li>
+          <li><a href="/glossary/usage-based-pricing/">Keep the billing model tied to a clear usage concept</a></li>
+          <li><a href="/glossary/overage/">Make the paid escalation path visible before buyers hit it</a></li>
         </ol>
       </div>
       <div class="feature col6">
-        <h3>Launch usage-based billing</h3>
-        <ol class="list">
-          <li><a href="/saas-pricing/tiered-usage-pricing-calculator/">Design tiered usage pricing</a></li>
-          <li><a href="/glossary/usage-based-pricing/">Align the billing model to a clear usage concept</a></li>
-          <li><a href="/guides/minimum-commitment-model/">Add a floor before heavy accounts erode margin</a></li>
-        </ol>
-      </div>
-      <div class="feature col6">
-        <h3>Recover infrastructure costs</h3>
+        <h3>Back into compute pricing before one monthly rate hides the real workload shape</h3>
         <ol class="list">
           <li><a href="/saas-pricing/compute-cost-estimator/">Estimate compute pricing</a></li>
-          <li><a href="/saas-pricing/storage-cost-calculator/">Estimate cost per GB</a></li>
           <li><a href="/guides/saas-gross-margin-targets/">Set a margin range before publishing the price</a></li>
+          <li><a href="/guides/compute-cost-modeling/">Decide when a compute floor should become a commitment or heavier packaging structure</a></li>
+          <li><a href="/guides/minimum-commitment-model/">Protect the commercial floor before heavier workloads distort the same public rate</a></li>
         </ol>
       </div>
     </div>
+
+    <h3 style="margin-top: 1.25rem;">Secondary pricing checks</h3>
+    <ul class="list">
+      <li><a href="/saas-pricing/annual-discount-calculator/">Check annual discount tradeoffs after the core pricing structure is clear</a></li>
+      <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Compare packaging models once the primary usage path is understood</a></li>
+    </ul>
   </section>
 
   <div class="grid">
@@ -97,17 +116,22 @@ const jsonLd = {
     </section>
 
     <aside class="card col4">
-      <h2>Core calculators</h2>
+      <h2>Four core calculators</h2>
       <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Price per unit calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API cost calculator</a></li>
         <li><a href="/saas-pricing/storage-cost-calculator/">Cost per GB calculator</a></li>
         <li><a href="/saas-pricing/compute-cost-estimator/">Compute pricing calculator</a></li>
-        <li><a href="/saas-pricing/api-pricing-calculator/">API cost calculator</a></li>
-        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Price per unit calculator</a></li>
+      </ul>
+      <h2 style="margin-top: 1.25rem;">Secondary pricing checks</h2>
+      <ul class="list">
         <li><a href="/saas-pricing/annual-discount-calculator/">Annual discount calculator</a></li>
+        <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Seat vs usage comparison</a></li>
       </ul>
       <h2 style="margin-top: 1.25rem;">Trust and methodology</h2>
       <ul class="list">
         <li><a href="/about/">How the models are built</a></li>
+        <li><a href="/guides/pricing-page-trust-elements/">Pricing page trust elements</a></li>
         <li><a href="/guides/">Guide library</a></li>
         <li><a href="/glossary/">Glossary of pricing terms</a></li>
         <li><a href="/contact/">Send feedback or corrections</a></li>

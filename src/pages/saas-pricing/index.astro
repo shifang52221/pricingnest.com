@@ -26,8 +26,8 @@ const jsonLd = {
   <section class="hero">
     <h1>SaaS Pricing Toolkit</h1>
     <p>
-      A focused set of pricing and cost estimators. Enter your own costs, usage, and margins to get a clear breakdown you
-      can share.
+      A focused set of pricing and cost estimators. Four core paths carry most of the retained pricing decision support
+      on the site, with the rest of the toolkit available when you need a secondary check.
     </p>
     <div class="btn-row">
       <a class="btn primary" href="/saas-pricing/storage-cost-calculator/">Open cost per GB calculator</a>
@@ -61,43 +61,48 @@ const jsonLd = {
         <li>Shareable URLs for collaboration</li>
         <li>CSV export for spreadsheets</li>
       </ul>
-      <h2 style="margin-top: 1.1rem;">Next reads</h2>
+      <h2 style="margin-top: 1.1rem;">Retained path starters</h2>
       <ul class="list">
-        <li><a href="/guides/value-metric-selection/">Value metric selection</a></li>
-        <li><a href="/guides/saas-gross-margin-targets/">SaaS gross margin targets</a></li>
-        <li><a href="/glossary/annual-prepay-discount/">Annual prepay discount</a></li>
-        <li><a href="/glossary/churn/">Churn</a></li>
+        <li><a href="/guides/value-metric-selection/">Usage pricing path</a></li>
+        <li><a href="/guides/api-cost-estimation/">API pricing path</a></li>
+        <li><a href="/guides/storage-costs-and-pricing/">Storage pricing path</a></li>
+        <li><a href="/guides/saas-gross-margin-targets/">Compute pricing path</a></li>
         <li><a href="/about/">Methodology and review</a></li>
       </ul>
     </aside>
   </div>
 
   <section class="card" style="margin-top: 1rem;">
-    <h2>Five core calculator workflows</h2>
-    <p class="muted">Start with the workflow closest to your pricing decision. Each path points to one calculator cluster and a smaller retained reading path.</p>
+    <h2>Four core calculator workflows</h2>
+    <p class="muted">These four paths carry most of the retained pricing decision support on the site.</p>
     <div class="feature-grid" style="margin-top: 0.9rem;">
       <div class="feature col6">
         <h3>Usage-based pricing</h3>
         <ol class="list">
           <li><a href="/saas-pricing/usage-based-pricing-calculator/">Set a baseline price per unit</a></li>
           <li><a href="/guides/value-metric-selection/">Choose a value metric buyers can follow</a></li>
+          <li><a href="/guides/usage-based-pricing-examples/">Decide when one unit price needs tiers, included usage, or a floor</a></li>
           <li><a href="/glossary/usage-based-pricing/">Clarify the billing model before publishing it</a></li>
+          <li><a href="/glossary/overage/">Make the escalation path visible before heavier accounts hit it</a></li>
         </ol>
       </div>
       <div class="feature col6">
         <h3>API pricing</h3>
         <ol class="list">
           <li><a href="/saas-pricing/api-pricing-calculator/">Estimate price per 1,000 calls</a></li>
-          <li><a href="/glossary/rate-limit/">Decide how rate limits protect the plan and cost model</a></li>
-          <li><a href="/guides/value-metric-selection/">Keep the billable unit tied to buyer value</a></li>
+          <li><a href="/guides/api-cost-estimation/">Decide when cost estimation becomes a packaging problem</a></li>
+          <li><a href="/glossary/api-call/">Lock the billable event buyers can estimate</a></li>
+          <li><a href="/glossary/rate-limit/">Decide how throughput becomes visible packaging</a></li>
         </ol>
       </div>
       <div class="feature col6">
         <h3>Storage pricing</h3>
         <ol class="list">
           <li><a href="/saas-pricing/storage-cost-calculator/">Estimate cost per GB</a></li>
-          <li><a href="/guides/price-per-gb-month-explained/">Explain the GB-month price buyers will see</a></li>
+          <li><a href="/guides/storage-costs-and-pricing/">Decide when request, retrieval, or base-fee structure needs to show up</a></li>
+          <li><a href="/guides/price-per-gb-month-explained/">Explain the headline GB-month rate buyers will see</a></li>
           <li><a href="/glossary/gb-month/">Keep storage usage language clear</a></li>
+          <li><a href="/glossary/minimum-commitment/">Use a floor only when the storage offer needs a commercial backstop</a></li>
         </ol>
       </div>
       <div class="feature col6">
@@ -108,14 +113,12 @@ const jsonLd = {
           <li><a href="/guides/minimum-commitment-model/">Protect the commercial floor for heavier accounts</a></li>
         </ol>
       </div>
-      <div class="feature col6">
-        <h3>Annual pricing and discounts</h3>
-        <ol class="list">
-          <li><a href="/saas-pricing/annual-discount-calculator/">Compare annual pricing scenarios</a></li>
-          <li><a href="/glossary/annual-prepay-discount/">Set the annual prepay tradeoff clearly</a></li>
-          <li><a href="/glossary/churn/">Check how retention changes the discount logic</a></li>
-        </ol>
-      </div>
     </div>
+
+    <h3 style="margin-top: 1.25rem;">Secondary pricing checks</h3>
+    <ul class="list">
+      <li><a href="/saas-pricing/annual-discount-calculator/">Compare annual pricing scenarios after the main packaging path is clear</a></li>
+      <li><a href="/saas-pricing/seat-vs-usage-pricing-comparison/">Compare seat and usage packaging after you have a baseline model</a></li>
+    </ul>
   </section>
 </BaseLayout>

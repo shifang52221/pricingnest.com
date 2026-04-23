@@ -23,11 +23,14 @@ const requiredSnippets = [
   'label: "Value Metric Selection"',
   'label: "API Pricing Model"',
   'label: "Minimum Commitment Modeling"',
+  'title: "Billable call and rate-limit review"',
   'q: "How do I choose between pricing per call and per 1,000 calls?"',
   'q: "What should count as a billable API call?"',
+  'q: "How should rate limits relate to billable API calls?"',
   'q: "When should I add a platform fee or minimum commitment?"',
   'q: "How do I test whether gross margin survives heavier traffic?"',
-  'q: "How do I turn a price-per-1,000-calls floor into included usage and overages?"'
+  'q: "How do I turn a price-per-1,000-calls floor into included usage and overages?"',
+  "Keep rate limits separate from the billable event so traffic controls do not silently become pricing logic."
 ];
 
 const forbiddenSnippets = [
