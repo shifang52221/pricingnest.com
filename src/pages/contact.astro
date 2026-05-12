@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.com";
 ---
-<BaseLayout title="Contact | SaaS Pricing Toolkit" description="Contact information and feedback details for this website.">
+<BaseLayout title="Contact | PricingNest" description="Editorial contact, correction requests, and calculator feedback details for PricingNest.">
   <section class="hero">
     <h1>Contact</h1>
     <p class="muted">
@@ -20,5 +20,47 @@ const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.
       Typical response time is 1-2 business days. Please avoid sharing confidential data; summary inputs are enough for us
       to validate formulas and improve the toolkit.
     </p>
+
+    <div class="grid" style="margin-top: 1rem;">
+      <section class="card col8">
+        <h2>Editorial contact</h2>
+        <p class="muted">
+          This inbox is the editorial contact for PricingNest. Use it for calculator feedback, navigation issues,
+          confusing explanations, and updates that affect retained tools, guides, or glossary pages.
+        </p>
+
+        <h2 style="margin-top: 1.25rem;">Correction requests</h2>
+        <p class="muted">
+          If you believe a formula, assumption, default example, interpretation note, or linked source is wrong or
+          unclear, send a correction request. We use these reports to review retained pages and refresh trust-critical
+          wording when needed.
+        </p>
+
+        <h2 style="margin-top: 1.25rem;">What to include</h2>
+        <ul class="list">
+          <li>The page URL you are referring to.</li>
+          <li>The exact formula, assumption, example, or paragraph that looks wrong or incomplete.</li>
+          <li>Your suggested correction or the missing context you think the page needs.</li>
+          <li>Any non-confidential usage, pricing, or cost context that helps explain the issue.</li>
+        </ul>
+      </section>
+
+      <aside class="card col4">
+        <h2>What we can review</h2>
+        <ul class="list">
+          <li>Calculator logic and default assumptions.</li>
+          <li>Explanatory copy on retained tool pages.</li>
+          <li>Guide and glossary wording that creates pricing confusion.</li>
+          <li>Broken links, stale references, and unclear next-step guidance.</li>
+        </ul>
+
+        <h2 style="margin-top: 1.25rem;">What we cannot verify for you</h2>
+        <ul class="list">
+          <li>Your internal margin targets or contract obligations.</li>
+          <li>Confidential vendor pricing, usage logs, or legal terms you cannot share.</li>
+          <li>Whether a modeled result is the final decision your finance or legal team should approve.</li>
+        </ul>
+      </aside>
+    </div>
   </section>
 </BaseLayout>

@@ -144,10 +144,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "Usage-Based Pricing Calculator",
     name: "Price Per Unit Calculator for Usage-Based Pricing",
     description:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare scenarios and export results for pricing review.",
-    metaTitle: "Usage-Based Pricing Calculator & Price Per Unit Floor | PricingNest",
+      "Find a price-per-unit floor from usage, unit cost, fixed overhead, and target margin. Use it to check whether a usage-based plan needs a higher rate, a platform fee, or a minimum commitment.",
+    metaTitle: "Usage-Based Pricing Calculator: Find Your Price Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe price per unit from usage, unit cost, fixed overhead, and target margin. Compare p50 and p90 scenarios, set a pricing floor, and decide when a platform fee or minimum commitment is needed.",
+      "Use this usage-based pricing calculator to find a margin-safe price per unit, compare p50 and p90 scenarios, and see when a platform fee or minimum commitment is needed.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -2261,10 +2261,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "API Pricing Calculator",
     name: "API Pricing Calculator for Cost per 1,000 Calls",
     description:
-      "Estimate a margin-safe API plan price and price per 1,000 calls from billable volume, infra cost, fixed overhead, and target gross margin.",
-    metaTitle: "API Pricing Calculator & Price Per 1,000 Calls Floor | PricingNest",
+      "Estimate a monthly API plan price and an implied price per 1,000 calls from billable volume, infra cost, fixed overhead, and target gross margin.",
+    metaTitle: "API Pricing Calculator: Price Per 1,000 Calls | PricingNest",
     metaDescription:
-      "Calculate a margin-safe API price from call volume, infra cost per 1,000 calls, fixed overhead, and target gross margin. Compare billable-call scenarios, set a price floor, and decide when a platform fee or minimum commitment is needed.",
+      "Calculate a margin-safe API price from call volume, infra cost per 1,000 calls, fixed overhead, and target gross margin. Use it to set a monthly plan and a price per 1,000 calls.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -3063,10 +3063,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "Storage Cost Calculator",
     name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
     description:
-      "Estimate monthly storage cost, request fees, and a target price per GB. Use it to turn cost per GB assumptions into a margin-safe storage pricing model.",
-    metaTitle: "Storage Pricing Calculator & Price Per GB-Month Floor | PricingNest",
+      "Estimate monthly storage cost, request fees, and a price floor per GB-month. Use it to turn cost per GB assumptions into a storage price you can defend.",
+    metaTitle: "Storage Pricing Calculator: Cost Per GB-Month Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads, set a price per GB-month floor, and decide when request or retrieval fees should be priced separately.",
+      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads to find a defensible price per GB-month.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-04-02",
     sources: [
