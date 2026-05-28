@@ -200,13 +200,14 @@ const FLAGSHIP_TOOL_PAGE_SLUGS = new Set([
   "usage-based-pricing-calculator",
   "api-pricing-calculator",
   "compute-cost-estimator",
-  "storage-cost-calculator"
+  "storage-cost-calculator",
+  "annual-discount-calculator"
 ]);
 
 const FLAGSHIP_FOLLOW_UP_LINKS: Readonly<Record<string, PageLink[]>> = {
   "usage-based-pricing-calculator": [
     { href: "/guides/value-metric-selection/", label: "Guide: value metric selection" },
-    { href: "/guides/usage-based-pricing-examples/", label: "Guide: usage-based pricing examples" },
+    { href: "/guides/usage-based-pricing-examples/", label: "Guide: when one unit price needs tiers, included usage, or overage" },
     { href: "/guides/minimum-commitment-model/", label: "Guide: minimum commitment modeling" },
     { href: "/glossary/usage-based-pricing/", label: "Glossary: usage-based pricing" },
     { href: "/glossary/value-metric/", label: "Glossary: value metric" },
@@ -228,11 +229,18 @@ const FLAGSHIP_FOLLOW_UP_LINKS: Readonly<Record<string, PageLink[]>> = {
     { href: "/glossary/gross-margin/", label: "Glossary: gross margin" }
   ],
   "storage-cost-calculator": [
-    { href: "/guides/price-per-gb-month-explained/", label: "Guide: price per GB-month explained" },
-    { href: "/guides/storage-costs-and-pricing/", label: "Guide: storage costs and pricing" },
+    { href: "/guides/price-per-gb-month-explained/", label: "Guide: turn the cost model into a buyer-facing GB-month rate" },
+    { href: "/guides/storage-costs-and-pricing/", label: "Guide: when one GB-month price stops being enough" },
     { href: "/guides/storage-retrieval-fees/", label: "Guide: storage retrieval fees" },
     { href: "/glossary/gb-month/", label: "Glossary: GB-month" },
     { href: "/glossary/minimum-commitment/", label: "Glossary: minimum commitment" }
+  ],
+  "annual-discount-calculator": [
+    { href: "/guides/annual-prepay-discount/", label: "Guide: when annual prepay helps and how deep the discount should go" },
+    { href: "/guides/discount-guardrails/", label: "Guide: annual discount guardrails" },
+    { href: "/glossary/annual-prepay-discount/", label: "Glossary: annual prepay discount" },
+    { href: "/glossary/billing-cycle/", label: "Glossary: billing cycle" },
+    { href: "/glossary/effective-monthly-rate/", label: "Glossary: effective monthly rate" }
   ]
 };
 
@@ -293,9 +301,9 @@ const FLAGSHIP_TOOL_PAGE_CONTENT: Readonly<Record<string, FlagshipPageContent>> 
   },
   "storage-cost-calculator": {
     decisionSummary: [
-      "Use the effective price per GB-month as the floor for a specific storage and access pattern, not as an automatic public rate for every account.",
+      "Use this page to model the real storage cost structure before you decide what belongs in the public rate.",
       "If request, retrieval, or durability overhead is doing too much of the recovery work, separate that burden before you inflate one all-in storage price.",
-      "If archive-heavy and access-heavy customers cannot honestly share one public GB-month rate, split the packaging instead of hiding the difference."
+      "Only move to a public GB-month benchmark after archive-heavy and access-heavy scenarios stop pulling the answer in different directions."
     ],
     packagingChangeHeading: "When one storage price stops being honest",
     packagingChangeSignals: [
@@ -307,6 +315,24 @@ const FLAGSHIP_TOOL_PAGE_CONTENT: Readonly<Record<string, FlagshipPageContent>> 
       { href: "#compare", label: "Save a baseline in Compare before changing storage packaging." },
       { href: "#sensitivity", label: "Stress-test request-heavy and archive-heavy scenarios in Sensitivity." },
       { label: "Use the retained resources below to decide what belongs in the base storage price and what should stay separate." }
+    ]
+  },
+  "annual-discount-calculator": {
+    decisionSummary: [
+      "Use this page to convert a monthly list price into an annual invoice, annual savings, and an effective monthly rate buyers can compare quickly.",
+      "Treat the annual number as a conversion check first, then decide in the guide whether the discount is actually justified by cash flow, retention, or policy goals.",
+      "If the annual offer only works when the discount gets too deep, the commercial problem is probably bigger than the calculator itself."
+    ],
+    packagingChangeHeading: "When annual prepay is not a simple win",
+    packagingChangeSignals: [
+      "If the effective monthly rate only feels attractive at a discount depth that hurts margin, revisit the annual policy before publishing it.",
+      "If annual prepay works differently by segment, move the interpretation into guardrails and sales policy instead of forcing one universal discount.",
+      "If the buyer already accepts the monthly anchor but resists the annual invoice, clarify the savings and effective monthly comparison before changing the percentage."
+    ],
+    nextSteps: [
+      { href: "#compare", label: "Save a baseline in Compare before changing annual discount depth." },
+      { href: "#sensitivity", label: "Stress-test alternative discount levels before updating the pricing page." },
+      { label: "Use the retained resources below to decide whether the annual offer improves cash collection, renewal posture, and buyer clarity." }
     ]
   }
 };

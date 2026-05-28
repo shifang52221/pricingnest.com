@@ -32,6 +32,11 @@ A single GB-month rate works only when stored volume is the dominant variable an
 economics in a dramatically different direction. That is true for some products. It is not true for many modern SaaS
 storage patterns.
 
+This guide answers a different question from the calculators.
+Use the Storage Cost Calculator when you still need to model the underlying cost structure.
+Use the Price Per GB-Month Calculator when the cost structure is already understood and the next job is translating it into a buyer-facing benchmark.
+Use this guide when the real decision is whether one GB-month rate is still honest or whether request, retrieval, or base-fee structure needs to become visible.
+
 Storage pricing stops being a simple GB-month problem when your customer base includes more than one workload mix. An
 archive-heavy account may store a lot of data but access it rarely. A request-heavy product may create constant reads,
 writes, indexing, or object operations that matter more than the stored bytes. A retrieval-sensitive workflow may look

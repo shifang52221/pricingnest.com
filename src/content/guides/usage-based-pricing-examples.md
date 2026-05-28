@@ -50,6 +50,10 @@ line up with what the buyer believes they are purchasing, even a mathematically
 accurate rate becomes hard to explain. A usage model is only as good as the
 buyer estimation it enables.
 
+The calculator should answer one narrower question first: what price per unit clears margin before you layer in packaging structure.
+Use the calculator first when the unit is already chosen and the main question is whether one public price per unit still clears margin.
+This guide takes over after that point, when the argument becomes whether the floor should stay a simple per-unit rate or turn into tiers, included usage, overage, or a minimum commitment.
+
 ## Inputs to confirm before you publish a buyer-facing usage price
 
 Before publishing a buyer-facing usage price, confirm five inputs.

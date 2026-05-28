@@ -32,6 +32,10 @@ Annual discounts help when the commercial goal is bigger than simply "make the p
 improve cash flow, reduce avoidable churn, and create a clearer renewal motion when the product already has enough
 adoption that buyers are willing to commit for a year.
 
+The calculator should handle the conversion first: monthly price to annual invoice, annual savings, and effective monthly rate.
+Use the calculator first when the monthly list price already exists and the main question is how the annual prepay offer changes the buyer-facing number.
+This guide takes over after that point, when the question becomes whether the discount is commercially justified and how much policy or segment variation the annual offer should carry.
+
 This usually works best when:
 
 - the product has strong early retention and customers are likely to stay past month three

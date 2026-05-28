@@ -32,6 +32,10 @@ Price per GB-month is honest when it matches how customers understand value and 
 depend heavily on behavior the headline rate hides. It is especially useful when customers buy retained capacity,
 compare vendors on storage scale, and can reasonably forecast average stored volume over time.
 
+This page is for the buyer-facing rate, not the first-pass cost breakdown.
+If you still need to separate storage, request, retrieval, and fixed overhead costs, go back to the Storage Cost Calculator first.
+Use this guide after the cost model is already clear and the next decision is whether the public GB-month number is understandable enough to publish.
+
 In those cases the unit is strong because it is simple without being deceptive. Buyers know what the number represents,
 your team can explain [GB-Month](/glossary/gb-month/) clearly, and the workload mix does not force you to subsidize one
 type of customer with another. A straightforward buyer-facing rate can also make sales and onboarding cleaner because

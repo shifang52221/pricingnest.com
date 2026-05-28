@@ -144,10 +144,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "Usage-Based Pricing Calculator",
     name: "Price Per Unit Calculator for Usage-Based Pricing",
     description:
-      "Find a price-per-unit floor from usage, unit cost, fixed overhead, and target margin. Use it to check whether a usage-based plan needs a higher rate, a platform fee, or a minimum commitment.",
-    metaTitle: "Usage-Based Pricing Calculator: Find Your Price Floor | PricingNest",
+      "Calculate a price-per-unit floor from usage, unit cost, fixed overhead, and target margin. Use it when you need a price-per-unit floor before you decide whether the plan also needs tiers, included usage, or a minimum commitment.",
+    metaTitle: "Price Per Unit Calculator for Usage-Based Pricing | PricingNest",
     metaDescription:
-      "Use this usage-based pricing calculator to find a margin-safe price per unit, compare p50 and p90 scenarios, and see when a platform fee or minimum commitment is needed.",
+      "Use this usage-based pricing calculator to calculate a margin-safe price per unit, compare p50 and p90 scenarios, and see when a platform fee or minimum commitment is needed.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -379,6 +379,10 @@ export const TOOLS: ToolDefinition[] = [
       {
         q: "How do I choose a value metric before setting price per unit?",
         a: "Choose a unit customers already understand, forecast, and connect to value, such as API calls, events, minutes, or GB. If buyers cannot explain the metric, the pricing page will usually underperform."
+      },
+      {
+        q: "When should I use this before looking at tiers or included usage?",
+        a: "Use this when you already know the billable unit and need the floor before moving into tiering, included usage, or minimum commitments."
       },
       {
         q: "How do I decide what should be included usage versus overage?",
@@ -1844,10 +1848,11 @@ export const TOOLS: ToolDefinition[] = [
     slug: "annual-discount-calculator",
     title: "Annual Discount Calculator",
     name: "Annual Discount Calculator",
-    description: "Convert a monthly price into annual pricing, annual prepay savings, and an effective monthly rate.",
-    metaTitle: "Annual Discount Calculator - Annual Pricing | PricingNest",
+    description:
+      "Convert a monthly price into an annual prepay price, annual savings, and an effective monthly rate you can publish or review internally.",
+    metaTitle: "Annual Discount Calculator: Monthly to Annual Pricing | PricingNest",
     metaDescription:
-      "Free annual discount calculator to convert a monthly price into annual pricing, annual prepay savings, and effective monthly rate.",
+      "Use this annual discount calculator to convert a monthly plan into annual pricing, compare annual savings, and calculate the effective monthly rate.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-30",
     sources: [
@@ -2000,6 +2005,7 @@ export const TOOLS: ToolDefinition[] = [
       { q: "What annual discount is common?", a: "Many SaaS businesses offer 10-20% off for annual prepay, but it depends on segment and cash needs." },
       { q: "Why offer an annual discount at all?", a: "Annual prepay can improve cash flow and reduce churn risk. The discount trades some revenue for commitment and lower collection overhead." },
       { q: "How should I think about effective monthly rate?", a: "Effective monthly rate is just the annual prepay spread over 12 months. It helps compare monthly vs annual plans on the same basis." },
+      { q: "When should I use this calculator instead of an annual pricing guide?", a: "Use this when you already have a monthly price and need to compare annual invoice, annual savings, and the effective monthly anchor." },
       { q: "Should discounts vary by segment?", a: "Yes. Enterprise buyers may expect smaller discounts than SMB, especially if contracts are multi-year." },
       { q: "Does prepay reduce churn?", a: "Often yes, but you should validate with cohort data. Treat churn reduction as a separate assumption." },
       { q: "What annual discount should I show on the pricing page?", a: "Show the smallest discount that still feels meaningful to buyers and is easy for sales to explain. For many SaaS teams that lands in the 10-20% range." },
@@ -2607,8 +2613,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "price-per-gb-month-calculator",
     title: "Price per GB-Month Calculator",
+    name: "Price Per GB-Month Calculator for Buyer-Facing Storage Pricing",
     description:
-      "Estimate a margin-safe price per GB-month using storage cost per GB-month, fixed overhead, average stored GB, and a target gross margin.",
+      "Translate a storage cost model into a buyer-facing price per GB-month after you already understand the underlying workload economics.",
+    metaTitle: "Price Per GB-Month Calculator for Storage Pricing | PricingNest",
+    metaDescription:
+      "Use this calculator to turn a storage cost model into a buyer-facing price per GB-month after you already understand the underlying workload economics.",
     inputs: [
       { name: "currency", label: "Currency", type: "select", defaultValue: "USD", options: [...CURRENCY_OPTIONS] },
       { name: "avgGbStored", label: "Average GB stored", type: "number", defaultValue: "500", min: "0", step: "0.01" },
@@ -2725,6 +2735,7 @@ export const TOOLS: ToolDefinition[] = [
       "If target margin is near 0, recommended price will be close to cost."
     ],
     faq: [
+      { q: "When should I use this instead of the storage cost calculator?", a: "Use this when you already know the storage cost structure and need a publishable GB-month benchmark rather than a deeper cost breakdown." },
       { q: "Is this the same as cloud storage price?", a: "No. This estimates your selling price based on your costs and target margin." },
       { q: "Should I include request costs?", a: "If your workload has heavy requests, include them via the storage cost calculator or add them to fixed overhead." },
       { q: "What unit should I show on my pricing page?", a: "GB-month is common because it reflects storage over time. Add an example workload so buyers can estimate their bill." },
@@ -3063,10 +3074,10 @@ export const TOOLS: ToolDefinition[] = [
     title: "Storage Cost Calculator",
     name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
     description:
-      "Estimate monthly storage cost, request fees, and a price floor per GB-month. Use it to turn cost per GB assumptions into a storage price you can defend.",
+      "Estimate storage cost structure from average GB stored, request volume, and fixed overhead before you decide what should become a buyer-facing rate.",
     metaTitle: "Storage Pricing Calculator: Cost Per GB-Month Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe storage price from average GB stored, request volume, retrieval-sensitive costs, fixed overhead, and target gross margin. Compare archive and request-heavy workloads to find a defensible price per GB-month.",
+      "Use this storage cost calculator to model storage, request, and fixed-cost recovery before translating the result into a public price.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-04-02",
     sources: [
@@ -3232,6 +3243,7 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: [
       { q: "How do I turn cost per GB-month into a storage price floor?", a: "Add storage, request, retrieval-sensitive, and fixed overhead costs into a monthly total, then divide by average GB-month and apply your gross-margin target to set a defensible floor." },
+      { q: "When should I use this before the price per GB-month calculator?", a: "Use this when you still need to understand the real storage cost structure before deciding whether one GB-month price is honest." },
       { q: "When should I charge separately for requests or retrievals?", a: "Split out request or retrieval fees when access-heavy cohorts materially reduce margin under a single blended GB-month price." },
       { q: "When should included storage be separated from overage storage pricing?", a: "Use included storage for the predictable baseline you want most customers to consume, then move higher-volume or higher-access usage into overages when one blended GB-month rate would hide margin risk." },
       { q: "When should hot and archive storage use different pricing?", a: "Use different tiers when archive workloads are storage-heavy but access-light, while hot workloads carry higher request or retrieval cost intensity." },
