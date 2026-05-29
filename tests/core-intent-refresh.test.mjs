@@ -9,15 +9,27 @@ const toolsPath = join(__dirname, "..", "src", "lib", "tools.ts");
 const toolPagePath = join(__dirname, "..", "src", "pages", "saas-pricing", "[slug].astro");
 const usageGuidePath = join(__dirname, "..", "src", "content", "guides", "usage-based-pricing-examples.md");
 const annualGuidePath = join(__dirname, "..", "src", "content", "guides", "annual-prepay-discount.md");
+const annualGuardrailsPath = join(__dirname, "..", "src", "content", "guides", "discount-guardrails.md");
 const storageGuidePath = join(__dirname, "..", "src", "content", "guides", "storage-costs-and-pricing.md");
 const gbGuidePath = join(__dirname, "..", "src", "content", "guides", "price-per-gb-month-explained.md");
+const retrievalGuidePath = join(__dirname, "..", "src", "content", "guides", "storage-retrieval-fees.md");
+const usageFloorGuidePath = join(__dirname, "..", "src", "content", "guides", "usage-pricing-floor.md");
+const tieredUsageGuidePath = join(__dirname, "..", "src", "content", "guides", "tiered-usage-pricing.md");
+const overageGuidePath = join(__dirname, "..", "src", "content", "guides", "overage-policy-design.md");
+const pricingTierGuidePath = join(__dirname, "..", "src", "content", "guides", "pricing-tier-design.md");
 
 const toolsText = readFileSync(toolsPath, "utf-8");
 const toolPageText = readFileSync(toolPagePath, "utf-8");
 const usageGuideText = readFileSync(usageGuidePath, "utf-8");
 const annualGuideText = readFileSync(annualGuidePath, "utf-8");
+const annualGuardrailsText = readFileSync(annualGuardrailsPath, "utf-8");
 const storageGuideText = readFileSync(storageGuidePath, "utf-8");
 const gbGuideText = readFileSync(gbGuidePath, "utf-8");
+const retrievalGuideText = readFileSync(retrievalGuidePath, "utf-8");
+const usageFloorGuideText = readFileSync(usageFloorGuidePath, "utf-8");
+const tieredUsageGuideText = readFileSync(tieredUsageGuidePath, "utf-8");
+const overageGuideText = readFileSync(overageGuidePath, "utf-8");
+const pricingTierGuideText = readFileSync(pricingTierGuidePath, "utf-8");
 
 const assertIncludes = (text, label, expected) => {
   if (!text.includes(expected)) {
@@ -81,6 +93,18 @@ for (const expected of [
 }
 
 for (const expected of [
+  "The calculator can tell you what 10%, 15%, or 20% off does to the",
+  "annual invoice and the effective monthly rate.",
+  "It cannot decide whether that discount is commercially healthy.",
+  "This guide takes over after that point, when",
+  "the issue becomes whether the annual discount is actually doing the right commercial job.",
+  "If the effective monthly rate only becomes compelling when the discount moves outside your healthy range, that is a",
+  "warning sign.",
+]) {
+  assertIncludes(annualGuardrailsText, "annual guardrails", expected);
+}
+
+for (const expected of [
   "This guide answers a different question from the calculators.",
   "Use the Storage Cost Calculator when you still need to model the underlying cost structure.",
   "Use the Price Per GB-Month Calculator when the cost structure is already understood and the next job is translating it into a buyer-facing benchmark.",
@@ -93,6 +117,55 @@ for (const expected of [
   "If you still need to separate storage, request, retrieval, and fixed overhead costs, go back to the Storage Cost Calculator first.",
 ]) {
   assertIncludes(gbGuideText, "GB-month guide", expected);
+}
+
+for (const expected of [
+  "Use the [Storage Cost Calculator](/saas-pricing/storage-cost-calculator/) first when the job is still separating",
+  "whether retrieval should remain inside the blended model or become visible in the packaging itself.",
+  "If one buyer-facing storage number only works when retrieval-heavy behavior stays hidden, that is a warning sign.",
+]) {
+  assertIncludes(retrievalGuideText, "retrieval guide", expected);
+}
+
+for (const expected of [
+  "The calculator should answer the narrower question first: what price per unit clears margin under the current",
+  "assumptions.",
+  "This guide takes over when the next question becomes whether that floor should stay a simple unit price or",
+  "turn into a base fee, included usage, visible tiering, or a minimum commercial floor.",
+  "The usage pricing floor is protecting economic honesty, not packaging simplicity.",
+]) {
+  assertIncludes(usageFloorGuideText, "usage floor guide", expected);
+}
+
+for (const expected of [
+  "The calculator should establish the floor first.",
+  "Tier design begins after that point, when the team realizes the floor",
+  "is not enough to make the package predictable, explainable, and commercially durable.",
+  "Tiers are not just a prettier way to display volume discounts. They are a way to make a usage model more honest.",
+]) {
+  assertIncludes(tieredUsageGuideText, "tiered usage guide", expected);
+}
+
+for (const expected of [
+  "The goal is not to eliminate overage. The goal is to make sure overage is a visible, explainable escalation path",
+  "rather than a delayed surprise.",
+  "This guide takes over after that point, when the question",
+  "is whether the overage path is predictable enough to publish.",
+  "If overage is the only reason the model works, that is a warning sign.",
+]) {
+  assertIncludes(overageGuideText, "overage guide", expected);
+}
+
+for (const expected of [
+  "define how customers progress",
+  "what each plan is supposed to solve",
+  "whether the visible ladder still",
+  "matches the way the product is actually sold and used.",
+  "If tiers are not doing those jobs",
+  "the team may still have multiple plans, but it does not really have tier design.",
+  "it does not really have tier design.",
+]) {
+  assertIncludes(pricingTierGuideText, "pricing tier guide", expected);
 }
 
 console.log("core-intent-refresh.test.mjs: OK");

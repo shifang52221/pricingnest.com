@@ -87,7 +87,30 @@ export const GUIDE_GOVERNANCE = {
   "unit-economics-model-template": "noindex,follow",
   "usage-cap-communication": "noindex,follow",
   "usage-pricing-onboarding": "noindex,follow",
-  "usage-tier-breakpoints": "noindex,follow"
+  "usage-tier-breakpoints": "noindex,follow",
+  // Wave 7: contract another set of retained-index candidates whose current
+  // checklist shape is weaker than adjacent retained core guides and more
+  // useful as crawlable support than as public index-facing assets.
+  "annual-discount-mistakes": "noindex,follow",
+  "api-tier-design": "noindex,follow",
+  "arrr-funnel-pricing": "noindex,follow",
+  "cac-payback-targets": "noindex,follow",
+  "gross-margin-vs-contribution-margin": "noindex,follow",
+  "commit-and-consume-pricing": "noindex,follow",
+  "credit-based-pricing-model": "noindex,follow",
+  "break-even-cac-guide": "noindex,follow",
+  "compute-cost-baselines": "noindex,follow",
+  "free-tier-modeling": "noindex,follow",
+  "ltv-cac-range": "noindex,follow",
+  "monthly-cloud-cost-breakdown": "noindex,follow",
+  "mrr-to-arr-and-back": "noindex,follow",
+  "price-floor-by-margin": "noindex,follow",
+  "request-pricing-model": "noindex,follow",
+  "seat-minimums": "noindex,follow",
+  "storage-request-costs": "noindex,follow",
+  "trial-to-paid-pricing": "noindex,follow",
+  "usage-based-pricing-bill-shock": "noindex,follow",
+  "usage-forecasting-pricing": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {

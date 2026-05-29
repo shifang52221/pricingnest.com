@@ -66,7 +66,27 @@ const guideNoindexCandidates = [
   "unit-economics-model-template",
   "usage-cap-communication",
   "usage-pricing-onboarding",
-  "usage-tier-breakpoints"
+  "usage-tier-breakpoints",
+  "annual-discount-mistakes",
+  "api-tier-design",
+  "arrr-funnel-pricing",
+  "cac-payback-targets",
+  "commit-and-consume-pricing",
+  "credit-based-pricing-model",
+  "break-even-cac-guide",
+  "compute-cost-baselines",
+  "free-tier-modeling",
+  "gross-margin-vs-contribution-margin",
+  "ltv-cac-range",
+  "monthly-cloud-cost-breakdown",
+  "mrr-to-arr-and-back",
+  "price-floor-by-margin",
+  "request-pricing-model",
+  "seat-minimums",
+  "storage-request-costs",
+  "trial-to-paid-pricing",
+  "usage-based-pricing-bill-shock",
+  "usage-forecasting-pricing"
 ];
 
 const glossaryNoindexCandidates = [
