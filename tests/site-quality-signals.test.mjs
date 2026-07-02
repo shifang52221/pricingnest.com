@@ -30,6 +30,7 @@ assertExcludes(indexPageText, "homepage", "SEO-friendly toolkit structure");
 assertIncludes(indexPageText, "homepage", "Transparent formulas");
 assertIncludes(indexPageText, "homepage", "Read the methodology");
 assertIncludes(indexPageText, "homepage", "Trust and methodology");
+assertIncludes(indexPageText, "homepage", "/methodology/");
 
 assertExcludes(baseLayoutText, "base layout", "SEO-friendly, high-intent queries");
 assertIncludes(baseLayoutText, "base layout", "input-driven calculators and practical guides");
