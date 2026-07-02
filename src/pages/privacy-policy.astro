@@ -10,7 +10,7 @@ const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.
   <section class="hero">
     <h1>Privacy Policy</h1>
     <p>
-      This site provides calculators that run in your browser. We do not require accounts and we do not intentionally
+      This site provides calculators that run in your browser. We do not require accounts, and we do not intentionally
       collect the inputs you enter into tools.
     </p>
   </section>
@@ -20,18 +20,34 @@ const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.
       <h2>Data we collect</h2>
       <p class="muted">
         We do not run user accounts. Calculator inputs and results are processed in your browser and are not intentionally
-        transmitted to our servers.
+        transmitted to our servers. If you contact us, we may receive the information you choose to send in your message.
       </p>
+
+      <h2 style="margin-top: 1.25rem;">How we use information</h2>
+      <p class="muted">
+        We use limited information to operate the site, improve calculators, answer feedback, and understand whether the
+        content is helping people make pricing decisions. We do not sell personal information.
+      </p>
+
       <h2>Advertising</h2>
       <p class="muted">
         We use Google AdSense to serve ads. Google and its partners may use cookies or similar technologies to serve and
         measure ads. We use Google Consent Mode and keep ad/analytics storage denied by default until you accept cookies.
       </p>
+
       <h2>Analytics</h2>
       <p class="muted">
         We use Google Analytics (GA4) to understand aggregated traffic and improve the site. Analytics storage is denied
         by default until you accept cookies via our banner.
       </p>
+
+      <h2 style="margin-top: 1.25rem;">Retention</h2>
+      <p class="muted">
+        We keep contact or feedback messages only as long as needed to review the request and maintain the site. We do not
+        intentionally retain calculator inputs submitted through the tools because the calculators are meant to run locally
+        in your browser.
+      </p>
+
       <h2>Contact</h2>
       <p class="muted">
         If you have questions about this policy, contact us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
@@ -42,6 +58,9 @@ const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "admin@pricingnest.
       <p class="muted">
         This site provides informational calculators only. If you operate in jurisdictions that require a certified CMP,
         additional disclosures, or consent logging, integrate that before scaling traffic.
+      </p>
+      <p class="muted">
+        If our tracking or ad setup changes materially, we will update this policy to reflect the new data flows.
       </p>
     </aside>
   </div>

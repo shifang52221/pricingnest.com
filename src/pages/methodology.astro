@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "PricingNest";
+const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const lastReviewed = "2026-07-02";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: `Methodology and Review Policy | ${siteName}`,
+  url: canonical,
+  description: "How PricingNest builds calculators, reviews retained pages, and handles corrections.",
+  dateModified: lastReviewed,
+  mainEntity: {
+    "@type": "Organization",
+    name: siteName,
+    url: siteUrl
+  }
+};
+---
+<BaseLayout
+  title={`Methodology and Review Policy | ${siteName}`}
+  description="How PricingNest builds calculators, reviews guides and glossary entries, and handles corrections."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="hero">
+    <h1>Methodology and Review Policy</h1>
+    <p>
+      This page explains how {siteName} builds calculators, reviews retained pages, and decides when a change is
+      meaningful enough to refresh a visible review date. The goal is to keep the site readable for users and auditable
+      for editors, without turning it into a black box or a bulk template set.
+    </p>
+    <p class="muted">Last reviewed: {lastReviewed}</p>
+  </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>What this page covers</h2>
+      <ul class="list">
+        <li>How calculators are built and kept transparent.</li>
+        <li>How guides, glossary entries, and tool pages are reviewed.</li>
+        <li>What counts as a meaningful update.</li>
+        <li>How corrections are routed and recorded.</li>
+      </ul>
+
+      <h2 id="how-calculators-are-built" style="margin-top: 1.25rem;">How calculators are built</h2>
+      <ul class="list">
+        <li>Calculators use explicit inputs, formulas, and assumptions instead of hidden live feeds.</li>
+        <li>Default values are examples, not a substitute for your own contracts, usage data, or cloud bills.</li>
+        <li>Each retained tool links to guides and glossary terms so the model and the decision context stay together.</li>
+        <li>When a model is simplified, the page should say what is excluded and when deeper validation is still required.</li>
+      </ul>
+
+      <h2 id="review-policy" style="margin-top: 1.25rem;">How pages are reviewed</h2>
+      <ul class="list">
+        <li>Tool pages are reviewed for formula clarity, input usefulness, and whether the next-step links still support the main decision.</li>
+        <li>Guides are reviewed for clarity, explicit assumptions, and consistency with related calculators and glossary terms.</li>
+        <li>Glossary entries are reviewed for definition clarity and consistent usage across the site.</li>
+        <li>We surface who reviewed a page and when it was last reviewed on retained content when that signal matters to the reader.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">What counts as a meaningful update</h2>
+      <ul class="list">
+        <li>A formula change or a modeling assumption change.</li>
+        <li>A revised default example or scenario preset.</li>
+        <li>A rewritten interpretation block or decision summary.</li>
+        <li>A trust-critical wording fix, including a page that had looked too generic or too template-like.</li>
+        <li>A correction to navigation, related resources, or support text that changes how the page should be used.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">What we optimize for</h2>
+      <ul class="list">
+        <li>Transparent assumptions over black-box estimates.</li>
+        <li>Decision support over keyword expansion.</li>
+        <li>Real user experience over bulk page production.</li>
+        <li>Clear separation between core pages and secondary checks.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">What we do not claim</h2>
+      <ul class="list">
+        <li>We do not replace finance review, legal review, or direct vendor billing validation.</li>
+        <li>We do not promise that a calculator output is the final answer for your business.</li>
+        <li>We do not model every cost category by default, including taxes, support escalation, or vendor minimums.</li>
+        <li>We do not use this site to publish filler pages just to increase crawl coverage.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Corrections and updates</h2>
+      <p class="muted">
+        If a formula, example, explanation, or linked resource is wrong or unclear, send a correction request through
+        the <a href="/contact/">Contact</a> page. We review the issue against the current page, decide where the fix
+        belongs, and refresh the review date when the change affects the substance of the page.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">Related pages</h2>
+      <ul class="list">
+        <li><a href="/about/">About the site</a></li>
+        <li><a href="/contact/">Contact and correction requests</a></li>
+        <li><a href="/saas-pricing/">Toolkit</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
+      </ul>
+    </section>
+
+    <aside class="card col4">
+      <h2>Review checklist</h2>
+      <ul class="list">
+        <li>Is the page transparent about inputs and assumptions?</li>
+        <li>Does it help a real pricing decision?</li>
+        <li>Are the next-step links useful and not redundant?</li>
+        <li>Would we still keep it if search traffic disappeared?</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Trust signals</h2>
+      <ul class="list">
+        <li>Visible contact route.</li>
+        <li>Visible methodology route.</li>
+        <li>Visible privacy, cookie, and terms pages.</li>
+        <li>Reviewed dates on retained content.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Editorial note</h2>
+      <p class="muted">
+        PricingNest is maintained as an editorial product. The goal is to keep the strongest calculators and supporting
+        pages useful, reviewable, and easy to defend.
+      </p>
+    </aside>
+  </div>
+</BaseLayout>

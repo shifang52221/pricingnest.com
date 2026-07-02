@@ -6,6 +6,7 @@ import { TOOLS, getPriorityTools } from "../../lib/tools";
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const featuredTools = getPriorityTools(TOOLS);
+const secondaryTools = TOOLS.filter((tool) => !featuredTools.some((featuredTool) => featuredTool.slug === tool.slug));
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -42,9 +43,18 @@ const jsonLd = {
 
   <div class="grid">
     <section class="card col8">
-      <h2>Tools</h2>
+      <h2>Core calculators</h2>
+      <p class="muted">These are the highest-priority workflows on the site and the best starting points for most pricing reviews.</p>
       <div class="tools">
         {featuredTools.map((tool) => (
+          <ToolCard tool={tool} />
+        ))}
+      </div>
+
+      <h2 style="margin-top: 1.4rem;">Secondary checks</h2>
+      <p class="muted">Use the rest of the toolkit to pressure-test a decision after the main pricing path is already clear.</p>
+      <div class="tools">
+        {secondaryTools.map((tool) => (
           <ToolCard tool={tool} />
         ))}
       </div>
@@ -55,6 +65,13 @@ const jsonLd = {
         Pick a tool, enter your assumptions, then copy a shareable link for your team. We don't fetch live cloud pricing,
         so you control the model.
       </p>
+      <h2 style="margin-top: 1.1rem;">Start here first</h2>
+      <ul class="list">
+        <li><a href="/saas-pricing/usage-based-pricing-calculator/">Usage-based pricing calculator</a></li>
+        <li><a href="/saas-pricing/api-pricing-calculator/">API pricing calculator</a></li>
+        <li><a href="/saas-pricing/storage-cost-calculator/">Storage cost calculator</a></li>
+        <li><a href="/saas-pricing/compute-cost-estimator/">Compute cost estimator</a></li>
+      </ul>
       <h2 style="margin-top: 1.1rem;">What's included</h2>
       <ul class="list">
         <li>Presets to start fast</li>
@@ -82,7 +99,6 @@ const jsonLd = {
           <li><a href="/saas-pricing/usage-based-pricing-calculator/">Set a baseline price per unit</a></li>
           <li><a href="/guides/value-metric-selection/">Choose a value metric buyers can follow</a></li>
           <li><a href="/guides/usage-based-pricing-examples/">Decide when one unit price needs tiers, included usage, or a floor</a></li>
-          <li><a href="/glossary/usage-based-pricing/">Clarify the billing model before publishing it</a></li>
           <li><a href="/glossary/overage/">Make the escalation path visible before heavier accounts hit it</a></li>
         </ol>
       </div>
@@ -91,7 +107,6 @@ const jsonLd = {
         <ol class="list">
           <li><a href="/saas-pricing/api-pricing-calculator/">Estimate price per 1,000 calls</a></li>
           <li><a href="/guides/api-cost-estimation/">Decide when cost estimation becomes a packaging problem</a></li>
-          <li><a href="/glossary/api-call/">Lock the billable event buyers can estimate</a></li>
           <li><a href="/glossary/rate-limit/">Decide how throughput becomes visible packaging</a></li>
         </ol>
       </div>
@@ -101,7 +116,6 @@ const jsonLd = {
           <li><a href="/saas-pricing/storage-cost-calculator/">Estimate cost per GB</a></li>
           <li><a href="/guides/storage-costs-and-pricing/">Decide when request, retrieval, or base-fee structure needs to show up</a></li>
           <li><a href="/guides/price-per-gb-month-explained/">Explain the headline GB-month rate buyers will see</a></li>
-          <li><a href="/glossary/gb-month/">Keep storage usage language clear</a></li>
           <li><a href="/glossary/minimum-commitment/">Use a floor only when the storage offer needs a commercial backstop</a></li>
         </ol>
       </div>

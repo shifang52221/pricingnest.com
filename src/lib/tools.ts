@@ -142,12 +142,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "usage-based-pricing-calculator",
     title: "Usage-Based Pricing Calculator",
-    name: "Price Per Unit Calculator for Usage-Based Pricing",
+    name: "Usage-Based Pricing Calculator",
     description:
-      "Calculate a price-per-unit floor from usage, unit cost, fixed overhead, and target margin. Use it when you need a price-per-unit floor before you decide whether the plan also needs tiers, included usage, or a minimum commitment.",
-    metaTitle: "Price Per Unit Calculator for Usage-Based Pricing | PricingNest",
+      "Set a price-per-unit floor from usage, unit cost, fixed overhead, and target margin. Compare p50 and p90 usage before you decide on tiers, included usage, or a minimum commitment.",
+    metaTitle: "Usage-Based Pricing Calculator: Set a Margin-Safe Price Floor | PricingNest",
     metaDescription:
-      "Use this usage-based pricing calculator to calculate a margin-safe price per unit, compare p50 and p90 scenarios, and see when a platform fee or minimum commitment is needed.",
+      "Estimate a margin-safe price-per-unit floor from usage, unit cost, overhead, and target margin. Compare p50 and p90 cases to decide whether you need a platform fee, included usage, or a minimum commitment.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -429,12 +429,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "compute-cost-estimator",
     title: "Compute Cost Estimator",
-    name: "Compute Pricing Calculator from vCPU and Memory Costs",
+    name: "Compute Cost Estimator",
     description:
-      "Estimate compute costs from vCPU-hours, memory GB-hours, and fixed overhead, then turn them into a margin-safe monthly compute price.",
-    metaTitle: "Compute Pricing Calculator & Monthly Price Floor | PricingNest",
+      "Set a compute price floor from vCPU-hours, memory GB-hours, fixed overhead, and target margin. Compare baseline and burstier workloads before you choose a flat rate, base fee, or committed tier.",
+    metaTitle: "Compute Cost Estimator: Set a Monthly Price Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe compute price from vCPU-hours, memory GB-hours, blended unit cost, fixed overhead, and target gross margin. Compare baseline and heavier workloads, set a price floor, and decide when a platform fee or minimum commitment is needed.",
+      "Estimate a margin-safe compute price from vCPU-hours, memory GB-hours, overhead, and target margin. Compare baseline and heavier workloads to decide whether a flat rate, base fee, or minimum commitment makes sense.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -2265,12 +2265,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "api-pricing-calculator",
     title: "API Pricing Calculator",
-    name: "API Pricing Calculator for Cost per 1,000 Calls",
+    name: "API Pricing Calculator",
     description:
-      "Estimate a monthly API plan price and an implied price per 1,000 calls from billable volume, infra cost, fixed overhead, and target gross margin.",
-    metaTitle: "API Pricing Calculator: Price Per 1,000 Calls | PricingNest",
+      "Set an API price floor from call volume, infra cost, fixed overhead, and target margin. Compare monthly and per-1,000-call outcomes before you choose overages, tiers, or minimum commitments.",
+    metaTitle: "API Pricing Calculator: Set a Price Per 1,000 Calls Floor | PricingNest",
     metaDescription:
-      "Calculate a margin-safe API price from call volume, infra cost per 1,000 calls, fixed overhead, and target gross margin. Use it to set a monthly plan and a price per 1,000 calls.",
+      "Estimate a margin-safe API price from call volume, infra cost per 1,000 calls, overhead, and target margin. Use the result to set a monthly plan and decide whether overages or minimum commitments are needed.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-03-31",
     sources: [
@@ -3072,12 +3072,12 @@ export const TOOLS: ToolDefinition[] = [
   {
     slug: "storage-cost-calculator",
     title: "Storage Cost Calculator",
-    name: "Storage Pricing Calculator: Cost Per GB and Monthly Cost",
+    name: "Storage Cost Calculator",
     description:
-      "Estimate storage cost structure from average GB stored, request volume, and fixed overhead before you decide what should become a buyer-facing rate.",
-    metaTitle: "Storage Pricing Calculator: Cost Per GB-Month Floor | PricingNest",
+      "Set a storage price floor from GB stored, request volume, retrieval behavior, fixed overhead, and target margin. Compare archive-heavy and access-heavy scenarios before you choose one public rate or separate packaging.",
+    metaTitle: "Storage Cost Calculator: Set a GB-Month Price Floor | PricingNest",
     metaDescription:
-      "Use this storage cost calculator to model storage, request, and fixed-cost recovery before translating the result into a public price.",
+      "Estimate a margin-safe storage price from GB stored, request volume, retrieval behavior, overhead, and target margin. Decide whether one GB-month rate is enough or whether the packaging needs a fee or minimum commitment.",
     reviewedBy: "PricingNest Editorial Team",
     reviewed: "2026-04-02",
     sources: [

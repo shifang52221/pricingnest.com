@@ -1,12 +1,74 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Terms of Use | SaaS Pricing Toolkit" description="Terms of use and disclaimer for calculator outputs.">
+<BaseLayout title="Terms of Use | PricingNest" description="Terms of use, calculator limitations, and acceptable use for PricingNest.">
   <section class="hero">
     <h1>Terms of Use</h1>
     <p>
-      The calculators on this site provide estimates only and are not financial, legal, or professional advice. You are
-      responsible for validating inputs and outputs for your use case.
+      PricingNest provides informational calculators and editorial guides for pricing, packaging, and unit economics. The
+      output is designed to help you think through decisions, not to replace legal, financial, tax, or procurement
+      review.
     </p>
   </section>
+
+  <div class="grid">
+    <section class="card col8">
+      <h2>Informational use only</h2>
+      <p class="muted">
+        Calculator results are estimates based on the assumptions you enter. They may not reflect your actual contract
+        terms, vendor pricing, customer mix, margin targets, or internal policy. You are responsible for checking whether
+        an output is suitable before using it in a live pricing decision.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">No warranty</h2>
+      <p class="muted">
+        We provide the site and its content "as is" and "as available." While we try to keep formulas, examples, and
+        explanations accurate, we do not guarantee that every page is complete, current, or free of error.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">User responsibility</h2>
+      <p class="muted">
+        You are responsible for validating your own inputs, checking outputs against source data, and deciding whether a
+        recommendation fits your contracts, operations, and legal requirements. If a page looks unclear or outdated,
+        treat it as a starting point and review it before relying on it.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">Acceptable use</h2>
+      <ul class="list">
+        <li>Do not use the site to submit harmful, abusive, or unlawful content.</li>
+        <li>Do not attempt to disrupt the calculators, content delivery, or ad and consent systems.</li>
+        <li>Do not copy or redistribute substantial site content without permission where copyright applies.</li>
+        <li>Use the site in a way that respects other users and the integrity of the published models.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Intellectual property</h2>
+      <p class="muted">
+        The site design, copy, structure, and tool logic are part of the PricingNest property unless otherwise noted. Third
+        party names, trademarks, and referenced products remain the property of their respective owners.
+      </p>
+
+      <h2 style="margin-top: 1.25rem;">Corrections and contact</h2>
+      <p class="muted">
+        If you find an error, use the <a href="/contact/">Contact</a> page to send a correction request. We review
+        meaningful correction notes before updating pages that affect retained tools or trust-critical explanations.
+      </p>
+    </section>
+
+    <aside class="card col4">
+      <h2>Summary</h2>
+      <ul class="list">
+        <li>Estimates only, not advice.</li>
+        <li>Validate every input before use.</li>
+        <li>Report issues through Contact.</li>
+      </ul>
+
+      <h2 style="margin-top: 1.25rem;">Related pages</h2>
+      <ul class="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy policy</a></li>
+        <li><a href="/cookie-policy/">Cookie policy</a></li>
+      </ul>
+    </aside>
+  </div>
 </BaseLayout>

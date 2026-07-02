@@ -38,7 +38,7 @@ const robots = getGuideRobots(entry.slug);
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const editorialTeamHref = "/about/#editorial-team";
-const reviewPolicyHref = "/about/#review-policy";
+const reviewPolicyHref = "/methodology/#review-policy";
 const authorName = entry.data.author ?? "PricingNest Editorial Team";
 const authorType = authorName === "PricingNest Editorial Team" ? "Organization" : "Person";
 const reviewedBy = entry.data.reviewedBy ?? "PricingNest Editorial Team";
