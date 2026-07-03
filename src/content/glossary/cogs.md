@@ -5,7 +5,7 @@ updated: "2026-01-30"
 category: "unit-economics"
 guides: ["usage-allocation-cost", "support-cost-allocation"]
 tools: ["compute-cost-estimator","storage-cost-calculator"]
-glossary: ["gross-margin","variable-cost","fixed-cost","unit-cost"]
+glossary: ["gross-margin","unit-cost"]
 ---
 ## Definition
 COGS are the direct costs required to deliver your product or service, including infrastructure, vendors, and usage-driven support.
@@ -31,6 +31,4 @@ Use blended rates, separate fixed and variable costs, and track COGS by product 
 - [Storage Cost Calculator](/saas-pricing/storage-cost-calculator/)
 ## Related glossary terms
 - [Gross Margin](/glossary/gross-margin/)
-- [Variable Cost](/glossary/variable-cost/)
-- [Fixed Cost](/glossary/fixed-cost/)
 - [Unit Cost](/glossary/unit-cost/)

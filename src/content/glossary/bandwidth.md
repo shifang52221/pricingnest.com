@@ -4,7 +4,7 @@ description: "Data transferred per time, typically priced per GB with tiered rat
 updated: "2026-01-30"
 category: "storage"
 guides: ["bandwidth-pricing-guardrails", "cdn-cost-pass-through"]
-glossary: ["egress", "cdn", "origin-fetch", "gb-month", "retrieval-fees"]
+glossary: ["egress", "cdn", "gb-month"]
 ---
 ## Definition
 Bandwidth is the amount of data transferred over a network in a given time period, commonly measured and billed per GB.
@@ -31,6 +31,4 @@ Track bandwidth by product area, customer segment, and region to identify the hi
 ## Related glossary terms
 - [Egress](/glossary/egress/)
 - [CDN](/glossary/cdn/)
-- [Origin Fetch](/glossary/origin-fetch/)
 - [GB-Month](/glossary/gb-month/)
-- [Retrieval Fees](/glossary/retrieval-fees/)

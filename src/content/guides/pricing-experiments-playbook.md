@@ -4,7 +4,7 @@ description: "How to run price increases and annual prepay tests with clear metr
 updated: "2026-01-29"
 tags: ["pricing-experiments"]
 tools: ["pricing-increase-impact-calculator","annual-discount-calculator","churn-impact-calculator","mrr-calculator"]
-glossary: ["churn","mrr","annual-prepay-discount"]
+glossary: ["churn","annual-prepay-discount"]
 ---
 
 ## Quick checklist
@@ -15,7 +15,7 @@ glossary: ["churn","mrr","annual-prepay-discount"]
 - Document learnings for the next test.
 
 ## Step-by-step
-1. Define the hypothesis and primary metric (MRR uplift, churn, or cash flow).
+1. Define the hypothesis and primary metric (monthly recurring revenue uplift, churn, or cash flow).
 2. Choose the cohort and the pricing change (increase, discount, or packaging).
 3. Estimate expected churn or conversion impact and set guardrails.
 4. Run the test for a fixed window and collect feedback.
@@ -24,7 +24,7 @@ glossary: ["churn","mrr","annual-prepay-discount"]
 ## Example experiments
 - **Annual prepay test**: 10-15% discount for annual plans to improve cash flow.
 - **Price increase test**: 5% increase at renewal for a single segment.
-- **Packaging test**: move a feature to a higher tier to lift ARPA.
+- **Packaging test**: move a feature to a higher plan level to lift revenue per account.
 
 ## Common mistakes
 - Testing multiple variables at once without clear attribution.
@@ -41,5 +41,4 @@ glossary: ["churn","mrr","annual-prepay-discount"]
 
 ## Related glossary terms
 - [Churn](/glossary/churn/)
-- [Mrr](/glossary/mrr/)
 - [Annual Prepay Discount](/glossary/annual-prepay-discount/)

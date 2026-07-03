@@ -4,7 +4,7 @@ description: "How you bundle features and limits into plans; shapes value percep
 updated: "2026-01-30"
 category: "pricing-models"
 guides: ["pricing-tier-design", "pricing-tier-mistakes"]
-glossary: ["tiers","pricing-metric","value-metric","feature-gating","add-on"]
+glossary: ["pricing-metric","value-metric","feature-gating"]
 ---
 ## Definition
 Packaging is the structure of plans, limits, and feature bundles that customers can buy.
@@ -28,8 +28,6 @@ Bundle around outcomes, separate by usage or team size, and make upgrade paths c
 ## Examples
 - Starter for individuals, Team for collaboration, Scale for high usage.
 ## Related glossary terms
-- [Tiers](/glossary/tiers/)
 - [Pricing Metric](/glossary/pricing-metric/)
 - [Value Metric](/glossary/value-metric/)
 - [Feature Gating](/glossary/feature-gating/)
-- [Add-on](/glossary/add-on/)

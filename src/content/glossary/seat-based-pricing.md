@@ -4,7 +4,7 @@ description: "Charging by number of users; simple but can break when costs scale
 updated: "2026-01-30"
 category: "pricing-models"
 tools: ["seat-vs-usage-pricing-comparison"]
-glossary: ["usage-based-pricing","per-seat","per-active-user","overage"]
+glossary: ["usage-based-pricing","overage"]
 ---
 ## Definition
 Seat-based pricing charges customers based on the number of users or seats provisioned.
@@ -27,6 +27,4 @@ Track seats provisioned vs active, and monitor cost per active seat to protect m
 - [Seat Vs Usage Pricing Comparison](/saas-pricing/seat-vs-usage-pricing-comparison/)
 ## Related glossary terms
 - [Usage Based Pricing](/glossary/usage-based-pricing/)
-- [Per Seat](/glossary/per-seat/)
-- [Per Active User](/glossary/per-active-user/)
 - [Overage](/glossary/overage/)

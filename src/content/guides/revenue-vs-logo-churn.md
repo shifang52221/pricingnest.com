@@ -4,7 +4,7 @@ description: "Understand why revenue churn and logo churn tell different stories
 updated: "2026-01-31"
 tags: ["retention", "metrics"]
 tools: ["churn-impact-calculator", "mrr-calculator"]
-glossary: ["revenue-churn", "logo-churn", "churn", "downgrade"]
+glossary: ["churn"]
 ---
 
 ## Quick checklist
@@ -36,7 +36,4 @@ glossary: ["revenue-churn", "logo-churn", "churn", "downgrade"]
 - [MRR Calculator](/saas-pricing/mrr-calculator/)
 
 ## Related glossary terms
-- [Revenue Churn](/glossary/revenue-churn/)
-- [Logo Churn](/glossary/logo-churn/)
 - [Churn](/glossary/churn/)
-- [Downgrade](/glossary/downgrade/)

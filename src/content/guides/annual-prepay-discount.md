@@ -7,7 +7,7 @@ reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-03-30"
 tags: ["annual-pricing", "discounts", "retention"]
 tools: ["annual-discount-calculator", "pricing-increase-impact-calculator", "churn-impact-calculator", "usage-based-pricing-calculator"]
-glossary: ["annual-prepay-discount", "churn", "mrr", "gross-margin"]
+glossary: ["annual-prepay-discount", "churn", "gross-margin"]
 sources:
   - kind: "internal-input"
     label: "Renewal cohort and annual prepay cash-collection review"
@@ -82,7 +82,7 @@ Annual discounts usually go wrong in one of five ways:
 
 That last issue matters more than many teams expect. A generous annual offer may improve current-period conversion but
 weaken the next renewal if buyers anchor on the discounted number and resist moving back toward full list price. That is
-why annual packaging should be checked against [Churn](/glossary/churn/), [MRR](/glossary/mrr/), and actual renewal
+why annual packaging should be checked against [Churn](/glossary/churn/) and actual renewal
 behavior instead of being set by intuition alone.
 
 ## Pricing options and trade-offs
@@ -147,5 +147,4 @@ retention without damaging gross margin, buyer trust, or the next renewal?"
 
 - [Annual Prepay Discount](/glossary/annual-prepay-discount/)
 - [Churn](/glossary/churn/)
-- [MRR](/glossary/mrr/)
 - [Gross Margin](/glossary/gross-margin/)

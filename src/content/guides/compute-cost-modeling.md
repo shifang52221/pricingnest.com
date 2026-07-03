@@ -7,7 +7,7 @@ reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-03-30"
 tags: ["cloud-costs", "unit-economics"]
 tools: ["compute-cost-estimator", "monthly-cloud-cost-estimator", "usage-based-pricing-calculator"]
-glossary: ["cogs", "gross-margin", "unit-cost", "variable-cost"]
+glossary: ["cogs", "gross-margin", "unit-cost"]
 sources:
   - kind: "internal-input"
     label: "Cloud billing export and workload mix review"
@@ -68,7 +68,7 @@ Compute pricing usually breaks when teams confuse technical activity with billab
    to support.
 
 When this happens, the price can look competitive at moderate usage but collapse under high-intensity workloads. That is
-why compute pricing should be checked against [Unit Cost](/glossary/unit-cost/), [Variable Cost](/glossary/variable-cost/),
+why compute pricing should be checked against [Unit Cost](/glossary/unit-cost/)
 and [Gross Margin](/glossary/gross-margin/) together.
 
 ## Pricing options and trade-offs
@@ -117,7 +117,7 @@ price table.
 - Decide whether a base fee or a tiered structure is needed to protect margin.
 - Use the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/) if compute is part of a larger
   usage-based product rather than a standalone compute feature.
-- Revisit [COGS](/glossary/cogs/), [Unit Cost](/glossary/unit-cost/), and [Variable Cost](/glossary/variable-cost/) so
+- Revisit [COGS](/glossary/cogs/) and [Unit Cost](/glossary/unit-cost/) so
   product, finance, and engineering are using the same pricing language.
 
 ## Tools to use
@@ -131,4 +131,3 @@ price table.
 - [COGS](/glossary/cogs/)
 - [Gross Margin](/glossary/gross-margin/)
 - [Unit Cost](/glossary/unit-cost/)
-- [Variable Cost](/glossary/variable-cost/)

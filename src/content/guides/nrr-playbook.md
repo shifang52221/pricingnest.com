@@ -4,7 +4,7 @@ description: "Improve net revenue retention by focusing on expansion, contractio
 updated: "2026-01-31"
 tags: ["retention", "unit-economics"]
 tools: ["nrr-calculator", "mrr-calculator", "churn-impact-calculator", "ltv-calculator"]
-glossary: ["nrr", "grr", "churn", "expansion-revenue", "contribution-margin"]
+glossary: ["churn"]
 ---
 
 ## Quick checklist
@@ -46,7 +46,4 @@ glossary: ["nrr", "grr", "churn", "expansion-revenue", "contribution-margin"]
 - [LTV Calculator](/saas-pricing/ltv-calculator/)
 
 ## Related glossary terms
-- [NRR](/glossary/nrr/)
-- [GRR](/glossary/grr/)
 - [Churn](/glossary/churn/)
-- [Expansion Revenue](/glossary/expansion-revenue/)

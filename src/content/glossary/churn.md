@@ -6,9 +6,9 @@ author: "PricingNest Editorial Team"
 reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-04-03"
 category: "metrics"
-guides: ["annual-prepay-discount", "pricing-increase-playbook"]
+guides: ["annual-prepay-discount"]
 tools: ["churn-impact-calculator","ltv-calculator","pricing-increase-impact-calculator"]
-glossary: ["annual-prepay-discount","ltv","nrr","grr","gross-margin"]
+glossary: ["annual-prepay-discount","ltv","gross-margin"]
 sources:
   - kind: "internal-input"
     label: "Cancellation, downgrade, and cohort retention review"
@@ -36,7 +36,7 @@ Even small shifts in churn ripple through LTV, payback, and growth efficiency. P
 Churn changes how you think about annual commitments, pricing increases, and expansion. High logo churn means each sale must cover fewer renewals, so you may need stronger annual commitment incentives or higher renewal pricing. High revenue churn means expansion motions are inconsistent, so you may need to revisit usage caps or annual discounts. Churn also influences how you model payback: more churn lowers the allowed cost of acquisition, so your pricing model must protect a clean renewal behavior before you can justify aggressive initial discounts. Watching logo churn, revenue churn, renewal behavior, price change risk, and LTV sensitivity together keeps your pricing response proportional to the retention signal.
 
 ## How to use it with PricingNest tools
-Use the [Churn Impact Calculator](/saas-pricing/churn-impact-calculator/) to quantify how a delta in churn moves recurring revenue and expansion goals. Pair that with the [Pricing Increase Impact Calculator](/saas-pricing/pricing-increase-impact-calculator/) so you understand how a higher renewal price affects churn risk. Review the [Annual Prepay Discount guide](/guides/annual-prepay-discount/) and the [Pricing Increase Playbook](/guides/pricing-increase-playbook/) to align pricing packaging with the churn story you need to tell to buyers.
+Use the [Churn Impact Calculator](/saas-pricing/churn-impact-calculator/) to quantify how a delta in churn moves recurring revenue and expansion goals. Pair that with the [Pricing Increase Impact Calculator](/saas-pricing/pricing-increase-impact-calculator/) so you understand how a higher renewal price affects churn risk. Review the [Annual Prepay Discount guide](/guides/annual-prepay-discount/) to align pricing packaging with the churn story you need to tell to buyers.
 
 ## Common interpretation mistakes
 - Treating churn as a single KPI when logo churn, revenue churn, and downgrade behavior all matter differently.

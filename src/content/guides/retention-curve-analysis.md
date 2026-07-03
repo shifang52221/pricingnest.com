@@ -4,7 +4,7 @@ description: "Use retention curves to diagnose churn patterns and quantify the i
 updated: "2026-01-31"
 tags: ["retention", "product-analytics"]
 tools: ["cohort-retention-curve-calculator", "churn-impact-calculator", "ltv-calculator"]
-glossary: ["retention-curve", "cohort-retention", "cohort", "churn"]
+glossary: ["churn"]
 ---
 
 ## Quick checklist
@@ -39,7 +39,4 @@ glossary: ["retention-curve", "cohort-retention", "cohort", "churn"]
 - [LTV Calculator](/saas-pricing/ltv-calculator/)
 
 ## Related glossary terms
-- [Retention Curve](/glossary/retention-curve/)
-- [Cohort Retention](/glossary/cohort-retention/)
-- [Cohort](/glossary/cohort/)
 - [Churn](/glossary/churn/)

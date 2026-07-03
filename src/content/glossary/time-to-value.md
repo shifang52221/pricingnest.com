@@ -4,7 +4,7 @@ description: "How quickly a customer reaches value; affects churn risk and prici
 updated: "2026-01-30"
 category: "metrics"
 guides: ["trial-to-paid-pricing", "onboarding-to-retention"]
-glossary: ["activation","arrr","retention-curve","churn"]
+glossary: ["churn"]
 ---
 ## Definition
 Time to value (TTV) is the elapsed time from signup to the first meaningful outcome that confirms product value.
@@ -26,7 +26,4 @@ Track median and p90 TTV by segment, and separate self-serve from sales-led coho
 ## Examples
 - TTV = time from signup to first dashboard shared with a teammate.
 ## Related glossary terms
-- [Activation](/glossary/activation/)
-- [ARRR Funnel](/glossary/arrr/)
-- [Retention Curve](/glossary/retention-curve/)
 - [Churn](/glossary/churn/)

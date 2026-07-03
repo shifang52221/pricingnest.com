@@ -7,7 +7,7 @@ reviewedBy: "PricingNest Editorial Team"
 reviewed: "2026-05-29"
 tags: ["pricing", "packaging", "usage-based-pricing"]
 tools: ["usage-based-pricing-calculator", "pricing-tier-optimizer", "api-pricing-calculator"]
-glossary: ["platform-fee", "minimum-commitment", "pricing-metric", "fixed-cost"]
+glossary: ["minimum-commitment", "pricing-metric"]
 sources:
   - kind: "internal-input"
     label: "Fixed-cost recovery and packaging review"
@@ -134,4 +134,4 @@ work.
 - Re-run the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/) with and without a fixed platform layer.
 - Compare whether the packaging is clearer with a visible platform fee, a higher unit price, or a [Minimum Commitment Model](/guides/minimum-commitment-model/).
 - Use the [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/) to decide whether the fee belongs in all plans or only in higher-touch segments.
-- Check that the fee language aligns with [Platform Fee](/glossary/platform-fee/), [Pricing Metric](/glossary/pricing-metric/), and [Fixed Cost](/glossary/fixed-cost/) before publishing it on the pricing page.
+- Check that the fee language aligns with [Pricing Metric](/glossary/pricing-metric/) and the published packaging structure before putting it on the pricing page.

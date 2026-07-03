@@ -110,7 +110,14 @@ export const GUIDE_GOVERNANCE = {
   "storage-request-costs": "noindex,follow",
   "trial-to-paid-pricing": "noindex,follow",
   "usage-based-pricing-bill-shock": "noindex,follow",
-  "usage-forecasting-pricing": "noindex,follow"
+  "usage-forecasting-pricing": "noindex,follow",
+  // Wave 8: contract another weak template-like batch before it keeps leaking
+  // trust into the indexed surface.
+  "expansion-revenue-modeling": "noindex,follow",
+  "seat-expansion-modeling": "noindex,follow",
+  "cac-payback-scenarios": "noindex,follow",
+  "cohort-retention-playbook": "noindex,follow",
+  "pricing-increase-playbook": "noindex,follow"
 };
 
 export const GLOSSARY_GOVERNANCE = {
@@ -157,6 +164,31 @@ export const GLOSSARY_GOVERNANCE = {
   "cohort": "noindex,follow",
   "p50": "noindex,follow",
   "p90": "noindex,follow",
+  // Wave 8: remove the remaining very thin glossary-style inventory pages from
+  // the index surface so the retained glossary layer looks more authored.
+  "request-pricing": "noindex,follow",
+  "unit-test-scenario": "noindex,follow",
+  "add-on": "noindex,follow",
+  "token-pricing": "noindex,follow",
+  "variable-cost": "noindex,follow",
+  "downgrade": "noindex,follow",
+  "cohort-retention": "noindex,follow",
+  "revenue-recognition": "noindex,follow",
+  "break-even-churn": "noindex,follow",
+  "ltv-cac": "noindex,follow",
+  "blended-cost": "noindex,follow",
+  "arpu": "noindex,follow",
+  "contribution-margin": "noindex,follow",
+  "expansion-revenue": "noindex,follow",
+  "nrr": "noindex,follow",
+  "arpa": "noindex,follow",
+  "revenue-churn": "noindex,follow",
+  "retention-curve": "noindex,follow",
+  "churn-cohort": "noindex,follow",
+  "logo-churn": "noindex,follow",
+  "churn-mitigation": "noindex,follow",
+  "on-call": "noindex,follow",
+  "grr": "noindex,follow",
   // Wave 4: remove generic glossary support terms that are too thin to justify
   // retained indexed visibility under the stricter glossary bar.
   "backup": "noindex,follow",

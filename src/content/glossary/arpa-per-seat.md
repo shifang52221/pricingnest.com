@@ -4,7 +4,7 @@ description: "Average recurring revenue per seat and how it changes under pricin
 updated: "2026-01-30"
 category: "metrics"
 guides: ["seat-minimums"]
-glossary: ["arpa","seat-based-pricing"]
+glossary: ["seat-based-pricing"]
 ---
 
 ## Definition
@@ -24,12 +24,11 @@ Use active seats, not licensed seats, to avoid overstating revenue per seat.
 - Use a consistent time window (monthly or quarterly).
 - Track revenue per seat by plan and segment.
 - Compare revenue per seat before and after pricing changes.
-- Separate revenue per seat from ARPA (per account).
+- Separate revenue per seat from revenue per account.
 - Normalize annual contracts to monthly revenue.
 - Avoid mixing usage revenue into seat metrics unless explicit.
 - Use the metric to guide tier thresholds.
 
 
 ## Related glossary terms
-- [Arpa](/glossary/arpa/)
 - [Seat Based Pricing](/glossary/seat-based-pricing/)

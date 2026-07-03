@@ -3,10 +3,10 @@ title: "Feature Gating"
 description: "Restricting features by plan; shifts value capture beyond pure usage."
 updated: "2026-01-30"
 category: "pricing-models"
-glossary: ["tiers","add-on","usage-based-pricing","value-metric","pricing-metric"]
+glossary: ["usage-based-pricing","value-metric","pricing-metric"]
 ---
 ## Definition
-Feature gating limits specific features to higher tiers or add-ons instead of charging purely on usage.
+Feature gating limits specific features to higher plans or optional packaged extras instead of charging purely on usage.
 ## Why it matters
 Gating differentiates plans and captures willingness to pay when features map to clear business outcomes.
 ## Pricing implications
@@ -25,8 +25,6 @@ Track upgrade rate, downgrade rate, and activation impact after introducing a ga
 - Document the rationale for each gate.
 - Review gates after major launches.
 ## Related glossary terms
-- [Tiers](/glossary/tiers/)
-- [Add-on](/glossary/add-on/)
 - [Usage Based Pricing](/glossary/usage-based-pricing/)
 - [Value Metric](/glossary/value-metric/)
 - [Pricing Metric](/glossary/pricing-metric/)

@@ -5,7 +5,7 @@ updated: "2026-01-30"
 category: "storage"
 guides: ["storage-cost-optimization"]
 tools: ["storage-cost-calculator"]
-glossary: ["gb-month","retrieval-fees","replication","backup","variable-cost"]
+glossary: ["gb-month"]
 ---
 ## Definition
 Storage costs include GB-month storage, request operations, replication, backups, and supporting infrastructure overhead.
@@ -30,7 +30,3 @@ Model costs by region and class of storage, and track cache hit rates to reduce 
 - [Storage Cost Calculator](/saas-pricing/storage-cost-calculator/)
 ## Related glossary terms
 - [GB-Month](/glossary/gb-month/)
-- [Retrieval Fees](/glossary/retrieval-fees/)
-- [Replication](/glossary/replication/)
-- [Backup](/glossary/backup/)
-- [Variable Cost](/glossary/variable-cost/)

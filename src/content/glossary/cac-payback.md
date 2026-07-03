@@ -5,14 +5,14 @@ updated: "2026-01-30"
 category: "unit-economics"
 guides: ["cac-payback-scenarios"]
 tools: ["cac-payback-period-calculator"]
-glossary: ["cac","gross-margin","arpa"]
+glossary: ["cac","gross-margin"]
 ---
 ## Definition
 CAC payback period is the number of months of gross profit needed to recover customer acquisition cost.
 ## Why it matters
 It links pricing, margin, and sales efficiency, helping you decide how much to invest in growth.
 ## Pricing implications
-Higher margins and higher ARPA shorten payback and allow more aggressive acquisition spending.
+Higher margins and stronger revenue per account shorten payback and allow more aggressive acquisition spending.
 ## Measurement tips
 Use gross profit, not revenue, and exclude one-time fees unless they are recurring and predictable.
 ## Checklist
@@ -31,4 +31,3 @@ Use gross profit, not revenue, and exclude one-time fees unless they are recurri
 ## Related glossary terms
 - [Cac](/glossary/cac/)
 - [Gross Margin](/glossary/gross-margin/)
-- [Arpa](/glossary/arpa/)

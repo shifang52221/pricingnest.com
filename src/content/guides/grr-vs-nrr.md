@@ -4,7 +4,7 @@ description: "Learn when to use gross vs net revenue retention and how to interp
 updated: "2026-01-31"
 tags: ["retention", "metrics"]
 tools: ["nrr-calculator", "churn-impact-calculator", "mrr-calculator"]
-glossary: ["grr", "nrr", "churn", "contraction-margin"]
+glossary: ["churn"]
 ---
 
 ## Quick checklist
@@ -38,7 +38,4 @@ glossary: ["grr", "nrr", "churn", "contraction-margin"]
 - [MRR Calculator](/saas-pricing/mrr-calculator/)
 
 ## Related glossary terms
-- [GRR](/glossary/grr/)
-- [NRR](/glossary/nrr/)
 - [Churn](/glossary/churn/)
-- [Contribution Margin](/glossary/contribution-margin/)

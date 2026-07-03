@@ -4,7 +4,7 @@ description: "Stress-test LTV assumptions to see how churn and margin shifts cha
 updated: "2026-01-31"
 tags: ["unit-economics", "metrics"]
 tools: ["ltv-calculator", "churn-impact-calculator", "cac-payback-period-calculator"]
-glossary: ["ltv", "churn", "arpa", "payback-period"]
+glossary: ["ltv", "churn"]
 ---
 
 ## Quick checklist
@@ -39,5 +39,4 @@ glossary: ["ltv", "churn", "arpa", "payback-period"]
 ## Related glossary terms
 - [LTV](/glossary/ltv/)
 - [Churn](/glossary/churn/)
-- [ARPA](/glossary/arpa/)
-- [Payback Period](/glossary/payback-period/)
+
