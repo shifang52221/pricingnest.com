@@ -59,6 +59,10 @@ export type ToolDefinition = {
   reviewedBy?: string;
   reviewed?: string;
   sources?: ToolSource[];
+  verificationChecklist?: string[];
+  reviewScope?: string[];
+  limitations?: string[];
+  defaultOutputBreakpoints?: string[];
   inputs: ToolInput[];
   outputs: ToolOutput[];
   related: string[];
@@ -91,6 +95,147 @@ export const SEO_PRIORITY_TOOL_SLUGS = [
   "usage-based-pricing-calculator",
   "annual-discount-calculator"
 ] as const;
+
+type ToolTrustSignals = Pick<
+  ToolDefinition,
+  "verificationChecklist" | "reviewScope" | "limitations" | "defaultOutputBreakpoints"
+>;
+
+const DEFAULT_TOOL_TRUST_SIGNALS: Required<ToolTrustSignals> = {
+  verificationChecklist: [
+    "Replace the defaults with your own bills, contracts, usage exports, and margin policy before using the output in a live pricing decision.",
+    "Check whether the modeled unit, workload, or contract shape actually matches the customer segment you are reviewing.",
+    "Compare the result against one real recent scenario so you know whether the model is directionally credible before sharing it."
+  ],
+  reviewScope: [
+    "Formula logic and output labels are checked together so the page stays usable as a decision-support tool.",
+    "Default examples, interpretation guidance, and linked next steps are reviewed as one surface rather than as isolated copy blocks.",
+    "Reviewed does not mean the defaults match your contracts, geography, or customer mix."
+  ],
+  limitations: [
+    "This page does not replace finance review, legal review, procurement review, or direct vendor billing validation.",
+    "The output is only as reliable as the cost, usage, and contract assumptions you put into it.",
+    "If your pricing depends on highly custom discounts, regional carve-outs, or non-standard contracts, treat this as a first-pass model only."
+  ],
+  defaultOutputBreakpoints: [
+    "Default outputs are least reliable when your customer mix is materially heavier, lighter, or more volatile than the example scenario.",
+    "If fixed cost recovery, regional pricing, or enterprise exceptions drive the economics, validate the result with a second scenario before you publish anything.",
+    "If the buyer-facing unit is hard to forecast, fix the packaging logic before trusting the numeric output."
+  ]
+};
+
+const FLAGSHIP_TOOL_TRUST_SIGNALS: Readonly<Record<string, ToolTrustSignals>> = {
+  "usage-based-pricing-calculator": {
+    verificationChecklist: [
+      "Replace the example usage with your own p50 and p90 volume, then confirm the same unit still makes sense for both scenarios.",
+      "Use your blended per-unit cost, not vendor list price, before treating the floor as commercially meaningful.",
+      "Check whether fixed-cost recovery belongs in a platform fee or minimum commitment before you push too much burden into overage."
+    ],
+    reviewScope: [
+      "Review covers the floor logic, the example usage assumptions, and whether the guide path still helps you move from math into packaging.",
+      "The page is checked as a price-floor tool, not as a promise that one public usage rate fits every customer cohort.",
+      "Related resources are reviewed to keep value metric, included usage, and overage decisions aligned."
+    ],
+    limitations: [
+      "This tool does not decide whether your value metric is buyer-friendly enough to publish without confusion.",
+      "It does not replace direct validation of free-tier behavior, contract minimums, or segment-specific willingness to pay.",
+      "If your usage distribution is highly skewed, one blended floor can still hide pricing risk."
+    ],
+    defaultOutputBreakpoints: [
+      "Default outputs break fastest when heavy customers behave very differently from the median account.",
+      "If low-volume accounts cannot carry fixed cost, do not trust a pure usage output without testing a platform fee or minimum commitment.",
+      "If buyers cannot estimate the billable unit before they buy, the numeric floor is not yet a publishable pricing model."
+    ]
+  },
+  "api-pricing-calculator": {
+    verificationChecklist: [
+      "Confirm that your billable API call is an event customers and internal teams define the same way.",
+      "Swap in your real blended cost per 1,000 calls after free usage, vendor fees, and infrastructure are reflected.",
+      "Stress-test heavier traffic or burstier usage before you turn the output into included usage or overage policy."
+    ],
+    reviewScope: [
+      "Review covers the monthly floor, the implied price per 1,000 calls, and whether the page still separates billable events from rate limits.",
+      "The supporting links are checked so platform fee, overage, and API packaging guidance stay attached to the tool.",
+      "Reviewed means the model is coherent as a pricing page input, not that it captures every vendor or traffic edge case."
+    ],
+    limitations: [
+      "This tool does not define your abuse policy, rate-limit policy, or enterprise exception path for you.",
+      "It does not model every downstream vendor dependency unless you include those costs in the inputs.",
+      "If your API combines very different endpoints under one price, a single output can still understate risk."
+    ],
+    defaultOutputBreakpoints: [
+      "Default outputs are least reliable when free-tier usage, burst traffic, or endpoint cost differences are material.",
+      "If rate limits are doing more margin protection work than the actual billable event, do not trust the result without repackaging.",
+      "If one customer segment drives disproportionate support or vendor cost, validate the floor with a second segment-specific scenario."
+    ]
+  },
+  "compute-cost-estimator": {
+    verificationChecklist: [
+      "Use blended post-discount vCPU and memory rates from a recent billing period instead of list pricing.",
+      "Run one baseline workload and one heavier workload so you can see whether the same monthly plan still holds up.",
+      "Check whether fixed operational overhead should stay in the plan or move into a base fee or minimum commitment."
+    ],
+    reviewScope: [
+      "Review covers compute-cost math, baseline examples, and whether the linked guidance still supports packaging decisions around commitments and flat plans.",
+      "The page is reviewed as a compute floor tool rather than as a complete infrastructure-profitability model.",
+      "Interpretation text is checked to keep monthly-plan guidance aligned with heavier-workload stress cases."
+    ],
+    limitations: [
+      "This tool does not include storage, bandwidth, taxes, or contract-specific infrastructure concessions unless you add them yourself.",
+      "It does not decide whether one public compute plan should cover every workload shape.",
+      "If reserved-capacity assumptions are unstable, the result can look cleaner than the real cost structure."
+    ],
+    defaultOutputBreakpoints: [
+      "Default outputs are least reliable when workloads are bursty, memory-heavy, or operationally expensive in ways the example does not show.",
+      "If smaller accounts cannot cover fixed compute overhead, do not trust one flat monthly output without testing a base fee or commitment.",
+      "If a heavier workload changes the economics materially, one public monthly plan is probably too blunt."
+    ]
+  },
+  "storage-cost-calculator": {
+    verificationChecklist: [
+      "Replace the example with your own average stored GB, request intensity, and any retrieval-sensitive behavior from billing exports.",
+      "Check whether request-heavy and archive-heavy workloads still justify the same public storage structure.",
+      "Validate that bandwidth and retrieval charges are not being hidden or double counted across other models."
+    ],
+    reviewScope: [
+      "Review covers stored-volume math, request-cost assumptions, and whether the page still helps you decide when one GB-month rate stops being honest.",
+      "Supporting links are checked so request, retrieval, and base-storage decisions stay connected to the calculator.",
+      "Reviewed means the tool is coherent as a storage-floor model, not that it captures every lifecycle-policy edge case."
+    ],
+    limitations: [
+      "This tool does not fully model retrieval policy, durability tiers, or every archival access pattern unless you represent them in your assumptions.",
+      "It does not replace direct review of storage contracts, replication commitments, or provider-specific fee schedules.",
+      "If request or retrieval cost varies sharply by segment, one blended output can still hide risk."
+    ],
+    defaultOutputBreakpoints: [
+      "Default outputs are least reliable when request-heavy cohorts and low-access cohorts have very different economics.",
+      "If archive and hot-storage patterns diverge materially, do not trust one blended base rate without separate scenario checks.",
+      "If fixed storage overhead is large relative to stored GB, validate the result with a platform fee or minimum commitment scenario."
+    ]
+  },
+  "annual-discount-calculator": {
+    verificationChecklist: [
+      "Replace the example monthly price and discount depth with the real list price and policy range you are considering.",
+      "Check the annual invoice and monthly equivalent against one real segment or contract shape before you publish the offer.",
+      "Validate whether the annual discount is solving a real cash-flow or retention goal rather than masking a packaging problem."
+    ],
+    reviewScope: [
+      "Review covers the annual conversion logic, the example discount framing, and whether the linked policy guidance still supports interpretation.",
+      "The page is reviewed as a conversion-check tool, not as a complete annual-pricing policy engine.",
+      "Supporting links are checked so billing-cycle, discount, and renewal guidance stay aligned with the calculator output."
+    ],
+    limitations: [
+      "This tool does not decide whether a given annual discount is strategically healthy for your business.",
+      "It does not replace segment-specific sales policy, renewal analysis, or contract review.",
+      "If enterprise exceptions differ materially from the public annual offer, the output is only a first-pass comparison."
+    ],
+    defaultOutputBreakpoints: [
+      "Default outputs are least reliable when annual behavior differs sharply by segment, contract size, or renewal risk.",
+      "If the monthly equivalent only looks attractive at a discount depth that hurts margin, do not trust the result without policy review.",
+      "If the annual offer is compensating for a weak monthly package, the calculator output is not the real problem."
+    ]
+  }
+};
 
 export const CORE_TOOL_CLUSTER_LINKS: Readonly<Record<string, ToolClusterLink[]>> = {
   "bandwidth-cost-calculator": [
@@ -3258,7 +3403,21 @@ export const TOOLS: ToolDefinition[] = [
 ];
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {
-  return TOOLS.find((t) => t.slug === slug);
+  const tool = TOOLS.find((t) => t.slug === slug);
+  if (!tool) return undefined;
+
+  const overrides = FLAGSHIP_TOOL_TRUST_SIGNALS[slug] ?? {};
+
+  return {
+    ...tool,
+    verificationChecklist: overrides.verificationChecklist ?? tool.verificationChecklist ?? DEFAULT_TOOL_TRUST_SIGNALS.verificationChecklist,
+    reviewScope: overrides.reviewScope ?? tool.reviewScope ?? DEFAULT_TOOL_TRUST_SIGNALS.reviewScope,
+    limitations: overrides.limitations ?? tool.limitations ?? DEFAULT_TOOL_TRUST_SIGNALS.limitations,
+    defaultOutputBreakpoints:
+      overrides.defaultOutputBreakpoints ??
+      tool.defaultOutputBreakpoints ??
+      DEFAULT_TOOL_TRUST_SIGNALS.defaultOutputBreakpoints
+  };
 }
 
 export function getToolName(tool: ToolDefinition): string {

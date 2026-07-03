@@ -35,10 +35,11 @@ const relatedGlossary = relatedGlossarySlugs
   })
   .filter(Boolean);
 const robots = getGuideRobots(entry.slug);
+const isIndexedGuide = robots === "index,follow";
 const siteUrl = (Astro.site?.toString() ?? import.meta.env.PUBLIC_SITE_URL ?? "https://pricingnest.com").replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const editorialTeamHref = "/about/#editorial-team";
-const reviewPolicyHref = "/methodology/#review-policy";
+const reviewPolicyHref = "/about/#review-policy";
 const authorName = entry.data.author ?? "PricingNest Editorial Team";
 const authorType = authorName === "PricingNest Editorial Team" ? "Organization" : "Person";
 const reviewedBy = entry.data.reviewedBy ?? "PricingNest Editorial Team";
@@ -167,9 +168,9 @@ function formatGuideSourceKind(kind: GuideSource["kind"]): string {
       <h2 style="margin-top: 1.25rem;">Use the toolkit</h2>
       <ul class="list">
         <li><a href="/saas-pricing/">All calculators</a></li>
-        <li><a href="/guides/">All guides</a></li>
-        <li><a href="/glossary/">Glossary</a></li>
-        <li><a href="/about/">About the methodology</a></li>
+        <li><a href="/guides/">{isIndexedGuide ? "All guides" : "Retained guide paths"}</a></li>
+        <li><a href="/glossary/">{isIndexedGuide ? "Glossary" : "Core glossary terms"}</a></li>
+        <li><a href="/methodology/">{isIndexedGuide ? "About the methodology" : "Methodology and review policy"}</a></li>
         <li><a href="/contact/">Report a correction</a></li>
       </ul>
 
