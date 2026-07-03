@@ -15,6 +15,67 @@ npm run build
 
 Build output: `dist/`
 
+## Site diagnosis and monitoring
+
+The project includes a lightweight audit workflow for search performance,
+site health, and trust review.
+
+### What we check
+
+- Search Console exports for clicks, impressions, CTR, and ranking trends
+- Core page experience on the main calculator and methodology pages
+- Broken links, duplicate metadata, thin pages, and redirect issues
+- Trust signals such as About, Contact, review dates, and source references
+
+### Recommended cadence
+
+- Weekly: check the core pages and link health
+- Monthly: run the full crawl and compare against the previous review
+- After each meaningful content batch: review GSC again after 2 to 4 weeks
+
+### Current repo scripts
+
+- `node scripts/seo-crawl.mjs`
+  - crawls the site and writes baseline crawl artifacts into `audits/`
+- `node scripts/seo-audit.mjs`
+  - reads the crawl artifacts and generates page-level diagnostics
+- `node scripts/audit.mjs`
+  - checks build logic and content collection hygiene
+
+### Working folders
+
+- `audits/`
+  - crawl exports, diagnostics, and dated review evidence
+- `docs/reports/`
+  - human-readable summary reports and appendix files for archiving
+
+### Suggested report names
+
+- `docs/reports/pricingnest-summary-YYYY-MM-DD.md`
+- `docs/reports/pricingnest-audit-appendix-YYYY-MM-DD.md`
+
+### Suggested monthly flow
+
+1. Export the latest Google Search Console data and save the CSVs in a dated
+   audit folder.
+2. Run `node scripts/seo-crawl.mjs` to refresh crawl artifacts.
+3. Run `node scripts/seo-audit.mjs` to generate issue tables and page metrics.
+4. Run `node scripts/audit.mjs` to catch build or content-collection regressions.
+5. Write a short summary report and store it under `docs/reports/`.
+
+### Team checklist
+
+Use this shorter checklist when the team needs a repeatable review routine.
+
+- Keep the focus on user value, not on producing more pages.
+- Check whether the page answers a real buying or pricing decision.
+- Remove or merge low-value pages before adding new ones.
+- Make sure About, Contact, review dates, and sources stay visible.
+- Watch for signs that a page feels modular, repeated, or template-driven.
+- Review titles and descriptions first when a strong page gets impressions but no clicks.
+- Let GSC trends guide the next content batch instead of expanding blindly.
+- Recheck the site 2 to 4 weeks after each meaningful update.
+
 ## Cloudflare Pages
 
 - Framework preset: `Astro`
