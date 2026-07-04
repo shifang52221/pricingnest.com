@@ -1,10 +1,10 @@
 ---
 title: "Value Metric Selection"
 description: "Choose a value metric that matches buyer value, cost behavior, and a pricing page buyers can actually understand."
-updated: "2026-04-03"
+updated: "2026-07-04"
 author: "PricingNest Editorial Team"
 reviewedBy: "PricingNest Editorial Team"
-reviewed: "2026-04-03"
+reviewed: "2026-07-04"
 tags: ["pricing", "packaging", "value-metric"]
 tools: ["usage-based-pricing-calculator", "pricing-tier-optimizer", "api-pricing-calculator"]
 glossary: ["value-metric", "pricing-metric", "usage-based-pricing", "included-usage"]
@@ -41,6 +41,16 @@ The best retained guidance is not to ask only whether a unit is measurable. Ask 
 already recognizes, whether it tracks value before cost spikes, and whether the same metric works across your most
 important segments. If one unit works for power users but confuses self-serve buyers, the pricing model will feel more
 fragile than it should.
+
+## What this page answers vs what it does not
+
+This page answers the question: **what outcome or unit should anchor the pricing model in the first place?**
+
+It is not the page for every later packaging question. Once the team has a candidate unit, the next step may be
+[Pricing Metric Validation](/guides/pricing-metric-validation/) if the concern is publishability and operational
+stability, or [Pricing Tier Design Guide](/guides/pricing-tier-design/) if the concern is how the chosen anchor should
+translate into a buyer-facing plan ladder. Keeping those roles separate is part of what makes the retained cluster feel
+editorial instead of repetitive.
 
 ## Inputs to confirm before you lock the metric
 
@@ -100,6 +110,13 @@ strong metric paired with weak plan boundaries can still create confusion. Likew
 wrong if the billable unit does not move with real account behavior. The goal is not maximum precision. It is a metric
 system that buyers understand and the business can defend.
 
+The sequence matters:
+
+1. choose the right value anchor here
+2. validate that the candidate unit is operationally and commercially publishable in
+   [Pricing Metric Validation](/guides/pricing-metric-validation/)
+3. shape the buyer-facing ladder in [Pricing Tier Design Guide](/guides/pricing-tier-design/)
+
 ## How to interpret the calculator outputs
 
 Use the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/) to test whether the proposed
@@ -124,6 +141,8 @@ not the right primary unit yet.
   buyer-visible.
 - Test one primary metric and one fallback metric in the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/)
   and [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/).
+- Move to [Pricing Metric Validation](/guides/pricing-metric-validation/) once one candidate unit is clearly ahead and the question becomes whether it can survive billing, estimation, and heavy-account behavior.
+- Move to [Pricing Tier Design Guide](/guides/pricing-tier-design/) once the anchor is chosen and the next problem is how to express it through plans, thresholds, and upgrade logic.
 - Check whether self-serve and enterprise segments need different packaging around the same core metric rather than a
   totally different unit.
 - Review [Value Metric](/glossary/value-metric/), [Pricing Metric](/glossary/pricing-metric/), and

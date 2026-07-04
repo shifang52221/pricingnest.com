@@ -1,10 +1,10 @@
 ---
 title: "Pricing Tier Design Guide"
 description: "Design pricing tiers that create a believable customer progression, protect margin, and avoid using too many plans to hide weak packaging decisions."
-updated: "2026-05-28"
+updated: "2026-07-04"
 author: "PricingNest Editorial Team"
 reviewedBy: "PricingNest Editorial Team"
-reviewed: "2026-05-28"
+reviewed: "2026-07-04"
 tags: ["pricing", "packaging"]
 tools: ["pricing-tier-optimizer", "usage-based-pricing-calculator", "pricing-increase-impact-calculator"]
 glossary: ["pricing-metric", "packaging", "value-metric", "arpa"]
@@ -40,6 +40,22 @@ The question is not only whether each price point supports ARPA. The question is
 real customer stages strongly enough that buyers can understand why one tier exists, why the next one costs more, and
 when they should move.
 
+## How this guide fits into the cluster
+
+This page is the hub for one specific retained topic cluster: tier structure. It should be the first page a reader uses
+when the problem is "our plans do not feel clean, believable, or easy to progress through." From here, the surrounding
+pages should answer narrower follow-up questions:
+
+- use [Value Metric Selection](/guides/value-metric-selection/) when the tiers feel unstable because the underlying
+  customer-value anchor is still unclear
+- use [Pricing Metric Validation](/guides/pricing-metric-validation/) when the candidate billable unit sounds plausible
+  but may not be strong enough to publish operationally
+- use [Usage Tier Breakpoints](/guides/usage-tier-breakpoints/) when the structure is mostly right but the visible
+  thresholds, included usage, or overage transitions still feel weak
+
+That role split matters because many pricing sites become template-like by publishing several pages about tiers,
+metrics, and packaging without making it clear which page solves which exact problem.
+
 ## What pricing tiers are actually supposed to do
 
 Good pricing tiers do more than segment revenue. They organize the commercial story of the product.
@@ -67,6 +83,9 @@ Before you redesign a tier ladder, confirm:
 Use the [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/) first when the immediate question is price
 spacing and mix. Use this guide after that point, when the bigger issue is whether the plans themselves are describing
 the business honestly enough to stay understandable and defensible.
+
+If those inputs still feel unresolved, that usually means the cluster problem sits one layer deeper than tier naming.
+Weak plan structure is often a symptom of weak metric choice or weak validation, not only weak ladder spacing.
 
 ## Where pricing tier design usually fails
 
@@ -108,6 +127,20 @@ inconsistent sales motions. In those cases the page becomes more segmented, but 
 This is the key test: if the customer can only understand the real package after custom explanation, the tier ladder is
 still carrying too much unresolved structure.
 
+## What to check before you move to sub-pages
+
+Before leaving this hub page, decide which of these is the real blocker:
+
+- **The plans feel arbitrary.** Go to [Value Metric Selection](/guides/value-metric-selection/) because the customer
+  outcome and billable anchor are probably still too weak.
+- **The unit sounds right, but it may not survive real usage and billing.** Go to
+  [Pricing Metric Validation](/guides/pricing-metric-validation/).
+- **The structure is directionally right, but the thresholds and upgrade path still feel off.** Go to
+  [Usage Tier Breakpoints](/guides/usage-tier-breakpoints/).
+
+This is the internal-linking logic the cluster should teach: do not keep redesigning tiers when the deeper problem sits
+in metric choice, metric validity, or threshold design.
+
 ## How to interpret the calculator outputs
 
 Treat the [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/) as a structure-checking tool, not just a
@@ -126,6 +159,7 @@ coherent ladder can still be a weak buyer-facing offer.
 
 - Re-run the [Pricing Tier Optimizer](/saas-pricing/pricing-tier-optimizer/) with the current plan mix and one cleaner alternative ladder.
 - Review [Value Metric Selection](/guides/value-metric-selection/) if the tiers still feel arbitrary because the underlying metric is weak.
+- Review [Pricing Metric Validation](/guides/pricing-metric-validation/) if the team already has a candidate unit but is still unsure it can survive buyer estimation, billing logic, and heavy-account behavior.
+- Review [Usage Tier Breakpoints](/guides/usage-tier-breakpoints/) if the main issue is where one plan should stop and the next commercial threshold should begin.
 - Use the [Usage-Based Pricing Calculator](/saas-pricing/usage-based-pricing-calculator/) when the real issue is that the unit floor beneath the tiers is still too fragile.
 - If higher tiers still depend on repeated discount exceptions, revisit the plan roles before changing the published prices.
-

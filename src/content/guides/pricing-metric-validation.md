@@ -1,10 +1,10 @@
 ---
 title: "Pricing Metric Validation"
 description: "Validate a pricing metric against buyer value, cost behavior, forecastability, and billing clarity before you publish it as the commercial unit."
-updated: "2026-05-29"
+updated: "2026-07-04"
 author: "PricingNest Editorial Team"
 reviewedBy: "PricingNest Editorial Team"
-reviewed: "2026-05-29"
+reviewed: "2026-07-04"
 tags: ["pricing", "value-metric", "usage-based-pricing"]
 tools: ["usage-based-pricing-calculator", "tiered-usage-pricing-calculator", "seat-vs-usage-pricing-comparison"]
 glossary: ["pricing-metric", "value-metric", "usage-based-pricing", "seat-based-pricing"]
@@ -39,6 +39,16 @@ system, renewal conversation, or enterprise procurement call, the weaknesses bec
 Validation is the step that forces the team to test whether the metric works under pressure. A strong pricing metric
 should not only fit the model. It should also survive buyer estimation, heavy-account behavior, product tracking, and
 sales explanation without becoming fragile.
+
+## What this page answers vs what it does not
+
+This page answers the question: **we already have a candidate billable unit, but is it strong enough to publish and
+operate?**
+
+It is not the earlier choice-of-anchor page. If the team is still debating what customer outcome or commercial unit
+should lead the model, go back to [Value Metric Selection](/guides/value-metric-selection/). It is also not the final
+plan-structure page. Once the unit is validated, move into [Pricing Tier Design Guide](/guides/pricing-tier-design/)
+to decide how that unit should be expressed through plan roles, thresholds, and upgrade logic.
 
 ## What metric validation is actually testing
 
@@ -109,6 +119,12 @@ segments, or cannot keep stable enough for billing and renewal conversations.
 This distinction matters because many bad pricing metrics are not obviously absurd. They are just too weak to carry the
 buyer-facing model cleanly.
 
+## What validation should hand off to next
+
+Successful validation should reduce ambiguity, not end the work. Once the candidate unit is judged commercially strong
+enough, the next cluster question becomes structural: how should the validated unit be packaged into a ladder that
+buyers can understand? That is the handoff point into [Pricing Tier Design Guide](/guides/pricing-tier-design/).
+
 ## How to interpret the calculator outputs
 
 Treat the calculators as validation pressure tests.
@@ -129,4 +145,5 @@ metric may not be invalid mathematically, but it is not yet strong enough commer
 - If the unit still feels too sharp, model the same metric with structure in the [Tiered Usage Pricing Calculator](/saas-pricing/tiered-usage-pricing-calculator/).
 - Compare whether the business is really choosing between a usage metric and a seat metric in the [Seat vs Usage Pricing Comparison](/saas-pricing/seat-vs-usage-pricing-comparison/).
 - Revisit [Value Metric Selection](/guides/value-metric-selection/) if the deeper problem is still which customer outcome should anchor the pricing model.
+- Move into [Pricing Tier Design Guide](/guides/pricing-tier-design/) once the candidate unit is validated and the next job is turning it into a clear buyer-facing structure.
 - Publish the metric only after sales, finance, product, and billing can all explain and reproduce it consistently.
