@@ -66,7 +66,6 @@ const guideNoindexCandidates = [
   "unit-economics-model-template",
   "usage-cap-communication",
   "usage-pricing-onboarding",
-  "usage-tier-breakpoints",
   "annual-discount-mistakes",
   "api-tier-design",
   "arrr-funnel-pricing",
@@ -92,6 +91,12 @@ const guideNoindexCandidates = [
   "cac-payback-scenarios",
   "cohort-retention-playbook",
   "pricing-increase-playbook"
+];
+
+const guideIndexCandidates = [
+  "cdn-cost-pass-through",
+  "bandwidth-pricing-guardrails",
+  "usage-tier-breakpoints"
 ];
 
 const glossaryNoindexCandidates = [
@@ -150,6 +155,10 @@ const staticNoindexCandidates = [
 
 for (const slug of guideNoindexCandidates) {
   assert(governanceModule.getGuideRobots(slug) === "noindex,follow", `content governance: ${slug} should be noindex,follow`);
+}
+
+for (const slug of guideIndexCandidates) {
+  assert(governanceModule.getGuideRobots(slug) === "index,follow", `content governance: ${slug} should be index,follow`);
 }
 
 for (const slug of glossaryNoindexCandidates) {

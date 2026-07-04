@@ -16,7 +16,6 @@ export const GUIDE_GOVERNANCE = {
   "revenue-leakage-audit": "noindex,follow",
   "pricing-page-case-studies": "noindex,follow",
   "usage-allocation-cost": "noindex,follow",
-  "cdn-cost-pass-through": "noindex,follow",
   "retention-cohort-benchmarks": "noindex,follow",
   "annual-renewal-strategy": "noindex,follow",
   "egress-pricing-playbook": "noindex,follow",
@@ -32,7 +31,6 @@ export const GUIDE_GOVERNANCE = {
   "pricing-page-copy": "noindex,follow",
   "usage-cap-design": "noindex,follow",
   "usage-credit-expiration-policy": "noindex,follow",
-  "bandwidth-pricing-guardrails": "noindex,follow",
   "billing-cycle-selection": "noindex,follow",
   "billing-dunning-strategy": "noindex,follow",
   "contract-value-modeling": "noindex,follow",
@@ -87,7 +85,6 @@ export const GUIDE_GOVERNANCE = {
   "unit-economics-model-template": "noindex,follow",
   "usage-cap-communication": "noindex,follow",
   "usage-pricing-onboarding": "noindex,follow",
-  "usage-tier-breakpoints": "noindex,follow",
   // Wave 7: contract another set of retained-index candidates whose current
   // checklist shape is weaker than adjacent retained core guides and more
   // useful as crawlable support than as public index-facing assets.
